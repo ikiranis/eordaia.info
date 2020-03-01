@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19e05805-c629-40fb-b885-bbe77f95352c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../docker/dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker/dockerfile" afterDir="false" />
-    </list>
+    <list default="true" id="19e05805-c629-40fb-b885-bbe77f95352c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +28,7 @@
     </ExecCommand>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -188,12 +186,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583078887622</updated>
-      <workItem from="1583078889075" duration="5614000" />
+      <workItem from="1583078889075" duration="6103000" />
     </task>
+    <task id="LOCAL-00001" summary="Install notes">
+      <created>1583102397161</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583102397161</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Install notes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Install notes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="675" y="56" width="1200" height="1009" key="#New_Docker_Connection" timestamp="1583096929756">
@@ -204,6 +216,10 @@
       <screen x="0" y="34" width="2560" height="1046" />
     </state>
     <state x="851" y="329" width="847" height="463" key="#com.intellij.fileTypes.FileTypeChooser/0.34.2560.1046/2560.0.1920.1080@0.34.2560.1046" timestamp="1583096455662" />
+    <state x="632" y="60" width="1285" height="1000" key="CommitChangelistDialog2" timestamp="1583102492496">
+      <screen x="0" y="34" width="2560" height="1046" />
+    </state>
+    <state x="632" y="60" width="1285" height="1000" key="CommitChangelistDialog2/0.34.2560.1046/2560.0.1920.1080@0.34.2560.1046" timestamp="1583102492496" />
     <state width="746" height="596" key="SwitcherDM" timestamp="1583101923854">
       <screen x="0" y="34" width="2560" height="1046" />
     </state>
