@@ -1,5 +1,11 @@
 # Eordaia.info site
 
+## Login to container
+
+```
+docker exec -it app_fpm /bin/bash
+```
+
 ## Install npm dependencies
 
 ```
