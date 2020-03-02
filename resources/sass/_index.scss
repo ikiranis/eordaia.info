@@ -1,0 +1,33 @@
+a:link, a:visited, a:hover, a:active {
+    color: black;
+}
+
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card-img-bottom {
+    height: 10em;
+    object-fit: cover;
+}
+
+#siteTitle a {
+    color: #fff;
+}
+
+.article a {
+    text-decoration: underline;
+}
+
+.websiteLink a {
+    text-decoration: underline;
+}
+
+#teamLogo img {
+    width: 5em;
+}
+
+.sportImage img {
+    width: 30rem;
+}
