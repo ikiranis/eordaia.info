@@ -15,4 +15,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', 'AdminPageController@index')->where('any', '.*');
