@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Force to load pages in https in production mode
 if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');

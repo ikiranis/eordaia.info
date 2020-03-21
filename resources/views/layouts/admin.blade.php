@@ -32,18 +32,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left Side Of Navbar -->
-        <ul class="navbar-nav mr-auto">
-            <ul>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <li>
-                        <a rel="alternate" hreflang="{{ $localeCode }}"
-                           href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </ul>
+
 
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ml-auto">
@@ -60,7 +49,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                           document.getElementById('logout-form').submit();">
                             Logout
                         </a>
 
@@ -107,79 +96,19 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('athletes.index') }}">
-                            <span class="mdi mdi-account-multiple-outline"></span>
-                            Αθλητές
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('stadium.index') }}">
-                            <span class="mdi mdi-stadium"></span>
-                            Γήπεδα
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('teams.index') }}">
-                            <span class="mdi mdi-soccer"></span>
-                            Ομάδες
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('matches.index') }}">
-                            <span class="mdi mdi-basketball"></span>
-                            Αγώνες
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('standings.index') }}">
-                            <span class="mdi mdi-format-list-numbers"></span>
-                            Βαθμολογίες
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('sports.index') }}">
-                            <span class="mdi mdi-tennis"></span>
-                            Αθλήματα
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('seasons.index') }}">
-                            <span class="mdi mdi-timer-sand"></span>
-                            Seasons
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('championships.index') }}">
-                            <span class="mdi mdi-trophy-award"></span>
-                            Πρωταθλήματα
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('rules.index') }}">
                             <span class="mdi mdi-ruler"></span>
                             Κανόνες
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('matchdays.index') }}">
-                            <span class="mdi mdi-calendar-multiple"></span>
-                            Αγωνιστικές
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('sitemap') }}">
-                            <span class="mdi mdi-calendar-multiple"></span>
-                            Sitemap
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{ route('sitemap') }}">--}}
+{{--                            <span class="mdi mdi-calendar-multiple"></span>--}}
+{{--                            Sitemap--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 </ul>
 
-                {{--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">--}}
-                {{--<span>Saved reports</span>--}}
-                {{--<a class="d-flex align-items-center text-muted" href="#">--}}
-                {{--<span data-feather="plus-circle"></span>--}}
-                {{--</a>--}}
-                {{--</h6>--}}
             </div>
         </nav>
 
