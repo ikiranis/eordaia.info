@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "eordaia.info",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Eordaia news etc",
     "keywords": [
         "framework",
         "laravel"
