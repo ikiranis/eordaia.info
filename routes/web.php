@@ -16,14 +16,9 @@ if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // Admin first page
 Route::get('/admin', function () {

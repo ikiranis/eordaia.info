@@ -66,7 +66,7 @@
 
 
 {{--Main Page--}}
-<div class="container-fluid">
+<div class="container-fluid" id="app">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar py-5">
             <div class="sidebar-sticky">
@@ -121,9 +121,9 @@
 
 
 <!-- Scripts -->
-{{--@include('includes.run-scripts')--}}
+@include('includes.run-scripts')
 
-{{--@yield('scripts')--}}
+@yield('scripts')
 
 </body>
 </html>
