@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -9,6 +10,9 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use Uuids;
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_active', 'role_id',
     ];
 
     /**
@@ -36,4 +40,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relationship to roles
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    // Check if user is Administrator
+    public function isAdmin()
+    {
+        if($this->role->name == 'Administrator' ) {
+            return true;
+        }
+
+        return false;
+    }
 }

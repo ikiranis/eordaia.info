@@ -89,18 +89,7 @@
                             Δημοσιεύματα
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('comments.index') }}">
-                            <span class="mdi mdi-comment-multiple-outline"></span>
-                            Σχόλια
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('rules.index') }}">
-                            <span class="mdi mdi-ruler"></span>
-                            Κανόνες
-                        </a>
-                    </li>
+
 {{--                    <li class="nav-item">--}}
 {{--                        <a class="nav-link" href="{{ route('sitemap') }}">--}}
 {{--                            <span class="mdi mdi-calendar-multiple"></span>--}}
