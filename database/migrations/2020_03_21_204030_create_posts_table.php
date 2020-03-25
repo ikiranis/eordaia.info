@@ -18,9 +18,6 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->uuid('photo_id')->nullable();
             $table->uuid('user_id')->nullable();
-            $table->uuid('athlete_id')->nullable();
-            $table->uuid('match_id')->nullable();
-            $table->uuid('sport_id')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
             $table->longText('body');
