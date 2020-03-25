@@ -18,10 +18,10 @@ npm install
 compose update
 ```
 
-## Run production environment
+## Run development environment
 
 ```
-npm run watch
+npm run dev
 ```
 
 ```
