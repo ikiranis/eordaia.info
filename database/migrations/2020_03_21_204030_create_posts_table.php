@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->longText('body');
-            $table->string('reference', 800)->nullable()->change();
+            $table->string('reference', 800)->nullable();
             $table->boolean('approved')->default(false);
             $table->string('author')->nullable();
             $table->timestamps();

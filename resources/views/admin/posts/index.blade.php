@@ -26,8 +26,6 @@
                 <tr>
                     <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->user->name}}</td>
-                    <td>{{$post->athlete->fullName ?? ''}}</td>
-                    <td>{{$post->sport->name ?? ''}}</td>
                     <td>{{$post->created_at->diffForHumans() ?? ''}}</td>
                     <td>{{$post->approved==1 ? 'Ενεργό' : 'Ανενεργό'}}</td>
 
