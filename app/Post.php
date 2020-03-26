@@ -103,7 +103,14 @@ class Post extends Model
      * Relation to tags
      */
     public function tags() {
-        return $this->belongsToMany('App\Tag')->withTimestamps();
+        return $this->belongsToMany('App\Tag');
+    }
+
+    /**
+     * Relation to Categories
+     */
+    public function categories() {
+        return $this->belongsToMany('App\Category');
     }
 
     /**
@@ -114,39 +121,9 @@ class Post extends Model
     }
 
     /**
-     * Relation to photos
+     * Relation to users
      */
     public function user() {
         return $this->belongsTo('App\User');
-    }
-
-    /**
-     * Relation to athletes
-     */
-    public function athlete() {
-        return $this->belongsTo('App\Athlete');
-    }
-
-    /**
-     * Relation to matches
-     */
-    public function match() {
-        return $this->belongsTo('App\Match');
-    }
-
-    /**
-     * Relation to sports
-     */
-    public function sport() {
-        return $this->belongsTo('App\Sport');
-    }
-
-    /**
-     * Relation to comments
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function comments() {
-        return $this->hasMany('App\Comment');
     }
 }
