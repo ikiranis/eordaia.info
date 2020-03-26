@@ -114,6 +114,13 @@ class Post extends Model
     }
 
     /**
+     * Relation to videos
+     */
+    public function videos() {
+        return $this->belongsToMany('App\Video');
+    }
+
+    /**
      * Relation to photos
      */
     public function photo() {
