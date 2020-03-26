@@ -9,30 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use Uuids;
-    use Sluggable;
 
     public $incrementing = false;
 
-    // Don't write timestamps at factory
-    public $timestamps  = false;
-
     // The attributes that are mass assignable
     protected $fillable = ['id', 'url', 'type'];
-
-    /**
-     * Return the sluggable configuration array for this model.
-     * @source https://github.com/cviebrock/eloquent-sluggable
-     *
-     * @return array
-     */
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source'    => 'name'
-            ]
-        ];
-    }
 
     /**
      * Relation to posts

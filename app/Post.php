@@ -123,8 +123,8 @@ class Post extends Model
     /**
      * Relation to photos
      */
-    public function photo() {
-        return $this->belongsTo('App\Photo');
+    public function photos() {
+        return $this->belongsToMany('App\Photo');
     }
 
     /**

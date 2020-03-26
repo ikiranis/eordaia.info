@@ -30,6 +30,14 @@ class Photo extends Model
 //    }
 
     /**
+     * Relation to posts
+     */
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post')->withTimestamps();
+    }
+
+    /**
      * Get full path/filename with images folder
      * Get it with $photo->fullPathName
      *
