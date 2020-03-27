@@ -26,12 +26,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="description">Περιγραφή</label>
-                                <textarea class="form-control" id="description" name="description"
-                                          rows="2">{{old('description')}}</textarea>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="form-check-label" for="body">Κείμενο</label>
                                 <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>

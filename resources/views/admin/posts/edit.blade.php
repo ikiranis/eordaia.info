@@ -26,12 +26,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="description">Περιγραφή</label>
-                                <textarea class="form-control" id="description" name="description"
-                                          rows="2">{{$post->description}}</textarea>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="form-check-label" for="body">Κείμενο</label>
                                 <div id="toolbar-container"></div>
                                 <textarea class="form-control ckeditor" id="body" name="body">{{ $post->body }}</textarea>

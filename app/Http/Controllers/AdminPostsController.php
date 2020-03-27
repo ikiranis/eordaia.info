@@ -44,10 +44,8 @@ class AdminPostsController extends Controller
         $validatedData = $request->validate([
             'slug' => 'nullable',
             'team_selected' => 'nullable',
-            'photo_id' => 'nullable',
             'user_id' => 'nullable',
             'title' => 'required|max:255',
-            'description' => 'nullable|max:500',
             'body' => 'required',
             'reference' => 'nullable|url|max:800',
             'approved' => 'nullable'
@@ -116,10 +114,8 @@ class AdminPostsController extends Controller
     {
         $validatedData = $request->validate([
             'slug' => 'nullable',
-            'photo_id' => 'nullable',
             'user_id' => 'nullable',
             'title' => 'required|max:255',
-            'description' => 'nullable|max:500',
             'body' => 'required',
             'reference' => 'nullable|url|max:800',
             'approved' => 'nullable'

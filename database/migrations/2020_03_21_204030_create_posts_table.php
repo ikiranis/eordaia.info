@@ -18,7 +18,6 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->uuid('user_id')->nullable();
             $table->string('title');
-            $table->text('description')->nullable();
             $table->longText('body');
             $table->string('reference', 800)->nullable();
             $table->boolean('approved')->default(false);
