@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostForm;
 use App\Post;
 use Auth;
 use Carbon\Carbon;
@@ -39,17 +40,9 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(PostForm $request)
     {
-        $validatedData = $request->validate([
-            'slug' => 'nullable',
-            'team_selected' => 'nullable',
-            'user_id' => 'nullable',
-            'title' => 'required|max:255',
-            'body' => 'required',
-            'reference' => 'nullable|url|max:800',
-            'approved' => 'nullable'
-        ]);
+        $validatedData = $request->validated();
 
         $input = $request->all();
 
@@ -110,16 +103,9 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(PostForm $request, $id)
     {
-        $validatedData = $request->validate([
-            'slug' => 'nullable',
-            'user_id' => 'nullable',
-            'title' => 'required|max:255',
-            'body' => 'required',
-            'reference' => 'nullable|url|max:800',
-            'approved' => 'nullable'
-        ]);
+        $validatedData = $request->validated();
 
         $input = $request->all();
 
