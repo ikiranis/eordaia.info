@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostForm;
+use App\Http\Requests\PostFormRequest;
 use App\Post;
 use Auth;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class AdminPostsController extends Controller
 {
@@ -40,7 +39,7 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(PostForm $request)
+    public function store(PostFormRequest $request)
     {
         $validatedData = $request->validated();
 
@@ -103,7 +102,7 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(PostForm $request, $id)
+    public function update(PostFormRequest $request, $id)
     {
         $validatedData = $request->validated();
 
