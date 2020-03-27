@@ -71,16 +71,6 @@
 
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="author">Συγγραφέας</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Συγγραφέας</span>
-                                </div>
-                                <input type="text" max="25" class="form-control col-10 px-2" id="author"
-                                       name="author"
-                                       value="{{old('author')}}">
-                            </div>
-
                             <div class="input-group mb-3 no-gutters my-2">
                                 <label for="approved" class="sr-only">Έγκριση</label>
                                 <div class="input-group-prepend col-2">
