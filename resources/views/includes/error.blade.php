@@ -1,6 +1,6 @@
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <h4 class="alert-heading">Validation Error!</h4>
+        <h4 class="alert-heading">Λάθος δεδομένα!</h4>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
