@@ -16,10 +16,8 @@ class Post extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'slug',
-        'photo_id',
         'user_id',
         'title',
-        'description',
         'body',
         'reference',
         'approved',
