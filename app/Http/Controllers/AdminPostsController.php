@@ -29,8 +29,9 @@ class AdminPostsController extends Controller
     public function create()
     {
         $user_id = Auth::id();
+        $userApiToken = Auth::user()->api_token;
 
-        return view('admin.posts.create', compact('user_id'));
+        return view('admin.posts.create', compact('user_id', 'userApiToken'));
     }
 
     /**

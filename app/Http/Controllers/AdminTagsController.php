@@ -15,7 +15,9 @@ class AdminTagsController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'message' => 'Hello'
+        ], 200);
     }
 
     /**
@@ -36,6 +38,10 @@ class AdminTagsController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
+
         $input = $request->all();
 
         if($findTag = Tag::whereName($input['name'])->first()) {

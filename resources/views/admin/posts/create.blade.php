@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.apiToken')
+
     @include('includes.error')
 
     <div class="container">
@@ -30,7 +32,7 @@
                                 <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>
 
-                            <div class="tagsContainer">
+                            <div id="tagsContainer">
                                 <div class="input-group mb-3 no-gutters">
                                     <label class="sr-only" for="tag">Tag</label>
                                     <div class="input-group-prepend col-2">
@@ -39,7 +41,7 @@
                                     <input type="text" max="255" v-model="tag" class="form-control col-8 px-2"
                                            id="tag" name="tag">
 
-                                    <span class="btn btn-success col-2" v-on:click="insertTag">Προσθήκη</span>
+                                    <span class="btn btn-success col-2" @click="insertTag">Προσθήκη</span>
 
                                     <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
 
@@ -114,7 +116,7 @@
 @section('scripts')
 
     <script>
-        const tags = new Vue({
+        let tags = new Vue({
             el: '#tagsContainer',
             delimiters: ['{%', '%}'],
             data: {
