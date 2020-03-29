@@ -89,7 +89,5 @@
         </div>
     </div>
 
-    @include('includes.editor')
-
 @endsection
 
