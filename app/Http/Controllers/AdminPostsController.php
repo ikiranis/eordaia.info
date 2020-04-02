@@ -31,7 +31,7 @@ class AdminPostsController extends Controller
         $user_id = Auth::id();
         $userApiToken = Auth::user()->api_token;
 
-        return view('admin.posts.create', compact('user_id', 'userApiToken'));
+        return view('admin.posts.create', compact(['user_id', 'userApiToken']));
     }
 
     /**
@@ -91,9 +91,10 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
+        $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
 
-        return view ('admin/posts/edit', compact('post'));
+        return view ('admin/posts/edit', compact(['post', 'userApiToken']));
     }
 
     /**

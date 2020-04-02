@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('includes.apiToken')
+
     @include('includes.error')
 
     <div class="container">
@@ -97,7 +99,7 @@
                             <div class="input-group mb-3 no-gutters my-2">
                                 <label for="approved" class="sr-only">Έγκριση</label>
                                 <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100 bg-warning">{{__('messages.approve')}}</span>
+                                    <span class="input-group-text w-100 bg-warning">Έγκριση</span>
                                 </div>
                                 <select class="form-control col-10 px-2" id="approved" name="approved">
                                     <option value="0" {{$post->approved==0 ? 'selected' : ''}}>Ανενεργό</option>
