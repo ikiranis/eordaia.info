@@ -91,13 +91,6 @@ class Post extends Model
     }
 
     /**
-     * Relation to teams
-     */
-    public function teams() {
-        return $this->belongsToMany('App\Team')->withTimestamps();
-    }
-
-    /**
      * Relation to tags
      */
     public function tags() {

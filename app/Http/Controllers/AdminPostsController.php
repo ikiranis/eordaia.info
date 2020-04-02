@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\PostFormRequest;
 use App\Post;
 use Auth;
@@ -30,8 +31,9 @@ class AdminPostsController extends Controller
     {
         $user_id = Auth::id();
         $userApiToken = Auth::user()->api_token;
+        $categories = Category::all();
 
-        return view('admin.posts.create', compact(['user_id', 'userApiToken']));
+        return view('admin.posts.create', compact(['user_id', 'userApiToken', 'categories']));
     }
 
     /**
