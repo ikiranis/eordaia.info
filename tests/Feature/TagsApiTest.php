@@ -9,6 +9,8 @@ use Tests\TestCase;
 
 class TagsApiTest extends TestCase
 {
+    use WithFaker;
+
     private $user;
 
     /**
@@ -29,7 +31,7 @@ class TagsApiTest extends TestCase
     public function testPostTag()
     {
         $request = [
-            'name' => 'testTag'
+            'name' => $this->faker->text(rand(5, 10))
         ];
 
         $response = $this->actingAs($this->user, 'api')
