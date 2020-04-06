@@ -33,9 +33,7 @@
                             </div>
 
                             <div id="tagsContainer">
-                                <tags :tags="tags" />
-
-                                {% tags %}
+                                <tags :tags="tags"  />
 
 {{--                                <div class="input-group mb-3 no-gutters">--}}
 {{--                                    <label class="sr-only" for="tag">Κατηγορία</label>--}}
@@ -133,11 +131,11 @@
             delimiters: ['{%', '%}'],
             data: {
                 tags: [],
-				categories: {!!
-                    json_encode($categories->map(function($item) {
-                        return ['id' => $item->id, 'name' => $item->name];
-                    }));
-                !!},
+				{{--categories: {!!--}}
+                {{--    json_encode($categories->map(function($item) {--}}
+                {{--        return ['id' => $item->id, 'name' => $item->name];--}}
+                {{--    }));--}}
+                {{--!!},--}}
             }
         });
     </script>

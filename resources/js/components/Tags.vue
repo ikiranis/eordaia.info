@@ -15,7 +15,7 @@
         </div>
 
         <div class="my-2 row">
-            <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{% tag.name %}</span>
+            <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{{ tag.name }}</span>
         </div>
     </div>
 </template>

@@ -37394,7 +37394,7 @@ var render = function() {
         return _c(
           "span",
           { staticClass: "my-1 mx-2 px-2 bg-primary text-light" },
-          [_vm._v("{% tag.name %}")]
+          [_vm._v(_vm._s(tag.name))]
         )
       }),
       0
