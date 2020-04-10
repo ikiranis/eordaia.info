@@ -33,33 +33,9 @@
                             </div>
 
                             <div id="tagsContainer">
-                                <tags :tags="tags"  />
+                                <tags :tags="tags" />
 
-{{--                                <div class="input-group mb-3 no-gutters">--}}
-{{--                                    <label class="sr-only" for="tag">Κατηγορία</label>--}}
-{{--                                    <div class="input-group-prepend col-2">--}}
-{{--                                        <span class="input-group-text w-100">Κατηγορία</span>--}}
-{{--                                    </div>--}}
-{{--                                    <input type="text" max="255" v-model="category" class="form-control col-8 px-2"--}}
-{{--                                           id="category" name="category">--}}
-
-{{--                                    <span class="btn btn-success col-2" @click="insertTag">Προσθήκη</span>--}}
-
-{{--                                    <div v-for="category in categories">--}}
-{{--                                        <input type="checkbox" name="categories" v-model="categories">--}}
-
-{{--                                        <div class="input-group-text col">--}}
-{{--                                            <label for="categories" class="my-1">{% category.name %}</label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <input type="hidden" v-for="category in categories" name="categories[]" :value="category.id">--}}
-
-{{--                                </div>--}}
-
-{{--                                <div class="my-2 row">--}}
-{{--                                    <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="category in categories">{% category.name %}</span>--}}
-{{--                                </div>--}}
+                                <categories :categories="categories"  />
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -131,11 +107,12 @@
             delimiters: ['{%', '%}'],
             data: {
                 tags: [],
-				{{--categories: {!!--}}
-                {{--    json_encode($categories->map(function($item) {--}}
-                {{--        return ['id' => $item->id, 'name' => $item->name];--}}
-                {{--    }));--}}
-                {{--!!},--}}
+
+				categories: {!!
+                    json_encode($categories->map(function($item) {
+                        return ['id' => $item->id, 'name' => $item->name];
+                    }));
+                !!},
             }
         });
     </script>
