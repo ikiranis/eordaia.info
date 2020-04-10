@@ -32,10 +32,10 @@
                                 <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>
 
-                            <div id="tagsContainer">
-                                <tags :tags="tags" />
+                            <div id="vueContainer">
+                                <tags :tags="tags"></tags>
 
-                                <categories :categories="categories"  />
+                                <categories :categories="categories"></categories>
                             </div>
 
                             <div class="input-group mb-3 no-gutters">
@@ -102,17 +102,18 @@
 @section('scripts')
 
     <script>
-        let tags = new Vue({
-            el: '#tagsContainer',
-            delimiters: ['{%', '%}'],
+        let vue = new Vue({
+            el: '#vueContainer',
             data: {
                 tags: [],
 
-				categories: {!!
-                    json_encode($categories->map(function($item) {
-                        return ['id' => $item->id, 'name' => $item->name];
-                    }));
-                !!},
+                categories: []
+
+				{{--categories: {!!--}}
+                {{--    json_encode($categories->map(function($item) {--}}
+                {{--        return ['id' => $item->id, 'name' => $item->name];--}}
+                {{--    }));--}}
+                {{--!!},--}}
             }
         });
     </script>

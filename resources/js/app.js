@@ -4,13 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-Vue.component('tags', require('./components/Tags.vue').default);
+Vue.component('tags', require('./components/Tags.vue').default)
 
-Vue.component('categories', require('./components/Categories.vue').default);
+Vue.component('categories', require('./components/Categories.vue').default)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
