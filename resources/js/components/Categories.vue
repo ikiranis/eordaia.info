@@ -1,9 +1,8 @@
 <template>
     <div>
         <div class="input-group mb-3 no-gutters">
-            <label class="sr-only" for="category">Νέα κατηγορία</label>
-            <div class="input-group-prepend col-2">
-                <span class="input-group-text w-100">Νέα κατηγορία</span>
+            <div class="input-group-prepend col-3">
+                <label for="category" class="input-group-text w-100">Νέα κατηγορία</label>
             </div>
             <input type="text" max="255" v-model="category" class="form-control col-8 px-2"
                    id="category" name="category">
@@ -15,7 +14,11 @@
         </div>
 
         <div class="my-2 row">
-            <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="category in categories">{{ category.name }}</span>
+            <div v-for="(category, index) in categories" class="mx-2">
+                <input type="checkbox" id="categories" v-model="categories[index]">
+
+                <label for="categories" class="my-1">{{ category.name }}</label>
+            </div>
         </div>
     </div>
 </template>
@@ -41,7 +44,7 @@
                     name: this.category
                 }
 
-                axios.post('/api/catagory', myData)
+                axios.post('/api/category', myData)
                     .then(response => {
                         this.categories.push({id: response.data.id, name: response.data.name})
                         this.category = ''

@@ -1930,6 +1930,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1949,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
       var myData = {
         name: this.category
       };
-      axios.post('/api/catagory', myData).then(function (response) {
+      axios.post('/api/category', myData).then(function (response) {
         _this.categories.push({
           id: response.data.id,
           name: response.data.name
@@ -37406,10 +37409,6 @@ var render = function() {
       "div",
       { staticClass: "input-group mb-3 no-gutters" },
       [
-        _c("label", { staticClass: "sr-only", attrs: { for: "category" } }, [
-          _vm._v("Νέα κατηγορία")
-        ]),
-        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _c("input", {
@@ -37456,12 +37455,53 @@ var render = function() {
     _c(
       "div",
       { staticClass: "my-2 row" },
-      _vm._l(_vm.categories, function(category) {
-        return _c(
-          "span",
-          { staticClass: "my-1 mx-2 px-2 bg-primary text-light" },
-          [_vm._v(_vm._s(category.name))]
-        )
+      _vm._l(_vm.categories, function(category, index) {
+        return _c("div", { staticClass: "mx-2" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.categories[index],
+                expression: "categories[index]"
+              }
+            ],
+            attrs: { type: "checkbox", id: "categories" },
+            domProps: {
+              checked: Array.isArray(_vm.categories[index])
+                ? _vm._i(_vm.categories[index], null) > -1
+                : _vm.categories[index]
+            },
+            on: {
+              change: function($event) {
+                var $$a = _vm.categories[index],
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 &&
+                      _vm.$set(_vm.categories, index, $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      _vm.$set(
+                        _vm.categories,
+                        index,
+                        $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                      )
+                  }
+                } else {
+                  _vm.$set(_vm.categories, index, $$c)
+                }
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { staticClass: "my-1", attrs: { for: "categories" } }, [
+            _vm._v(_vm._s(category.name))
+          ])
+        ])
       }),
       0
     )
@@ -37472,10 +37512,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend col-2" }, [
-      _c("span", { staticClass: "input-group-text w-100" }, [
-        _vm._v("Νέα κατηγορία")
-      ])
+    return _c("div", { staticClass: "input-group-prepend col-3" }, [
+      _c(
+        "label",
+        { staticClass: "input-group-text w-100", attrs: { for: "category" } },
+        [_vm._v("Νέα κατηγορία")]
+      )
     ])
   }
 ]
