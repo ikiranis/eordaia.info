@@ -36,7 +36,7 @@
         },
 
         methods: {
-            insertTag(e) {
+            insertTag() {
                 let myData = {
                     name: this.tag
                 }

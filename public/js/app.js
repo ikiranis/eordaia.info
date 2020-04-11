@@ -1945,8 +1945,15 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     }
   },
+  computed: {
+    checkedCategories: function checkedCategories() {
+      return this.categories.filter(function (item) {
+        return item.checked;
+      });
+    }
+  },
   methods: {
-    insertTag: function insertTag(e) {
+    insertTag: function insertTag() {
       var _this = this;
 
       var myData = {
@@ -1955,13 +1962,17 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/category', myData).then(function (response) {
         _this.categories.push({
           id: response.data.id,
-          name: response.data.name
+          name: response.data.name,
+          checked: false
         });
 
         _this.category = '';
-      })["catch"](function (e) {
-        return console.log(e);
+      })["catch"](function (error) {
+        return console.log(error);
       });
+    },
+    checkCategory: function checkCategory() {
+      console.log(this.checkedCategories);
     }
   }
 });
@@ -2012,7 +2023,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    insertTag: function insertTag(e) {
+    insertTag: function insertTag() {
       var _this = this;
 
       var myData = {
@@ -37442,7 +37453,7 @@ var render = function() {
           [_vm._v("Προσθήκη")]
         ),
         _vm._v(" "),
-        _vm._l(_vm.categories, function(category) {
+        _vm._l(_vm.checkedCategories, function(category) {
           return _c("input", {
             attrs: { type: "hidden", name: "categories[]" },
             domProps: { value: category.id }
@@ -37462,19 +37473,20 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.categories[index],
-                expression: "categories[index]"
+                value: _vm.categories[index].checked,
+                expression: "categories[index].checked"
               }
             ],
             attrs: { type: "checkbox", id: "categories" },
             domProps: {
-              checked: Array.isArray(_vm.categories[index])
-                ? _vm._i(_vm.categories[index], null) > -1
-                : _vm.categories[index]
+              checked: Array.isArray(_vm.categories[index].checked)
+                ? _vm._i(_vm.categories[index].checked, null) > -1
+                : _vm.categories[index].checked
             },
             on: {
+              click: _vm.checkCategory,
               change: function($event) {
-                var $$a = _vm.categories[index],
+                var $$a = _vm.categories[index].checked,
                   $$el = $event.target,
                   $$c = $$el.checked ? true : false
                 if (Array.isArray($$a)) {
@@ -37482,17 +37494,21 @@ var render = function() {
                     $$i = _vm._i($$a, $$v)
                   if ($$el.checked) {
                     $$i < 0 &&
-                      _vm.$set(_vm.categories, index, $$a.concat([$$v]))
+                      _vm.$set(
+                        _vm.categories[index],
+                        "checked",
+                        $$a.concat([$$v])
+                      )
                   } else {
                     $$i > -1 &&
                       _vm.$set(
-                        _vm.categories,
-                        index,
+                        _vm.categories[index],
+                        "checked",
                         $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                       )
                   }
                 } else {
-                  _vm.$set(_vm.categories, index, $$c)
+                  _vm.$set(_vm.categories[index], "checked", $$c)
                 }
               }
             }
