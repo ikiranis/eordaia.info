@@ -106,13 +106,12 @@
             el: '#vueContainer',
             data: {
                 tags: [],
-                categories: []
 
-				{{--categories: {!!--}}
-                {{--    json_encode($categories->map(function($item) {--}}
-                {{--        return ['id' => $item->id, 'name' => $item->name];--}}
-                {{--    }));--}}
-                {{--!!},--}}
+				categories: {!!
+                    json_encode($categories->map(function($item) {
+                        return ['id' => $item->id, 'name' => $item->name];
+                    }));
+                !!},
             }
         });
     </script>

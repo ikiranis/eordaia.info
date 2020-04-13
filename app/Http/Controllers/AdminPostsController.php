@@ -39,7 +39,7 @@ class AdminPostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(PostFormRequest $request)
@@ -48,6 +48,7 @@ class AdminPostsController extends Controller
 
         $input = $request->all();
 
+        // TODO refactor photos
         if ($file = $request->uploadFile) {
             if ($file->isValid()) {
 
@@ -79,7 +80,7 @@ class AdminPostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -90,7 +91,7 @@ class AdminPostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -98,14 +99,27 @@ class AdminPostsController extends Controller
         $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
 
-        return view ('admin/posts/edit', compact(['post', 'userApiToken']));
+        // TODO make this a service
+        $checkedCategories = $post->categories()->get()->map(function ($item) {
+            return $item->id;
+        })->toArray();
+
+        $categories = Category::all()->map(function ($item) use ($checkedCategories) {
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'checked' => (in_array($item->id, $checkedCategories)) ? true : false
+            ];
+        });
+
+        return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(PostFormRequest $request, $id)
@@ -116,7 +130,8 @@ class AdminPostsController extends Controller
 
         $post = Post::findOrFail($id);
 
-        if($file = $request->uploadFile) {
+        // TODO refactor photos
+        if ($file = $request->uploadFile) {
             if ($file->isValid()) {
 
                 $imgName = time() . '.' . $file->extension();
@@ -134,14 +149,16 @@ class AdminPostsController extends Controller
                 return 'problem';
             }
         } else {
-            if($photo = Photo::find($post->photo_id)) {
-                $photo->update(['reference' => $request->photo_reference]);
-            }
+//            if ($photo = Photo::find($post->photo_id)) {
+//                $photo->update(['reference' => $request->photo_reference]);
+//            }
         }
 
         $post->update($input);
 
         $post->tags()->sync($request->tags); // Sync tags relation with pivot table
+
+        $post->categories()->sync($request->categories); // Sync categories relation with pivot table
 
         return redirect(route('posts.index'));
     }
@@ -149,7 +166,7 @@ class AdminPostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
