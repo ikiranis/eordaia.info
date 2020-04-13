@@ -71,6 +71,8 @@ class AdminPostsController extends Controller
 
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
 
+        $post->categories()->attach($request->categories); // Insert categories relation with pivot table
+
         return redirect(route('posts.index'));
     }
 

@@ -106,7 +106,6 @@
             el: '#vueContainer',
             data: {
                 tags: [],
-
                 categories: []
 
 				{{--categories: {!!--}}
