@@ -108,9 +108,13 @@
 
 @endsection
 
+
 @section('scripts')
 
     <script>
+
+                {{--TODO mapping in controller--}}
+
 		let vue = new Vue({
 			el: '#vueContainer',
 			data: {
