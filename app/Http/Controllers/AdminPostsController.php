@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\PostFormRequest;
 use App\Post;
+use App\Services\PostService;
 use Auth;
 use Carbon\Carbon;
 
@@ -71,7 +72,6 @@ class AdminPostsController extends Controller
         $post = Post::create($input);
 
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
-
         $post->categories()->attach($request->categories); // Insert categories relation with pivot table
 
         return redirect(route('posts.index'));
@@ -98,19 +98,7 @@ class AdminPostsController extends Controller
     {
         $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
-
-        // TODO make this a service
-        $checkedCategories = $post->categories()->get()->map(function ($item) {
-            return $item->id;
-        })->toArray();
-
-        $categories = Category::all()->map(function ($item) use ($checkedCategories) {
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'checked' => (in_array($item->id, $checkedCategories)) ? true : false
-            ];
-        });
+        $categories = PostService::getCheckedCategories($post);
 
         return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories']));
     }
@@ -157,7 +145,6 @@ class AdminPostsController extends Controller
         $post->update($input);
 
         $post->tags()->sync($request->tags); // Sync tags relation with pivot table
-
         $post->categories()->sync($request->categories); // Sync categories relation with pivot table
 
         return redirect(route('posts.index'));
