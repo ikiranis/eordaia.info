@@ -35,12 +35,7 @@
 			categories: {
 				required: true,
 				type: Array
-			},
-
-			checkedCategories: {
-				required: false,
-				type: Array
-			},
+			}
 		},
 
 		computed: {

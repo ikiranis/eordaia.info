@@ -32,12 +32,6 @@
                                 <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>
 
-                            <div id="vueContainer">
-                                <tags :tags="tags"></tags>
-
-                                <categories :categories="categories"></categories>
-                            </div>
-
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="reference">Πηγή</label>
                                 <div class="input-group-prepend col-2">
@@ -48,29 +42,12 @@
                                        value="{{old('reference')}}">
                             </div>
 
-                            <div class="row my-3 border">
+                            <div id="vueContainer">
+                                <tags :tags="tags"></tags>
 
-                                <div class="form-group my-3 col-lg-6 col-12">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="uploadFile"
-                                               id="uploadFile"
-                                               accept='image/*'>
-                                        <label class="custom-file-label"
-                                               for="customFile">Φωτογραφία</label>
-                                    </div>
-                                </div>
+                                <categories :categories="categories"></categories>
 
-                                <div class="input-group my-3 col-lg-6 col-12">
-                                    <label class="sr-only"
-                                           for="photo_reference">Πηγή</label>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Πηγή</span>
-                                    </div>
-                                    <input type="text" max="800" class="form-control" id="photo_reference"
-                                           name="photo_reference"
-                                           value="{{old('photo_reference')}}">
-                                </div>
-
+                                <photos :photos="photos"></photos>
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">
@@ -112,6 +89,13 @@
                         return ['id' => $item->id, 'name' => $item->name];
                     }));
                 !!},
+
+                photos: [
+                    {
+                    	file: 'dds',
+                        reference: 'dsds'
+                    }
+                ]
             }
         });
     </script>

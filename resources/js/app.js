@@ -12,6 +12,8 @@ Vue.component('tags', require('./components/Tags.vue').default)
 
 Vue.component('categories', require('./components/Categories.vue').default)
 
+Vue.component('photos', require('./components/Photos.vue').default)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
