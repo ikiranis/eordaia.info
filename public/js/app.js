@@ -2041,7 +2041,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     insertPhoto: function insertPhoto() {},
     handleFile: function handleFile(event, index) {
-      console.log(index);
+      this.photos[index] = {
+        file: event.target.files[0],
+        reference: this.photos[index].reference
+      };
+      console.log(this.photos[index]);
       console.log(event.target.files[0]);
     }
   }

@@ -45,12 +45,16 @@ class AdminPostsController extends Controller
      */
     public function store(PostFormRequest $request)
     {
-        $validatedData = $request->validated();
+//        $validatedData = $request->validated();
 
         $input = $request->all();
 
+        $photos = $request->photos;
+
+        ddd(file($photos[0]->file)->path);
+
         // TODO refactor photos
-        if ($file = $request->uploadFile) {
+        if ($file = $photos[0]) {
             if ($file->isValid()) {
 
                 $imgName = time() . '.' . $file->extension();

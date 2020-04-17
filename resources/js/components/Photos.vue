@@ -57,8 +57,12 @@
 
 			},
 			handleFile(event, index) {
+				this.photos[index] = {
+					file: event.target.files[0],
+					reference: this.photos[index].reference
+				}
 
-				console.log(index)
+				console.log(this.photos[index])
 				console.log(event.target.files[0]);
 			}
 		}
