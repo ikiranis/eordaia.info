@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Api with auth
 Route::group(['middleware' => 'auth:api'], function() {
     Route::post('tag', 'AdminTagsController@store');
-
     Route::post('category', 'AdminCategoriesController@store');
+    Route::post('photo', 'AdminPhotosController@store');
 });
