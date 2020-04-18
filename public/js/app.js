@@ -2021,6 +2021,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//
@@ -2044,9 +2048,23 @@ __webpack_require__.r(__webpack_exports__);
       this.photos[index] = {
         file: event.target.files[0],
         reference: this.photos[index].reference
-      };
-      console.log(this.photos[index]);
-      console.log(event.target.files[0]);
+      }; //
+      // console.log(this.photos[index])
+      // console.log(event.target.files[0]);
+    },
+    uploadPhoto: function uploadPhoto(index) {
+      var formData = new FormData();
+      formData.append('file', this.photos[index].file);
+      formData.append('reference', this.photos[index].reference);
+      axios.post('/api/photo', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   }
 });
@@ -37695,7 +37713,21 @@ var render = function() {
                 }
               }
             })
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.uploadPhoto(index)
+                }
+              }
+            },
+            [_vm._v("Upload")]
+          )
         ])
       }),
       _vm._v(" "),

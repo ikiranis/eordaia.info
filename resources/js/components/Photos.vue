@@ -23,6 +23,10 @@
 					   name="photo_reference"
 					   v-model="photo.reference">
 			</div>
+
+			<button class="btn btn-success"
+					type="button"
+					@click="uploadPhoto(index)">Upload</button>
 		</div>
 
 		<button class="btn btn-success"
@@ -61,9 +65,24 @@
 					file: event.target.files[0],
 					reference: this.photos[index].reference
 				}
+				//
+				// console.log(this.photos[index])
+				// console.log(event.target.files[0]);
+			},
+			uploadPhoto(index) {
+				let formData = new FormData()
+				formData.append('file', this.photos[index].file)
+				formData.append('reference', this.photos[index].reference)
 
-				console.log(this.photos[index])
-				console.log(event.target.files[0]);
+				axios.post('/api/photo', formData, {
+					headers: {
+						'Content-Type': 'multipart/form-data'
+					}
+				})
+					.then(response => {
+						console.log(response)
+					})
+					.catch(error => console.log(error))
 			}
 		}
 	}

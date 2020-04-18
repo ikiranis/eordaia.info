@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PhotoResource;
 use App\Photo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Storage;
 
 class AdminPhotosController extends Controller
 {
@@ -22,24 +25,26 @@ class AdminPhotosController extends Controller
      * Store a photo
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return PhotoResource
      */
     public function store(Request $request)
     {
-        if ($file = $request->uploadFile) {
+        // TODO refactor and return image string (maybe)
+        if ($file = $request->file) {
             if ($file->isValid()) {
 
                 $imgName = time() . '.' . $file->extension();
                 $path = Carbon::now()->month;
 
-                $file->move('images/' . $path, $imgName);
+                Storage::disk('local')->put('images/' . $path . '/' . $imgName,  File::get($file));
 
-                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->photo_reference]);
+                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
 
                 $input['photo_id'] = $photo->id;
 
                 // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
+                return new PhotoResource($photo);
             } else {
                 return 'problem';
             }
@@ -49,7 +54,7 @@ class AdminPhotosController extends Controller
 //            }
         }
 
-        return new PhotoResource($photo);
+
     }
 
     /**
