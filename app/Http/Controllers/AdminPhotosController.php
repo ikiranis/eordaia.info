@@ -34,10 +34,12 @@ class AdminPhotosController extends Controller
         $photoService = New PhotoService($file);
 
         // TODO refactor and return image string (maybe)
+
+        // TODO check isValid is redundant
 //        if (!$file->isValid()) {
 //            return response()->json([
-//                'message' => 'Το αρχείο δεν είναι έγκυρο'
-//            ], 403);
+//                'message' => 'Το αρχείο έχει πρόβλημα'
+//            ], 204);
 //        }
 
         try {
@@ -45,7 +47,7 @@ class AdminPhotosController extends Controller
         } catch(\Exception $exception) {
             return response()->json([
                 'message' => $exception
-            ], 403);
+            ], 204);
         }
 
         try {
@@ -59,7 +61,7 @@ class AdminPhotosController extends Controller
         } catch (\Exception $exception) {
             return response()->json([
                 'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
-            ], 403);
+            ], 204);
         }
 //        $input['photo_id'] = $photo->id;
 
