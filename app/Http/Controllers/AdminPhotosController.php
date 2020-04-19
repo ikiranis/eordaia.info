@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PhotoFormRequest;
 use App\Http\Resources\PhotoResource;
 use App\Photo;
-use Carbon\Carbon;
+use App\Services\PhotoService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Storage;
 
 class AdminPhotosController extends Controller
 {
@@ -25,36 +24,48 @@ class AdminPhotosController extends Controller
      * Store a photo
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return PhotoResource
+     * @return PhotoResource|\Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(PhotoFormRequest $request)
     {
+        $validatedData = $request->validated();
+
+        $file = $request->file;
+        $photoService = New PhotoService($file);
+
         // TODO refactor and return image string (maybe)
-        if ($file = $request->file) {
-            if ($file->isValid()) {
+//        if (!$file->isValid()) {
+//            return response()->json([
+//                'message' => 'Το αρχείο δεν είναι έγκυρο'
+//            ], 403);
+//        }
 
-                $imgName = time() . '.' . $file->extension();
-                $path = Carbon::now()->month;
-
-                Storage::disk('local')->put('images/' . $path . '/' . $imgName,  File::get($file));
-
-                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->reference]);
-
-                $input['photo_id'] = $photo->id;
-
-                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
-
-                return new PhotoResource($photo);
-            } else {
-                return 'problem';
-            }
-        } else {
-//            if ($photo = Photo::find($post->photo_id)) {
-//                $photo->update(['reference' => $request->photo_reference]);
-//            }
+        try {
+            $photoService->saveFile();
+        } catch(\Exception $exception) {
+            return response()->json([
+                'message' => $exception
+            ], 403);
         }
 
+        try {
+            $photo = Photo::create(
+                [
+                    'path' => $photoService->getPath(),
+                    'filename' => $photoService->getFileName(),
+                    'reference' => $request->reference
+                ]
+            );
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
+            ], 403);
+        }
+//        $input['photo_id'] = $photo->id;
 
+        // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
+
+        return new PhotoResource($photo);
     }
 
     /**

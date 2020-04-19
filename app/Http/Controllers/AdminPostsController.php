@@ -45,7 +45,7 @@ class AdminPostsController extends Controller
      */
     public function store(PostFormRequest $request)
     {
-//        $validatedData = $request->validated();
+        $validatedData = $request->validated();
 
         $input = $request->all();
 
