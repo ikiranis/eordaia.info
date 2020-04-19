@@ -2025,6 +2025,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//
@@ -2040,17 +2043,30 @@ __webpack_require__.r(__webpack_exports__);
     addPhoto: function addPhoto() {
       this.photos.push({
         file: '',
-        reference: ''
+        reference: '',
+        preview: null
       });
     },
-    insertPhoto: function insertPhoto() {},
     handleFile: function handleFile(event, index) {
-      this.photos[index] = {
-        file: event.target.files[0],
-        reference: this.photos[index].reference
-      }; //
-      // console.log(this.photos[index])
-      // console.log(event.target.files[0]);
+      var _this = this;
+
+      var preview = document.createElement("img");
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      reader.addEventListener("load", function () {
+        // convert image file to base64 string
+        preview.src = reader.result;
+        _this.photos[index] = {
+          file: file,
+          reference: _this.photos[index].reference,
+          preview: preview
+        };
+        console.log(_this.photos[index]);
+      }, false);
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
     },
     uploadPhoto: function uploadPhoto(index) {
       var formData = new FormData();
@@ -37714,6 +37730,15 @@ var render = function() {
               }
             })
           ]),
+          _vm._v(" "),
+          photo.preview
+            ? _c("div", { staticClass: "row col-12" }, [
+                _c("img", {
+                  staticClass: "mx-auto",
+                  attrs: { src: photo.preview.src, width: "350" }
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "button",

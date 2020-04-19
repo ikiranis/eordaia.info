@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<div v-for="(photo, index) in photos" class="row my-3 border">
-
 			<div class="form-group my-3 col-lg-6 col-12">
 				<div class="custom-file">
 					<input type="file" class="custom-file-input" name="uploadFile"
@@ -22,6 +21,10 @@
 				<input type="text" max="800" class="form-control" id="photo_reference"
 					   name="photo_reference"
 					   v-model="photo.reference">
+			</div>
+
+			<div v-if="photo.preview" class="row col-12">
+				<img :src="photo.preview.src" class="mx-auto" width="350"/>
 			</div>
 
 			<button class="btn btn-success"
@@ -54,21 +57,34 @@
 			addPhoto() {
 				this.photos.push({
 					file: '',
-					reference: ''
+					reference: '',
+					preview: null
 				})
 			},
-			insertPhoto() {
 
-			},
 			handleFile(event, index) {
-				this.photos[index] = {
-					file: event.target.files[0],
-					reference: this.photos[index].reference
+				const preview = document.createElement("img")
+				let file = event.target.files[0]
+				const reader = new FileReader();
+
+				reader.addEventListener("load", () => {
+					// convert image file to base64 string
+					preview.src = reader.result;
+
+					this.photos[index] = {
+						file: file,
+						reference: this.photos[index].reference,
+						preview: preview
+					}
+
+					console.log(this.photos[index])
+				}, false);
+
+				if (file) {
+					reader.readAsDataURL(file);
 				}
-				//
-				// console.log(this.photos[index])
-				// console.log(event.target.files[0]);
 			},
+
 			uploadPhoto(index) {
 				let formData = new FormData()
 				formData.append('file', this.photos[index].file)
