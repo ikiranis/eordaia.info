@@ -41,15 +41,7 @@ class AdminPhotosController extends Controller
 //        }
 
         try {
-            $photoService->saveFile();
-        } catch(\Exception $exception) {
-            return response()->json([
-                'message' => $exception
-            ], 204);
-        }
-
-        try {
-            $photoService->createThumbnail();
+            $photoService->save();
         } catch(\Exception $exception) {
             return response()->json([
                 'message' => $exception

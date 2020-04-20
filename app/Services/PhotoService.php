@@ -37,15 +37,24 @@ class PhotoService
     }
 
     /**
-     * Save file in Storage
+     * Save file. Main method
+     */
+    public function save() {
+        $this->saveOriginalFile();
+        $this->createThumbnail();
+        $this->createMediumImage();
+    }
+
+    /**
+     * Save file to storage
      *
+     * @return bool
      * @throws Exception
      */
-    public function saveFile() {
+    private function saveOriginalFile() {
         try {
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/' . $this->fileName,  File::get($this->file));
-            return true;
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να αποθηκευτεί το αρχείο -> ' .  $e);
         }
@@ -56,7 +65,7 @@ class PhotoService
      *
      * @throws Exception
      */
-    public function createThumbnail() {
+    private function createThumbnail() {
         try {
             $thumbnail = Image::make($this->file->getRealpath());
             $thumbnail->resize(150, 150, function ($constraint) {
@@ -65,10 +74,27 @@ class PhotoService
 
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/small_' . $this->fileName, $thumbnail->encode());
-
-            return true;
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να αποθηκευτεί το thumbnail -> ' .  $e);
+        }
+    }
+
+    /**
+     * Create a thumbnail of the image
+     *
+     * @throws Exception
+     */
+    private function createMediumImage() {
+        try {
+            $thumbnail = Image::make($this->file->getRealpath());
+            $thumbnail->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            });;
+
+            Storage::disk($this->storageDisk)
+                ->put( $this->path . '/medium_' . $this->fileName, $thumbnail->encode());
+        } catch (\Exception $e) {
+            throw new Exception('Δεν μπορεί να αποθηκευτεί το medium αρχείο -> ' .  $e);
         }
     }
 

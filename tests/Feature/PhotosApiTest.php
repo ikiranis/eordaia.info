@@ -57,5 +57,8 @@ class PhotosApiTest extends TestCase
 
         Storage::disk('public')
             ->assertExists($response->original->path . '/small_' . $response->original->filename);
+
+        Storage::disk('public')
+            ->assertExists($response->original->path . '/medium_' . $response->original->filename);
     }
 }
