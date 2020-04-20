@@ -18,8 +18,6 @@ namespace App\Services;
 use Carbon\Carbon;
 use Exception;
 use Image;
-use phpDocumentor\Reflection\Types\Integer;
-use PhpParser\Node\Scalar\String_;
 use Storage;
 use Illuminate\Support\Facades\File;
 
@@ -30,7 +28,12 @@ class PhotoService
     protected $path;
     protected $storageDisk = 'public';
 
-    public function __construct($file)
+    /**
+     * PhotoService constructor.
+     *
+     * @param object $file
+     */
+    public function __construct(object $file)
     {
         $this->file = $file;
 
@@ -43,7 +46,7 @@ class PhotoService
      *
      * @throws Exception
      */
-    public function save() {
+    public function save(): void {
         $this->saveOriginalFile();
         $this->createDifferentSizeImage(150, 'small');
         $this->createDifferentSizeImage(500, 'medium');
@@ -64,13 +67,14 @@ class PhotoService
     }
 
     /**
-     * Create different size image
+     * Create different size images
      *
      * @param int $size
      * @param string $name
      * @throws Exception
      */
     private function createDifferentSizeImage(int $size, string $name): void {
+        // TODO first check for original file size. Don't create if original is smaller
         try {
             $thumbnail = Image::make($this->file->getRealpath());
             $thumbnail->resize($size, $size, function ($constraint) {
