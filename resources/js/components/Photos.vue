@@ -64,7 +64,7 @@
 
 			handleFile(event, index) {
 				const preview = document.createElement("img")
-				let file = event.target.files[0]
+				const file = event.target.files[0]
 				const reader = new FileReader();
 
 				reader.addEventListener("load", () => {
@@ -76,7 +76,7 @@
 						preview: preview
 					})
 
-					// TODO You have to add new photo to photos array, to display the image. Need refactoring
+					// TODO Hack to display the image. Need refactoring
 					this.addPhoto()
 
 					console.log(this.photos[index])
