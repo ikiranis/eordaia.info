@@ -65,20 +65,20 @@
 			handleFile(event, index) {
 				const preview = document.createElement("img")
 				const file = event.target.files[0]
-				const reader = new FileReader();
+				const reader = new FileReader()
 
 				reader.addEventListener("load", () => {
 					// convert image file to base64 string
-					preview.src = reader.result;
+					preview.src = reader.result
 
 					Object.assign(this.photos[index], {
 						file: file,
 						preview: preview
 					})
-				}, false);
+				}, false)
 
 				if (file) {
-					reader.readAsDataURL(file);
+					reader.readAsDataURL(file)
 				}
 			},
 
