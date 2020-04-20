@@ -80,7 +80,7 @@ class PhotoService
     }
 
     /**
-     * Create a thumbnail of the image
+     * Create medium size image
      *
      * @throws Exception
      */
