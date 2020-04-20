@@ -1,40 +1,53 @@
 <template>
 	<div>
-		<div v-for="(photo, index) in photos" class="row my-3 border">
-			<div class="form-group my-3 col-lg-6 col-12">
-				<div class="custom-file">
-					<input type="file" class="custom-file-input" name="uploadFile"
-						   id="customFile"
-						   accept='image/*'
-						   @change="handleFile($event, index)">
-					<label class="custom-file-label"
-						   for="customFile">Φωτογραφία</label>
+		<div v-for="(photo, index) in photos" class="my-3 px-1 py-1 border">
+			<div class="row">
+				<div class="form-group my-3 col-lg-6 col-12">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" name="uploadFile"
+							   id="customFile"
+							   accept='image/*'
+							   @change="handleFile($event, index)">
+						<label class="custom-file-label"
+							   for="customFile">Φωτογραφία</label>
+					</div>
+				</div>
+
+				<div class="input-group my-3 col-lg-6 col-12">
+					<label class="sr-only"
+						   for="reference">Πηγή</label>
+					<div class="input-group-prepend">
+						<span class="input-group-text">Πηγή</span>
+					</div>
+					<input type="text" max="800" class="form-control" id="reference"
+						   name="reference"
+						   v-model="photo.reference">
 				</div>
 			</div>
 
-			<div class="input-group my-3 col-lg-6 col-12">
+			<div class="row">
 				<label class="sr-only"
-					   for="photo_reference">Πηγή</label>
-				<div class="input-group-prepend">
-					<span class="input-group-text">Πηγή</span>
-				</div>
-				<input type="text" max="800" class="form-control" id="photo_reference"
-					   name="photo_reference"
-					   v-model="photo.reference">
+					   for="description">Περιγραφή</label>
+				<textarea id="description" name="description" class="my-2 col-8 mx-auto"
+						  v-model="photo.description" placeholder="Περιγραφή" />
 			</div>
 
 			<div v-if="photo.preview" class="row col-12">
 				<img :src="photo.preview.src" class="mx-auto" width="350"/>
 			</div>
 
-			<button class="btn btn-success"
-					type="button"
-					@click="uploadPhoto(index)">Upload</button>
+			<div class="row">
+				<button class="btn btn-success col-6 my-2 mx-auto" type="button"
+						@click="uploadPhoto(index)">Upload</button>
+			</div>
+
 		</div>
 
-		<button class="btn btn-success"
-				type="button"
-				@click="addPhoto">Προσθήκη φωτογραφίας</button>
+		<div class="row col-12">
+			<button class="btn btn-success mx-auto"
+					type="button"
+					@click="addPhoto">Προσθήκη φωτογραφίας</button>
+		</div>
 	</div>
 </template>
 
@@ -58,6 +71,7 @@
 				this.photos.push({
 					file: '',
 					reference: '',
+					description: '',
 					preview: null
 				})
 			},
@@ -86,6 +100,7 @@
 				let formData = new FormData()
 				formData.append('file', this.photos[index].file)
 				formData.append('reference', this.photos[index].reference)
+				formData.append('description', this.photos[index].description)
 
 				axios.post('/api/photo', formData, {
 					headers: {

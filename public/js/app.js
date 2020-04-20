@@ -2028,6 +2028,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {//
@@ -2044,6 +2057,7 @@ __webpack_require__.r(__webpack_exports__);
       this.photos.push({
         file: '',
         reference: '',
+        description: '',
         preview: null
       });
     },
@@ -2070,6 +2084,7 @@ __webpack_require__.r(__webpack_exports__);
       var formData = new FormData();
       formData.append('file', this.photos[index].file);
       formData.append('reference', this.photos[index].reference);
+      formData.append('description', this.photos[index].description);
       axios.post('/api/photo', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
@@ -37663,67 +37678,103 @@ var render = function() {
     "div",
     [
       _vm._l(_vm.photos, function(photo, index) {
-        return _c("div", { staticClass: "row my-3 border" }, [
-          _c("div", { staticClass: "form-group my-3 col-lg-6 col-12" }, [
-            _c("div", { staticClass: "custom-file" }, [
-              _c("input", {
-                staticClass: "custom-file-input",
-                attrs: {
-                  type: "file",
-                  name: "uploadFile",
-                  id: "customFile",
-                  accept: "image/*"
-                },
-                on: {
-                  change: function($event) {
-                    return _vm.handleFile($event, index)
+        return _c("div", { staticClass: "my-3 px-1 py-1 border" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "form-group my-3 col-lg-6 col-12" }, [
+              _c("div", { staticClass: "custom-file" }, [
+                _c("input", {
+                  staticClass: "custom-file-input",
+                  attrs: {
+                    type: "file",
+                    name: "uploadFile",
+                    id: "customFile",
+                    accept: "image/*"
+                  },
+                  on: {
+                    change: function($event) {
+                      return _vm.handleFile($event, index)
+                    }
                   }
-                }
-              }),
-              _vm._v(" "),
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "custom-file-label",
+                    attrs: { for: "customFile" }
+                  },
+                  [_vm._v("Φωτογραφία")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "input-group my-3 col-lg-6 col-12" }, [
               _c(
                 "label",
-                {
-                  staticClass: "custom-file-label",
-                  attrs: { for: "customFile" }
+                { staticClass: "sr-only", attrs: { for: "reference" } },
+                [_vm._v("Πηγή")]
+              ),
+              _vm._v(" "),
+              _vm._m(0, true),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: photo.reference,
+                    expression: "photo.reference"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  max: "800",
+                  id: "reference",
+                  name: "reference"
                 },
-                [_vm._v("Φωτογραφία")]
-              )
+                domProps: { value: photo.reference },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(photo, "reference", $event.target.value)
+                  }
+                }
+              })
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "input-group my-3 col-lg-6 col-12" }, [
+          _c("div", { staticClass: "row" }, [
             _c(
               "label",
-              { staticClass: "sr-only", attrs: { for: "photo_reference" } },
-              [_vm._v("Πηγή")]
+              { staticClass: "sr-only", attrs: { for: "description" } },
+              [_vm._v("Περιγραφή")]
             ),
             _vm._v(" "),
-            _vm._m(0, true),
-            _vm._v(" "),
-            _c("input", {
+            _c("textarea", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: photo.reference,
-                  expression: "photo.reference"
+                  value: photo.description,
+                  expression: "photo.description"
                 }
               ],
-              staticClass: "form-control",
+              staticClass: "my-2 col-8 mx-auto",
               attrs: {
-                type: "text",
-                max: "800",
-                id: "photo_reference",
-                name: "photo_reference"
+                id: "description",
+                name: "description",
+                placeholder: "Περιγραφή"
               },
-              domProps: { value: photo.reference },
+              domProps: { value: photo.description },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(photo, "reference", $event.target.value)
+                  _vm.$set(photo, "description", $event.target.value)
                 }
               }
             })
@@ -37738,31 +37789,35 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.uploadPhoto(index)
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success col-6 my-2 mx-auto",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.uploadPhoto(index)
+                  }
                 }
-              }
-            },
-            [_vm._v("Upload")]
-          )
+              },
+              [_vm._v("Upload")]
+            )
+          ])
         ])
       }),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success",
-          attrs: { type: "button" },
-          on: { click: _vm.addPhoto }
-        },
-        [_vm._v("Προσθήκη φωτογραφίας")]
-      )
+      _c("div", { staticClass: "row col-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success mx-auto",
+            attrs: { type: "button" },
+            on: { click: _vm.addPhoto }
+          },
+          [_vm._v("Προσθήκη φωτογραφίας")]
+        )
+      ])
     ],
     2
   )

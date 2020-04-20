@@ -25,7 +25,8 @@ class PhotoFormRequest extends FormRequest
     {
         return [
             'file' => 'required|image',
-            'reference' => 'nullable'
+            'reference' => 'nullable',
+            'description' => 'nullable'
         ];
     }
 

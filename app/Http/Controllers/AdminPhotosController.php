@@ -53,7 +53,8 @@ class AdminPhotosController extends Controller
                 [
                     'path' => $photoService->getPath(),
                     'filename' => $photoService->getFileName(),
-                    'reference' => $request->reference
+                    'reference' => $request->reference,
+                    'description' => $request->description
                 ]
             );
         } catch (\Exception $exception) {
