@@ -71,11 +71,10 @@
 					// convert image file to base64 string
 					preview.src = reader.result;
 
-					this.photos[index] = {...this.photos[index], ...{
-							file: file,
-							preview: preview
-						}
-					}
+					Object.assign(this.photos[index], {
+						file: file,
+						preview: preview
+					})
 
 					// TODO You have to add new photo to photos array, to display the image. Need refactoring
 					this.addPhoto()
