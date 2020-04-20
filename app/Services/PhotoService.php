@@ -18,6 +18,8 @@ namespace App\Services;
 use Carbon\Carbon;
 use Exception;
 use Image;
+use phpDocumentor\Reflection\Types\Integer;
+use PhpParser\Node\Scalar\String_;
 use Storage;
 use Illuminate\Support\Facades\File;
 
@@ -38,17 +40,18 @@ class PhotoService
 
     /**
      * Save file. Main method
+     *
+     * @throws Exception
      */
     public function save() {
         $this->saveOriginalFile();
-        $this->createThumbnail();
-        $this->createMediumImage();
+        $this->createDifferentSizeImage(150, 'small');
+        $this->createDifferentSizeImage(500, 'medium');
     }
 
     /**
-     * Save file to storage
+     * Save original file to storage
      *
-     * @return bool
      * @throws Exception
      */
     private function saveOriginalFile() {
@@ -61,47 +64,30 @@ class PhotoService
     }
 
     /**
-     * Create a thumbnail of the image
+     * Create different size image
      *
+     * @param int $size
+     * @param string $name
      * @throws Exception
      */
-    private function createThumbnail() {
+    private function createDifferentSizeImage(int $size, string $name): void {
         try {
             $thumbnail = Image::make($this->file->getRealpath());
-            $thumbnail->resize(150, 150, function ($constraint) {
+            $thumbnail->resize($size, $size, function ($constraint) {
                 $constraint->aspectRatio();
             });;
 
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/small_' . $this->fileName, $thumbnail->encode());
+                ->put( $this->path . '/' . $name . '_' . $this->fileName, $thumbnail->encode());
         } catch (\Exception $e) {
-            throw new Exception('Δεν μπορεί να αποθηκευτεί το thumbnail -> ' .  $e);
-        }
-    }
-
-    /**
-     * Create medium size image
-     *
-     * @throws Exception
-     */
-    private function createMediumImage() {
-        try {
-            $thumbnail = Image::make($this->file->getRealpath());
-            $thumbnail->resize(500, 500, function ($constraint) {
-                $constraint->aspectRatio();
-            });;
-
-            Storage::disk($this->storageDisk)
-                ->put( $this->path . '/medium_' . $this->fileName, $thumbnail->encode());
-        } catch (\Exception $e) {
-            throw new Exception('Δεν μπορεί να αποθηκευτεί το medium αρχείο -> ' .  $e);
+            throw new Exception('Δεν μπορεί να δημιουργηθεί αρχείο άλλου μεγέυθους -> ' .  $e);
         }
     }
 
     /**
      * @return mixed
      */
-    public function getFileName()
+    public function getFileName(): string
     {
         return $this->fileName;
     }
@@ -109,7 +95,7 @@ class PhotoService
     /**
      * @return mixed
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
