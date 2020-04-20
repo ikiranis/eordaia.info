@@ -33,8 +33,6 @@ class AdminPhotosController extends Controller
         $file = $request->file;
         $photoService = New PhotoService($file);
 
-        // TODO refactor and return image string (maybe)
-
         // TODO check isValid is redundant
 //        if (!$file->isValid()) {
 //            return response()->json([
@@ -44,6 +42,14 @@ class AdminPhotosController extends Controller
 
         try {
             $photoService->saveFile();
+        } catch(\Exception $exception) {
+            return response()->json([
+                'message' => $exception
+            ], 204);
+        }
+
+        try {
+            $photoService->createThumbnail();
         } catch(\Exception $exception) {
             return response()->json([
                 'message' => $exception

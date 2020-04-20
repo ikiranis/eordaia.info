@@ -33,22 +33,29 @@ class PhotosApiTest extends TestCase
     public function testPostPhoto()
     {
         $request = [
-            'file' => UploadedFile::fake()->image('avatar.jpg'), // Create fake image file
-            'reference' => $this->faker->text(rand(10, 30))
+            'file' => UploadedFile::fake()->image('image.jpg', 500,500), // Create fake image file
+            'reference' => $this->faker->text(rand(10, 30)),
+            'description' => $this->faker->text(rand(50, 200)),
         ];
 
         $response = $this->actingAs($this->user, 'api')
             ->post('/api/photo', $request);
+
+//        dd($response->original);
 
         $response->assertJsonStructure([
             'id',
             'path',
             'filename',
             'reference',
+            'description'
         ]);
 
         // Assert the file was stored...
         Storage::disk('public')
             ->assertExists($response->original->path . '/' . $response->original->filename);
+
+        Storage::disk('public')
+            ->assertExists($response->original->path . '/small_' . $response->original->filename);
     }
 }
