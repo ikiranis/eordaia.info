@@ -48,6 +48,7 @@ class PhotosApiTest extends TestCase
         ]);
 
         // Assert the file was stored...
-        Storage::disk('public')->assertExists($response->original->path . '/' . $response->original->filename);
+        Storage::disk('public')
+            ->assertExists($response->original->path . '/' . $response->original->filename);
     }
 }
