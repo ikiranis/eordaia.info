@@ -1,0 +1,53 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Storage;
+use Tests\TestCase;
+
+class PhotosApiTest extends TestCase
+{
+    use WithFaker;
+
+    private $user;
+
+    /**
+     * Setup actions
+     */
+    public function setUp() : void
+    {
+        parent::setUp();
+
+        $this->user = User::first();
+    }
+
+    /**
+     * Test uploaded photo
+     *
+     * @return void
+     */
+    public function testPostPhoto()
+    {
+        $request = [
+            'file' => UploadedFile::fake()->image('avatar.jpg'),
+            'reference' => $this->faker->text(rand(10, 30))
+        ];
+
+        $response = $this->actingAs($this->user, 'api')
+            ->post('/api/photo', $request);
+
+        $response->assertJsonStructure([
+            'id',
+            'path',
+            'filename',
+            'reference',
+        ]);
+
+        // Assert the file was stored...
+        Storage::disk('public')->assertExists($response->original->path . '/' . $response->original->filename);
+    }
+}

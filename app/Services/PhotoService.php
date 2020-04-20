@@ -41,7 +41,7 @@ class PhotoService
      */
     public function saveFile() {
         try {
-            Storage::disk('local')->put('images/' . $this->path . '/' . $this->fileName,  File::get($this->file));
+            Storage::disk('public')->put( $this->path . '/' . $this->fileName,  File::get($this->file));
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να αποθηκευτεί το αρχείο' .  $e);
         }
