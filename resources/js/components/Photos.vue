@@ -71,14 +71,17 @@
 					// convert image file to base64 string
 					preview.src = reader.result;
 
-					this.photos[index] = {
-						file: file,
-						reference: this.photos[index].reference,
-						preview: preview
+					this.photos[index] = {...this.photos[index], ...{
+							file: file,
+							preview: preview
+						}
 					}
 
 					// TODO You have to add new photo to photos array, to display the image. Need refactoring
 					this.addPhoto()
+
+					console.log(this.photos[index])
+
 				}, false);
 
 				if (file) {
