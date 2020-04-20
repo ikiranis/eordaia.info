@@ -2059,11 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
         Object.assign(_this.photos[index], {
           file: file,
           preview: preview
-        }); // TODO You have to add new photo to photos array, to display the image. Need refactoring
-
-        _this.addPhoto();
-
-        console.log(_this.photos[index]);
+        });
       }, false);
 
       if (file) {

@@ -75,12 +75,6 @@
 						file: file,
 						preview: preview
 					})
-
-					// TODO Hack to display the image. Need refactoring
-					this.addPhoto()
-
-					console.log(this.photos[index])
-
 				}, false);
 
 				if (file) {
