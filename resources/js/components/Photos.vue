@@ -67,7 +67,6 @@
 				let file = event.target.files[0]
 				const reader = new FileReader();
 
-				// TODO image displayed but only if you click on add new file button. Reactivity doesn't work
 				reader.addEventListener("load", () => {
 					// convert image file to base64 string
 					preview.src = reader.result;
@@ -78,7 +77,8 @@
 						preview: preview
 					}
 
-					console.log(this.photos[index])
+					// TODO You have to add new photo to photos array, to display the image. Need refactoring
+					this.addPhoto()
 				}, false);
 
 				if (file) {
