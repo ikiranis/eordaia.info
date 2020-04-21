@@ -33,13 +33,6 @@ class AdminPhotosController extends Controller
         $file = $request->file;
         $photoService = New PhotoService($file);
 
-        // TODO check isValid is redundant
-//        if (!$file->isValid()) {
-//            return response()->json([
-//                'message' => 'Το αρχείο έχει πρόβλημα'
-//            ], 204);
-//        }
-
         try {
             $photoService->save();
         } catch(\Exception $exception) {
