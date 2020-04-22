@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CategoryFormRequest;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
@@ -22,10 +23,12 @@ class AdminCategoriesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return CategoryResource
+     * @return CategoryResource|\Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CategoryFormRequest $request)
     {
+        $validatedData = $request->validated();
+
         $input = $request->all();
 
         if($findCategory = Category::whereName($input['name'])->first()) {

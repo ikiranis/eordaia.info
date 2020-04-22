@@ -23,19 +23,22 @@ use Illuminate\Support\Facades\File;
 
 class PhotoService
 {
-    protected $file;
-    protected $fileName;
-    protected $path;
-    protected $storageDisk = 'public';
+    protected object $file;
+    protected string $fileName;
+    protected string $path;
+    protected string $storageDisk = 'public';
+    protected array $sizes;
 
     /**
      * PhotoService constructor.
      *
      * @param object $file
+     * @param array $sizes
      */
-    public function __construct(object $file)
+    public function __construct(object $file, array $sizes)
     {
         $this->file = $file;
+        $this->sizes = $sizes;
 
         $this->fileName = time() . '.' . $this->file->extension();
         $this->path = Carbon::now()->month;
@@ -48,8 +51,10 @@ class PhotoService
      */
     public function save(): void {
         $this->saveOriginalFile();
-        $this->createDifferentSizeImage(150, 'small');
-        $this->createDifferentSizeImage(500, 'medium');
+
+        foreach ($this->sizes as $size) {
+            $this->createDifferentSizeImage($size);
+        }
     }
 
     /**
@@ -70,10 +75,9 @@ class PhotoService
      * Create different size images
      *
      * @param int $size
-     * @param string $name
      * @throws Exception
      */
-    private function createDifferentSizeImage(int $size, string $name): void {
+    private function createDifferentSizeImage(int $size): void {
         // TODO first check for original file size. Don't create if original is smaller
         try {
             $thumbnail = Image::make($this->file->getRealpath());
@@ -82,7 +86,7 @@ class PhotoService
             });;
 
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $name . '_' . $this->fileName, $thumbnail->encode());
+                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $thumbnail->encode());
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να δημιουργηθεί αρχείο άλλου μεγέυθους -> ' .  $e);
         }

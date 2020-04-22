@@ -31,8 +31,9 @@ class AdminPhotosController extends Controller
         $validatedData = $request->validated();
 
         $file = $request->file;
-        $photoService = New PhotoService($file);
+        $photoService = New PhotoService($file, [150, 500]);
 
+        // Save file
         try {
             $photoService->save();
         } catch(\Exception $exception) {
@@ -41,6 +42,7 @@ class AdminPhotosController extends Controller
             ], 204);
         }
 
+        // Save in database
         try {
             $photo = Photo::create(
                 [

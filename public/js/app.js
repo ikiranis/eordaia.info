@@ -1968,7 +1968,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.category = '';
       })["catch"](function (error) {
-        return console.log(error);
+        return console.log(error.response);
       });
     },
     checkCategory: function checkCategory() {

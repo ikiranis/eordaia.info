@@ -61,7 +61,7 @@
 						})
 						this.category = ''
 					})
-					.catch(error => console.log(error))
+					.catch(error => console.log(error.response))
 			},
 
 			checkCategory() {
