@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Storage;
@@ -13,7 +12,8 @@ class PhotosApiTest extends TestCase
 {
     use WithFaker;
 
-    private $user;
+    protected static $user;
+    protected static bool $setUpRun = false;
 
     /**
      * Setup actions
@@ -22,7 +22,11 @@ class PhotosApiTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::first();
+        if (!static::$setUpRun) {
+            static::$user = User::first();
+
+            static::$setUpRun = true;
+        }
     }
 
     /**
@@ -30,7 +34,7 @@ class PhotosApiTest extends TestCase
      *
      * @return void
      */
-    public function testPostPhoto()
+    public function testPostPhoto() : void
     {
         $request = [
             'file' => UploadedFile::fake()->image('image.jpg', 500,500), // Create fake image file
@@ -38,7 +42,7 @@ class PhotosApiTest extends TestCase
             'description' => $this->faker->text(rand(50, 200)),
         ];
 
-        $response = $this->actingAs($this->user, 'api')
+        $response = $this->actingAs(static::$user, 'api')
             ->post('/api/photo', $request);
 
 //        dd($response->original);
