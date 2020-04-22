@@ -2157,8 +2157,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.tag = '';
-      })["catch"](function (e) {
-        return console.log(e);
+      })["catch"](function (error) {
+        console.log(error.response);
       });
     }
   }
@@ -37553,7 +37553,13 @@ var render = function() {
             }
           ],
           staticClass: "form-control col-8 px-2",
-          attrs: { type: "text", max: "255", id: "category", name: "category" },
+          attrs: {
+            type: "text",
+            max: "255",
+            id: "category",
+            maxlength: "15",
+            name: "category"
+          },
           domProps: { value: _vm.category },
           on: {
             input: function($event) {
@@ -37874,7 +37880,13 @@ var render = function() {
             }
           ],
           staticClass: "form-control col-8 px-2",
-          attrs: { type: "text", max: "255", id: "tag", name: "tag" },
+          attrs: {
+            type: "text",
+            max: "255",
+            id: "tag",
+            maxlength: "40",
+            name: "tag"
+          },
           domProps: { value: _vm.tag },
           on: {
             input: function($event) {

@@ -24,7 +24,7 @@ class CategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:App\Category'
+            'name' => 'required|unique:App\Category|max:15'
         ];
     }
 
@@ -37,7 +37,8 @@ class CategoryFormRequest extends FormRequest
     {
         return [
             'name.required' => 'Το όνομα κατηγορίας είναι απαραίτητο',
-            'name.unique' => 'Η κατηγορία υπάρχει ήδη'
+            'name.unique' => 'Η κατηγορία υπάρχει ήδη',
+            'name.max' => 'Επιτρέπεται να έχει μέχρι 15 χαρακτήρες μόνο'
         ];
     }
 }

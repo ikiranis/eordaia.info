@@ -6,7 +6,7 @@
                 <span class="input-group-text w-100">Tag</span>
             </div>
             <input type="text" max="255" v-model="tag" class="form-control col-8 px-2"
-                   id="tag" name="tag">
+                   id="tag" maxlength="40" name="tag">
 
             <span class="btn btn-success col-2" @click="insertTag">Προσθήκη</span>
 
@@ -46,7 +46,9 @@
                         this.tags.push({id: response.data.id, name: response.data.name})
                         this.tag = ''
                     })
-                    .catch(e => console.log(e))
+                    .catch(error => {
+                        console.log(error.response)
+                    })
             }
         }
     }

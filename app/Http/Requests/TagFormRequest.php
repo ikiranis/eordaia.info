@@ -24,7 +24,7 @@ class TagFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required|max:40'
         ];
     }
 
@@ -36,7 +36,8 @@ class TagFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Το όνομα του tag είναι απαραίτητο'
+            'name.required' => 'Το όνομα του tag είναι απαραίτητο',
+            'name.max' => 'Επιτρέπεται να έχει μέχρι 40 χαρακτήρες μόνο'
         ];
     }
 }
