@@ -3,13 +3,12 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RoutesTest extends TestCase
 {
-    private $user;
+    protected static $user;
+    protected static bool $setUpRun = false;
 
     /**
      * Setup actions
@@ -18,7 +17,11 @@ class RoutesTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::first();
+        if (!static::$setUpRun) {
+            static::$user = User::first();
+
+            static::$setUpRun = true;
+        }
     }
 
     /**
@@ -28,11 +31,10 @@ class RoutesTest extends TestCase
      */
     public function testAdminPage()
     {
-        $response = $this->actingAs($this->user, 'web')
+        $response = $this->actingAs(static::$user, 'web')
             ->get('/admin');
 
-        $response->assertStatus(200);
-
-        $response->assertSee('Admin Page');
+        $response->assertStatus(200)
+            ->assertSee('Admin Page');
     }
 }

@@ -24,7 +24,7 @@ class TagFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:App\Tag'
+            'name' => 'required'
         ];
     }
 
@@ -36,8 +36,7 @@ class TagFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Το όνομα του tag είναι απαραίτητο',
-            'name.unique' => 'To tag υπάρχει ήδη'
+            'name.required' => 'Το όνομα του tag είναι απαραίτητο'
         ];
     }
 }

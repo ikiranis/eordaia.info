@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
@@ -11,7 +10,7 @@ class CategoriesApiTest extends TestCase
 {
     use WithFaker;
 
-    protected static Authenticatable $user;
+    protected static $user;
     protected static string $categoryName;
     protected static bool $setUpRun = false;
 
@@ -23,10 +22,10 @@ class CategoriesApiTest extends TestCase
         parent::setUp();
 
         if (!static::$setUpRun) {
-            $this::$user = User::first();
-            $this::$categoryName = $this->faker->text(rand(10, 15));
+            static::$user = User::first();
+            static::$categoryName = $this->faker->text(rand(10, 15));
 
-            $this::$setUpRun = true;
+            static::$setUpRun = true;
         }
     }
 
@@ -38,18 +37,17 @@ class CategoriesApiTest extends TestCase
     public function testPostCategory() : void
     {
         $request = [
-            'name' => $this::$categoryName
+            'name' => static::$categoryName
         ];
 
-        $response = $this->actingAs($this::$user, 'api')
+        $response = $this->actingAs(static::$user, 'api')
             ->post('/api/category', $request);
 
-        $response->assertStatus(201);
-
-        $response->assertJsonStructure([
-            'id',
-            'name'
-        ]);
+        $response->assertStatus(201)
+            ->assertJsonStructure([
+                'id',
+                'name'
+            ]);
     }
 
     /**
@@ -58,10 +56,10 @@ class CategoriesApiTest extends TestCase
     public function testDoubleCategory() : void
     {
         $request = [
-            'name' => $this::$categoryName
+            'name' => static::$categoryName
         ];
 
-        $response = $this->actingAs($this::$user, 'api')
+        $response = $this->actingAs(static::$user, 'api')
             ->post('/api/category', $request);
 
 //        $errors = session('errors');

@@ -33,3 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/comments', 'AdminCommentsController');
     Route::patch('admin/comments/{comment}/approvedOrNot', 'AdminCommentsController@approvedOrNot')->name('comments.approvedOrNot');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
