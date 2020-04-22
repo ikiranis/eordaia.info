@@ -59,6 +59,9 @@ class CategoriesApiTest extends TestCase
         ]);
     }
 
+    /**
+     * Test for double category post
+     */
     public function testDoubleCategory() : void
     {
         $request = [
