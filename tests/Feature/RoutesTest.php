@@ -29,7 +29,7 @@ class RoutesTest extends TestCase
      *
      * @return void
      */
-    public function testAdminPage()
+    public function testAdminPage() : void
     {
         $response = $this->actingAs(static::$user, 'web')
             ->get('/admin');
