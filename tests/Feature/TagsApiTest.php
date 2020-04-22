@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -11,7 +12,9 @@ class TagsApiTest extends TestCase
 {
     use WithFaker;
 
-    private $user;
+    protected static Authenticatable $user;
+    protected static string $tagName;
+    protected static bool $setUpRun = false;
 
     /**
      * Setup actions
@@ -20,7 +23,12 @@ class TagsApiTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::first();
+        if (!static::$setUpRun) {
+            $this::$user = User::first();
+            $this::$tagName = $this->faker->text(rand(10, 15));
+
+            $this::$setUpRun = true;
+        }
     }
 
     /**
@@ -31,10 +39,10 @@ class TagsApiTest extends TestCase
     public function testPostTag()
     {
         $request = [
-            'name' => $this->faker->text(rand(5, 10))
+            'name' => $this::$tagName
         ];
 
-        $response = $this->actingAs($this->user, 'api')
+        $response = $this->actingAs($this::$user, 'api')
             ->post('/api/tag', $request);
 
         $response->assertStatus(201);
@@ -43,5 +51,21 @@ class TagsApiTest extends TestCase
             'id',
             'name'
         ]);
+    }
+
+    /**
+     * Test for double tag post
+     */
+    public function testDoubleTag() : void
+    {
+        $request = [
+            'name' => $this::$tagName
+        ];
+
+        $response = $this->actingAs($this::$user, 'api')
+            ->post('/api/tag', $request);
+
+        $response->assertStatus(302)
+            ->assertSessionHasErrors('name');
     }
 }

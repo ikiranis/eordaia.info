@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TagFormRequest;
 use App\Http\Resources\TagResource;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -32,10 +33,12 @@ class AdminTagsController extends Controller
      * Store tag
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return TagResource
+     * @return TagResource|\Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(TagFormRequest $request)
     {
+        $validatedData = $request->validated();
+
         $input = $request->all();
 
         if($findTag = Tag::whereName($input['name'])->first()) {

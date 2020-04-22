@@ -13,12 +13,6 @@ class CategoriesApiTest extends TestCase
 
     protected static Authenticatable $user;
     protected static string $categoryName;
-
-    /**
-     * If true, setup has run at least once.
-     *
-     * @var boolean
-     */
     protected static bool $setUpRun = false;
 
     /**
@@ -34,7 +28,6 @@ class CategoriesApiTest extends TestCase
 
             $this::$setUpRun = true;
         }
-
     }
 
     /**
