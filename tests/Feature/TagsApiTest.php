@@ -36,7 +36,7 @@ class TagsApiTest extends TestCase
      *
      * @return void
      */
-    public function testPostTag()
+    public function testPostTag() : void
     {
         $request = [
             'name' => $this::$tagName
