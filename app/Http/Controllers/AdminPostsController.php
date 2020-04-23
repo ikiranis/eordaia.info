@@ -81,9 +81,7 @@ class AdminPostsController extends Controller
         $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
         $categories = PostService::getCheckedCategories($post);
-        $photosCollection = $post->photos()->get();
-
-        $photos = PhotoResource::collection($photosCollection);;
+        $photos = PhotoResource::collection($post->photos()->get());
 
         return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories', 'photos']));
     }

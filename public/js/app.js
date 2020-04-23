@@ -2059,8 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     }
   },
-  created: function created() {
-    console.log(this.photos);
+  created: function created() {// console.log(this.photos)
   },
   methods: {
     addPhoto: function addPhoto() {

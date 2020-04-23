@@ -73,7 +73,7 @@
 		},
 
 		created() {
-			console.log(this.photos)
+			// console.log(this.photos)
 		},
 
 		methods: {
