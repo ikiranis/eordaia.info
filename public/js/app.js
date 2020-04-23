@@ -2050,7 +2050,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      uploadedPhotos: []
+      emptyPhoto: {
+        id: null,
+        file: null,
+        reference: '',
+        description: '',
+        preview: null,
+        url: ''
+      }
     };
   },
   props: {
@@ -2063,14 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addPhoto: function addPhoto() {
-      this.photos.push({
-        id: null,
-        file: null,
-        reference: '',
-        description: '',
-        preview: null,
-        url: ''
-      });
+      this.photos.push(this.emptyPhoto);
     },
     handleFile: function handleFile(event, index) {
       var _this = this;
@@ -2103,7 +2103,9 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (response) {
-        _this2.uploadedPhotos.push(response.data);
+        Object.assign(_this2.photos[index], {
+          id: response.data.id
+        });
       })["catch"](function (error) {
         return console.log(error.response);
       });
@@ -37847,7 +37849,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.uploadedPhotos, function(photo) {
+      _vm._l(_vm.photos, function(photo) {
         return _c("input", {
           attrs: { type: "hidden", name: "photos[]" },
           domProps: { value: photo.id }

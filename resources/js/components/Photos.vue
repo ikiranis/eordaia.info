@@ -53,7 +53,7 @@
 					@click="addPhoto">Προσθήκη φωτογραφίας</button>
 		</div>
 
-		<input type="hidden" v-for="photo in uploadedPhotos" name="photos[]" :value="photo.id">
+		<input type="hidden" v-for="photo in photos" name="photos[]" :value="photo.id">
 	</div>
 </template>
 
@@ -61,7 +61,14 @@
 	export default {
 		data() {
 			return {
-				uploadedPhotos: []
+				emptyPhoto: {
+					id: null,
+					file: null,
+					reference: '',
+					description: '',
+					preview: null,
+					url: ''
+				}
 			}
 		},
 
@@ -78,14 +85,7 @@
 
 		methods: {
 			addPhoto() {
-				this.photos.push({
-					id: null,
-					file: null,
-					reference: '',
-					description: '',
-					preview: null,
-					url: ''
-				})
+				this.photos.push(this.emptyPhoto)
 			},
 
 			handleFile(event, index) {
@@ -120,7 +120,9 @@
 					}
 				})
 					.then(response => {
-						this.uploadedPhotos.push(response.data)
+						Object.assign(this.photos[index], {
+							id: response.data.id
+						})
 					})
 					.catch(error => console.log(error.response))
 			}
