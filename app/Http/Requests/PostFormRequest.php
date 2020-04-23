@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed tags
+ * @property mixed categories
+ * @property mixed photos
+ */
 class PostFormRequest extends FormRequest
 {
     /**

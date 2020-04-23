@@ -8,14 +8,18 @@ use App\Http\Resources\PhotoResource;
 use App\Post;
 use App\Services\PostService;
 use Auth;
-use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class AdminPostsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -27,7 +31,7 @@ class AdminPostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -41,8 +45,8 @@ class AdminPostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param PostFormRequest $request
+     * @return RedirectResponse|Redirector
      */
     public function store(PostFormRequest $request)
     {
@@ -63,7 +67,7 @@ class AdminPostsController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function show($id)
     {
@@ -74,24 +78,25 @@ class AdminPostsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit($id)
     {
         $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
+        $tags = PostService::getTags($post);
         $categories = PostService::getCheckedCategories($post);
         $photos = PhotoResource::collection($post->photos()->get());
 
-        return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories', 'photos']));
+        return view('admin/posts/edit', compact(['post', 'userApiToken', 'tags', 'categories', 'photos']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param PostFormRequest $request
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Application|RedirectResponse|Redirector
      */
     public function update(PostFormRequest $request, $id)
     {
@@ -114,7 +119,8 @@ class AdminPostsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return RedirectResponse|Redirector
+     * @throws \Exception
      */
     public function destroy($id)
     {

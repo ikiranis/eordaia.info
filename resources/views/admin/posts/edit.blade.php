@@ -80,16 +80,11 @@
 @section('scripts')
 
     <script>
-
-                {{--TODO mapping in controller--}}
-
 		let vue = new Vue({
 			el: '#vueContainer',
 			data: {
 				tags: {!!
-                    json_encode($post->tags()->get()->map(function($item) {
-                        return ['id' => $item->id, 'name' => $item->name];
-                    }))
+                    json_encode($tags);
                 !!},
 
 				categories: {!!

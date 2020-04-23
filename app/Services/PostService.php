@@ -23,10 +23,11 @@ class PostService
     /**
      * Get all categories with checked for specific $post
      *
-     * @param $post
-     * @return Category[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection
+     * @param object $post
+     * @return object
      */
-    static function getCheckedCategories($post) {
+    static function getCheckedCategories(object $post) : object
+    {
         $checkedCategories = $post->categories()->get()->map(function ($item) {
             return $item->id;
         })->toArray();
@@ -40,4 +41,16 @@ class PostService
         });
     }
 
+    /**
+     * Get mapped tags
+     *
+     * @param object $post
+     * @return object
+     */
+    static function getTags(object $post) : object
+    {
+        return $post->tags()->get()->map(function($item) {
+            return ['id' => $item->id, 'name' => $item->name];
+        });
+    }
 }
