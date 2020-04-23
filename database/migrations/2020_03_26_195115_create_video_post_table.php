@@ -17,7 +17,6 @@ class CreateVideoPostTable extends Migration
             $table->increments('id');
             $table->uuid('post_id')->index();
             $table->uuid('video_id')->index();
-            $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
         });

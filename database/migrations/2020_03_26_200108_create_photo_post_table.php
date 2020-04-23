@@ -17,7 +17,6 @@ class CreatePhotoPostTable extends Migration
             $table->increments('id');
             $table->uuid('post_id')->index();
             $table->uuid('photo_id')->index();
-            $table->timestamps();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('photo_id')->references('id')->on('photos')->onDelete('cascade');
         });
