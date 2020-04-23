@@ -36,6 +36,10 @@
 				<img :src="photo.preview.src" class="mx-auto" width="350"/>
 			</div>
 
+			<div v-if="photo.url" class="row col-12">
+				<img :src="photo.url" class="mx-auto" width="350"/>
+			</div>
+
 			<div class="row">
 				<button class="btn btn-success col-6 my-2 mx-auto" type="button"
 						@click="uploadPhoto(index)">Upload</button>
@@ -68,13 +72,19 @@
 			}
 		},
 
+		created() {
+			console.log(this.photos)
+		},
+
 		methods: {
 			addPhoto() {
 				this.photos.push({
-					file: '',
+					id: null,
+					file: null,
 					reference: '',
 					description: '',
-					preview: null
+					preview: null,
+					url: ''
 				})
 			},
 

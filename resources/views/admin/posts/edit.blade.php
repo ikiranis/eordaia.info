@@ -33,12 +33,6 @@
                                 <textarea class="form-control ckeditor" id="body" name="body">{{ $post->body }}</textarea>
                             </div>
 
-                            <div id="vueContainer">
-                                <tags :tags="tags"></tags>
-
-                                <categories :categories="categories"></categories>
-                            </div>
-
                             <div class="input-group mb-3 no-gutters">
                                 <label class="sr-only" for="reference">Πηγή</label>
                                 <div class="input-group-prepend col-2">
@@ -48,38 +42,12 @@
                                        name="reference" value="{{$post->reference}}">
                             </div>
 
-                            <div class="row border p-2">
+                            <div id="vueContainer">
+                                <tags :tags="tags"></tags>
 
-                                <div class="col-lg-5">
-                                    <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x350'}}"
-                                         class="img-fluid">
-                                </div>
+                                <categories :categories="categories"></categories>
 
-                                <div class="col-lg-7 col-12 my-auto">
-
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="uploadFile"
-                                                   id="uploadFile"
-                                                   accept='image/*'>
-                                            <label class="custom-file-label"
-                                                   for="customFile">Φωτογραφία</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group">
-                                        <label class="sr-only"
-                                               for="photo_reference">Πηγή</label>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Πηγή</span>
-                                        </div>
-                                        <input type="text" max="800" class="form-control"
-                                               id="photo_reference" name="photo_reference"
-                                               value="{{$post->photo ? $post->photo->reference : ''}}">
-                                    </div>
-
-                                </div>
-
+                                <photos :photos="photos"></photos>
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">
@@ -126,6 +94,10 @@
 
 				categories: {!!
                     json_encode($categories);
+                !!},
+
+				photos: {!!
+                    json_encode($photos);
                 !!}
 			}
 		})

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\PostFormRequest;
+use App\Http\Resources\PhotoResource;
 use App\Post;
 use App\Services\PostService;
 use Auth;
@@ -80,8 +81,11 @@ class AdminPostsController extends Controller
         $userApiToken = Auth::user()->api_token;
         $post = Post::findOrFail($id);
         $categories = PostService::getCheckedCategories($post);
+        $photosCollection = $post->photos()->get();
 
-        return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories']));
+        $photos = PhotoResource::collection($photosCollection);;
+
+        return view('admin/posts/edit', compact(['post', 'userApiToken', 'categories', 'photos']));
     }
 
     /**
@@ -99,34 +103,11 @@ class AdminPostsController extends Controller
 
         $post = Post::findOrFail($id);
 
-        // TODO refactor photos
-        if ($file = $request->uploadFile) {
-            if ($file->isValid()) {
-
-                $imgName = time() . '.' . $file->extension();
-                $path = Carbon::now()->month;
-
-                $file->move('images/' . $path, $imgName);
-
-                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->photo_reference]);
-
-                $input['photo_id'] = $photo->id;
-
-                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
-
-            } else {
-                return 'problem';
-            }
-        } else {
-//            if ($photo = Photo::find($post->photo_id)) {
-//                $photo->update(['reference' => $request->photo_reference]);
-//            }
-        }
-
         $post->update($input);
 
         $post->tags()->sync($request->tags); // Sync tags relation with pivot table
         $post->categories()->sync($request->categories); // Sync categories relation with pivot table
+        $post->photos()->sync($request->photos); // Sync categories relation with pivot table
 
         return redirect(route('posts.index'));
     }

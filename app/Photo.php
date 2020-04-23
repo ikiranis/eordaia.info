@@ -46,6 +46,6 @@ class Photo extends Model
      */
     public function getUrlAttribute()
     {
-        return $HTTP_ENV_VARS['APP_URL'] . '/uploads/' . $this->path . '/' . $this->filename;
+        return env('APP_URL', false) . '/uploads/' . $this->path . '/' . $this->filename;
     }
 }
