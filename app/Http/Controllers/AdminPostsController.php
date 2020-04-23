@@ -49,34 +49,11 @@ class AdminPostsController extends Controller
 
         $input = $request->all();
 
-        $photos = $request->photos;
-
-        ddd(file($photos[0]->file)->path);
-
-        // TODO refactor photos
-        if ($file = $photos[0]) {
-            if ($file->isValid()) {
-
-                $imgName = time() . '.' . $file->extension();
-                $path = Carbon::now()->month;
-
-                $file->move('images/' . $path, $imgName);
-
-                $photo = Photo::create(['path' => $path, 'filename' => $imgName, 'reference' => $request->photo_reference]);
-
-                $input['photo_id'] = $photo->id;
-
-                // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
-
-            } else {
-                return 'problem';
-            }
-        }
-
         $post = Post::create($input);
 
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
         $post->categories()->attach($request->categories); // Insert categories relation with pivot table
+        $post->photos()->attach($request->photos); // Insert photos relation with pivot table
 
         return redirect(route('posts.index'));
     }

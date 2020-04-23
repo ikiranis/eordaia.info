@@ -49,7 +49,6 @@
 
                                 <photos :photos="photos"></photos>
 
-{{--                                <input type="hidden" v-for="photo in photos" name="photos[]" :value="photo">--}}
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">

@@ -2041,9 +2041,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {//
+    return {
+      uploadedPhotos: []
     };
   },
   props: {
@@ -2081,6 +2084,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     uploadPhoto: function uploadPhoto(index) {
+      var _this2 = this;
+
       var formData = new FormData();
       formData.append('file', this.photos[index].file);
       formData.append('reference', this.photos[index].reference);
@@ -2090,7 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (response) {
-        console.log(response);
+        _this2.uploadedPhotos.push(response.data);
       })["catch"](function (error) {
         return console.log(error.response);
       });
@@ -37717,7 +37722,7 @@ var render = function() {
             _c("div", { staticClass: "input-group my-3 col-lg-6 col-12" }, [
               _c(
                 "label",
-                { staticClass: "sr-only", attrs: { for: "reference" } },
+                { staticClass: "sr-only", attrs: { for: "photoReference" } },
                 [_vm._v("Πηγή")]
               ),
               _vm._v(" "),
@@ -37736,8 +37741,8 @@ var render = function() {
                 attrs: {
                   type: "text",
                   max: "800",
-                  id: "reference",
-                  name: "reference"
+                  id: "photoReference",
+                  name: "photoReference"
                 },
                 domProps: { value: photo.reference },
                 on: {
@@ -37755,7 +37760,7 @@ var render = function() {
           _c("div", { staticClass: "row" }, [
             _c(
               "label",
-              { staticClass: "sr-only", attrs: { for: "description" } },
+              { staticClass: "sr-only", attrs: { for: "photoDescription" } },
               [_vm._v("Περιγραφή")]
             ),
             _vm._v(" "),
@@ -37770,7 +37775,7 @@ var render = function() {
               ],
               staticClass: "my-2 col-8 mx-auto",
               attrs: {
-                id: "description",
+                id: "photoDescription",
                 name: "description",
                 placeholder: "Περιγραφή"
               },
@@ -37823,7 +37828,14 @@ var render = function() {
           },
           [_vm._v("Προσθήκη φωτογραφίας")]
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.uploadedPhotos, function(photo) {
+        return _c("input", {
+          attrs: { type: "hidden", name: "photos[]" },
+          domProps: { value: photo.id }
+        })
+      })
     ],
     2
   )

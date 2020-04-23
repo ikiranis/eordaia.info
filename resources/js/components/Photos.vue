@@ -15,20 +15,20 @@
 
 				<div class="input-group my-3 col-lg-6 col-12">
 					<label class="sr-only"
-						   for="reference">Πηγή</label>
+						   for="photoReference">Πηγή</label>
 					<div class="input-group-prepend">
 						<span class="input-group-text">Πηγή</span>
 					</div>
-					<input type="text" max="800" class="form-control" id="reference"
-						   name="reference"
+					<input type="text" max="800" class="form-control" id="photoReference"
+						   name="photoReference"
 						   v-model="photo.reference">
 				</div>
 			</div>
 
 			<div class="row">
 				<label class="sr-only"
-					   for="description">Περιγραφή</label>
-				<textarea id="description" name="description" class="my-2 col-8 mx-auto"
+					   for="photoDescription">Περιγραφή</label>
+				<textarea id="photoDescription" name="description" class="my-2 col-8 mx-auto"
 						  v-model="photo.description" placeholder="Περιγραφή" />
 			</div>
 
@@ -48,6 +48,8 @@
 					type="button"
 					@click="addPhoto">Προσθήκη φωτογραφίας</button>
 		</div>
+
+		<input type="hidden" v-for="photo in uploadedPhotos" name="photos[]" :value="photo.id">
 	</div>
 </template>
 
@@ -55,7 +57,7 @@
 	export default {
 		data() {
 			return {
-				//
+				uploadedPhotos: []
 			}
 		},
 
@@ -108,7 +110,7 @@
 					}
 				})
 					.then(response => {
-						console.log(response)
+						this.uploadedPhotos.push(response.data)
 					})
 					.catch(error => console.log(error.response))
 			}
