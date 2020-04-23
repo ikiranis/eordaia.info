@@ -52,7 +52,8 @@ class PhotosApiTest extends TestCase
             'path',
             'filename',
             'reference',
-            'description'
+            'description',
+            'url'
         ]);
 
         // Assert the file was stored...
