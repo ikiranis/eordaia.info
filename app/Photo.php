@@ -44,8 +44,8 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getFullPathNameAttribute()
+    public function getUrlAttribute()
     {
-        return '/images/' . $this->path . '/' . $this->filename;
+        return $HTTP_ENV_VARS['APP_URL'] . '/uploads/' . $this->path . '/' . $this->filename;
     }
 }
