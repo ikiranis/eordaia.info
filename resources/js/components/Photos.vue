@@ -1,5 +1,9 @@
 <template>
 	<div>
+		<div class="col-lg col-12 row fixed-bottom mb-5">
+			<loading class="mx-auto" :loading="loading"/>
+		</div>
+
 		<div v-for="(photo, index) in photos" class="my-3 px-1 py-1 border">
 			<div class="row">
 				<div class="form-group my-3 col-lg-6 col-12">
@@ -54,6 +58,12 @@
 		</div>
 
 		<input type="hidden" v-for="photo in photos" name="photos[]" :value="photo.id">
+
+		<div class="row fixed-bottom mb-2">
+			<display-error class="mx-auto"
+						   v-if="response.message"
+						   :response="response"/>
+		</div>
 	</div>
 </template>
 
@@ -61,6 +71,14 @@
 	export default {
 		data() {
 			return {
+				response: {
+					message: ' ',
+					status: '',
+					errors: []
+				},
+
+				loading: false,
+
 				emptyPhoto: {
 					id: null,
 					file: null,
@@ -114,6 +132,8 @@
 				formData.append('reference', this.photos[index].reference)
 				formData.append('description', this.photos[index].description)
 
+				this.loading = true
+
 				axios.post('/api/photo', formData, {
 					headers: {
 						'Content-Type': 'multipart/form-data'
@@ -123,8 +143,20 @@
 						Object.assign(this.photos[index], {
 							id: response.data.id
 						})
+
+						this.response.message = "Η φωτογραφία ανέβηκε..."
+						this.response.status = true
+
+						this.loading = false
 					})
-					.catch(error => console.log(error.response))
+					.catch(error => {
+						console.log(error.response)
+
+						this.response.message = error.response.data.message
+						this.response.status = false
+
+						this.loading = false
+					})
 			}
 		}
 	}

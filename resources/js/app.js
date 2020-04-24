@@ -5,14 +5,21 @@
  */
 
 require('./bootstrap')
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 window.Vue = require('vue')
 
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
+
+// App Components
 Vue.component('tags', require('./components/Tags.vue').default)
-
 Vue.component('categories', require('./components/Categories.vue').default)
-
 Vue.component('photos', require('./components/Photos.vue').default)
+Vue.component('loading', require('./components/basic/Loading.vue').default)
+Vue.component('displayError', require('./components/basic/DisplayError.vue').default)
 
 /**
  * The following block of code may be used to automatically register your
