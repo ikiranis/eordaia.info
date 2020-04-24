@@ -2064,6 +2064,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2134,8 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.response.status = true;
         _this2.loading = false;
       })["catch"](function (error) {
-        console.log(error.response);
-        _this2.response.message = error.response.data.message;
+        _this2.response.message = 'Υπάρχει πρόβλημα με τα δεδομένα που έδωσες';
         _this2.response.status = false;
         _this2.response.errors = error.response.data.errors;
         _this2.loading = false;
@@ -79321,7 +79322,7 @@ var render = function() {
                     attrs: {
                       type: "file",
                       name: "uploadFile",
-                      id: "customFile",
+                      id: "uploadFile",
                       accept: "image/*"
                     },
                     on: {
@@ -79335,7 +79336,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "custom-file-label",
-                      attrs: { for: "customFile" }
+                      attrs: { for: "uploadFile" }
                     },
                     [_vm._v("Φωτογραφία")]
                   ),
@@ -79418,7 +79419,7 @@ var render = function() {
                     expression: "photo.description"
                   }
                 ],
-                staticClass: "my-2 col-8 mx-auto",
+                staticClass: "my-2 col-lg-8 col-12 mx-auto",
                 attrs: {
                   id: "photoDescription",
                   name: "description",
@@ -79437,6 +79438,7 @@ var render = function() {
               _vm._v(" "),
               _vm.response.errors.description
                 ? _c("form-error", {
+                    staticClass: "mx-auto col-lg-8 col-12",
                     attrs: { error: _vm.response.errors.description[0] }
                   })
                 : _vm._e()
@@ -79521,7 +79523,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
+    return _c("div", [
       _c("span", { staticClass: "input-group-text" }, [_vm._v("Πηγή")])
     ])
   }

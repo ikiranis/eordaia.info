@@ -25,8 +25,8 @@ class PhotoFormRequest extends FormRequest
     {
         return [
             'file' => 'required|image',
-            'reference' => 'required',
-            'description' => 'required'
+            'reference' => 'nullable',
+            'description' => 'nullable'
         ];
     }
 
@@ -39,9 +39,7 @@ class PhotoFormRequest extends FormRequest
     {
         return [
             'file.required' => 'Το αρχείο απαιτείται',
-            'file.image' => 'Το αρχείο πρέπει να είναι εικόνα',
-            'reference.required' => 'Η πηγή απαιτείται',
-            'description.required' => 'Η περιγραφή απαιτείται'
+            'file.image' => 'Το αρχείο πρέπει να είναι εικόνα'
         ];
     }
 }

@@ -8,39 +8,41 @@
 			<div class="row">
 				<div class="form-group my-3 col-lg-6 col-12">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" name="uploadFile"
-							   id="customFile"
+						<input type="file" class="custom-file-input"
+							   name="uploadFile" id="uploadFile"
 							   accept='image/*'
 							   @change="handleFile($event, index)">
 						<label class="custom-file-label"
-							   for="customFile">Φωτογραφία</label>
+							   for="uploadFile">Φωτογραφία</label>
 
 						<form-error v-if="response.errors.file"
-									:error="response.errors.file[0]"/>
+									:error="response.errors.file[0]" />
 					</div>
 				</div>
 
 				<div class="input-group my-3 col-lg-6 col-12">
 					<label class="sr-only"
 						   for="photoReference">Πηγή</label>
-					<div class="input-group-prepend">
+					<div>
 						<span class="input-group-text">Πηγή</span>
 					</div>
 					<input type="text" max="800" class="form-control" id="photoReference"
 						   name="photoReference"
 						   v-model="photo.reference">
+
 					<form-error v-if="response.errors.reference"
-								:error="response.errors.reference[0]"/>
+								:error="response.errors.reference[0]" />
 				</div>
 			</div>
 
 			<div class="row">
 				<label class="sr-only"
 					   for="photoDescription">Περιγραφή</label>
-				<textarea id="photoDescription" name="description" class="my-2 col-8 mx-auto"
+				<textarea id="photoDescription" name="description" class="my-2 col-lg-8 col-12 mx-auto"
 						  v-model="photo.description" placeholder="Περιγραφή" />
 				<form-error v-if="response.errors.description"
-							:error="response.errors.description[0]"/>
+							:error="response.errors.description[0]"
+							class="mx-auto col-lg-8 col-12"/>
 			</div>
 
 			<div v-if="photo.preview" class="row col-12">
@@ -157,9 +159,7 @@
 						this.loading = false
 					})
 					.catch(error => {
-						console.log(error.response)
-
-						this.response.message = error.response.data.message
+						this.response.message = 'Υπάρχει πρόβλημα με τα δεδομένα που έδωσες'
 						this.response.status = false
 						this.response.errors = error.response.data.errors
 
