@@ -1,6 +1,10 @@
 <template>
     <div>
         <div class="input-group mb-3 no-gutters">
+            <div class="col-lg col-12 row fixed-bottom mb-5">
+                <loading class="mx-auto" :loading="loading"/>
+            </div>
+
             <label class="sr-only" for="tag">Tag</label>
             <div class="input-group-prepend col-2">
                 <span class="input-group-text w-100">Tag</span>
@@ -10,12 +14,20 @@
 
             <span class="btn btn-success col-2" @click="insertTag">Προσθήκη</span>
 
-            <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
+            <form-error v-if="response.errors.name"
+                        :error="response.errors.name[0]" />
 
+            <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
         </div>
 
         <div class="my-2 row">
             <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{{ tag.name }}</span>
+        </div>
+
+        <div class="row fixed-bottom mb-2">
+            <display-error class="mx-auto"
+                           v-if="response.message"
+                           :response="response"/>
         </div>
     </div>
 </template>
@@ -24,6 +36,14 @@
     export default {
         data() {
             return {
+                response: {
+                    message: ' ',
+                    status: '',
+                    errors: []
+                },
+
+                loading: false,
+
                 tag: ''
             }
         },
@@ -37,6 +57,8 @@
 
         methods: {
             insertTag() {
+                this.loading = false
+
                 let myData = {
                     name: this.tag
                 }
@@ -45,9 +67,18 @@
                     .then(response => {
                         this.tags.push({id: response.data.id, name: response.data.name})
                         this.tag = ''
+
+                        this.response.message = "To tag καταχωρήθηκε"
+                        this.response.status = true
+
+                        this.loading = false
                     })
                     .catch(error => {
-                        console.log(error.response)
+                        this.response.message = 'Υπάρχει πρόβλημα με τα δεδομένα που έδωσες'
+                        this.response.status = false
+                        this.response.errors = error.response.data.errors
+
+                        this.loading = false
                     })
             }
         }
