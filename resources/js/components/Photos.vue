@@ -14,6 +14,9 @@
 							   @change="handleFile($event, index)">
 						<label class="custom-file-label"
 							   for="customFile">Φωτογραφία</label>
+
+						<form-error v-if="response.errors.file"
+									:error="response.errors.file[0]"/>
 					</div>
 				</div>
 
@@ -26,6 +29,8 @@
 					<input type="text" max="800" class="form-control" id="photoReference"
 						   name="photoReference"
 						   v-model="photo.reference">
+					<form-error v-if="response.errors.reference"
+								:error="response.errors.reference[0]"/>
 				</div>
 			</div>
 
@@ -34,6 +39,8 @@
 					   for="photoDescription">Περιγραφή</label>
 				<textarea id="photoDescription" name="description" class="my-2 col-8 mx-auto"
 						  v-model="photo.description" placeholder="Περιγραφή" />
+				<form-error v-if="response.errors.description"
+							:error="response.errors.description[0]"/>
 			</div>
 
 			<div v-if="photo.preview" class="row col-12">
@@ -154,6 +161,7 @@
 
 						this.response.message = error.response.data.message
 						this.response.status = false
+						this.response.errors = error.response.data.errors
 
 						this.loading = false
 					})

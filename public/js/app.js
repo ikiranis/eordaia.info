@@ -2057,6 +2057,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2130,6 +2137,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error.response);
         _this2.response.message = error.response.data.message;
         _this2.response.status = false;
+        _this2.response.errors = error.response.data.errors;
         _this2.loading = false;
       });
     }
@@ -2270,6 +2278,45 @@ __webpack_require__.r(__webpack_exports__);
     },
     showAlert: function showAlert() {
       this.dismissCountDown = this.dismissSecs;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/basic/FormError.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/basic/FormError.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      showDismissibleAlert: true
+    };
+  },
+  props: {
+    error: String
+  },
+  watch: {
+    error: function error() {
+      this.showDismissibleAlert = true;
     }
   }
 });
@@ -79265,104 +79312,137 @@ var render = function() {
         return _c("div", { staticClass: "my-3 px-1 py-1 border" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "form-group my-3 col-lg-6 col-12" }, [
-              _c("div", { staticClass: "custom-file" }, [
+              _c(
+                "div",
+                { staticClass: "custom-file" },
+                [
+                  _c("input", {
+                    staticClass: "custom-file-input",
+                    attrs: {
+                      type: "file",
+                      name: "uploadFile",
+                      id: "customFile",
+                      accept: "image/*"
+                    },
+                    on: {
+                      change: function($event) {
+                        return _vm.handleFile($event, index)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-label",
+                      attrs: { for: "customFile" }
+                    },
+                    [_vm._v("Φωτογραφία")]
+                  ),
+                  _vm._v(" "),
+                  _vm.response.errors.file
+                    ? _c("form-error", {
+                        attrs: { error: _vm.response.errors.file[0] }
+                      })
+                    : _vm._e()
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "input-group my-3 col-lg-6 col-12" },
+              [
+                _c(
+                  "label",
+                  { staticClass: "sr-only", attrs: { for: "photoReference" } },
+                  [_vm._v("Πηγή")]
+                ),
+                _vm._v(" "),
+                _vm._m(0, true),
+                _vm._v(" "),
                 _c("input", {
-                  staticClass: "custom-file-input",
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: photo.reference,
+                      expression: "photo.reference"
+                    }
+                  ],
+                  staticClass: "form-control",
                   attrs: {
-                    type: "file",
-                    name: "uploadFile",
-                    id: "customFile",
-                    accept: "image/*"
+                    type: "text",
+                    max: "800",
+                    id: "photoReference",
+                    name: "photoReference"
                   },
+                  domProps: { value: photo.reference },
                   on: {
-                    change: function($event) {
-                      return _vm.handleFile($event, index)
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(photo, "reference", $event.target.value)
                     }
                   }
                 }),
                 _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "custom-file-label",
-                    attrs: { for: "customFile" }
-                  },
-                  [_vm._v("Φωτογραφία")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "input-group my-3 col-lg-6 col-12" }, [
+                _vm.response.errors.reference
+                  ? _c("form-error", {
+                      attrs: { error: _vm.response.errors.reference[0] }
+                    })
+                  : _vm._e()
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
               _c(
                 "label",
-                { staticClass: "sr-only", attrs: { for: "photoReference" } },
-                [_vm._v("Πηγή")]
+                { staticClass: "sr-only", attrs: { for: "photoDescription" } },
+                [_vm._v("Περιγραφή")]
               ),
               _vm._v(" "),
-              _vm._m(0, true),
-              _vm._v(" "),
-              _c("input", {
+              _c("textarea", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: photo.reference,
-                    expression: "photo.reference"
+                    value: photo.description,
+                    expression: "photo.description"
                   }
                 ],
-                staticClass: "form-control",
+                staticClass: "my-2 col-8 mx-auto",
                 attrs: {
-                  type: "text",
-                  max: "800",
-                  id: "photoReference",
-                  name: "photoReference"
+                  id: "photoDescription",
+                  name: "description",
+                  placeholder: "Περιγραφή"
                 },
-                domProps: { value: photo.reference },
+                domProps: { value: photo.description },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(photo, "reference", $event.target.value)
+                    _vm.$set(photo, "description", $event.target.value)
                   }
                 }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "label",
-              { staticClass: "sr-only", attrs: { for: "photoDescription" } },
-              [_vm._v("Περιγραφή")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: photo.description,
-                  expression: "photo.description"
-                }
-              ],
-              staticClass: "my-2 col-8 mx-auto",
-              attrs: {
-                id: "photoDescription",
-                name: "description",
-                placeholder: "Περιγραφή"
-              },
-              domProps: { value: photo.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(photo, "description", $event.target.value)
-                }
-              }
-            })
-          ]),
+              }),
+              _vm._v(" "),
+              _vm.response.errors.description
+                ? _c("form-error", {
+                    attrs: { error: _vm.response.errors.description[0] }
+                  })
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           photo.preview
             ? _c("div", { staticClass: "row col-12" }, [
@@ -79602,6 +79682,53 @@ var render = function() {
           })
         ],
         1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "mt-2 w-100 small" },
+    [
+      _c(
+        "b-alert",
+        {
+          attrs: {
+            variant: "danger",
+            dismissible: "",
+            show: _vm.showDismissibleAlert,
+            fade: ""
+          },
+          on: {
+            dismissed: function($event) {
+              _vm.showDismissibleAlert = false
+            }
+          }
+        },
+        [_vm._v("\n\t\t" + _vm._s(_vm.error) + "\n\t")]
       )
     ],
     1
@@ -91826,6 +91953,7 @@ Vue.component('categories', __webpack_require__(/*! ./components/Categories.vue 
 Vue.component('photos', __webpack_require__(/*! ./components/Photos.vue */ "./resources/js/components/Photos.vue")["default"]);
 Vue.component('loading', __webpack_require__(/*! ./components/basic/Loading.vue */ "./resources/js/components/basic/Loading.vue")["default"]);
 Vue.component('displayError', __webpack_require__(/*! ./components/basic/DisplayError.vue */ "./resources/js/components/basic/DisplayError.vue")["default"]);
+Vue.component('formError', __webpack_require__(/*! ./components/basic/FormError.vue */ "./resources/js/components/basic/FormError.vue")["default"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -92179,6 +92307,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayError_vue_vue_type_template_id_2241e0d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayError_vue_vue_type_template_id_2241e0d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/basic/FormError.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/basic/FormError.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormError.vue?vue&type=template&id=03f9bc30& */ "./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30&");
+/* harmony import */ var _FormError_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormError.vue?vue&type=script&lang=js& */ "./resources/js/components/basic/FormError.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormError_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/basic/FormError.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/basic/FormError.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/basic/FormError.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormError_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FormError.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/basic/FormError.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormError_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FormError.vue?vue&type=template&id=03f9bc30& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/basic/FormError.vue?vue&type=template&id=03f9bc30&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormError_vue_vue_type_template_id_03f9bc30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

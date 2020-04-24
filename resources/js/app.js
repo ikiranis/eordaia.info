@@ -20,6 +20,7 @@ Vue.component('categories', require('./components/Categories.vue').default)
 Vue.component('photos', require('./components/Photos.vue').default)
 Vue.component('loading', require('./components/basic/Loading.vue').default)
 Vue.component('displayError', require('./components/basic/DisplayError.vue').default)
+Vue.component('formError', require('./components/basic/FormError.vue').default)
 
 /**
  * The following block of code may be used to automatically register your
