@@ -2091,8 +2091,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2135,7 +2133,8 @@ __webpack_require__.r(__webpack_exports__);
         preview.src = reader.result;
         Object.assign(_this.photos[index], {
           file: file,
-          preview: preview
+          preview: preview,
+          url: null
         });
       }, false);
 
@@ -79528,21 +79527,19 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          photo.preview
+          photo.preview || photo.url
             ? _c("div", { staticClass: "row col-12" }, [
-                _c("img", {
-                  staticClass: "mx-auto",
-                  attrs: { src: photo.preview.src, width: "350" }
-                })
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          photo.url
-            ? _c("div", { staticClass: "row col-12" }, [
-                _c("img", {
-                  staticClass: "mx-auto",
-                  attrs: { src: photo.url, width: "350" }
-                })
+                photo.preview
+                  ? _c("img", {
+                      staticClass: "mx-auto",
+                      attrs: { src: photo.preview.src, width: "350" }
+                    })
+                  : photo.url
+                  ? _c("img", {
+                      staticClass: "mx-auto",
+                      attrs: { src: photo.url, width: "350" }
+                    })
+                  : _vm._e()
               ])
             : _vm._e(),
           _vm._v(" "),

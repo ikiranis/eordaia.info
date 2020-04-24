@@ -45,12 +45,10 @@
 							class="mx-auto col-lg-8 col-12"/>
 			</div>
 
-			<div v-if="photo.preview" class="row col-12">
-				<img :src="photo.preview.src" class="mx-auto" width="350"/>
-			</div>
+			<div v-if="photo.preview || photo.url" class="row col-12">
+				<img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="350"/>
 
-			<div v-if="photo.url" class="row col-12">
-				<img :src="photo.url" class="mx-auto" width="350"/>
+				<img v-else-if="photo.url" :src="photo.url" class="mx-auto" width="350"/>
 			</div>
 
 			<div class="row">
@@ -126,7 +124,8 @@
 
 					Object.assign(this.photos[index], {
 						file: file,
-						preview: preview
+						preview: preview,
+						url: null
 					})
 				}, false)
 
