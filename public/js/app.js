@@ -1933,9 +1933,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      response: {
+        message: ' ',
+        status: '',
+        errors: []
+      },
+      loading: false,
       category: ''
     };
   },
@@ -1953,9 +1973,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    insertTag: function insertTag() {
+    insertCategory: function insertCategory() {
       var _this = this;
 
+      this.loading = true;
       var myData = {
         name: this.category
       };
@@ -1967,8 +1988,14 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.category = '';
+        _this.response.message = "Η κατηγορία καταχωρήθηκε";
+        _this.response.status = true;
+        _this.loading = false;
       })["catch"](function (error) {
-        return console.log(error.response);
+        _this.response.message = 'Υπάρχει πρόβλημα με τα δεδομένα που έδωσες';
+        _this.response.status = false;
+        _this.response.errors = error.response.data.errors;
+        _this.loading = false;
       });
     },
     checkCategory: function checkCategory() {
@@ -79153,6 +79180,18 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
+      { staticClass: "col-lg col-12 row fixed-bottom mb-5" },
+      [
+        _c("loading", {
+          staticClass: "mx-auto",
+          attrs: { loading: _vm.loading }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
       { staticClass: "input-group mb-3 no-gutters" },
       [
         _vm._m(0),
@@ -79189,10 +79228,14 @@ var render = function() {
           "span",
           {
             staticClass: "btn btn-success col-2",
-            on: { click: _vm.insertTag }
+            on: { click: _vm.insertCategory }
           },
           [_vm._v("Προσθήκη")]
         ),
+        _vm._v(" "),
+        _vm.response.errors.name
+          ? _c("form-error", { attrs: { error: _vm.response.errors.name[0] } })
+          : _vm._e(),
         _vm._v(" "),
         _vm._l(_vm.checkedCategories, function(category) {
           return _c("input", {
@@ -79256,6 +79299,20 @@ var render = function() {
         ])
       }),
       0
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row fixed-bottom mb-2" },
+      [
+        _vm.response.message
+          ? _c("display-error", {
+              staticClass: "mx-auto",
+              attrs: { response: _vm.response }
+            })
+          : _vm._e()
+      ],
+      1
     )
   ])
 }
