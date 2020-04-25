@@ -119,6 +119,13 @@ class Post extends Model
     }
 
     /**
+     * Relation to links
+     */
+    public function links() {
+        return $this->belongsToMany('App\Link');
+    }
+
+    /**
      * Relation to users
      */
     public function user() {
