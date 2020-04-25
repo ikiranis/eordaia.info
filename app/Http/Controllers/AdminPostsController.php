@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\PostFormRequest;
+use App\Http\Resources\LinkResource;
 use App\Http\Resources\PhotoResource;
 use App\Post;
 use App\Services\PostService;
@@ -59,6 +60,7 @@ class AdminPostsController extends Controller
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
         $post->categories()->attach($request->categories); // Insert categories relation with pivot table
         $post->photos()->attach($request->photos); // Insert photos relation with pivot table
+        $post->links()->attach($request->links); // Insert photos relation with pivot table
 
         return redirect(route('posts.index'));
     }
@@ -87,8 +89,12 @@ class AdminPostsController extends Controller
         $tags = PostService::getTags($post);
         $categories = PostService::getCheckedCategories($post);
         $photos = PhotoResource::collection($post->photos()->get());
+        $links = LinkResource::collection($post->links()->get());
 
-        return view('admin/posts/edit', compact(['post', 'userApiToken', 'tags', 'categories', 'photos']));
+        return view(
+            'admin/posts/edit',
+            compact(['post', 'userApiToken', 'tags', 'categories', 'photos', 'links'])
+        );
     }
 
     /**

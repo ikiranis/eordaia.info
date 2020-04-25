@@ -43,6 +43,8 @@
                             </div>
 
                             <div id="vueContainer">
+                                <links :links="links"></links>
+
                                 <tags :tags="tags"></tags>
 
                                 <categories :categories="categories"></categories>
@@ -93,6 +95,10 @@
 
 				photos: {!!
                     json_encode($photos);
+                !!},
+
+				links: {!!
+                    json_encode($links);
                 !!}
 			}
 		})
