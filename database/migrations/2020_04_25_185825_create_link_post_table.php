@@ -15,7 +15,7 @@ class CreateLinkPostTable extends Migration
     {
         Schema::create('link_post', function (Blueprint $table) {
             $table->uuid('post_id')->index();
-            $table->uuid('photo_id')->index();
+            $table->uuid('link_id')->index();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('link_id')->references('id')->on('links')->onDelete('cascade');
         });
