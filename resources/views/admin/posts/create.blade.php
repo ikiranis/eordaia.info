@@ -32,23 +32,14 @@
                                 <textarea class="form-control" id="body" name="body" rows="15"></textarea>
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="reference">Πηγή</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Πηγή</span>
-                                </div>
-                                <input type="text" max="800" class="form-control col-10 px-2" id="reference"
-                                       name="reference"
-                                       value="{{old('reference')}}">
-                            </div>
-
                             <div id="vueContainer">
+                                <links :links="links"></links>
+
                                 <tags :tags="tags"></tags>
 
                                 <categories :categories="categories"></categories>
 
                                 <photos :photos="photos"></photos>
-
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">
@@ -91,7 +82,9 @@
                     }));
                 !!},
 
-                photos: []
+                photos: [],
+
+                links: []
             }
         });
     </script>
