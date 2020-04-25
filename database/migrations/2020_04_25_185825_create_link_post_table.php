@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhotoPostTable extends Migration
+class CreateLinkPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePhotoPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('photo_post', function (Blueprint $table) {
+        Schema::create('link_post', function (Blueprint $table) {
             $table->uuid('post_id')->index();
             $table->uuid('photo_id')->index();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-            $table->foreign('photo_id')->references('id')->on('photos')->onDelete('cascade');
+            $table->foreign('link_id')->references('id')->on('links')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ class CreatePhotoPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photo_post');
+        Schema::dropIfExists('link_post');
     }
 }
