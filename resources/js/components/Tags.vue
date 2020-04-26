@@ -9,7 +9,7 @@
             <div class="input-group-prepend col-2">
                 <span class="input-group-text w-100">Tag</span>
             </div>
-            <input type="text" max="255" v-model="tag" class="form-control col-8 px-2"
+            <input type="text" v-model="tag" class="form-control col-8 px-2"
                    id="tag" maxlength="40" name="tag">
 
             <span class="btn btn-success col-2" @click="insertTag">Προσθήκη</span>

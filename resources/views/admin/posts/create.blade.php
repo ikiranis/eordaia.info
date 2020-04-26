@@ -39,6 +39,8 @@
 
                                 <categories :categories="categories"></categories>
 
+                                <videos :videos="videos"></videos>
+
                                 <photos :photos="photos"></photos>
                             </div>
 
@@ -84,7 +86,9 @@
 
                 photos: [],
 
-                links: []
+                links: [],
+
+                videos: []
             }
         });
     </script>

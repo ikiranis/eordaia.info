@@ -7,28 +7,28 @@
 		<div class="input-group mb-3 no-gutters">
 			<div class="col-lg-4 col-12">
 				<label class="sr-only" for="name">Τίτλος</label>
-				<input type="text" v-model="link.name" class="form-control px-2"
+				<input type="text" v-model="video.name" class="form-control px-2"
 					   id="name" maxlength="30" name="name" placeholder="Τίτλος">
 			</div>
 
 			<div class="col-lg-4 col-12">
 				<label class="sr-only" for="url">Url</label>
-				<input type="text" max="800" v-model="link.url" class="form-control px-2"
+				<input type="text" max="800" v-model="video.url" class="form-control px-2"
 					   id="url" name="url" placeholder="Url">
 			</div>
 
-			<span class="btn btn-success col-lg-4 col-12" @click="insertLink">Προσθήκη Link</span>
+			<span class="btn btn-success col-lg-4 col-12" @click="insertLink">Προσθήκη Video</span>
 
 			<form-error v-if="response.errors.name"
 						:error="response.errors.name[0]" />
 			<form-error v-if="response.errors.url"
 						:error="response.errors.url[0]" />
 
-			<input type="hidden" v-for="link in links" name="links[]" :value="link.id">
+			<input type="hidden" v-for="video in videos" name="videos[]" :value="video.id">
 		</div>
 
 		<div class="my-2 row">
-			<span class="my-1 mx-2 px-2 bg-primary text-light" v-for="link in links">{{ link.url }}</span>
+			<span class="my-1 mx-2 px-2 bg-primary text-light" v-for="video in videos">{{ video.url }}</span>
 		</div>
 
 		<div class="row fixed-bottom mb-2">
@@ -51,7 +51,7 @@
 
 				loading: false,
 
-				link: {
+				video: {
 					name: '',
 					url: ''
 				}
@@ -59,7 +59,7 @@
 		},
 
 		props: {
-			links: {
+			videos: {
 				required: true,
 				type: Array
 			},
@@ -69,16 +69,16 @@
 			insertLink() {
 				this.loading = false
 
-				axios.post('/api/link', this.link)
+				axios.post('/api/video', this.video)
 					.then(response => {
-						this.links.push({
+						this.videos.push({
 							id: response.data.id,
 							name: response.data.name,
 							url: response.data.url,
 						})
 						this.link = {}
 
-						this.response.message = "To link καταχωρήθηκε"
+						this.response.message = "To video καταχωρήθηκε"
 						this.response.status = true
 
 						this.loading = false
