@@ -28,7 +28,10 @@
 		</div>
 
 		<div class="my-2 row">
-			<span class="my-1 mx-2 px-2 bg-primary text-light" v-for="link in links">{{ link.url }}</span>
+			<span v-for="(link, index) in links"
+				  class="my-1 mx-2 px-2 bg-primary text-light link"
+				  title="Αφαίρεση link"
+				  @click="removeLink(index)">{{ link.url }}</span>
 		</div>
 
 		<div class="row fixed-bottom mb-2">
@@ -90,7 +93,17 @@
 
 						this.loading = false
 					})
+			},
+
+			removeLink(index) {
+				this.links.splice(index, 1)
 			}
 		}
 	}
 </script>
+
+<style scoped>
+	.link {
+		cursor: pointer;
+	}
+</style>

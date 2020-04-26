@@ -30,6 +30,7 @@
 		<div class="my-2 row">
 			<span v-for="(video, index) in videos"
 				  class="my-1 mx-2 px-2 bg-primary text-light video"
+				  title="Αφαίρεση video"
 				  @click="removeVideo(index)">{{ video.url }}</span>
 		</div>
 
