@@ -2435,7 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    insertLink: function insertLink() {
+    insertVideo: function insertVideo() {
       var _this = this;
 
       this.loading = false;
@@ -2446,7 +2446,7 @@ __webpack_require__.r(__webpack_exports__);
           url: response.data.url
         });
 
-        _this.link = {};
+        _this.video = {};
         _this.response.message = "To video καταχωρήθηκε";
         _this.response.status = true;
         _this.loading = false;
@@ -80477,7 +80477,7 @@ var render = function() {
           "span",
           {
             staticClass: "btn btn-success col-lg-4 col-12",
-            on: { click: _vm.insertLink }
+            on: { click: _vm.insertVideo }
           },
           [_vm._v("Προσθήκη Video")]
         ),

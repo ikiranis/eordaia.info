@@ -17,7 +17,7 @@
 					   id="url" name="url" placeholder="Url">
 			</div>
 
-			<span class="btn btn-success col-lg-4 col-12" @click="insertLink">Προσθήκη Video</span>
+			<span class="btn btn-success col-lg-4 col-12" @click="insertVideo">Προσθήκη Video</span>
 
 			<form-error v-if="response.errors.name"
 						:error="response.errors.name[0]" />
@@ -66,7 +66,7 @@
 		},
 
 		methods: {
-			insertLink() {
+			insertVideo() {
 				this.loading = false
 
 				axios.post('/api/video', this.video)
@@ -76,7 +76,7 @@
 							name: response.data.name,
 							url: response.data.url,
 						})
-						this.link = {}
+						this.video = {}
 
 						this.response.message = "To video καταχωρήθηκε"
 						this.response.status = true

@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\PostFormRequest;
 use App\Http\Resources\LinkResource;
 use App\Http\Resources\PhotoResource;
+use App\Http\Resources\VideoResource;
 use App\Post;
 use App\Services\PostService;
 use Auth;
@@ -60,7 +61,8 @@ class AdminPostsController extends Controller
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
         $post->categories()->attach($request->categories); // Insert categories relation with pivot table
         $post->photos()->attach($request->photos); // Insert photos relation with pivot table
-        $post->links()->attach($request->links); // Insert photos relation with pivot table
+        $post->links()->attach($request->links); // Insert links relation with pivot table
+        $post->videos()->attach($request->videos); // Insert videos relation with pivot table
 
         return redirect(route('posts.index'));
     }
@@ -90,10 +92,11 @@ class AdminPostsController extends Controller
         $categories = PostService::getCheckedCategories($post);
         $photos = PhotoResource::collection($post->photos()->get());
         $links = LinkResource::collection($post->links()->get());
+        $videos = VideoResource::collection($post->videos()->get());
 
         return view(
             'admin/posts/edit',
-            compact(['post', 'userApiToken', 'tags', 'categories', 'photos', 'links'])
+            compact(['post', 'userApiToken', 'tags', 'categories', 'photos', 'links', 'videos'])
         );
     }
 
@@ -117,6 +120,8 @@ class AdminPostsController extends Controller
         $post->tags()->sync($request->tags); // Sync tags relation with pivot table
         $post->categories()->sync($request->categories); // Sync categories relation with pivot table
         $post->photos()->sync($request->photos); // Sync categories relation with pivot table
+        $post->links()->sync($request->links); // Sync categories relation with pivot table
+        $post->videos()->sync($request->videos); // Sync categories relation with pivot table
 
         return redirect(route('posts.index'));
     }

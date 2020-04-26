@@ -13,7 +13,7 @@ class CreateVideoPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('video_post', function (Blueprint $table) {
+        Schema::create('post_video', function (Blueprint $table) {
             $table->uuid('post_id')->index();
             $table->uuid('video_id')->index();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
@@ -28,6 +28,6 @@ class CreateVideoPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('video_post');
+        Schema::dropIfExists('post_video');
     }
 }

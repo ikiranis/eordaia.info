@@ -40,6 +40,8 @@
 
                                 <categories :categories="categories"></categories>
 
+                                <videos :videos="videos"></videos>
+
                                 <photos :photos="photos"></photos>
                             </div>
 
@@ -90,6 +92,10 @@
 
 				links: {!!
                     json_encode($links);
+                !!},
+
+				videos: {!!
+                    json_encode($videos);
                 !!}
 			}
 		})
