@@ -15,7 +15,7 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('url');
             $table->timestamps();
             $table->primary('id');
