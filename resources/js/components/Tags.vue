@@ -20,8 +20,10 @@
             <input type="hidden" v-for="tag in tags" name="tags[]" :value="tag.id">
         </div>
 
-        <div class="my-2 row">
-            <span class="my-1 mx-2 px-2 bg-primary text-light" v-for="tag in tags">{{ tag.name }}</span>
+        <div class="my-2 row tag">
+            <span v-for="(tag, index) in tags"
+                  class="my-1 mx-2 px-2 bg-primary text-light"
+                  @click="removeTag(index)">{{ tag.name }}</span>
         </div>
 
         <div class="row fixed-bottom mb-2">
@@ -80,7 +82,17 @@
 
                         this.loading = false
                     })
+            },
+
+            removeTag(index) {
+                this.tags.splice(index, 1)
             }
         }
     }
 </script>
+
+<style scoped>
+    .tag {
+       cursor: pointer;
+    }
+</style>
