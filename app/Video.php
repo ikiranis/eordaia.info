@@ -13,7 +13,7 @@ class Video extends Model
     public $incrementing = false;
 
     // The attributes that are mass assignable
-    protected $fillable = ['id', 'url', 'type'];
+    protected $fillable = ['id', 'name', 'url'];
 
     /**
      * Relation to posts

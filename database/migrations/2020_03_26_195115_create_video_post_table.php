@@ -14,7 +14,6 @@ class CreateVideoPostTable extends Migration
     public function up()
     {
         Schema::create('video_post', function (Blueprint $table) {
-            $table->increments('id');
             $table->uuid('post_id')->index();
             $table->uuid('video_id')->index();
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');

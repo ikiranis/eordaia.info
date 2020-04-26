@@ -23,4 +23,5 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('category', 'AdminCategoriesController@store');
     Route::post('photo', 'AdminPhotosController@store');
     Route::post('link', 'AdminLinksController@store');
+    Route::post('video', 'AdminVideosController@store');
 });
