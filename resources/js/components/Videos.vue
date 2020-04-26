@@ -28,7 +28,9 @@
 		</div>
 
 		<div class="my-2 row">
-			<span class="my-1 mx-2 px-2 bg-primary text-light" v-for="video in videos">{{ video.url }}</span>
+			<span v-for="(video, index) in videos"
+				  class="my-1 mx-2 px-2 bg-primary text-light video"
+				  @click="removeVideo(index)">{{ video.url }}</span>
 		</div>
 
 		<div class="row fixed-bottom mb-2">
@@ -90,7 +92,17 @@
 
 						this.loading = false
 					})
+			},
+
+			removeVideo(index) {
+				this.videos.splice(index, 1)
 			}
 		}
 	}
 </script>
+
+<style scoped>
+	.video {
+		cursor: pointer;
+	}
+</style>
