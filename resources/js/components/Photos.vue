@@ -22,16 +22,16 @@
 
 				<div class="input-group my-3 col-lg-6 col-12">
 					<label class="sr-only"
-						   for="photoReference">Πηγή</label>
+						   for="photoReference">url</label>
 					<div>
-						<span class="input-group-text">Πηγή</span>
+						<span class="input-group-text">url</span>
 					</div>
 					<input type="text" max="800" class="form-control" id="photoReference"
 						   name="photoReference"
-						   v-model="photo.reference">
+						   v-model="photo.url">
 
-					<form-error v-if="response.errors.reference"
-								:error="response.errors.reference[0]" />
+					<form-error v-if="response.errors.url"
+								:error="response.errors.url[0]" />
 				</div>
 			</div>
 
@@ -48,7 +48,7 @@
 			<div v-if="photo.preview || photo.url" class="row col-12">
 				<img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="350"/>
 
-				<img v-else-if="photo.url" :src="photo.url" class="mx-auto" width="350"/>
+				<img v-else-if="photo.url" :src="photo.photo_url" class="mx-auto" width="350"/>
 			</div>
 
 			<div class="row">
@@ -89,10 +89,10 @@
 				emptyPhoto: {
 					id: null,
 					file: null,
-					reference: '',
+					url: '',
 					description: '',
 					preview: null,
-					url: ''
+					photoUrl: ''
 				}
 			}
 		},
@@ -125,7 +125,7 @@
 					Object.assign(this.photos[index], {
 						file: file,
 						preview: preview,
-						url: null
+						photoUrl: null
 					})
 				}, false)
 
@@ -137,7 +137,7 @@
 			uploadPhoto(index) {
 				let formData = new FormData()
 				formData.append('file', this.photos[index].file)
-				formData.append('reference', this.photos[index].reference)
+				formData.append('url', this.photos[index].url)
 				formData.append('description', this.photos[index].description)
 
 				this.loading = true

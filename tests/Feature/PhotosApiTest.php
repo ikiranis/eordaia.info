@@ -38,7 +38,7 @@ class PhotosApiTest extends TestCase
     {
         $request = [
             'file' => UploadedFile::fake()->image('image.jpg', 500,500), // Create fake image file
-            'reference' => $this->faker->text(rand(10, 30)),
+            'url' => 'https://apps4net.eu',
             'description' => $this->faker->text(rand(50, 200)),
         ];
 
@@ -51,9 +51,9 @@ class PhotosApiTest extends TestCase
             'id',
             'path',
             'filename',
-            'reference',
+            'url',
             'description',
-            'url'
+            'photoUrl'
         ]);
 
         // Assert the file was stored...

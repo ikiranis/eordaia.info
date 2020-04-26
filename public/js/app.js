@@ -2202,10 +2202,10 @@ __webpack_require__.r(__webpack_exports__);
       emptyPhoto: {
         id: null,
         file: null,
-        reference: '',
+        url: '',
         description: '',
         preview: null,
-        url: ''
+        photoUrl: ''
       }
     };
   },
@@ -2233,7 +2233,7 @@ __webpack_require__.r(__webpack_exports__);
         Object.assign(_this.photos[index], {
           file: file,
           preview: preview,
-          url: null
+          photoUrl: null
         });
       }, false);
 
@@ -2246,7 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var formData = new FormData();
       formData.append('file', this.photos[index].file);
-      formData.append('reference', this.photos[index].reference);
+      formData.append('url', this.photos[index].url);
       formData.append('description', this.photos[index].description);
       this.loading = true;
       axios.post('/api/photo', formData, {
@@ -79975,7 +79975,7 @@ var render = function() {
                 _c(
                   "label",
                   { staticClass: "sr-only", attrs: { for: "photoReference" } },
-                  [_vm._v("Πηγή")]
+                  [_vm._v("url")]
                 ),
                 _vm._v(" "),
                 _vm._m(0, true),
@@ -79985,8 +79985,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: photo.reference,
-                      expression: "photo.reference"
+                      value: photo.url,
+                      expression: "photo.url"
                     }
                   ],
                   staticClass: "form-control",
@@ -79996,20 +79996,20 @@ var render = function() {
                     id: "photoReference",
                     name: "photoReference"
                   },
-                  domProps: { value: photo.reference },
+                  domProps: { value: photo.url },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(photo, "reference", $event.target.value)
+                      _vm.$set(photo, "url", $event.target.value)
                     }
                   }
                 }),
                 _vm._v(" "),
-                _vm.response.errors.reference
+                _vm.response.errors.url
                   ? _c("form-error", {
-                      attrs: { error: _vm.response.errors.reference[0] }
+                      attrs: { error: _vm.response.errors.url[0] }
                     })
                   : _vm._e()
               ],
@@ -80073,7 +80073,7 @@ var render = function() {
                   : photo.url
                   ? _c("img", {
                       staticClass: "mx-auto",
-                      attrs: { src: photo.url, width: "350" }
+                      attrs: { src: photo.photo_url, width: "350" }
                     })
                   : _vm._e()
               ])
@@ -80139,7 +80139,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("span", { staticClass: "input-group-text" }, [_vm._v("Πηγή")])
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("url")])
     ])
   }
 ]

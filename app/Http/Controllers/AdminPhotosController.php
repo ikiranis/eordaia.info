@@ -48,7 +48,7 @@ class AdminPhotosController extends Controller
                 [
                     'path' => $photoService->getPath(),
                     'filename' => $photoService->getFileName(),
-                    'reference' => $request->reference,
+                    'url' => $request->url,
                     'description' => $request->description
                 ]
             );

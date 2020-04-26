@@ -18,9 +18,9 @@ class PhotoResource extends JsonResource
             'id' => $this->id,
             'path' => $this->path,
             'filename' => $this->filename,
-            'reference' => $this->reference,
+            'url' => $this->reference,
             'description' => $this->description,
-            'url' => $this->url
+            'photoUrl' => $this->url
         ];
     }
 }

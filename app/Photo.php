@@ -15,7 +15,7 @@ class Photo extends Model
     protected $fillable = [
         'path',
         'filename',
-        'reference',
+        'url',
         'description'
     ];
 
@@ -44,7 +44,7 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getUrlAttribute()
+    public function getPhotoUrlAttribute()
     {
         return env('APP_URL', false) . '/uploads/' . $this->path . '/' . $this->filename;
     }
