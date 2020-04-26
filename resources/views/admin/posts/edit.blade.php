@@ -33,15 +33,6 @@
                                 <textarea class="form-control ckeditor" id="body" name="body">{{ $post->body }}</textarea>
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="reference">Πηγή</label>
-                                <div class="input-group-prepend col-2">
-                                    <span class="input-group-text w-100">Πηγή</span>
-                                </div>
-                                <input type="text" max="800" class="form-control col-10 px-2" id="reference"
-                                       name="reference" value="{{$post->reference}}">
-                            </div>
-
                             <div id="vueContainer">
                                 <links :links="links"></links>
 
