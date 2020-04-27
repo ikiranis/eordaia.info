@@ -37,4 +37,46 @@ class RoutesTest extends TestCase
         $response->assertStatus(200)
             ->assertSee('Admin Page');
     }
+
+    /**
+     * Test admin users page
+     *
+     * @return void
+     */
+    public function testAdminUsersPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/users');
+
+        $response->assertStatus(200)
+            ->assertSee('Χρήστες');
+    }
+
+    /**
+     * Test admin posts page
+     *
+     * @return void
+     */
+    public function testAdminPostsPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/posts');
+
+        $response->assertStatus(200)
+            ->assertSee('Δημοσιεύσεις');
+    }
+
+    /**
+     * Test admin post create page
+     *
+     * @return void
+     */
+    public function testAdminPostCreatePage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/posts/create');
+
+        $response->assertStatus(200)
+            ->assertSee('Εισαγωγή δημοσίευσης');
+    }
 }
