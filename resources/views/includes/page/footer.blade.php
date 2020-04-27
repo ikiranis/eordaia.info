@@ -7,7 +7,7 @@
             <div class="col text-right my-auto">
                 <span>
                     Created by <a href="http://www.apps4net.eu"><img
-                                src="{{url('images/site/apps4net_logo.jpg')}}"></a>
+                                src="{{url('/graphics/apps4net_logo.jpg')}}"></a>
                 </span>
             </div>
 
