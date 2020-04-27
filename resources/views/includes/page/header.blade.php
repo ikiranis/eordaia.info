@@ -24,7 +24,7 @@
                     <img src="/graphics/twitter-logo.png" width="25" title="Twitter Page">
                 </a>
 
-                <a href="https://www.facebook.com/eordaiainfo-120099448002990/" class="mx-1">
+                <a href="https://facebook.com/eordaiainfo-120099448002990/" class="mx-1">
                     <img src="/graphics/facebook-logo.png" width="25" title="Facebook Page">
                 </a>
             </li>
