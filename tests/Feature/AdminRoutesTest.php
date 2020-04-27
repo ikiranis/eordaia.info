@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Post;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -69,6 +70,20 @@ class AdminRoutesTest extends TestCase
     }
 
     /**
+     * Test admin user create page
+     *
+     * @return void
+     */
+    public function testAdminUserEditPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/users/' . static::$user->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση χρήστη');
+    }
+
+    /**
      * Test admin posts page
      *
      * @return void
@@ -94,5 +109,21 @@ class AdminRoutesTest extends TestCase
 
         $response->assertStatus(200)
             ->assertSee('Εισαγωγή δημοσίευσης');
+    }
+
+    /**
+     * Test admin post edit page
+     *
+     * @return void
+     */
+    public function testAdminPostEditPage() : void
+    {
+        $post = Post::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/posts/' . $post->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση δημοσίευσης');
     }
 }
