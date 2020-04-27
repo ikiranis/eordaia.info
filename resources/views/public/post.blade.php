@@ -5,7 +5,7 @@
 @endsection
 
 @section('shareMetaTags')
-    <meta name="description" content="{{ $post->description }}"/>
+{{--    <meta name="description" content="{{ $post->description }}"/>--}}
 
     <!-- Schema.org markup for Google+ -->
     <meta itemprop="name" content="{{ $post->title }}">
@@ -28,13 +28,13 @@
 {{--    <meta property="og:image" content="{{ $post->photo ? url($post->photo->full_path_name) : ''}}"/>--}}
     <meta property="og:image:width" content="282">
 {{--    <meta property="og:description" content="{{ $post->description }}"/>--}}
-    <meta property="og:site_name" content="West Macedonia Sports"/>
+    <meta property="og:site_name" content="eordaia.info"/>
     <meta property="article:published_time" content="{{ $post->created_at }}"/>
     <meta property="article:modified_time" content="{{ $post->updated_at }}"/>
     {{--<meta property="article:section" content="Article Section"/>--}}
     @php
         $tags = '';
-        foreach($post->tags() as $tag) {
+        foreach($post->tags()->get() as $tag) {
              $tags = $tags . $tag->name . ' ';
         }
     @endphp

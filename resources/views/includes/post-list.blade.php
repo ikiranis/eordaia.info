@@ -15,11 +15,10 @@
         <div class="card-body">
 
             <div class="row my-3">
-                <div class="col-md-4 col-12">
+{{--                <div class="col-md-4 col-12">--}}
 {{--                    <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"--}}
 {{--                         class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $post->id }}">--}}
-
-                </div>
+{{--                </div>--}}
                 <div class="col-md-8 col-12 article">
                     @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')
 
