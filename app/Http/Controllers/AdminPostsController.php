@@ -41,7 +41,10 @@ class AdminPostsController extends Controller
         $userApiToken = Auth::user()->api_token;
         $categories = Category::all();
 
-        return view('admin.posts.create', compact(['user_id', 'userApiToken', 'categories']));
+        return view(
+            'admin.posts.create',
+            compact(['user_id', 'userApiToken', 'categories'])
+        );
     }
 
     /**
