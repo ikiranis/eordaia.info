@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,16 +14,57 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
-     * Show the application dashboard.
+     * Show the home page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('public.home');
+        $posts = Post::whereApproved(1)
+            ->orderBy('updated_at', 'desc')
+            ->simplePaginate(5);
+
+        return view('public.home', compact(['posts']));
+    }
+
+    /**
+     * Show post page
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function post($slug)
+    {
+        $post = Post::whereSlug($slug)->firstOrFail();
+
+        return view('public.post', compact('post'));
+    }
+
+    /**
+     * Search posts
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $posts = Post::whereApproved(1)
+            ->where(function($query) use ($search) {
+                $query->where('body', 'LIKE', "%$search%")
+                    ->orWhere('title', 'LIKE', "%$search%");
+            })
+            ->orderBy('updated_at', 'desc')
+            ->simplePaginate(5);
+
+        // Append search text for next pages
+        $posts->appends(['search' => $search]);
+
+        return view('public.search', compact(['search', 'posts']));
     }
 }

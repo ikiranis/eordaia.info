@@ -35,3 +35,16 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Auth::routes();
+
+// Static pages
+Route::get('/about', function () {
+    return view('public.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('public.contact');
+})->name('contact');
+
+// Public pages
+Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/{slug}', 'HomeController@post')->name('post');
