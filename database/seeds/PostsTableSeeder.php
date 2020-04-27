@@ -18,6 +18,8 @@ class PostsTableSeeder extends Seeder
 
         factory(Post::class, 50)->create();
 
+//        $this->command->getOutput()->progressAdvance();
+
         $this->command->getOutput()->progressFinish();
     }
 }
