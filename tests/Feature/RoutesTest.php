@@ -7,12 +7,15 @@ use Tests\TestCase;
 class RoutesTest extends TestCase
 {
     /**
-     * Test admin page
+     * Test home page
      *
      * @return void
      */
-    public function testAdminPage() : void
+    public function testHomePage() : void
     {
-        $this->assertTrue(true);
+        $response = $this->get('/');
+
+        $response->assertStatus(200)
+            ->assertSee('Eordaia.info');
     }
 }
