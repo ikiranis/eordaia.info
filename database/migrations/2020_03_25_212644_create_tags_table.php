@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->uuid('id');
             $table->string('slug');
             $table->string('name', 40);
+            $table->timestamps();
             $table->primary('id');
         });
     }

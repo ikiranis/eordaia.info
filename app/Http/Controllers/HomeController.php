@@ -79,7 +79,9 @@ class HomeController extends Controller
     {
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
-        $posts = $tag->posts()->orderBy('updated_at', 'desc')->simplePaginate(5);
+        $posts = $tag->posts()
+            ->orderBy('updated_at', 'desc')
+            ->simplePaginate(5);
 
         return view('public.tagPosts', compact(['tag', 'posts']));
     }
