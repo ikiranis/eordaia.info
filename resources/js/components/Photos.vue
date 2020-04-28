@@ -45,10 +45,12 @@
 							class="mx-auto col-lg-8 col-12"/>
 			</div>
 
-			<div v-if="photo.preview || photo.photoUrl" class="row col-12">
+			<div v-if="photo.preview || photo.photoUrl || photo.url" class="row col-12">
 				<img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="350"/>
 
 				<img v-else-if="photo.photoUrl" :src="photo.photoUrl" class="mx-auto" width="350"/>
+
+				<img v-else-if="photo.url" :src="photo.url" class="mx-auto" width="350"/>
 			</div>
 
 			<div class="row">
@@ -105,7 +107,7 @@
 		},
 
 		created() {
-			console.log(this.photos)
+			// console.log(this.photos)
 		},
 
 		methods: {

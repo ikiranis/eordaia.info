@@ -2196,6 +2196,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2221,8 +2223,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     }
   },
-  created: function created() {
-    console.log(this.photos);
+  created: function created() {// console.log(this.photos)
   },
   methods: {
     addPhoto: function addPhoto() {
@@ -80930,7 +80931,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          photo.preview || photo.photoUrl
+          photo.preview || photo.photoUrl || photo.url
             ? _c("div", { staticClass: "row col-12" }, [
                 photo.preview
                   ? _c("img", {
@@ -80941,6 +80942,11 @@ var render = function() {
                   ? _c("img", {
                       staticClass: "mx-auto",
                       attrs: { src: photo.photoUrl, width: "350" }
+                    })
+                  : photo.url
+                  ? _c("img", {
+                      staticClass: "mx-auto",
+                      attrs: { src: photo.url, width: "350" }
                     })
                   : _vm._e()
               ])

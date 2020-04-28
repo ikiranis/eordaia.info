@@ -46,6 +46,10 @@ class Photo extends Model
      */
     public function getPhotoUrlAttribute()
     {
+        if($this->filename == null) {
+            return null;
+        }
+
         return env('APP_URL', false) . '/uploads/' . $this->path . '/' . $this->filename;
     }
 }
