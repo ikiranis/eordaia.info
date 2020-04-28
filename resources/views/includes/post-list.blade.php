@@ -25,7 +25,7 @@
 
                     {!! Str::words($post->body, 200, $moreButton) !!}
 
-{{--                    @include('includes.reference-link')--}}
+                    @include('includes.links')
                 </div>
             </div>
         </div>
