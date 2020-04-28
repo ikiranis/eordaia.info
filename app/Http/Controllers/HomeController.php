@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -66,5 +67,20 @@ class HomeController extends Controller
         $posts->appends(['search' => $search]);
 
         return view('public.search', compact(['search', 'posts']));
+    }
+
+    /**
+     * Tag posts
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function tag($slug)
+    {
+        $tag = Tag::whereSlug($slug)->firstOrFail();
+
+        $posts = $tag->posts()->orderBy('updated_at', 'desc')->simplePaginate(5);
+
+        return view('public.tagPosts', compact(['tag', 'posts']));
     }
 }

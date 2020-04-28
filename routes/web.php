@@ -48,3 +48,4 @@ Route::get('/contact', function () {
 // Public pages
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/{slug}', 'HomeController@post')->name('post');
+Route::get('/tag/{slug}', 'HomeController@tag')->name('tag');
