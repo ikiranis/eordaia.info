@@ -1,7 +1,11 @@
 @if(!$post->links()->get()->isEmpty())
-    <div class="row my-3">
-        <a href="{{ $post->links()->first()->url }}" class="ml-auto mr-auto" title="{{ $post->links()->first()->url }}">
-            <span class="btn btn-outline-info">Περισσότερα στο <strong>{{ parse_url($post->links()->first()->url)['host'] }}</strong></span>
-        </a>
+    <div class="row mt-3">
+        <div class="mx-auto">
+            @foreach($post->links()->get() as $link)
+                <a href="{{ $link->url }}" class="btn btn-sm btn-outline-info mx-1" title="{{ $link->url }}">
+                    <span>{{ parse_url($link->url)['host'] }}</span>
+                </a>
+            @endforeach
+        </div>
     </div>
 @endif
