@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -84,5 +85,22 @@ class HomeController extends Controller
             ->simplePaginate(5);
 
         return view('public.tagPosts', compact(['tag', 'posts']));
+    }
+
+    /**
+     * Category posts
+     *
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function category($slug)
+    {
+        $category = Category::whereSlug($slug)->firstOrFail();
+
+        $posts = $category->posts()
+            ->orderBy('updated_at', 'desc')
+            ->simplePaginate(5);
+
+        return view('public.categoryPosts', compact(['category', 'posts']));
     }
 }

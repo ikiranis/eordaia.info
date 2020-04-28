@@ -6,6 +6,7 @@
             <div class="col-lg-9 col-12 my-auto">
                 <h3><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h3>
 
+                @include('includes.categories')
                 @include('includes.tags')
             </div>
             <div class="col-lg-3 col-12 ml-auto text-right my-auto">

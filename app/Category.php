@@ -13,9 +13,6 @@ class Category extends Model
 
     public $incrementing = false;
 
-    // Don't write timestamps at factory
-    public $timestamps  = false;
-
     // The attributes that are mass assignable
     protected $fillable = ['id', 'slug', 'name'];
 
@@ -39,6 +36,6 @@ class Category extends Model
      */
     public function posts()
     {
-        return $this->belongsToMany('App\Post')->withTimestamps();
+        return $this->belongsToMany('App\Post');
     }
 }
