@@ -1,5 +1,6 @@
 <?php
 
+use App\Link;
 use App\Photo;
 use App\Post;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,12 @@ class PostsTableSeeder extends Seeder
                     ->create()
                     ->each(function ($photo) use ($post) {
                         $post->photos()->attach($photo->id);
+                    });
+
+                factory(Link::class, 3)
+                    ->create()
+                    ->each(function ($link) use ($post) {
+                        $post->links()->attach($link->id);
                     });
 
                 $this->command->getOutput()->progressAdvance();
