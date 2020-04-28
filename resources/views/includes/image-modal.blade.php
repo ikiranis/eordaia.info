@@ -10,20 +10,20 @@
             </div>
             <div class="modal-body">
 
-                <img src="{{$post->photo ? $post->photo->fullPathName : 'http://via.placeholder.com/350x150'}}"
+                <img src="{{ $post->photos()->first()->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
                      width="100%">
 
             </div>
 
-            @if(isset($post->photo->reference))
-                <div class="modal-footer row w-100 no-gutters">
-                    <span>Πηγή:
-                        <a href="{{ $post->photo->reference }}" class="font-weight-bold">
-                            {{ parse_url($post->photo->reference)['host'] }}
-                        </a>
-                    </span>
-                </div>
-            @endif
+{{--            @if(isset($post->photo->url))--}}
+{{--                <div class="modal-footer row w-100 no-gutters">--}}
+{{--                    <span>Πηγή:--}}
+{{--                        <a href="{{ $post->photo->url }}" class="font-weight-bold">--}}
+{{--                            {{ parse_url($post->photo->url)['host'] }}--}}
+{{--                        </a>--}}
+{{--                    </span>--}}
+{{--                </div>--}}
+{{--            @endif--}}
         </div>
     </div>
 </div>

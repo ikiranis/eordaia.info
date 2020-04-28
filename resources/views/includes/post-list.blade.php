@@ -1,4 +1,4 @@
-{{--@include('includes.image-modal')--}}
+@include('includes.image-modal')
 
 <div class="col-12 my-3">
     <div class="card">
@@ -16,7 +16,7 @@
 
             <div class="row my-3">
                 <div class="col-md-4 col-12">
-                    <img src="{{$post->photos()->first()->photoUrl ?? 'http://via.placeholder.com/350x150'}}"
+                    <img src="{{ $post->photos()->first()->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
                          class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $post->id }}">
                 </div>
 
