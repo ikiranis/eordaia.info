@@ -2221,7 +2221,8 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     }
   },
-  created: function created() {// console.log(this.photos)
+  created: function created() {
+    console.log(this.photos);
   },
   methods: {
     addPhoto: function addPhoto() {
@@ -80929,17 +80930,17 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          photo.preview || photo.url
+          photo.preview || photo.photoUrl
             ? _c("div", { staticClass: "row col-12" }, [
                 photo.preview
                   ? _c("img", {
                       staticClass: "mx-auto",
                       attrs: { src: photo.preview.src, width: "350" }
                     })
-                  : photo.url
+                  : photo.photoUrl
                   ? _c("img", {
                       staticClass: "mx-auto",
-                      attrs: { src: photo.photo_url, width: "350" }
+                      attrs: { src: photo.photoUrl, width: "350" }
                     })
                   : _vm._e()
               ])
