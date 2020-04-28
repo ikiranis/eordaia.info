@@ -1,5 +1,6 @@
 <?php
 
+use App\Photo;
 use App\Post;
 use Illuminate\Database\Seeder;
 
@@ -16,9 +17,18 @@ class PostsTableSeeder extends Seeder
 
 //        Post::flushEventListeners();
 
-        factory(Post::class, 50)->create();
+        factory(Post::class, 50)
+            ->create()
+            ->each(function ($post) {
 
-//        $this->command->getOutput()->progressAdvance();
+                factory(Photo::class, 3)
+                    ->create()
+                    ->each(function ($photo) use ($post) {
+                        $post->photos()->attach($photo->id);
+                    });
+
+                $this->command->getOutput()->progressAdvance();
+            });
 
         $this->command->getOutput()->progressFinish();
     }
