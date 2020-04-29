@@ -1,4 +1,4 @@
-{{--@include('includes.image-modal')--}}
+<x-posts.imageModal :post="$post" />
 
 <div class="col-12 my-3">
 
@@ -46,6 +46,6 @@
 
     </div>
 
-    @include('includes.error')
+    <x-error :errors="$errors" />
 
 </div>
