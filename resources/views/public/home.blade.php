@@ -61,8 +61,7 @@
 
                     @endforeach
 
-                    @include('includes.paging')
-
+                    <x-posts.paging :posts="$posts" />
 {{--                    @include('includes.ads.homepage-google-ad')--}}
 
                 @endif
