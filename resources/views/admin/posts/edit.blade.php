@@ -4,7 +4,7 @@
 
     @include('includes.apiToken')
 
-    @include('includes.error')
+    <x-error :errors="$errors" />
 
     <div class="container">
         <div class="row justify-content-center">
