@@ -28,7 +28,7 @@
 
                     {!! Str::words($post->body, 200, $moreButton) !!}
 
-                    @include('includes.links')
+                    <x-posts.links :post="$post" />
                 </div>
             </div>
         </div>
