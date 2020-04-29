@@ -5,7 +5,7 @@ namespace App\View\Components\Posts;
 use App\Post;
 use Illuminate\View\Component;
 
-class Tags extends Component
+class Categories extends Component
 {
     public Post $post;
 
@@ -27,28 +27,26 @@ class Tags extends Component
     public function render()
     {
         return <<<'blade'
-        
-            @if(!$tags->isEmpty())
+            @if(!$categories->isEmpty())
                 <div class="row mt-3">
-                    @foreach($tags as $tag)
-                        <a href="{{ route('tag', '') . '/' . $tag->slug }}" 
-                            class="badge badge-primary text-light mx-1">
-                            {{ $tag->name }}
+                    @foreach($categories as $category)
+                        <a href="{{ route('category', '') . '/' . $category->slug }}" 
+                            class="badge badge-success text-light mx-1">
+                            {{ $category->name }}
                         </a>
                     @endforeach
                 </div>
             @endif
-
 blade;
     }
 
     /**
-     * Get post tags
+     * Get post categories
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function tags()
+    public function categories()
     {
-        return $this->post->tags()->get();
+        return $this->post->categories()->get();
     }
 }
