@@ -35,7 +35,7 @@
 @include('includes.page.footer')
 
 <!-- Scripts -->
-@include('includes.run-scripts')
+<x-runScripts />
 
 @yield('scripts')
 

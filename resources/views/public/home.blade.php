@@ -44,7 +44,7 @@
 
 {{--    </div>--}}
 
-    @include('includes.search-text')
+    <x-posts.search />
 
 {{--    @include('includes.posts.guest-post-message')--}}
 
