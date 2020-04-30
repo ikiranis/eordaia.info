@@ -34,16 +34,6 @@
 
 @section('content')
 
-{{--    <div class="container">--}}
-
-{{--        <div class="row justify-content-center">--}}
-
-{{--            @include('includes.sport-images')--}}
-
-{{--        </div>--}}
-
-{{--    </div>--}}
-
     <x-posts.search />
 
 {{--    @include('includes.posts.guest-post-message')--}}

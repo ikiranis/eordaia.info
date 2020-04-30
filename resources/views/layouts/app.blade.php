@@ -32,7 +32,7 @@
 </div>
 
 {{--Footer--}}
-@include('includes.page.footer')
+<x-footer />
 
 <!-- Scripts -->
 <x-runScripts />
