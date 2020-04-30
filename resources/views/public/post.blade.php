@@ -47,7 +47,7 @@
 
     <div class="container">
 
-        @include('includes.post-single')
+        <x-posts.SinglePost :post="$post" />
 
     </div>
 

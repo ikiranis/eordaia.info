@@ -18,7 +18,7 @@
 
 {{--    @include('feed::links')--}}
 
-{{--    @include('includes.google-analytics')--}}
+{{--    <x-google-analytics />--}}
 
 
 </head>

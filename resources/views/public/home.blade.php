@@ -57,7 +57,7 @@
                 @endif
             </div>
 
-            @include('includes.page.sidebar')
+            <x-sidebar />
 
 
         </div>
