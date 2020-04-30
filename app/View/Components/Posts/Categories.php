@@ -2,21 +2,21 @@
 
 namespace App\View\Components\Posts;
 
-use App\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
 class Categories extends Component
 {
-    public Post $post;
+    public Collection $categories;
 
     /**
      * Create a new component instance.
      *
-     * @param $post
+     * @param $categories
      */
-    public function __construct($post)
+    public function __construct($categories)
     {
-        $this->post = $post;
+        $this->categories = $categories;
     }
 
     /**
@@ -38,15 +38,5 @@ class Categories extends Component
                 </div>
             @endif
 blade;
-    }
-
-    /**
-     * Get post categories
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function categories()
-    {
-        return $this->post->categories()->get();
     }
 }

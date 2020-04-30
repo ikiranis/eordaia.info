@@ -2,21 +2,21 @@
 
 namespace App\View\Components\Posts;
 
-use App\Post;
 use Illuminate\View\Component;
+use Illuminate\Database\Eloquent\Collection;
 
 class Tags extends Component
 {
-    public Post $post;
+    public Collection $tags;
 
     /**
      * Create a new component instance.
      *
-     * @param $post
+     * @param $tags
      */
-    public function __construct($post)
+    public function __construct($tags)
     {
-        $this->post = $post;
+        $this->tags = $tags;
     }
 
     /**
@@ -40,15 +40,5 @@ class Tags extends Component
             @endif
 
 blade;
-    }
-
-    /**
-     * Get post tags
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function tags()
-    {
-        return $this->post->tags()->get();
     }
 }

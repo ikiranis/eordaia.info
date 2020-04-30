@@ -6,8 +6,8 @@
             <div class="col-lg-9 col-12 my-auto">
                 <h3><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h3>
 
-                <x-posts.categories :post="$post" />
-                <x-posts.tags :post="$post" />
+                <x-posts.categories :categories="$post->categories()->get()" />
+                <x-posts.tags :tags="$post->tags()->get()" />
             </div>
             <div class="col-lg-3 col-12 ml-auto text-right my-auto">
                 <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
