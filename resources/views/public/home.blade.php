@@ -45,11 +45,7 @@
             <div class="container col-lg-10 col-12">
                 @if(count($posts)>0)
 
-                    @foreach($posts as $post)
-
-                        @include('includes.post-list')
-
-                    @endforeach
+                    <x-posts.ListPosts :posts="$posts" />
 
                     <x-posts.paging :posts="$posts" />
 {{--                    @include('includes.ads.homepage-google-ad')--}}

@@ -36,13 +36,9 @@
 
         @if(count($posts)>0)
 
-            @foreach($posts as $post)
+            <x-posts.ListPosts :posts="$posts" />
 
-                @include('includes.post-list')
-
-            @endforeach
-
-            @include('includes.paging')
+            <x-posts.paging :posts="$posts" />
 
 {{--            @include('includes.ads.homepage-google-ad')--}}
 
