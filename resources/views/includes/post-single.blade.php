@@ -35,7 +35,7 @@
             <div class="col-md-8 col-12 text-justify article">
                 {!! $post->body !!}
 
-{{--                @include('includes.reference-link')--}}
+                <x-posts.links :post="$post">
 
             </div>
 
