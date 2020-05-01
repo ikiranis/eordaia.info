@@ -27,7 +27,7 @@
                     <div class="col-md-8 col-12 article">
                         @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')
 
-                        {!! Str::words($post->body, 200, $moreButton) !!}
+                        {!! Str::words($post->markdownBody, 200, $moreButton) !!}
 
                         <x-posts.links :post="$post" />
                     </div>

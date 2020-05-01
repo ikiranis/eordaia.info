@@ -4,6 +4,7 @@ namespace App;
 
 use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
+use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -129,5 +130,14 @@ class Post extends Model
      */
     public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Get body in markdown format
+     *
+     * @return mixed
+     */
+    public function getMarkdownBodyAttribute() {
+        return Markdown::convertToHtml($this->body);
     }
 }

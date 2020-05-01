@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-md-8 col-12 text-justify article">
-                {!! $post->body !!}
+                {!! $post->markdownBody !!}
 
                 <x-posts.links :post="$post" />
 

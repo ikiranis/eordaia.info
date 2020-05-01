@@ -4,9 +4,10 @@
 
 use App\Post;
 use Faker\Generator as Faker;
+use \DavidBadura\FakerMarkdownGenerator\FakerProvider;
 
 $factory->define(Post::class, function (Faker $faker) {
-    $faker->addProvider(new \DavidBadura\FakerMarkdownGenerator\FakerProvider($faker));
+    $faker->addProvider(new FakerProvider($faker));
 
     return [
         'title' => $faker->sentence(15),
