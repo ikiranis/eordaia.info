@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('siteTitle')
-    {{ config('app.name', 'Laravel') }} : Tag {{$tag->name}}
+    {{ config('app.name', 'Laravel') }} | Tag: {{$tag->name}}
 @endsection
 
 @section('shareMetaTags')
@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="container">
+    <section class="container">
 
         <h1>{{$tag->name}}</h1>
 
@@ -23,6 +23,6 @@
 {{--            @include('includes.ads.homepage-google-ad')--}}
 
         @endif
-    </div>
+    </section>
 
 @endsection

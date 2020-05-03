@@ -18,7 +18,7 @@
 
         <div class="row no-gutters">
 
-            <div class="container col-lg-10 col-12">
+            <section class="container col-lg-10 col-12">
                 @if(count($posts)>0)
 
                     <x-posts.ListPosts :posts="$posts" />
@@ -27,7 +27,7 @@
 {{--                    @include('includes.ads.homepage-google-ad')--}}
 
                 @endif
-            </div>
+            </section>
 
             <x-sidebar />
 
