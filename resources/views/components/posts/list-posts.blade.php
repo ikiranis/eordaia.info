@@ -1,7 +1,7 @@
 @foreach($posts as $post)
     <x-posts.imageModal :post="$post" />
 
-    <div class="col-12 my-3">
+    <article class="col-12 my-3">
         <div class="card">
             <div class="card-header row no-gutters">
                 <div class="col-lg-9 col-12 my-auto">
@@ -35,5 +35,5 @@
             </div>
 
         </div>
-    </div>
+    </article>
 @endforeach
