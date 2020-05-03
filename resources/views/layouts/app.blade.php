@@ -11,7 +11,7 @@
 
     <title>@yield('siteTitle')</title>
 
-@yield('shareMetaTags')
+    @yield('shareMetaTags')
 
 <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
