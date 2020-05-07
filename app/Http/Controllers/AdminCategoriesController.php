@@ -22,6 +22,43 @@ class AdminCategoriesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.categories.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function adminStore(CategoryFormRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $input = $request->all();
+
+        if($findCategory = Category::whereName($input['name'])->first()) {
+            return redirect(route('categories.index'));
+        }
+
+        try {
+            $category = Category::create($input);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
+            ], 403);
+        }
+
+        return redirect(route('categories.index'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
