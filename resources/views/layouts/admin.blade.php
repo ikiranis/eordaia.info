@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.index') }}">
+                        <a class="nav-link" href="{{ route('categories.index') }}">
                             <span class="mdi mdi-shape" />
                             <span>Κατηγορίες</span>
                         </a>

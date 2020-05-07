@@ -30,8 +30,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/rules', 'AdminRulesController');
-    Route::resource('admin/comments', 'AdminCommentsController');
-    Route::patch('admin/comments/{comment}/approvedOrNot', 'AdminCommentsController@approvedOrNot')->name('comments.approvedOrNot');
+    Route::resource('admin/categories', 'AdminCategoriesController');
 });
 
 Auth::routes();
