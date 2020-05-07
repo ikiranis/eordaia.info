@@ -73,20 +73,44 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('admin') }}">
-                            <span class="mdi mdi-home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                            <span class="mdi mdi-home" />
+                            <span>Dashboard</span> <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('users.index') }}">
-                            <span class="mdi mdi-account-multiple-outline"></span>
-                            Χρήστες
+                            <span class="mdi mdi-account-multiple-outline" />
+                            <span>Χρήστες</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('posts.index') }}">
-                            <span class="mdi mdi-note-text"></span>
-                            Δημοσιεύματα
+                            <span class="mdi mdi-note-text" />
+                            <span>Δημοσιεύματα</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('posts.index') }}">
+                            <span class="mdi mdi-shape" />
+                            <span>Κατηγορίες</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('posts.index') }}">
+                            <span class="mdi mdi-link-variant" />
+                            <span>Σύνδεσμοι</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('posts.index') }}">
+                            <span class="mdi mdi-image-multiple" />
+                            <span>Φωτογραφίες</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('posts.index') }}">
+                            <span class="mdi mdi-youtube" />
+                            <span>Video</span>
                         </a>
                     </li>
 
