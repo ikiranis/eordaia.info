@@ -32,7 +32,7 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage, from admin page
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -41,14 +41,8 @@ class AdminCategoriesController extends Controller
     {
         $validatedData = $request->validated();
 
-        $input = $request->all();
-
-        if($findCategory = Category::whereName($input['name'])->first()) {
-            return redirect(route('categories.index'));
-        }
-
         try {
-            $category = Category::create($input);
+            $category = Category::create($request->all());
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
@@ -59,7 +53,7 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage, from api request
      *
      * @param  \Illuminate\Http\Request  $request
      * @return CategoryResource|\Illuminate\Http\JsonResponse
@@ -68,14 +62,8 @@ class AdminCategoriesController extends Controller
     {
         $validatedData = $request->validated();
 
-        $input = $request->all();
-
-        if($findCategory = Category::whereName($input['name'])->first()) {
-            return new CategoryResource($findCategory);
-        }
-
         try {
-            $category = Category::create($input);
+            $category = Category::create($request->all());
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
@@ -97,15 +85,36 @@ class AdminCategoriesController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+
+        return view ('admin/categories/edit', compact(['category']));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(CategoryFormRequest $request, $id)
     {
-        //
+        $validatedData = $request->validated();
+
+        $input = $request->all();
+
+        $category = Category::findOrFail($id);
+
+        $category->update($input);
+
+        return redirect(route('categories.index'));
     }
 
     /**
