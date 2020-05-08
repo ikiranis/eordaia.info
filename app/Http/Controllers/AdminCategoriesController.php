@@ -109,11 +109,9 @@ class AdminCategoriesController extends Controller
     {
         $validatedData = $request->validated();
 
-        $input = $request->all();
-
         $category = Category::findOrFail($id);
 
-        $category->update($input);
+        $category->update($request->all());
 
         return redirect(route('categories.index'));
     }

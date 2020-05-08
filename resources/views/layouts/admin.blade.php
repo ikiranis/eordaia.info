@@ -102,7 +102,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.index') }}">
+                        <a class="nav-link" href="{{ route('photos.index') }}">
                             <span class="mdi mdi-image-multiple" />
                             <span>Φωτογραφίες</span>
                         </a>

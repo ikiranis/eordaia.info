@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Category;
 use App\Link;
+use App\Photo;
 use App\Post;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -201,5 +202,49 @@ class AdminRoutesTest extends TestCase
 
         $response->assertStatus(200)
             ->assertSee('Ενημέρωση Συνδέσμου');
+    }
+
+    /**
+     * Test admin photos page
+     *
+     * @return void
+     */
+    public function testAdminPhotosPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/photos');
+
+        $response->assertStatus(200)
+            ->assertSee('Φωτογραφίες');
+    }
+
+    /**
+     * Test admin photo create page
+     *
+     * @return void
+     */
+    public function testAdminPhotoCreatePage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/photos/create');
+
+        $response->assertStatus(200)
+            ->assertSee('Εισαγωγή Φωτογραφίας');
+    }
+
+    /**
+     * Test admin category edit page
+     *
+     * @return void
+     */
+    public function testAdminPhotoEditPage() : void
+    {
+        $photo = Photo::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/photos/' . $photo->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση Φωτογραφίας');
     }
 }

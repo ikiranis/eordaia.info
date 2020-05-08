@@ -13,11 +13,66 @@ class AdminPhotosController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $photos = Photo::orderBy('created_at', 'desc')
+            ->paginate(15);
+
+        return view('admin/photos/index', compact(['photos']));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.photos.create');
+    }
+
+    /**
+     * Store a newly created resource in storage, from admin page
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function adminStore(PhotoFormRequest $request)
+    {
+        $validatedData = $request->validated();
+        $photoService = null;
+
+        if($request->file) {
+            $file = $request->file;
+            $photoService = New PhotoService($file, [150, 500]);
+
+            // Save file
+            try {
+                $photoService->save();
+            } catch(\Exception $exception) {
+                return redirect(route('photos.index'))
+                    ->withErrors([$exception->getMessage()]);
+            }
+        }
+
+        // Save in database
+        try {
+            $photo = Photo::create(
+                [
+                    'path' => $photoService ? $photoService->getPath() : null,
+                    'filename' => $photoService ? $photoService->getFileName() : null,
+                    'url' => $request->url ?? null,
+                    'description' => $request->description
+                ]
+            );
+        } catch (\Exception $exception) {
+            return redirect(route('photos.index'))
+                ->withErrors(['Είναι αδύνατη η εγγραφή στην βάση δεδομένων: ' . $exception->getMessage()]);
+        }
+
+        return redirect(route('photos.index'));
     }
 
     /**
@@ -29,26 +84,29 @@ class AdminPhotosController extends Controller
     public function store(PhotoFormRequest $request)
     {
         $validatedData = $request->validated();
+        $photoService = null;
 
-        $file = $request->file;
-        $photoService = New PhotoService($file, [150, 500]);
+        if($request->file) {
+            $file = $request->file;
+            $photoService = New PhotoService($file, [150, 500]);
 
-        // Save file
-        try {
-            $photoService->save();
-        } catch(\Exception $exception) {
-            return response()->json([
-                'message' => $exception
-            ], 204);
+            // Save file
+            try {
+                $photoService->save();
+            } catch(\Exception $exception) {
+                return response()->json([
+                    'message' => $exception
+                ], 204);
+            }
         }
 
         // Save in database
         try {
             $photo = Photo::create(
                 [
-                    'path' => $photoService->getPath(),
-                    'filename' => $photoService->getFileName(),
-                    'url' => $request->url,
+                    'path' => $photoService ? $photoService->getPath() : null,
+                    'filename' => $photoService ? $photoService->getFileName() : null,
+                    'url' => $request->url ?? null,
                     'description' => $request->description
                 ]
             );
@@ -57,9 +115,6 @@ class AdminPhotosController extends Controller
                 'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
             ], 204);
         }
-//        $input['photo_id'] = $photo->id;
-
-        // TODO Χρήση του plugin για ανέβασμα φωτογραφιών με drag'n'drop
 
         return new PhotoResource($photo);
     }
@@ -76,25 +131,53 @@ class AdminPhotosController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $photo = Photo::findOrFail($id);
+
+        return view ('admin/photos/edit', compact(['photo']));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(PhotoFormRequest $request, $id)
     {
-        //
+        $validatedData = $request->validated();
+
+        $photo = Photo::findOrFail($id);
+
+        $photo->update($request->all());
+
+        return redirect(route('photos.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        $photo = Photo::whereId($id);
+
+        try {
+            $photo->delete();
+        } catch (\Exception $e) {
+            return redirect(route('photos.index'))
+                ->withErrors(['Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage()]);
+        }
+
+        return redirect(route('photos.index'));
     }
 }
