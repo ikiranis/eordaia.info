@@ -35,29 +35,6 @@ class AdminLinksController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage, from admin page
-     *
-     * @param LinkFormRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function adminStore(LinkFormRequest $request)
-    {
-        $validatedData = $request->validated();
-
-        $input = $request->all();
-
-        try {
-            $link = Link::create($input);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Δεν μπορεί να δημιουργηθεί το link '
-            ], 403);
-        }
-
-        return redirect(route('links.index'));
-    }
-
-    /**
      * Store a newly created resource in storage, for api call
      *
      * @param LinkFormRequest $request
