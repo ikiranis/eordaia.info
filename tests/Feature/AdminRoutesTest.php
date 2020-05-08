@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Category;
+use App\Link;
 use App\Post;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -125,5 +127,79 @@ class AdminRoutesTest extends TestCase
 
         $response->assertStatus(200)
             ->assertSee('Ενημέρωση δημοσίευσης');
+    }
+
+    /**
+     * Test admin categories page
+     *
+     * @return void
+     */
+    public function testAdminCategoriesPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/categories');
+
+        $response->assertStatus(200)
+            ->assertSee('Κατηγορίες');
+    }
+
+    /**
+     * Test admin category create page
+     *
+     * @return void
+     */
+    public function testAdminCategoryCreatePage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/categories/create');
+
+        $response->assertStatus(200)
+            ->assertSee('Εισαγωγή Κατηγορίας');
+    }
+
+    /**
+     * Test admin category edit page
+     *
+     * @return void
+     */
+    public function testAdminCategoryEditPage() : void
+    {
+        $category = Category::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/categories/' . $category->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση Κατηγορίας');
+    }
+
+    /**
+     * Test admin links page
+     *
+     * @return void
+     */
+    public function testAdminLinksPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/links');
+
+        $response->assertStatus(200)
+            ->assertSee('Σύνδεσμοι');
+    }
+
+    /**
+     * Test admin link edit page
+     *
+     * @return void
+     */
+    public function testAdminLinkEditPage() : void
+    {
+        $link = Link::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/links/' . $link->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση Συνδέσμου');
     }
 }
