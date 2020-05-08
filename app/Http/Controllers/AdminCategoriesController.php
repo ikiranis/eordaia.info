@@ -16,7 +16,8 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(15);
+        $categories = Category::orderBy('created_at', 'desc')
+            ->paginate(15);
 
         return view('admin/categories/index', compact(['categories']));
     }
@@ -121,10 +122,20 @@ class AdminCategoriesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return bool|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        $category = Category::whereId($id);
+
+        try {
+            $category->delete();
+        } catch (\Exception $e) {
+            report($e);
+
+            return false;
+        }
+
+        return redirect(route('categories.index'));
     }
 }

@@ -14,15 +14,51 @@ class AdminLinksController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $links = Link::orderBy('created_at', 'desc')
+            ->paginate(15);
+
+        return view('admin/links/index', compact(['links']));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('admin.links.create');
+    }
+
+    /**
+     * Store a newly created resource in storage, from admin page
+     *
+     * @param LinkFormRequest $request
+     * @return \Illuminate\Contracts\Foundation\Application|JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function adminStore(LinkFormRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $input = $request->all();
+
+        try {
+            $link = Link::create($input);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Δεν μπορεί να δημιουργηθεί το link '
+            ], 403);
+        }
+
+        return redirect(route('links.index'));
+    }
+
+    /**
+     * Store a newly created resource in storage, for api call
      *
      * @param LinkFormRequest $request
      * @return LinkResource|JsonResponse
@@ -37,7 +73,7 @@ class AdminLinksController extends Controller
             $link = Link::create($input);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Δεν μπορεί να δημιουργηθεί το link ' . $e
+                'message' => 'Δεν μπορεί να δημιουργηθεί το link '
             ], 403);
         }
 
@@ -56,15 +92,34 @@ class AdminLinksController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $link = Link::findOrFail($id);
+
+        return view ('admin/links/edit', compact(['link']));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param LinkFormRequest $request
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(LinkFormRequest $request, $id)
     {
-        //
+        $validatedData = $request->validated();
+
+        $link = Link::findOrFail($id);
+
+        $link->update($request->all());
+
+        return redirect(route('links.index'));
     }
 
     /**

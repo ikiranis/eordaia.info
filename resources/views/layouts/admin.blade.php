@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.index') }}">
+                        <a class="nav-link" href="{{ route('links.index') }}">
                             <span class="mdi mdi-link-variant" />
                             <span>Σύνδεσμοι</span>
                         </a>
