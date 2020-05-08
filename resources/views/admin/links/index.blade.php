@@ -3,12 +3,6 @@
 @section('content')
     <h1>Σύνδεσμοι</h1>
 
-    <div class="col-lg-6 col-12 ml-auto mr-auto my-2">
-        <a href="{{route('links.create')}}">
-            <button class="btn btn-info w-100">Εισαγωγή Συνδέσμου</button>
-        </a>
-    </div>
-
     @if(count($links)>0)
         <table class="table">
             <thead>
