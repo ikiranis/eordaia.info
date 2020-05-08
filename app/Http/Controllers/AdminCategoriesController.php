@@ -131,9 +131,8 @@ class AdminCategoriesController extends Controller
         try {
             $category->delete();
         } catch (\Exception $e) {
-            report($e);
-
-            return false;
+            return redirect(route('categories.index'))
+                ->withErrors(['Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage()]);
         }
 
         return redirect(route('categories.index'));

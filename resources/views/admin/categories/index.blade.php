@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+    <x-error :errors="$errors" />
+
     <h1>Κατηγορίες</h1>
 
     <div class="col-lg-6 col-12 ml-auto mr-auto my-2">

@@ -139,7 +139,13 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         $post = Post::whereId($id);
-        $post->delete();
+
+        try {
+            $post->delete();
+        } catch (\Exception $e) {
+            return redirect(route('posts.index'))
+                ->withErrors(['Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage()]);
+        }
 
         return redirect(route('posts.index'));
     }

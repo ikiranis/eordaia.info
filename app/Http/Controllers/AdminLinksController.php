@@ -126,10 +126,19 @@ class AdminLinksController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        $link = Link::whereId($id);
+
+        try {
+            $link->delete();
+        } catch (\Exception $e) {
+            return redirect(route('links.index'))
+                ->withErrors(['Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage()]);
+        }
+
+        return redirect(route('links.index'));
     }
 }
