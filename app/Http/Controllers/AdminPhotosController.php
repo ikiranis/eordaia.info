@@ -33,6 +33,7 @@ class AdminPhotosController extends Controller
         return view('admin.photos.create');
     }
 
+    // TODO merge adminStore and store methods in one method. Get if it is api or web call to return something
     /**
      * Store a newly created resource in storage, from admin page
      *
