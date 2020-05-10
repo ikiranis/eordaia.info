@@ -7,9 +7,29 @@ use App\Http\Resources\PhotoResource;
 use App\Photo;
 use App\Services\PhotoService;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 class AdminPhotosController extends Controller
 {
+    /**
+     * Return error, based on request kind (api or web)
+     *
+     * @param bool $requestKind
+     * @param string $message
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    private function returnError(bool $requestKind, string $message)
+    {
+        if ($requestKind) {
+            return response()->json([
+                'message' => $message
+            ], 204);
+        }
+
+        return redirect(route('photos.index'))
+            ->withErrors([$message]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,14 +70,7 @@ class AdminPhotosController extends Controller
             try {
                 $photoService->save();
             } catch(\Exception $exception) {
-                if ($request->is('api*')) {
-                    return response()->json([
-                        'message' => $exception
-                    ], 204);
-                }
-
-                return redirect(route('photos.index'))
-                    ->withErrors([$exception->getMessage()]);
+                $this->returnError($request->is('api*'), $exception->getMessage());
             }
         }
 
@@ -72,14 +85,7 @@ class AdminPhotosController extends Controller
                 ]
             );
         } catch (\Exception $exception) {
-            if ($request->is('api*')) {
-                return response()->json([
-                    'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
-                ], 204);
-            }
-
-            return redirect(route('photos.index'))
-                ->withErrors(['Είναι αδύνατη η εγγραφή στην βάση δεδομένων: ' . $exception->getMessage()]);
+            $this->returnError($request->is('api*'), $exception->getMessage());
         }
 
         if ($request->is('api*')) {
