@@ -42,19 +42,22 @@ class AdminPhotosController extends Controller
     public function store(PhotoFormRequest $request)
     {
         $validatedData = $request->validated();
-        $photoService = null;
 
         if($request->file) {
-            $file = $request->file;
-            $photoService = New PhotoService($file, [150, 500]);
+            $photoService = New PhotoService($request->file, [150, 500]);
 
             // Save file
             try {
                 $photoService->save();
             } catch(\Exception $exception) {
-                return response()->json([
-                    'message' => $exception
-                ], 204);
+                if ($request->is('api*')) {
+                    return response()->json([
+                        'message' => $exception
+                    ], 204);
+                }
+
+                return redirect(route('photos.index'))
+                    ->withErrors([$exception->getMessage()]);
             }
         }
 
@@ -62,8 +65,8 @@ class AdminPhotosController extends Controller
         try {
             $photo = Photo::create(
                 [
-                    'path' => $photoService ? $photoService->getPath() : null,
-                    'filename' => $photoService ? $photoService->getFileName() : null,
+                    'path' => isset($photoService) ? $photoService->getPath() : null,
+                    'filename' => isset($photoService) ? $photoService->getFileName() : null,
                     'url' => $request->url ?? null,
                     'description' => $request->description
                 ]

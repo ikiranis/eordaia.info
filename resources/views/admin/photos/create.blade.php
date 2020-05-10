@@ -18,7 +18,7 @@
                                 <div class="form-group my-3 col-lg-6 col-12">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input"
-                                               name="uploadFile" id="uploadFile"
+                                               name="file" id="file"
                                                accept='image/*'>
                                         <label class="custom-file-label"
                                                for="uploadFile">Φωτογραφία</label>

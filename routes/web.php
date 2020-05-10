@@ -35,8 +35,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/photos', 'AdminPhotosController');
     Route::post('admin/categories/adminStore', 'AdminCategoriesController@adminStore')
         ->name('categories.adminStore');
-//    Route::post('admin/photos/store', 'AdminPhotosController@store')
-//        ->name('photos.store');
 });
 
 Auth::routes();
