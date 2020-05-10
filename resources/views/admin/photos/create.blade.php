@@ -11,7 +11,7 @@
                     <div class="card-header">Εισαγωγή Φωτογραφίας</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('photos.adminStore') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('photos.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">

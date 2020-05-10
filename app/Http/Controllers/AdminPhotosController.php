@@ -33,54 +33,11 @@ class AdminPhotosController extends Controller
         return view('admin.photos.create');
     }
 
-    // TODO merge adminStore and store methods in one method. Get if it is api or web call to return something
-    /**
-     * Store a newly created resource in storage, from admin page
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function adminStore(PhotoFormRequest $request)
-    {
-        $validatedData = $request->validated();
-        $photoService = null;
-
-        if($request->file) {
-            $file = $request->file;
-            $photoService = New PhotoService($file, [150, 500]);
-
-            // Save file
-            try {
-                $photoService->save();
-            } catch(\Exception $exception) {
-                return redirect(route('photos.index'))
-                    ->withErrors([$exception->getMessage()]);
-            }
-        }
-
-        // Save in database
-        try {
-            $photo = Photo::create(
-                [
-                    'path' => $photoService ? $photoService->getPath() : null,
-                    'filename' => $photoService ? $photoService->getFileName() : null,
-                    'url' => $request->url ?? null,
-                    'description' => $request->description
-                ]
-            );
-        } catch (\Exception $exception) {
-            return redirect(route('photos.index'))
-                ->withErrors(['Είναι αδύνατη η εγγραφή στην βάση δεδομένων: ' . $exception->getMessage()]);
-        }
-
-        return redirect(route('photos.index'));
-    }
-
     /**
      * Store a photo
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return PhotoResource|\Illuminate\Http\JsonResponse
+     * @return PhotoResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(PhotoFormRequest $request)
     {
@@ -112,12 +69,22 @@ class AdminPhotosController extends Controller
                 ]
             );
         } catch (\Exception $exception) {
-            return response()->json([
-                'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
-            ], 204);
+            if ($request->is('api*')) {
+                return response()->json([
+                    'message' => 'Είναι αδύνατη η εγγραφή στην βάση δεδομένων'
+                ], 204);
+            }
+
+            return redirect(route('photos.index'))
+                ->withErrors(['Είναι αδύνατη η εγγραφή στην βάση δεδομένων: ' . $exception->getMessage()]);
         }
 
-        return new PhotoResource($photo);
+        if ($request->is('api*')) {
+            return new PhotoResource($photo);
+        }
+
+        return redirect(route('photos.index'));
+
     }
 
     /**
