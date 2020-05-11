@@ -33,31 +33,10 @@ class AdminCategoriesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage, from admin page
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function adminStore(CategoryFormRequest $request)
-    {
-        $validatedData = $request->validated();
-
-        try {
-            $category = Category::create($request->all());
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
-            ], 403);
-        }
-
-        return redirect(route('categories.index'));
-    }
-
-    /**
      * Store a newly created resource in storage, from api request
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return CategoryResource|\Illuminate\Http\JsonResponse
+     * @return CategoryResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(CategoryFormRequest $request)
     {
@@ -66,12 +45,21 @@ class AdminCategoriesController extends Controller
         try {
             $category = Category::create($request->all());
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
-            ], 403);
+            if($request->is('api*')) {
+                return response()->json([
+                    'message' => 'Δεν μπορεί να δημιουργηθεί η κατηγορία'
+                ], 403);
+            }
+
+            return redirect(route('categories.index'))
+                ->withErrors(['Δεν μπορεί να δημιουργηθεί η κατηγορία']);
         }
 
-        return new CategoryResource($category);
+        if($request->is('api*')) {
+            return new CategoryResource($category);
+        }
+
+        return redirect(route('categories.index'));
     }
 
     /**

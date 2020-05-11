@@ -11,7 +11,7 @@
                     <div class="card-header">Εισαγωγή Κατηγορίας</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('categories.adminStore') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="input-group mb-3 no-gutters">
