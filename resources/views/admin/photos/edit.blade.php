@@ -39,8 +39,8 @@
                                     <div>
                                         <span class="input-group-text">url</span>
                                     </div>
-                                    <input type="text" max="800" class="form-control" id="photoReference"
-                                           name="photoReference"  value="{{ $photo->url }}">
+                                    <input type="text" max="800" class="form-control" id="url"
+                                           name="url"  value="{{ $photo->url }}">
                                 </div>
                             </div>
 
