@@ -16,6 +16,13 @@
                             @csrf
 
                             <div class="row">
+                                <div class="col-md-4 col-12 mx-auto">
+                                    <img src="{{ $photo->photoUrl ? $photo->photoUrl : $photo->url }}"
+                                         class="card-img btn">
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="form-group my-3 col-lg-6 col-12">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input"

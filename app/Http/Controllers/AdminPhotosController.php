@@ -131,9 +131,27 @@ class AdminPhotosController extends Controller
     {
         $validatedData = $request->validated();
 
+        $input = $request->all();
+
+        if($request->file) {
+            $photoService = New PhotoService($request->file, [150, 500]);
+
+            // Save file
+            try {
+                $photoService->save();
+            } catch(\Exception $exception) {
+                $this->returnError($request->is('api*'), $exception->getMessage());
+            }
+
+            $input = [
+                'path' => isset($photoService) ? $photoService->getPath() : null,
+                'filename' => isset($photoService) ? $photoService->getFileName() : null,
+            ];
+        }
+
         $photo = Photo::findOrFail($id);
 
-        $photo->update($request->all());
+        $photo->update($input);
 
         return redirect(route('photos.index'));
     }
