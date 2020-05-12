@@ -7,6 +7,7 @@ use App\Link;
 use App\Photo;
 use App\Post;
 use App\User;
+use App\Video;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -246,5 +247,49 @@ class AdminRoutesTest extends TestCase
 
         $response->assertStatus(200)
             ->assertSee('Ενημέρωση Φωτογραφίας');
+    }
+
+    /**
+     * Test admin videos page
+     *
+     * @return void
+     */
+    public function testAdminVideosPage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/videos');
+
+        $response->assertStatus(200)
+            ->assertSee('Video');
+    }
+
+    /**
+     * Test admin video create page
+     *
+     * @return void
+     */
+    public function testAdminVideoCreatePage() : void
+    {
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/videos/create');
+
+        $response->assertStatus(200)
+            ->assertSee('Εισαγωγή Video');
+    }
+
+    /**
+     * Test admin video edit page
+     *
+     * @return void
+     */
+    public function testAdminVideoEditPage() : void
+    {
+        $video = Video::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/videos/' . $video->id . '/edit');
+
+        $response->assertStatus(200)
+            ->assertSee('Ενημέρωση Video');
     }
 }

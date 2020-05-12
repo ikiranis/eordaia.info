@@ -108,7 +108,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('posts.index') }}">
+                        <a class="nav-link" href="{{ route('videos.index') }}">
                             <span class="mdi mdi-youtube" />
                             <span>Video</span>
                         </a>

@@ -33,6 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/links', 'AdminLinksController');
     Route::resource('admin/photos', 'AdminPhotosController');
+    Route::resource('admin/videos', 'AdminVideosController');
 });
 
 Auth::routes();
