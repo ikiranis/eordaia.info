@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Services\VideoService;
 use Illuminate\View\Component;
 
 class Youtube extends Component
@@ -28,11 +29,21 @@ class Youtube extends Component
         return <<<'blade'
             <div class="row my-3">
                 <iframe width="560" height="315"  class="mx-auto"
-                    src="{{ $url }}" 
+                    src="{{ 'https://www.youtube.com/embed/' . $videoID }}" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen></iframe>
             </div>
 blade;
+    }
+
+    /**
+     * Get youtube ID
+     *
+     * @return string
+     */
+    public function videoID() : string
+    {
+        return VideoService::getYoutubeID($this->url);
     }
 }
