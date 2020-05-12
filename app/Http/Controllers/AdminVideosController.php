@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VideoFormRequest;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\VideoResource;
 use App\Video;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class AdminVideosController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return VideoResource|\Illuminate\Http\JsonResponse
+     * @return VideoResource|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(VideoFormRequest $request)
     {
@@ -47,12 +48,21 @@ class AdminVideosController extends Controller
         try {
             $video = Video::create($input);
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Δεν μπορεί να δημιουργηθεί το video '
-            ], 403);
+            if($request->is('api*')) {
+                return response()->json([
+                    'message' => 'Δεν μπορεί να δημιουργηθεί το video'
+                ], 403);
+            }
+
+            return redirect(route('videos.index'))
+                ->withErrors(['Δεν μπορεί να δημιουργηθεί το video']);
         }
 
-        return new VideoResource($video);
+        if($request->is('api*')) {
+            return new VideoResource($video);
+        }
+
+        return redirect(route('videos.index'));
     }
 
     /**
