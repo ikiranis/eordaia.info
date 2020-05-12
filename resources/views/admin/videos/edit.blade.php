@@ -33,6 +33,8 @@
                                        value="{{$video->url}}">
                             </div>
 
+                            <x-Youtube :url="$video->url" />
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     Ενημέρωση

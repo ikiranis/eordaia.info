@@ -86,7 +86,7 @@ class AdminVideosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function update(VideoFormRequest $request, $id)
     {
         $validatedData = $request->validated();
 
