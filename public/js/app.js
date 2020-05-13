@@ -80560,12 +80560,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control col-8 px-2",
-          attrs: {
-            type: "text",
-            id: "category",
-            maxlength: "15",
-            name: "category"
-          },
+          attrs: { type: "text", id: "category", max: "15", name: "category" },
           domProps: { value: _vm.category },
           on: {
             input: function($event) {
@@ -80739,7 +80734,7 @@ var render = function() {
             attrs: {
               type: "text",
               id: "name",
-              maxlength: "30",
+              max: "30",
               name: "name",
               placeholder: "Τίτλος"
             },
@@ -81302,7 +81297,7 @@ var render = function() {
             attrs: {
               type: "text",
               id: "name",
-              maxlength: "30",
+              max: "30",
               name: "name",
               placeholder: "Τίτλος"
             },

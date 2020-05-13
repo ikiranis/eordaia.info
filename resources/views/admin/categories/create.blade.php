@@ -19,7 +19,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">Όνομα</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-9 px-2" id="name" name="name"
+                                <input type="text" max="15" class="form-control col-9 px-2" id="name" name="name"
                                        value="{{old('name')}}">
                             </div>
 

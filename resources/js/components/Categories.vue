@@ -9,7 +9,7 @@
 				<label for="category" class="input-group-text w-100">Νέα κατηγορία</label>
 			</div>
 			<input type="text" v-model="category" class="form-control col-8 px-2"
-				   id="category" maxlength="15" name="category">
+				   id="category" max="15" name="category">
 
 			<span class="btn btn-success col-2" @click="insertCategory">Προσθήκη</span>
 

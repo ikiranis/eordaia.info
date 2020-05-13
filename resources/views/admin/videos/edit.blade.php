@@ -20,7 +20,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">Όνομα</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-9 px-2" id="name" name="name"
+                                <input type="text" max="30" class="form-control col-9 px-2" id="name" name="name"
                                        value="{{$video->name}}">
                             </div>
 
@@ -29,7 +29,7 @@
                                 <div class="input-group-prepend col-3">
                                     <span class="input-group-text w-100">url</span>
                                 </div>
-                                <input type="text" max="255" class="form-control col-9 px-2" id="url" name="url"
+                                <input type="text" max="800" class="form-control col-9 px-2" id="url" name="url"
                                        value="{{$video->url}}">
                             </div>
 

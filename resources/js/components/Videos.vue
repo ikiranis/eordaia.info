@@ -8,7 +8,7 @@
 			<div class="col-lg-4 col-12">
 				<label class="sr-only" for="name">Τίτλος</label>
 				<input type="text" v-model="video.name" class="form-control px-2"
-					   id="name" maxlength="30" name="name" placeholder="Τίτλος">
+					   id="name" max="30" name="name" placeholder="Τίτλος">
 			</div>
 
 			<div class="col-lg-4 col-12">
