@@ -30,7 +30,9 @@
                             <div class="form-group">
                                 <label class="form-check-label" for="body">Κείμενο</label>
                                 <div id="toolbar-container"></div>
-                                <textarea class="form-control ckeditor" id="body" name="body">{{ $post->body }}</textarea>
+                                <textarea class="form-control ckeditor" id="body" name="body" rows="15">
+                                    {{ $post->body }}
+                                </textarea>
                             </div>
 
                             <div id="vueContainer">

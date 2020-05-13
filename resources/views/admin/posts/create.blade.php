@@ -24,12 +24,14 @@
                                     <span class="input-group-text w-100">Τίτλος</span>
                                 </div>
                                 <input type="text" max="255" class="form-control col-10 px-2" id="title" name="title"
-                                       value="{{old('title')}}">
+                                       value="{{ old('title') }}">
                             </div>
 
                             <div class="form-group">
                                 <label class="form-check-label" for="body">Κείμενο</label>
-                                <textarea class="form-control" id="body" name="body" rows="15"></textarea>
+                                <textarea class="form-control" id="body" name="body" rows="15">
+                                    {{ old('body') }}
+                                </textarea>
                             </div>
 
                             <div id="vueContainer">
