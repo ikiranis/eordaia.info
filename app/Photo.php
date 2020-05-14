@@ -30,6 +30,16 @@ class Photo extends Model
 //    }
 
     /**
+     * Get file path
+     *
+     * @return string
+     */
+    private function getFilePath() : string
+    {
+        return env('APP_URL', false) . '/uploads/' . $this->path . '/';
+    }
+
+    /**
      * Relation to posts
      */
     public function posts()
@@ -38,35 +48,38 @@ class Photo extends Model
     }
 
     /**
-     * Get full path/filename with images folder
-     * Get it with $photo->fullPathName
+     * Get original image full path name
      *
      * @return string
      */
     public function getPhotoUrlAttribute() : ?string
     {
-        if($this->filename == null) {
-            return null;
-        }
-
-        return env('APP_URL', false) . '/uploads/' . $this->path . '/' . $this->filename;
+        return ($this->filename)
+            ? $this->getFilePath() . $this->filename
+            : null;
     }
 
+    /**
+     * Get medium image full path name
+     *
+     * @return string
+     */
     public function getMediumPhotoUrlAttribute() : ?string
     {
-        if($this->filename == null) {
-            return null;
-        }
-
-        return env('APP_URL', false) . '/uploads/' . $this->path . '/500x_' . $this->filename;
+        return ($this->filename)
+            ? $this->getFilePath() . '500x_' . $this->filename
+            : null;
     }
 
+    /**
+     * Get small image full path name
+     *
+     * @return string
+     */
     public function getSmallPhotoUrlAttribute() : ?string
     {
-        if($this->filename == null) {
-            return null;
-        }
-
-        return env('APP_URL', false) . '/uploads/' . $this->path . '/150x_' . $this->filename;
+        return ($this->filename)
+            ? $this->getFilePath() . '150x_' . $this->filename
+            : null;
     }
 }
