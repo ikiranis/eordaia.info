@@ -32,7 +32,7 @@ class CoverPhoto extends Component
         return <<<'blade'
         @if ($photo)
             <div class="col-md-4 col-12">
-                <img src="{{ $photo->photoUrl ? $photo->photoUrl : '' }}"
+                <img src="{{ $photo->photoUrl ?? 'http://via.placeholder.com/350x350' }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
             </div>
         @endif

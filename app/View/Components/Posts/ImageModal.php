@@ -39,7 +39,7 @@ class ImageModal extends Component
                         </div>
                         <div class="modal-body">
             
-                            <img src="{{ $post->photos()->first()->url ?? 'http://via.placeholder.com/350x150' }}"
+                            <img src="{{ $post->photos()->first()->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
                                  width="100%">
             
                         </div>
