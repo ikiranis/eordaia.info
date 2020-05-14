@@ -24,8 +24,7 @@ class PhotoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'nullable|image',
-            'url' => 'nullable|active_url',
+            'file' => 'required|image',
             'description' => 'nullable'
         ];
     }
@@ -38,8 +37,8 @@ class PhotoFormRequest extends FormRequest
     public function messages()
     {
         return [
+            'file.required' => 'Το αρχείο είναι απαραίτητο',
             'file.image' => 'Το αρχείο πρέπει να είναι εικόνα',
-            'url.active_url' => 'Το url πρέπει να είναι ενεργό'
         ];
     }
 }

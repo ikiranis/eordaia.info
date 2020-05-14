@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group my-3 col-lg-6 col-12">
+                                <div class="form-group my-3 col-lg-6 col-12 mx-auto">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input"
                                                name="file" id="file"
@@ -31,16 +31,6 @@
                                         <label class="custom-file-label"
                                                for="uploadFile">Φωτογραφία</label>
                                     </div>
-                                </div>
-
-                                <div class="input-group my-3 col-lg-6 col-12">
-                                    <label class="sr-only"
-                                           for="photoReference">url</label>
-                                    <div>
-                                        <span class="input-group-text">url</span>
-                                    </div>
-                                    <input type="text" max="800" class="form-control" id="url"
-                                           name="url"  value="{{ $photo->url }}">
                                 </div>
                             </div>
 

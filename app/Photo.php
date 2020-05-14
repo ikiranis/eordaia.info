@@ -15,7 +15,6 @@ class Photo extends Model
     protected $fillable = [
         'path',
         'filename',
-        'url',
         'description'
     ];
 

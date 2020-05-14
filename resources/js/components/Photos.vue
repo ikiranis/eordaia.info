@@ -20,19 +20,6 @@
 					</div>
 				</div>
 
-				<div class="input-group my-3 col-lg-6 col-12">
-					<label class="sr-only"
-						   for="photoReference">url</label>
-					<div>
-						<span class="input-group-text">url</span>
-					</div>
-					<input type="text" max="800" class="form-control" id="photoReference"
-						   name="photoReference"
-						   v-model="photo.url">
-
-					<form-error v-if="response.errors.url"
-								:error="response.errors.url[0]" />
-				</div>
 			</div>
 
 			<div class="row">
@@ -45,12 +32,10 @@
 							class="mx-auto col-lg-8 col-12"/>
 			</div>
 
-			<div v-if="photo.preview || photo.photoUrl || photo.url" class="row col-12">
+			<div v-if="photo.preview || photo.photoUrl" class="row col-12">
 				<img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="350"/>
 
-				<img v-else-if="photo.photoUrl" :src="photo.photoUrl" class="mx-auto" width="350"/>
-
-				<img v-else-if="photo.url" :src="photo.url" class="mx-auto" width="350"/>
+				<img v-else :src="photo.photoUrl" class="mx-auto" width="350"/>
 			</div>
 
 			<div class="row">
@@ -91,7 +76,6 @@
 				emptyPhoto: {
 					id: null,
 					file: null,
-					url: '',
 					description: '',
 					preview: null,
 					photoUrl: ''

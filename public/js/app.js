@@ -2183,21 +2183,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2210,7 +2195,6 @@ __webpack_require__.r(__webpack_exports__);
       emptyPhoto: {
         id: null,
         file: null,
-        url: '',
         description: '',
         preview: null,
         photoUrl: ''
@@ -80924,55 +80908,7 @@ var render = function() {
                 ],
                 1
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "input-group my-3 col-lg-6 col-12" },
-              [
-                _c(
-                  "label",
-                  { staticClass: "sr-only", attrs: { for: "photoReference" } },
-                  [_vm._v("url")]
-                ),
-                _vm._v(" "),
-                _vm._m(0, true),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: photo.url,
-                      expression: "photo.url"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    max: "800",
-                    id: "photoReference",
-                    name: "photoReference"
-                  },
-                  domProps: { value: photo.url },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(photo, "url", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _vm.response.errors.url
-                  ? _c("form-error", {
-                      attrs: { error: _vm.response.errors.url[0] }
-                    })
-                  : _vm._e()
-              ],
-              1
-            )
+            ])
           ]),
           _vm._v(" "),
           _c(
@@ -81021,24 +80957,17 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          photo.preview || photo.photoUrl || photo.url
+          photo.preview || photo.photoUrl
             ? _c("div", { staticClass: "row col-12" }, [
                 photo.preview
                   ? _c("img", {
                       staticClass: "mx-auto",
                       attrs: { src: photo.preview.src, width: "350" }
                     })
-                  : photo.photoUrl
-                  ? _c("img", {
+                  : _c("img", {
                       staticClass: "mx-auto",
                       attrs: { src: photo.photoUrl, width: "350" }
                     })
-                  : photo.url
-                  ? _c("img", {
-                      staticClass: "mx-auto",
-                      attrs: { src: photo.url, width: "350" }
-                    })
-                  : _vm._e()
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -81096,16 +81025,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("span", { staticClass: "input-group-text" }, [_vm._v("url")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -51,7 +51,6 @@ class PhotosApiTest extends TestCase
             'id',
             'path',
             'filename',
-            'url',
             'description',
             'photoUrl'
         ]);

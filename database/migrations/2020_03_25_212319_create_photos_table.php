@@ -17,7 +17,6 @@ class CreatePhotosTable extends Migration
             $table->uuid('id');
             $table->string('path')->nullable();
             $table->string('filename')->nullable();
-            $table->string('url', 800)->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
             $table->primary('id');

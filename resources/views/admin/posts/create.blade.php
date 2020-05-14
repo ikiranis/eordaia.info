@@ -19,7 +19,7 @@
                             <input type="hidden" id="user_id" name="user_id" value="{{$user_id}}">
 
                             <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="title">Τίτλος</label>
+                                <label class="sr-only" for= l"title">Τίτλος</label>
                                 <div class="input-group-prepend col-2">
                                     <span class="input-group-text w-100">Τίτλος</span>
                                 </div>
