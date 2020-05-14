@@ -21,7 +21,7 @@
                 <div class="row my-3">
                     @if ($post->photos()->first())
                         <div class="col-md-4 col-12">
-                            <img src="{{ $post->photos()->first()->photoUrl ? $post->photos()->first()->photoUrl : $post->photos()->first()->url }}"
+                            <img src="{{ $post->photos()->first()->photoUrl ? $post->photos()->first()->photoUrl : '' }}"
                                  class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $post->id }}">
                         </div>
                     @endif
