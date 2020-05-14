@@ -19,7 +19,10 @@
             <div class="card-body">
 
                 <div class="row my-3">
-                    <x-posts.CoverPhoto :photo="$post->photos()->first()" :postId="$post->id" />
+                    <x-posts.CoverPhoto
+                            :photo="$post->photos()->first()"
+                            :postId="$post->id"
+                            :smallPhoto="true" />
 
                     <div class="col-md-8 col-12 article">
                         @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')

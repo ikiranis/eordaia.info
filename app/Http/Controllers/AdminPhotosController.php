@@ -64,7 +64,7 @@ class AdminPhotosController extends Controller
         $validatedData = $request->validated();
 
         if($request->file) {
-            $photoService = New PhotoService($request->file, [150, 500]);
+            $photoService = New PhotoService($request->file, [150, 350]);
 
             // Save file
             try {
@@ -134,7 +134,7 @@ class AdminPhotosController extends Controller
         $input = $request->all();
 
         if($request->file) {
-            $photoService = New PhotoService($request->file, [150, 500]);
+            $photoService = New PhotoService($request->file, [150, 350]);
 
             // Save file
             try {

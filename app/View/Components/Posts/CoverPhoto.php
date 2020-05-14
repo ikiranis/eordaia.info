@@ -9,17 +9,20 @@ class CoverPhoto extends Component
 {
     public Photo $photo;
     public string $postId;
+    public bool $smallPhoto;
 
     /**
      * Create a new component instance.
      *
      * @param Photo $photo
      * @param string $postId
+     * @param bool $smallPhoto
      */
-    public function __construct(Photo $photo, string $postId)
+    public function __construct(Photo $photo, string $postId, bool $smallPhoto)
     {
         $this->photo = $photo;
         $this->postId = $postId;
+        $this->smallPhoto = $smallPhoto;
     }
 
     /**
@@ -31,11 +34,21 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
         @if ($photo)
-            <div class="col-md-4 col-12">
-                <img src="{{ $photo->photoUrl ?? 'http://via.placeholder.com/350x350' }}"
+            <div class="col">
+                <img src="{{ $photoUrl ?? 'http://via.placeholder.com/350x350' }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
             </div>
         @endif
 blade;
+    }
+
+    /**
+     * Get the correct photo
+     *
+     * @return string
+     */
+    public function photoUrl() : ?string
+    {
+        return ($this->smallPhoto) ? $this->photo->smallPhotoUrl : $this->photo->mediumPhotoUrl;
     }
 }

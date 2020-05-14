@@ -56,7 +56,7 @@ class Photo extends Model
     public function getMediumPhotoUrlAttribute() : ?string
     {
         return ($this->filename)
-            ? $this->getFilePath() . '500x_' . $this->filename
+            ? $this->getFilePath() . '350x_' . $this->filename
             : null;
     }
 

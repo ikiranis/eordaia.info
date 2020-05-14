@@ -16,7 +16,10 @@
 
     <div>
         <div class="row my-3">
-            <x-posts.CoverPhoto :photo="$post->photos()->first()" :postId="$post->id" />
+            <x-posts.CoverPhoto
+                    :photo="$post->photos()->first()"
+                    :postId="$post->id"
+                    :smallPhoto="false"/>
 
             <div class="col-md-8 col-12 text-justify article">
                 {!! $post->markdownBody !!}
