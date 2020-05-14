@@ -80871,44 +80871,48 @@ var render = function() {
       _vm._l(_vm.photos, function(photo, index) {
         return _c("div", { staticClass: "my-3 px-1 py-1 border" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "form-group my-3 col-lg-6 col-12" }, [
-              _c(
-                "div",
-                { staticClass: "custom-file" },
-                [
-                  _c("input", {
-                    staticClass: "custom-file-input",
-                    attrs: {
-                      type: "file",
-                      name: "uploadFile",
-                      id: "uploadFile",
-                      accept: "image/*"
-                    },
-                    on: {
-                      change: function($event) {
-                        return _vm.handleFile($event, index)
+            _c(
+              "div",
+              { staticClass: "form-group my-3 col-lg-6 col-12 mx-auto" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "custom-file" },
+                  [
+                    _c("input", {
+                      staticClass: "custom-file-input",
+                      attrs: {
+                        type: "file",
+                        name: "uploadFile",
+                        id: "uploadFile",
+                        accept: "image/*"
+                      },
+                      on: {
+                        change: function($event) {
+                          return _vm.handleFile($event, index)
+                        }
                       }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-file-label",
-                      attrs: { for: "uploadFile" }
-                    },
-                    [_vm._v("Φωτογραφία")]
-                  ),
-                  _vm._v(" "),
-                  _vm.response.errors.file
-                    ? _c("form-error", {
-                        attrs: { error: _vm.response.errors.file[0] }
-                      })
-                    : _vm._e()
-                ],
-                1
-              )
-            ])
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "custom-file-label",
+                        attrs: { for: "uploadFile" }
+                      },
+                      [_vm._v("Φωτογραφία")]
+                    ),
+                    _vm._v(" "),
+                    _vm.response.errors.file
+                      ? _c("form-error", {
+                          attrs: { error: _vm.response.errors.file[0] }
+                        })
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ]
+            )
           ]),
           _vm._v(" "),
           _c(

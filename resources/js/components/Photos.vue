@@ -6,7 +6,7 @@
 
 		<div v-for="(photo, index) in photos" class="my-3 px-1 py-1 border">
 			<div class="row">
-				<div class="form-group my-3 col-lg-6 col-12">
+				<div class="form-group my-3 col-lg-6 col-12 mx-auto">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input"
 							   name="uploadFile" id="uploadFile"
