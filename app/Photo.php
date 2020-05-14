@@ -43,12 +43,30 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getPhotoUrlAttribute()
+    public function getPhotoUrlAttribute() : ?string
     {
         if($this->filename == null) {
             return null;
         }
 
         return env('APP_URL', false) . '/uploads/' . $this->path . '/' . $this->filename;
+    }
+
+    public function getMediumPhotoUrlAttribute() : ?string
+    {
+        if($this->filename == null) {
+            return null;
+        }
+
+        return env('APP_URL', false) . '/uploads/' . $this->path . '/500x_' . $this->filename;
+    }
+
+    public function getSmallPhotoUrlAttribute() : ?string
+    {
+        if($this->filename == null) {
+            return null;
+        }
+
+        return env('APP_URL', false) . '/uploads/' . $this->path . '/150x_' . $this->filename;
     }
 }

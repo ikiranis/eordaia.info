@@ -24,7 +24,7 @@ class VideoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable',
+            'name' => 'nullable|max:150',
             'url' => 'required|active_url'
         ];
     }
@@ -37,6 +37,7 @@ class VideoFormRequest extends FormRequest
     public function messages()
     {
         return [
+            'name.max' => 'Επιτρέπεται να έχει μέχρι 150 χαρακτήρες μόνο',
             'url.required' => 'To url απαιτείται',
             'url.active_url' => 'Το url πρέπει να είναι ενεργό'
         ];

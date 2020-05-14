@@ -5,6 +5,7 @@ use App\Link;
 use App\Photo;
 use App\Post;
 use App\Tag;
+use App\Video;
 use Illuminate\Database\Seeder;
 
 class PostsTableSeeder extends Seeder
@@ -47,6 +48,12 @@ class PostsTableSeeder extends Seeder
                     ->create()
                     ->each(function ($tag) use ($post) {
                         $post->tags()->attach($tag->id);
+                    });
+
+                factory(Video::class, rand(1,5))
+                    ->create()
+                    ->each(function ($video) use ($post) {
+                        $post->videos()->attach($video->id);
                     });
 
                 $post->categories()->attach($categories[rand(0,4)]);

@@ -35,7 +35,7 @@ class VideosApiTest extends TestCase
     public function testPostVideo() : void
     {
         $request = [
-            'name' => $this->faker->text(rand(15, 30)),
+            'name' => $this->faker->text(rand(50, 150)),
             'url' => "https://www.youtube.com/watch?v=ibgkLzQVgjo"
         ];
 
