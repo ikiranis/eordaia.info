@@ -14,27 +14,34 @@
 
 {{--    @include('includes.posts.guest-post-message')--}}
 
-    <div class="container">
+    <div class="container blog-content">
 
-        <div class="row no-gutters">
+        <div class="row">
 
-            <section class="container col-lg-10 col-12">
-                @if(count($posts)>0)
+            <div class="col-sm-8 blog-main">
 
-                    <x-posts.ListPosts :posts="$posts" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        @if(count($posts)>0)
 
-                    <x-posts.paging :posts="$posts" />
-{{--                    @include('includes.ads.homepage-google-ad')--}}
+                            <x-posts.ListPosts :posts="$posts" />
 
-                @endif
-            </section>
+                            <x-posts.paging :posts="$posts" />
+        {{--                    @include('includes.ads.homepage-google-ad')--}}
 
-            <x-sidebar />
+                        @endif
+                    </div>
+                </div>
 
+            </div>
 
         </div>
 
     </div>
+
+
+
+{{--    <x-sidebar />--}}
 
 @endsection
 

@@ -2,13 +2,15 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,600");
 
 // Variables
-@import "variables";
+//@import "variables";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 // Material Design Icons
 @import '~@mdi/font/css/materialdesignicons.css';
+
+@import "bootstrap-material-design";
 
 // Import index.css
 @import 'index';

@@ -1,39 +1,40 @@
 @foreach($posts as $post)
-    <x-posts.imageModal :post="$post" />
+    <x-posts.imageModal :post="$post" xmlns="http://www.w3.org/1999/html"/>
 
-    <article class="col-12 my-3">
-        <div class="card">
-            <div class="card-header row no-gutters">
-                <div class="col-lg-9 col-12 my-auto">
-                    <h3><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h3>
+    <section class="col-12 my-3">
+        <article class="blog-post">
+            <div class="panel panel-default">
+{{--                <img src="img/travel/unsplash-2.jpg" class="img-responsive" />--}}
+                <x-posts.CoverPhoto
+                        :photo="$post->photos()->first()"
+                        :postId="$post->id"
+                        :smallPhoto="false" />
+                <div class="panel-body">
+                    <div class="blog-post-meta">
+                        <span class="label label-light label-success">{{ $post->author !== null ? 'Από: '. $post->author : 'Unknown' }}</span>
+                        <p title="Τελευταία ενημέρωση: {{$post->updated_at}}"
+                           class="blog-post-date pull-right">{{$post->updated_at->diffForHumans()}}</p>
 
-                    <x-posts.categories :post="$post" />
-                    <x-posts.tags :post="$post" />
-                </div>
-                <div class="col-lg-3 col-12 ml-auto text-right my-auto">
-                    <div>{{ $post->author !== null ? 'Από: '. $post->author : '' }}</div>
-                    <div title="Τελευταία ενημέρωση: {{$post->updated_at}}">{{$post->updated_at->diffForHumans()}}</div>
-                </div>
-            </div>
+{{--                        <x-posts.categories :post="$post" />--}}
+{{--                        <x-posts.tags :post="$post" />--}}
+                    </div>
+                    <div class="blog-post-content">
+                        <a href="{{route('post', $post->slug)}}">
+                            <h2 class="blog-post-title">{{$post->title}}</h2>
+                        </a>
 
-            <div class="card-body">
-
-                <div class="row my-3">
-                    <x-posts.CoverPhoto
-                            :photo="$post->photos()->first()"
-                            :postId="$post->id"
-                            :smallPhoto="true" />
-
-                    <div class="col-md-8 col-12 article">
-                        @php ($moreButton = ' [...] <div class="row"><a href="'. route('post', $post->slug). '" class="mx-5 btn btn-sm btn-outline-secondary">Συνέχεια...</a></div>')
+                        @php ($moreButton = ' [...] <a class="btn btn-info" href="'. route('post', $post->slug) . '>Συνέχεια...</a></div>')
 
                         {!! Str::words($post->markdownBody, 200, $moreButton) !!}
 
-                        <x-posts.links :post="$post" />
+{{--                        <x-posts.links :post="$post" />--}}
+
+                        <a class="blog-post-share pull-right" href="#">
+                            <i class="material-icons">&#xE80D;</i>
+                        </a>
                     </div>
                 </div>
             </div>
-
-        </div>
-    </article>
+        </article>
+    </section>
 @endforeach
