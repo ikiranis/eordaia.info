@@ -1,5 +1,13 @@
-a:link, a:visited, a:hover, a:active {
-    color: black;
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: orange;
+}
+
+a:hover, a:active {
+    color: darkorange;
 }
 
 .navbar-laravel {
@@ -12,14 +20,19 @@ a:link, a:visited, a:hover, a:active {
     object-fit: cover;
 }
 
-#siteTitle a {
-    color: #fff;
+.navbar-brand a {
+    text-decoration: none;
 }
 
-.article a {
+//#siteTitle a {
+//    color: #fff;
+//    text-decoration: none;
+//}
+
+article a {
     text-decoration: underline;
 }
 
-.websiteLink a {
-    text-decoration: underline;
-}
+//.websiteLink a {
+//    text-decoration: underline;
+//}
