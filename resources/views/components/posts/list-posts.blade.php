@@ -28,6 +28,7 @@
                     </a>
                 </div>')
 
+{{--                TODO clear text format --}}
                 {!! Str::words($post->markdownBody, 20, $moreButton) !!}
 
 {{--                <x-posts.links :post="$post" />--}}
