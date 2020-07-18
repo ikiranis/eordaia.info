@@ -16,3 +16,4 @@ yarn-error.log
 /public/uploads/
 /_ide_helper_models.php
 /storage/framework/cache/
+/public/css

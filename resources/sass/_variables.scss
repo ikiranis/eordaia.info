@@ -7,8 +7,14 @@ $font-size-base: 1rem;
 $line-height-base: 1.2;
 
 // Theme colors
-$primary: #5C22A1;
-$secondary: #757407;
+$theme-colors: (
+        "primary": #5C22A1,
+        "secondary": #757407,
+        "light-primary": #9F88BB,
+        "medium-primary": #734CA1,
+        "light-secondary": #ABAB7F,
+        "medium-secondary": #9E9D42
+);
 
 // Colors
 $blue: #3490dc;

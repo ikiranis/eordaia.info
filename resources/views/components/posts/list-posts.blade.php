@@ -18,7 +18,7 @@
                 </div>
                 <div class="blog-post-content">
                     <a href="{{route('post', $post->slug)}}">
-                        <h2 class="blog-post-title">{{$post->title}}</h2>
+                        <h2 class="blog-post-title text-medium-secondary">{{$post->title}}</h2>
                     </a>
 
                     @php ($moreButton = ' [...] <a class="btn btn-info" href="'. route('post', $post->slug) . '>Συνέχεια...</a></div>')
