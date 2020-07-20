@@ -13,7 +13,7 @@
                       class="post-date ml-auto">{{ $post->updated_at->diffForHumans() }}</span>
 
                 <a href="{{route('post', $post->slug)}}">
-                    <h2 class="post-title">{{$post->title}}</h2>
+                    <p class="post-title">{{$post->title}}</p>
                 </a>
             </div>
 
@@ -24,12 +24,11 @@
 
                 @php ($moreButton = '<div class="row col-12">
                     <a class="ml-auto" href="'. route('post', $post->slug) . '">
-                        <span class="btn btn-light-secondary text-light">Συνέχεια...</span>
+                        <span class="btn-sm btn-light-secondary text-light">Συνέχεια...</span>
                     </a>
                 </div>')
 
-{{--                TODO clear text format --}}
-                {!! Str::words($post->markdownBody, 20, $moreButton) !!}
+                {!! Str::words(strip_tags($post->markdownBody), 20, $moreButton) !!}
 
 {{--                <x-posts.links :post="$post" />--}}
 
