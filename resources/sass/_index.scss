@@ -28,6 +28,13 @@ html {
     text-decoration: none;
 }
 
+nav {
+    .navbar {
+        color: $white;
+        background-color: $primary;
+    }
+}
+
 //#siteTitle a {
 //    color: #fff;
 //    text-decoration: none;
