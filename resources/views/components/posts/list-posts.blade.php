@@ -9,8 +9,8 @@
                     :smallPhoto="false" />
 
             <div class="title-container">
-                <span title="Τελευταία ενημέρωση: {{$post->updated_at}}"
-                      class="post-date ml-auto">{{ $post->updated_at->diffForHumans() }}</span>
+                <span title="Τελευταία ενημέρωση: {{ $post->updated_at->diffForHumans() }}"
+                      class="post-date ml-auto">{{ $post->updated_at->format('d/m/Y @ H:i') }}</span>
 
                 <a href="{{route('post', $post->slug)}}">
                     <p class="post-title">{{$post->title}}</p>
