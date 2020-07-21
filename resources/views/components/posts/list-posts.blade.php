@@ -22,13 +22,13 @@
 {{--                        <x-posts.tags :post="$post" />--}}
             <div class="post-content">
 
-                @php ($moreButton = '<div class="row col-12">
+                @php ($moreButton = '<div class="row col-12 mt-3">
                     <a class="ml-auto" href="'. route('post', $post->slug) . '">
                         <span class="btn-sm btn-light-secondary text-light">Συνέχεια...</span>
                     </a>
                 </div>')
 
-                {!! Str::words(strip_tags($post->markdownBody), 20, $moreButton) !!}
+                {!! Str::words(strip_tags($post->markdownBody), 50, $moreButton) !!}
 
 {{--                <x-posts.links :post="$post" />--}}
 
