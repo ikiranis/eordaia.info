@@ -1,14 +1,17 @@
 @foreach($posts as $post)
     <x-posts.imageModal :post="$post" xmlns="http://www.w3.org/1999/html"/>
 
-    <article class="mt-3 mb-5 py-3 px-3">
+    <article class="mt-3 mb-5">
 {{--                <img src="img/travel/unsplash-2.jpg" class="img-responsive" />--}}
-            <x-posts.CoverPhoto
+
+            <div class="row">
+                <x-posts.CoverPhoto
                     :photo="$post->photos()->first()"
                     :postId="$post->id"
                     :smallPhoto="false" />
+            </div>
 
-            <div class="title-container">
+            <div class="title-container py-3 px-3">
                 <span title="Τελευταία ενημέρωση: {{ $post->updated_at->diffForHumans() }}"
                       class="post-date ml-auto">{{ $post->updated_at->format('d/m/Y @ H:i') }}</span>
 
@@ -20,7 +23,7 @@
 
 {{--                        <x-posts.categories :post="$post" />--}}
 {{--                        <x-posts.tags :post="$post" />--}}
-            <div class="post-content">
+            <div class="post-content py-3 px-3">
 
                 @php ($moreButton = '<div class="row col-12 mt-3">
                     <a class="ml-auto" href="'. route('post', $post->slug) . '">
