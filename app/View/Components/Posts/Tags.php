@@ -27,16 +27,14 @@ class Tags extends Component
     public function render()
     {
         return <<<'blade'
-        
+
             @if(!$tags->isEmpty())
-                <div class="row mt-3">
                     @foreach($tags as $tag)
-                        <a href="{{ route('tag', '') . '/' . $tag->slug }}" 
-                            class="badge badge-primary text-light mx-1">
+                        <a href="{{ route('tag', '') . '/' . $tag->slug }}"
+                            class="badge badge-light-secondary text-dark mx-1 px-2">
                             {{ $tag->name }}
                         </a>
                     @endforeach
-                </div>
             @endif
 
 blade;
