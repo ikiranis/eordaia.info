@@ -1,7 +1,7 @@
 @foreach($posts as $post)
     <x-posts.imageModal :post="$post" xmlns="http://www.w3.org/1999/html"/>
 
-    <article class="mt-3 mb-5">
+    <article class="list-post-container mt-3 mb-5">
 {{--                <img src="img/travel/unsplash-2.jpg" class="img-responsive" />--}}
 
             <div class="row">
