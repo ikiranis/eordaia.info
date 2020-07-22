@@ -25,7 +25,7 @@
 {{--                        <x-posts.tags :post="$post" />--}}
             <div class="post-content py-3 px-3">
 
-                @php ($moreButton = '<div class="row col-12 mt-3">
+                @php ($moreButton = '<div class="row mt-3 px-3">
                     <a class="ml-auto" href="'. route('post', $post->slug) . '">
                         <span class="btn-sm btn-light-secondary text-light">Συνέχεια...</span>
                     </a>
