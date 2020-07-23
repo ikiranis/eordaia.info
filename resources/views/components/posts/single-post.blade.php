@@ -19,7 +19,6 @@
             <x-posts.tags class="col" :post="$post" />
         </div>
 
-
         <a href="{{route('post', $post->slug)}}">
             <p class="post-title">{{$post->title}}</p>
         </a>

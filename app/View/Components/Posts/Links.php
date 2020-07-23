@@ -28,14 +28,15 @@ class Links extends Component
     {
         return <<<'blade'
             @if(!$links->isEmpty())
-                <div class="row mt-3">
-                    <div class="mx-auto">
-                        @foreach($links as $link)
-                            <a href="{{ $link->url }}" class="btn btn-sm btn-outline-info mx-1" title="{{ $link->url }}">
+                <div class="mt-3">
+                    @foreach($links as $link)
+                        <div class="text-medium-secondary">
+                            <span class="mdi mdi-link-variant" />
+                            <a href="{{ $link->url }}" class="text-medium-secondary" title="{{ $link->url }}">
                                 <span>{{ parse_url($link->url)['host'] }}</span>
                             </a>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             @endif
 blade;
