@@ -21,7 +21,7 @@
 
             <div class="post-content px-3">
 
-                @php ($moreButton = '<div class="row mt-3 px-3">
+                @php ($moreButton = '<div class="row px-3 py-3">
                     <a class="ml-auto" href="'. route('post', $post->slug) . '">
                         <span class="btn-sm btn-light-secondary text-light">Συνέχεια...</span>
                     </a>
