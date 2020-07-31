@@ -17,4 +17,5 @@ yarn-error.log
 /_ide_helper_models.php
 /storage/framework/cache/
 /public/css/
+/public/fonts/
 composer.lock
