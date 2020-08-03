@@ -12,7 +12,11 @@
 
     <section class="container">
 
-        <h1>{{$tag->name}}</h1>
+        <span>:: </span>
+        <a href="{{ route('tag', '') . '/' . $tag->slug }}"
+           class="text-secondary mx-1">
+            {{ $tag->name }}
+        </a>
 
         @if(count($posts)>0)
 
