@@ -27,3 +27,24 @@ npm run dev
 ```
 php artisan serve --host 0.0.0.0
 ```
+
+## Install production env
+
+- Install laravel/mysql docker
+
+https://github.com/ikiranis/apache-mysql-for-laravel
+
+- Clone project
+
+- Run
+
+```
+composer install
+npm install
+
+php artisan migrate
+php artisan key:generate
+php artisan db:seed --class=StartSeeder
+
+npm run prod
+```
