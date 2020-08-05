@@ -7,7 +7,7 @@ use Illuminate\View\Component;
 
 class CoverPhoto extends Component
 {
-    public Photo $photo;
+    public ?Photo $photo;
     public string $postId;
     public bool $smallPhoto;
 
@@ -18,7 +18,7 @@ class CoverPhoto extends Component
      * @param string $postId
      * @param bool $smallPhoto
      */
-    public function __construct(Photo $photo, string $postId, bool $smallPhoto)
+    public function __construct(?Photo $photo, string $postId, bool $smallPhoto)
     {
         $this->photo = $photo;
         $this->postId = $postId;
@@ -35,10 +35,16 @@ class CoverPhoto extends Component
         return <<<'blade'
         @if ($photo)
             <div class="col">
-                <img src="{{ ($photo->photoUrl) ? $photoUrl : 'http://via.placeholder.com/350x170' }}"
+                <img src="{{ $photo->photoUrl }}"
+                     class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
+            </div>
+        @else
+            <div class="col">
+                <img src="{{ 'http://via.placeholder.com/350x170' }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
             </div>
         @endif
+
 blade;
     }
 
