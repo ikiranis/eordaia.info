@@ -49,7 +49,8 @@ class PhotoService
      *
      * @throws Exception
      */
-    public function save(): void {
+    public function save(): void
+    {
         $this->saveOriginalFile();
 
         foreach ($this->sizes as $size) {
@@ -62,7 +63,8 @@ class PhotoService
      *
      * @throws Exception
      */
-    private function saveOriginalFile() {
+    private function saveOriginalFile()
+    {
         try {
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/' . $this->fileName,  File::get($this->file));

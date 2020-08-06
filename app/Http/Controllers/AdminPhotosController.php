@@ -7,7 +7,7 @@ use App\Http\Resources\PhotoResource;
 use App\Photo;
 use App\Services\PhotoService;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Mixed_;
+use Storage;
 
 class AdminPhotosController extends Controller
 {
@@ -165,8 +165,36 @@ class AdminPhotosController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $photo = Photo::whereId($id);
+        $filePaths = [];
+        $errors = [];
 
+        $photo = Photo::whereId($id)->first();
+
+        $filePaths[0] = '/' . $photo->path . '/' . $photo->filename;
+        $filePaths[1] = '/' . $photo->path . '/150x_' . $photo->filename;
+        $filePaths[2] = '/' . $photo->path . '/350x_' . $photo->filename;
+
+        // Delete physical files
+        foreach ($filePaths as $filePath) {
+            if (Storage::disk('public')->exists($filePath)) {
+                try {
+                    Storage::disk('public')->delete($filePath);
+                } catch (\Exception $e) {
+                    array_push($errors,
+                        'Υπήρξε πρόβλημα στη διαγράφη του αρχείου '
+                        . $filePath . ' από τον δίσκο ' . $e->getMessage());
+                }
+            }
+        }
+
+        if (count($errors) > 0) {
+            return response()->json([
+                'message' => 'Υπήρξε πρόβλημα στη διαγράφη αρχείων από τον δίσκο',
+                'debug' => $errors
+            ], 400);
+        }
+
+        // Delete from database
         try {
             $photo->delete();
         } catch (\Exception $e) {
