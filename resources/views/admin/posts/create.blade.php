@@ -29,9 +29,7 @@
 
                             <div class="form-group">
                                 <label class="form-check-label" for="body">Κείμενο</label>
-                                <textarea class="form-control" id="body" name="body" rows="15">
-                                    {{ old('body') }}
-                                </textarea>
+                                <textarea class="form-control" id="body" name="body" rows="15">{{ old('body') }}</textarea>
                             </div>
 
                             <div id="vueContainer">
