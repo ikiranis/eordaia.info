@@ -29,6 +29,8 @@
 
         {!! $post->markdownBody !!}
 
+        <x-Youtube :url="$post->videos()->first()->url" />
+
         <x-posts.links :post="$post" />
 
     </div>
