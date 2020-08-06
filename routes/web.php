@@ -29,7 +29,7 @@ Route::get('/admin', function () {
 Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
-    Route::resource('admin/rules', 'AdminRulesController');
+//    Route::resource('admin/rules', 'AdminRulesController');
     Route::resource('admin/categories', 'AdminCategoriesController');
     Route::resource('admin/links', 'AdminLinksController');
     Route::resource('admin/photos', 'AdminPhotosController');

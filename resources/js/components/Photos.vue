@@ -161,11 +161,9 @@ export default {
         },
 
         deletePhoto(index) {
-            console.log('delete... ' + index)
-
             this.loading = true
 
-            axios.delete('/api/photo', index)
+            axios.delete('/api/photo/' + index)
                 .then(response => {
                     this.response.message = "Η φωτογραφία διαγράφηκε..."
                     this.response.status = true
