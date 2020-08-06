@@ -27,7 +27,7 @@
                     </a>
                 </div>')
 
-                <div class="py-3">
+                <div class="pb-3">
                     {!! Str::words(strip_tags($post->markdownBody), 50, $moreButton) !!}
                 </div>
 
