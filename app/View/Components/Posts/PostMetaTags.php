@@ -31,25 +31,25 @@ class PostMetaTags extends Component
         
             <!-- Schema.org markup for Google+ -->
             <meta itemprop="name" content="{{ $post->title }}">
-<!--            <meta itemprop="description" content="{{ $post->description }}">-->
-<!--            <meta itemprop="image" content="{{ $post->photo ? url($post->photo->full_path_name) : ''}}">-->
+            <meta itemprop="description" content="{{ Str::words(strip_tags($post->markdownBody), 10, '') }}">
+            <meta itemprop="image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : ''}}">
         
             <!-- Twitter Card data -->
 <!--            <meta name="twitter:card" content="{{ $post->photo ? url($post->photo->full_path_name) : ''}}">-->
 <!--            <meta name="twitter:site" content="">-->
             <meta name="twitter:title" content="{{ $post->title }}">
-<!--            <meta name="twitter:description" content="{{ $post->description }}">-->
+            <meta name="twitter:description" content="{{ Str::words(strip_tags($post->markdownBody), 10, '') }}">
 <!--            <meta name="twitter:creator" content="">-->
             <!-- Twitter summary card with large image must be at least 280x150px -->
-<!--            <meta name="twitter:image:src" content="{{ $post->photo ? url($post->photo->full_path_name) : ''}}">-->
+            <meta name="twitter:image:src" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : ''}}">
         
             <!-- Open Graph data -->
             <meta property="og:title" content="{{ $post->title }}"/>
             <meta property="og:type" content="article"/>
             <meta property="og:url" content="{{ secure_url('/' . $post->slug) }}"/>
-<!--            <meta property="og:image" content="{{ $post->photo ? url($post->photo->full_path_name) : ''}}"/>-->
+            <meta property="og:image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : ''}}"/>
             <meta property="og:image:width" content="282">
-<!--            <meta property="og:description" content="{{ $post->description }}"/>-->
+            <meta property="og:description" content="{{ Str::words(strip_tags($post->markdownBody), 10, '') }}"/>
             <meta property="og:site_name" content="eordaia.info"/>
             <meta property="article:published_time" content="{{ $post->created_at }}"/>
             <meta property="article:modified_time" content="{{ $post->updated_at }}"/>
