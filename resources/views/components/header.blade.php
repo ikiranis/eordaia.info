@@ -2,16 +2,16 @@
 
     <a class="navbar-brand" href="{{ route('home') }}"><span class="mdi mdi-home-outline" />Eordaia.info</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav my-auto ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('about') }}">About</a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="{{ route('about') }}">About</a>--}}
+{{--            </li>--}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('contact') }}">Επικοινωνία</a>
             </li>

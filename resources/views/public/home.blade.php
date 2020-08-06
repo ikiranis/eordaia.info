@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <x-posts.search />
+{{--    <x-posts.search />--}}
 
 {{--    @include('includes.posts.guest-post-message')--}}
 
@@ -29,16 +29,12 @@
                 @endif
             </div>
 
-            <x-sidebar />
+{{--            <x-sidebar />--}}
 
 
         </div>
 
     </div>
-
-
-
-
 
 @endsection
 
