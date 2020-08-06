@@ -159,18 +159,24 @@ class AdminPhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $photo = Photo::whereId($id);
 
         try {
             $photo->delete();
         } catch (\Exception $e) {
-            return redirect(route('photos.index'))
-                ->withErrors(['Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage()]);
+            $this->returnError($request->is('api*'), 'Δεν μπόρεσε να γίνει η διαγραφή: ' . $e->getMessage());
+        }
+
+        if ($request->is('api*')) {
+            return response()->json([
+                'message' => 'Η φωτογραφία διαγράφτηκε'
+            ], 200);
         }
 
         return redirect(route('photos.index'));
