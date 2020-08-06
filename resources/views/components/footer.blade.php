@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body row align-middle">
 
-            <div class="col text-center font-weight-bold">Δοκιμαστική λειτουργία</div>
+            <div class="col text-center font-weight-bold">Υπό κατασκευή</div>
 
             <div class="col text-right my-auto">
                 <span>
