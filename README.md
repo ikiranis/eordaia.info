@@ -36,6 +36,13 @@ https://github.com/ikiranis/apache-mysql-for-laravel
 
 - Clone project
 
+- Create upload folder
+
+```
+mkdir public/uploads
+chmod 777 public/uploads -R
+```
+
 - Run
 
 ```
