@@ -46,7 +46,7 @@
 
             <div class="row">
                 <button class="btn btn-danger col-6 my-2 mx-auto" type="button"
-                        @click="deletePhoto(photo.id)">Delete
+                        @click="deletePhoto(index, photo.id)">Delete
                 </button>
             </div>
 
@@ -160,13 +160,15 @@ export default {
                 })
         },
 
-        deletePhoto(index) {
+        deletePhoto(index, id) {
             this.loading = true
 
-            axios.delete('/api/photo/' + index)
+            axios.delete('/api/photo/' + id)
                 .then(response => {
                     this.response.message = "Η φωτογραφία διαγράφηκε..."
                     this.response.status = true
+
+                    this.photos.splice(index)
 
                     this.loading = false
                 })
