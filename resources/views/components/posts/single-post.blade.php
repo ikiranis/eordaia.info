@@ -29,7 +29,9 @@
 
         {!! $post->markdownBody !!}
 
-        <x-Youtube :url="$post->videos()->first()->url" />
+        @if(count($post->videos()->get())>0)
+            <x-Youtube :url="$post->videos()->first()->url" />
+        @endif
 
         <x-posts.links :post="$post" />
 
