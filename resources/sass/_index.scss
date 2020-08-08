@@ -112,9 +112,15 @@ article {
 
 .plugin {
     margin-bottom: 2em;
+    color: theme-color("light-secondary");
+    font-size: 0.8em;
 
     a {
         color: theme-color("light-secondary");
-        text-decoration: underline;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

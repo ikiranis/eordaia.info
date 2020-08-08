@@ -29,15 +29,15 @@ class Utility extends Component
                     <span>Χρήσιμα</span>
                 </x-slot>
         
-                <span>
+                <div>
                     <a href="http://www.ptolemaida.gr/">Δήμος Εορδαίας</a>
-                </span>
-                <span>
+                </div>
+                <div>
                     <a href="https://fskozanis.gr/efhmeries/ptolemaida/">Φαρμακεία</a>
-                </span>
-                <span>
-                    <a href="http://www.mpodosakeio.gr/">Γενικό Νοσοκομείο Πτολεμαϊδας</a>
-                </span>
+                </div>
+                <div>
+                    <a href="http://www.mpodosakeio.gr/">Γενικό Νοσοκομείο</a>
+                </div>
             </x-plugin>
         blade;
     }
