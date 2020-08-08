@@ -26,7 +26,7 @@ class Covid extends Component
         return <<<'blade'
             <x-plugin>
                 <a href="https://eody.gov.gr/neos-koronaios-covid-19/"><img
-                                src="{{url('/graphics/covid.png')}}"></a>
+                                src="{{url('/graphics/covid.png')}}" title="Νέος κορωνοϊός Covid-19 – Οδηγίες"></a>
             </x-plugin>
         blade;
     }
