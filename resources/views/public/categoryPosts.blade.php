@@ -12,11 +12,12 @@
 
     <section class="container">
 
-        <span>:: </span>
-        <a href="{{ route('category', '') . '/' . $category->slug }}"
-           class="text-secondary mx-1">
-            {{ $category->name }}
-        </a>
+        <div class="bg-secondary px-3">
+            <a href="{{ route('category', '') . '/' . $category->slug }}"
+               class="text-white">
+                {{ $category->name }}
+            </a>
+        </div>
 
         @if(count($posts)>0)
 

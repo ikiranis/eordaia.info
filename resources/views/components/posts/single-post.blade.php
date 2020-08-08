@@ -2,7 +2,9 @@
 
 <article>
 
-    <x-posts.categories :post="$post" />
+    <div class="col-12">
+        <x-posts.categories class="mx-3" :post="$post" />
+    </div>
 
     <div class="row">
         <x-posts.CoverPhoto
@@ -23,11 +25,8 @@
             </a>
         </div>
 
-        <div class="row px-3 text-center">
-            <div class="col-12">
-                <x-posts.tags class="col-12" :post="$post" />
-            </div>
-        </div>
+        <x-posts.tags class="col-12" :post="$post" />
+
     </div>
 
     <div class="post-content px-3">
