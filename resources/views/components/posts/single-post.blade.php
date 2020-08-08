@@ -3,7 +3,7 @@
 <article>
 
     <div class="col-12">
-        <x-posts.categories class="mx-3" :post="$post" />
+        <x-posts.categories class="mx-3 mt-2" :post="$post" />
     </div>
 
     <div class="row">
