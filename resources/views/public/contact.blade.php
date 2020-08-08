@@ -21,7 +21,7 @@
 
                     <p>Twitter account: <strong><a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong></p>
 
-                    <p>Facebook page: <strong><a href="https://fb.me/eordaia.info">https://fb.me/eordaia.info</a></strong></p>
+                    <p>Facebook page: <strong><a href="https://fb.me/eordaia.info">fb.me/eordaia.info</a></strong></p>
                 </div>
 
             </div>
