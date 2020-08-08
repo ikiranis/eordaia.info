@@ -29,7 +29,7 @@
                 @endif
             </div>
 
-{{--            <x-sidebar />--}}
+            <x-sidebar />
 
 
         </div>

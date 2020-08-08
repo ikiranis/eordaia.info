@@ -101,11 +101,11 @@ article {
         color: theme-color("medium-secondary");
         text-decoration: none;
     }
-}
 
-.pagination:hover {
-    a {
-        color: theme-color("medium-secondary");
-        text-decoration: none;
+    &:hover {
+        a {
+            color: theme-color("medium-secondary");
+            text-decoration: none;
+        }
     }
 }
