@@ -17,7 +17,7 @@
                 <div class="card-body article">
                     <p>Στείλτε μας οτιδήποτε μπορεί να ενδιαφέρει το <strong>eordaia.info</strong>, για δημοσίευση.</p>
 
-                    <p>e-mail: <strong><a href="mailto:info@eordaia.info">info@eordaia.info</a></strong></p>
+                    <p>e-mail: <strong><a href="mailto:eordaia.info@gmail.com">eordaia.info@gmail.com</a></strong></p>
 
                     <p>Twitter account: <strong><a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong></p>
 
