@@ -45,7 +45,7 @@ class Photo extends Model
     {
         return ($this->filename)
             ? $this->getFilePath() . $this->filename
-            : null;
+            : '';
     }
 
     /**

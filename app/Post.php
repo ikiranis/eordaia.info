@@ -6,6 +6,7 @@ use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
+use Str;
 
 class Post extends Model
 {
@@ -139,5 +140,14 @@ class Post extends Model
      */
     public function getMarkdownBodyAttribute() {
         return Markdown::convertToHtml($this->body);
+    }
+
+    /**
+     * Get description in markdown format
+     *
+     * @return mixed
+     */
+    public function getMarkdownDescriptionAttribute() {
+        return Markdown::convertToHtml(Str::words(strip_tags($this->body), 50, ''));
     }
 }
