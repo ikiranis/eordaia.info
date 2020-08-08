@@ -29,7 +29,9 @@
                 @endif
             </div>
 
-            <x-sidebar />
+            <div class="col-lg-4 col-12">
+                <x-sidebar />
+            </div>
 
 
         </div>
