@@ -11,18 +11,21 @@
             :smallPhoto="false" />
     </div>
 
-    <div class="title-container px-3">
-        <div class="row">
+    <div class="title-container mb-2">
+        <div>
             <span title="Τελευταία ενημέρωση: {{ $post->updated_at->diffForHumans() }}"
                   class="post-date ml-auto col">{{ $post->updated_at->format('d/m/Y @ H:i') }}</span>
-
-            <x-posts.tags class="col" :post="$post" />
         </div>
 
-        <a href="{{route('post', $post->slug)}}">
-            <p class="post-title">{{$post->title}}</p>
-        </a>
+        <div class="px-3">
+            <a href="{{route('post', $post->slug)}}">
+                <span class="post-title">{{$post->title}}</span>
+            </a>
+        </div>
 
+        <div class="row px-3 text-right">
+            <x-posts.tags :post="$post" />
+        </div>
     </div>
 
     <div class="post-content px-3">
