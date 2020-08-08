@@ -30,7 +30,13 @@ class Utility extends Component
                 </x-slot>
         
                 <span>
+                    <a href="http://www.ptolemaida.gr/">Δήμος Εορδαίας</a>
+                </span>
+                <span>
                     <a href="https://fskozanis.gr/efhmeries/ptolemaida/">Φαρμακεία</a>
+                </span>
+                <span>
+                    <a href="http://www.mpodosakeio.gr/">Γενικό Νοσοκομείο Πτολεμαϊδας</a>
                 </span>
             </x-plugin>
         blade;
