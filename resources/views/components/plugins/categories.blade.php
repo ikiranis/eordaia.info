@@ -9,5 +9,5 @@
                 {{ $category->name }}
             </a>
         </div>
-    @endforeach;
+    @endforeach
 </x-plugin>
