@@ -24,7 +24,7 @@ class Categories extends Component
      */
     public function render()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
 
         return view('components.plugins.categories', compact(['categories']));
     }
