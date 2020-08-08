@@ -23,8 +23,10 @@
             </a>
         </div>
 
-        <div class="row px-3 text-right">
-            <x-posts.tags :post="$post" />
+        <div class="row px-3 text-center">
+            <div class="col-12">
+                <x-posts.tags class="col-12" :post="$post" />
+            </div>
         </div>
     </div>
 
