@@ -47,7 +47,7 @@ class HomeMetaTags extends Component
 <!--            <meta property="og:image" content="{{ secure_url('/images/site/logo.png') }}"/>-->
 <!--            <meta property="og:image:width" content="282">-->
             <meta property="og:description"
-                  content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδαά"/>
+                  content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα"/>
             <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}"/>
 blade;
     }
