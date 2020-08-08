@@ -23,10 +23,10 @@ class Plugin extends Component
     public function render()
     {
         return <<<'blade'
-            <div>
-                <h4 class="pluginLabel text-center">
-                    <span>{{ $label }}</span>
-                </h4>
+            <div class="plugin">
+                <h5 class="pluginLabel text-primary">
+                    <span>:: {{ $label }}</span>
+                </h5>
                 <div>
                     {{ $slot }}
                 </div>

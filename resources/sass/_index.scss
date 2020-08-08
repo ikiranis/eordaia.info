@@ -109,3 +109,10 @@ article {
         }
     }
 }
+
+.plugin {
+    a {
+        color: theme-color("light-secondary");
+        text-decoration: underline;
+    }
+}

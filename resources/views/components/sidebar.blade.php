@@ -1,11 +1,5 @@
 <aside class="container col-lg-2 col-12 my-3">
-    <x-plugin>
-        <x-slot name="label">
-            Χρήσιμα
-        </x-slot>
-
-        <a href="https://fskozanis.gr/efhmeries/ptolemaida/">Φαρμακεία</a>
-    </x-plugin>
+    <x-plugins.utility />
 
 
 {{--    <a href="{{  route("writePost") }}">--}}
