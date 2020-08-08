@@ -2,7 +2,7 @@
 
 <article>
 
-    <div class="col-12 mb-2">
+    <div class="col-12 mb-3">
         <x-posts.categories class="mx-3" :post="$post" />
     </div>
 
