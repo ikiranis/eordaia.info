@@ -1,4 +1,5 @@
 <aside class="container col-lg-2 col-12 my-3">
+    <x-plugins.categories />
     <x-plugins.utility />
     <x-plugins.covid />
 
