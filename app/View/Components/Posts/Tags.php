@@ -31,7 +31,7 @@ class Tags extends Component
             @if(!$tags->isEmpty())
                     @foreach($tags as $tag)
                         <a href="{{ route('tag', '') . '/' . $tag->slug }}"
-                            class="badge badge-light-secondary col-12 col-md text-dark mx-1 my-1 px-2">
+                            class="badge badge-light-secondary col-12 col-md-auto text-dark mx-1 my-1 px-2">
                             {{ $tag->name }}
                         </a>
                     @endforeach
