@@ -30,7 +30,7 @@ class Plugin extends Component
                     </h5>
                 @endif
                 
-                <div>
+                <div class="pluginContent">
                     {{ $slot }}
                 </div>
             </div>

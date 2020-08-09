@@ -3,9 +3,9 @@
         <span>Ετικέτες</span>
     </x-slot>
 
-    <div class="text-center">
+    <div class="tags">
         @foreach ($tags as $tag)
-            <span class="mx-1">
+            <span class="mr-1">
                 <a href="{{ route('tag', '') . '/' . $tag->slug }}">
                     {{ $tag->name }}
                 </a>
