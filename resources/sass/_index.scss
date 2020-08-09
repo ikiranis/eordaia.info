@@ -128,3 +128,8 @@ article {
         font-size: 0.7rem;
     }
 }
+
+.listLabel {
+    height: 2rem;
+    background-image: linear-gradient(to right, theme-color("light-secondary"), $body-bg);
+}
