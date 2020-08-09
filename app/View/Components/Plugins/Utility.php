@@ -39,7 +39,7 @@ class Utility extends Component
                     <a href="https://fskozanis.gr/efhmeries/ptolemaida">Φαρμακεία</a>
                 </div>
                 <div>
-                    <a href="http://www.mpodosakeio.gr">Γενικό Νοσοκομείο</a>
+                    <a href="http://www.mpodosakeio.gr">Γενικό Νοσοκομείο Πτολεμαϊδας</a>
                 </div>
             </x-plugin>
         blade;
