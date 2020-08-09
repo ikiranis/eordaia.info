@@ -1,5 +1,6 @@
 <aside class="px-3 my-3">
     <x-plugins.categories />
+    <x-plugins.tags />
     <x-plugins.utility />
     <x-plugins.affiliate />
     <x-plugins.covid />
