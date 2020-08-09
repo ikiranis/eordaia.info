@@ -2,7 +2,7 @@
 
 <article>
 
-    <div class="ml-4 row listLabel px-3 mb-1">
+    <div class="ml-4 row listLabel px-3 mb-2">
         <x-posts.categories class="mx-3" :post="$post" />
     </div>
 
