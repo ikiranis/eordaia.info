@@ -12,11 +12,12 @@
 
     <section class="container">
 
-        <span>:: </span>
-        <a href="{{ route('tag', '') . '/' . $tag->slug }}"
-           class="text-secondary mx-1">
-            {{ $tag->name }}
-        </a>
+        <div class="bg-secondary px-3">
+            <a href="{{ route('tag', '') . '/' . $tag->slug }}"
+               class="text-white">
+                {{ $tag->name }}
+            </a>
+        </div>
 
         @if(count($posts)>0)
 
