@@ -147,7 +147,7 @@ class Post extends Model
      *
      * @return mixed
      */
-    public function getMarkdownDescriptionAttribute() {
-        return Markdown::convertToHtml(Str::words(strip_tags($this->body), 50, ''));
+    public function getDescriptionAttribute() {
+        return Str::words(strip_tags(Markdown::convertToHtml($this->body)), 50, '');
     }
 }

@@ -27,17 +27,17 @@ class PostMetaTags extends Component
     public function render()
     {
         return <<<'blade'
-            <meta name="description" content="{{ $post->MarkdownDescription }}"/>
+            <meta name="description" content="{{ $post->description }}"/>
         
             <meta itemprop="name" content="{{ $post->title }}">
-            <meta itemprop="description" content="{{ $post->MarkdownDescription }}">
+            <meta itemprop="description" content="{{ $post->description }}">
             <meta itemprop="image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
         
             <!-- Twitter Card data -->
             <meta name="twitter:card" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
             <meta name="twitter:site" content="{{ config('app.name', 'Laravel') }}">
             <meta name="twitter:title" content="{{ $post->title }}">
-            <meta name="twitter:description" content="{{ $post->MarkdownDescription }}">
+            <meta name="twitter:description" content="{{ $post->description }}">
 <!--            <meta name="twitter:creator" content="">-->
             <!-- Twitter summary card with large image must be at least 280x150px -->
             <meta name="twitter:image:src" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
@@ -48,7 +48,7 @@ class PostMetaTags extends Component
             <meta property="og:url" content="{{ secure_url('/' . $post->slug) }}"/>
             <meta property="og:image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}"/>
             <meta property="og:image:width" content="282">
-            <meta property="og:description" content="{{ $post->MarkdownDescription }}"/>
+            <meta property="og:description" content="{{ $post->description }}"/>
             <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}"/>
             <meta property="article:published_time" content="{{ $post->created_at }}"/>
             <meta property="article:modified_time" content="{{ $post->updated_at }}"/>
