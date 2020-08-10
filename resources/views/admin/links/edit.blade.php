@@ -24,15 +24,6 @@
                                        value="{{$link->url}}">
                             </div>
 
-                            <div class="input-group mb-3 no-gutters">
-                                <label class="sr-only" for="name">Όνομα</label>
-                                <div class="input-group-prepend col-3">
-                                    <span class="input-group-text w-100">Όνομα</span>
-                                </div>
-                                <input type="text" max="30" class="form-control col-9 px-2" id="name" name="name"
-                                       value="{{$link->name}}">
-                            </div>
-
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     Ενημέρωση

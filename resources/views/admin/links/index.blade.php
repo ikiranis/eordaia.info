@@ -9,7 +9,6 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">url</th>
-                <th scope="col">Όνομα</th>
             </tr>
             </thead>
             <tbody>
@@ -18,7 +17,6 @@
                 <tr>
                     <td><a href="{{route('links.edit', $link->id)}}">{{$link->id}}</a></td>
                     <td>{{$link->url}}</td>
-                    <td>{{$link->name}}</td>
                     <td>
                         <form method="POST" action="{{route('links.destroy', $link->id)}}">
                             <input name="_method" type="hidden" value="DELETE">
