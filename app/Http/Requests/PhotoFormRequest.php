@@ -30,7 +30,7 @@ class PhotoFormRequest extends FormRequest
         return [
             'file' => $fileRules,
             'description' => 'nullable',
-            'referral' => 'nullable'
+            'referral' => 'nullable|active_url'
         ];
     }
 
@@ -44,6 +44,7 @@ class PhotoFormRequest extends FormRequest
         return [
             'file.required' => 'Το αρχείο είναι απαραίτητο',
             'file.image' => 'Το αρχείο πρέπει να είναι εικόνα',
+            'referral.active_url' => 'Η πηγή πρέπει να είναι ενεργό link'
         ];
     }
 }
