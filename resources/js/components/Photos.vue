@@ -24,6 +24,16 @@
 
             <div class="row">
                 <label class="sr-only"
+                       for="photoReferral">Πηγή</label>
+                <input id="photoReferral" name="referral" class="my-2 col-lg-8 col-12 mx-auto"
+                          v-model="photo.referral" placeholder="Πηγή">
+                <form-error v-if="response.errors.referral"
+                            :error="response.errors.referral[0]"
+                            class="mx-auto col-lg-8 col-12"/>
+            </div>
+
+            <div class="row">
+                <label class="sr-only"
                        for="photoDescription">Περιγραφή</label>
                 <textarea id="photoDescription" name="description" class="my-2 col-lg-8 col-12 mx-auto"
                           v-model="photo.description" placeholder="Περιγραφή"/>
@@ -84,6 +94,7 @@ export default {
             emptyPhoto: {
                 id: null,
                 file: null,
+                referral: '',
                 description: '',
                 preview: null,
                 photoUrl: ''
@@ -133,6 +144,7 @@ export default {
             formData.append('file', this.photos[index].file)
             formData.append('url', this.photos[index].url)
             formData.append('description', this.photos[index].description)
+            formData.append('referral', this.photos[index].referral)
 
             this.loading = true
 

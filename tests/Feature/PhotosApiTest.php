@@ -38,8 +38,8 @@ class PhotosApiTest extends TestCase
     {
         $request = [
             'file' => UploadedFile::fake()->image('image.jpg', 500,500), // Create fake image file
-            'url' => 'https://apps4net.eu',
             'description' => $this->faker->text(rand(50, 200)),
+            'referral' => 'https://apps4net.eu',
         ];
 
         $response = $this->actingAs(static::$user, 'api')
@@ -52,6 +52,7 @@ class PhotosApiTest extends TestCase
             'path',
             'filename',
             'description',
+            'referral',
             'photoUrl',
             'smallPhotoUrl',
             'mediumPhotoUrl'

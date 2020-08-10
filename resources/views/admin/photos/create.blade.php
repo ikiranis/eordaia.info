@@ -28,6 +28,13 @@
 
                             <div class="row">
                                 <label class="sr-only"
+                                       for="photoReferral">Πηγή</label>
+                                <input id="photoReferral" name="referral" class="my-2 col-lg-8 col-12 mx-auto"
+                                       placeholder="Πηγή" value="{{ old('referral') }}">
+                            </div>
+
+                            <div class="row">
+                                <label class="sr-only"
                                        for="photoDescription">Περιγραφή</label>
                                 <textarea id="photoDescription" name="description" class="my-2 col-lg-8 col-12 mx-auto"
                                           placeholder="Περιγραφή" >{{ old('description') }}</textarea>

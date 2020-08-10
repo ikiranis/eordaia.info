@@ -81,7 +81,8 @@ class AdminPhotosController extends Controller
                     'path' => isset($photoService) ? $photoService->getPath() : null,
                     'filename' => isset($photoService) ? $photoService->getFileName() : null,
                     'url' => $request->url ?? null,
-                    'description' => $request->description
+                    'description' => $request->description,
+                    'referral' => $request->referral
                 ]
             );
         } catch (\Exception $exception) {
@@ -181,7 +182,7 @@ class AdminPhotosController extends Controller
                     Storage::disk('public')->delete($filePath);
                 } catch (\Exception $e) {
                     array_push($errors,
-                        'Υπήρξε πρόβλημα στη διαγράφη του αρχείου '
+                        'Υπήρξε πρόβλημα στη διαγραφή του αρχείου '
                         . $filePath . ' από τον δίσκο ' . $e->getMessage());
                 }
             }
@@ -189,7 +190,7 @@ class AdminPhotosController extends Controller
 
         if (count($errors) > 0) {
             return response()->json([
-                'message' => 'Υπήρξε πρόβλημα στη διαγράφη αρχείων από τον δίσκο',
+                'message' => 'Υπήρξε πρόβλημα στη διαγραφή αρχείων από τον δίσκο',
                 'debug' => $errors
             ], 400);
         }
