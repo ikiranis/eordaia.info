@@ -23,8 +23,12 @@ class PhotoFormRequest extends FormRequest
      */
     public function rules()
     {
+        $fileRules = $this->isMethod('put')
+            ? 'nullable'
+            : 'required|image';
+
         return [
-            'file' => 'required|image',
+            'file' => $fileRules,
             'description' => 'nullable',
             'referral' => 'nullable'
         ];
