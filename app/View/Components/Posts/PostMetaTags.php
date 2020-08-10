@@ -34,9 +34,12 @@ class PostMetaTags extends Component
             <meta itemprop="image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
         
             <!-- Twitter Card data -->
-            <meta name="twitter:card" content="summary">
+            <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="@eordaia_info">
             <meta name="twitter:creator" content="@eordaia_info" />
+            <meta name="twitter:title" content="{{ $post->title }}">
+            <meta name="twitter:description" content="{{ $post->description }}">
+            <meta name="twitter:image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
 
             <!-- Open Graph data -->
             <meta property="og:title" content="{{ $post->title }}"/>
