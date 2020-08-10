@@ -34,14 +34,10 @@ class PostMetaTags extends Component
             <meta itemprop="image" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
         
             <!-- Twitter Card data -->
-            <meta name="twitter:card" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
-            <meta name="twitter:site" content="{{ config('app.name', 'Laravel') }}">
-            <meta name="twitter:title" content="{{ $post->title }}">
-            <meta name="twitter:description" content="{{ $post->description }}">
-<!--            <meta name="twitter:creator" content="">-->
-            <!-- Twitter summary card with large image must be at least 280x150px -->
-            <meta name="twitter:image:src" content="{{ $post->photos()->first() ? url($post->photos()->first()->photoUrl) : '' }}">
-        
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:site" content="@eordaia_info">
+            <meta name="twitter:creator" content="@eordaia_info" />
+
             <!-- Open Graph data -->
             <meta property="og:title" content="{{ $post->title }}"/>
             <meta property="og:type" content="article"/>
