@@ -19,15 +19,25 @@
             </a>
         </div>
 
-        @if(count($posts)>0)
+        <div class="row">
 
-            <x-posts.ListPosts :posts="$posts" />
+            <div class="col-lg-8 col-12">
+                @if(count($posts)>0)
 
-            <x-posts.paging :posts="$posts" />
+                    <x-posts.ListPosts :posts="$posts" />
 
-{{--            @include('includes.ads.homepage-google-ad')--}}
+                    <x-posts.paging :posts="$posts" />
 
-        @endif
+        {{--            @include('includes.ads.homepage-google-ad')--}}
+
+                @endif
+            </div>
+
+            <div class="col-lg-4 col-12">
+                <x-sidebar />
+            </div>
+
+        </div>
     </section>
 
 @endsection
