@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('siteTitle')
-    {{ config('app.name', 'Laravel') }} : {{ $post->title }}
+    {{ $post->title }}
 @endsection
 
 @section('shareMetaTags')
