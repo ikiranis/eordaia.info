@@ -24,7 +24,6 @@ class LinkFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable|max:30',
             'url' => 'required|active_url'
         ];
     }
@@ -37,7 +36,6 @@ class LinkFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.max' => 'Επιτρέπεται να έχει μέχρι 30 χαρακτήρες μόνο',
             'url.required' => 'To url απαιτείται',
             'url.active_url' => 'Το link πρέπει να είναι ενεργό'
         ];
