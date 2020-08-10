@@ -41,10 +41,10 @@ class CoverPhoto extends Component
                 <img src="{{ $photo->photoUrl }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
                  @if ($singlePost && (isset($photo->description) || $photo->referral))
-                    <div class="photoLabel row mx-3 px-3">
-                        <div class="my-auto mx-auto">
-                            <span class="description px-2">{{ $photo->description ?? '' }}</span>
-                            <span> <a href="{{ $photo->referral ?? '#' }}">{{ parse_url($photo->referral)['host'] ?? '' }}</a></span>
+                    <div class="photoLabel row mx-3 px-3 mb-1">
+                        <div class="mx-auto row text-center">
+                            <span class="description px-2 col-md-auto col-12">{{ $photo->description ?? '' }}</span>
+                            <span class="col-md-auto col-12"> <a href="{{ $photo->referral ?? '#' }}">{{ parse_url($photo->referral)['host'] ?? '' }}</a></span>
                         </div>
                     </div>
                 @endif
