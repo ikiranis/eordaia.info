@@ -6,11 +6,13 @@
         <x-posts.categories class="mx-3" :post="$post" />
     </div>
 
-    <div class="row">
+    <div class="row mb-1">
         <x-posts.CoverPhoto
             :photo="$post->photos()->first()"
             :postId="$post->id"
-            :smallPhoto="false" />
+            :smallPhoto="false"
+            :singlePost="true"
+        />
     </div>
 
     <div class="title-container mb-2">

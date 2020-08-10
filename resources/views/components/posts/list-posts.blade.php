@@ -3,11 +3,13 @@
 
     <article class="list-post-container mt-3 mb-5">
 
-            <div class="row">
+            <div class="row mb-2">
                 <x-posts.CoverPhoto
                     :photo="$post->photos()->first()"
                     :postId="$post->id"
-                    :smallPhoto="false" />
+                    :smallPhoto="false"
+                    :singlePost="false"
+                />
             </div>
 
             <div class="title-container px-3">

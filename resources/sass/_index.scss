@@ -112,11 +112,11 @@ article {
 
 .plugin {
     margin-bottom: 2rem;
-    color: theme-color("light-secondary");
+    color: theme-color("secondary");
     font-size: 0.8rem;
 
     a {
-        color: theme-color("light-secondary");
+        color: theme-color("secondary");
         text-decoration: none;
 
         &:hover {
@@ -132,4 +132,23 @@ article {
 .listLabel {
     height: 2rem;
     background-image: linear-gradient(to right, theme-color("light-secondary"), $body-bg);
+}
+
+.photoLabel {
+    font-size: 0.7rem;
+    height: 1.5rem;
+    //background-image: linear-gradient(to right, theme-color("light-secondary"), $body-bg);
+
+    a {
+        color: theme-color("secondary");
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .description {
+        font-weight: bold;
+    }
 }
