@@ -6,7 +6,7 @@
         <x-posts.categories class="mx-3" :post="$post" />
     </div>
 
-    <div class="row mb-1">
+    <div class="row">
         <x-posts.CoverPhoto
             :photo="$post->photos()->first()"
             :postId="$post->id"
