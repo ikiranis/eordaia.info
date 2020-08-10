@@ -35,7 +35,6 @@ class LinksApiTest extends TestCase
     public function testPostLink() : void
     {
         $request = [
-            'name' => $this->faker->text(rand(15, 30)),
             'url' => "https://error.gr"
         ];
 
@@ -45,7 +44,6 @@ class LinksApiTest extends TestCase
         $response->assertStatus(201)
             ->assertJsonStructure([
                 'id',
-                'name',
                 'url',
                 'created_at',
                 'updated_at'

@@ -5,13 +5,7 @@
 		</div>
 
 		<div class="input-group mb-3 no-gutters">
-			<div class="col-lg-4 col-12">
-				<label class="sr-only" for="name">Τίτλος</label>
-				<input type="text" v-model="link.name" class="form-control px-2"
-					   id="name" max="30" name="name" placeholder="Τίτλος">
-			</div>
-
-			<div class="col-lg-4 col-12">
+			<div class="col-lg-8 col-12">
 				<label class="sr-only" for="url">Url</label>
 				<input type="text" max="800" v-model="link.url" class="form-control px-2"
 					   id="url" name="url" placeholder="Url">
@@ -19,8 +13,6 @@
 
 			<span class="btn btn-success col-lg-4 col-12" @click="insertLink">Προσθήκη Link</span>
 
-			<form-error v-if="response.errors.name"
-						:error="response.errors.name[0]" />
 			<form-error v-if="response.errors.url"
 						:error="response.errors.url[0]" />
 
@@ -55,7 +47,6 @@
 				loading: false,
 
 				link: {
-					name: '',
 					url: ''
 				}
 			}
@@ -76,7 +67,6 @@
 					.then(response => {
 						this.links.push({
 							id: response.data.id,
-							name: response.data.name,
 							url: response.data.url,
 						})
 						this.link = {}
