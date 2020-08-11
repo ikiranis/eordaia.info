@@ -74,13 +74,40 @@ class PhotoService
     }
 
     /**
+     * Check if some of the images dimensions is smaller than new size
+     *
+     * @param int $size
+     * @return bool
+     */
+    private function checkIfOriginalPhotoIsSmaller(int $size): bool
+    {
+        $imageWidth = getimagesize($this->file)[0];
+        $imageHeight = getimagesize($this->file)[1];
+
+        $originalSize  = ($imageWidth >= $imageHeight)
+                            ? $imageWidth
+                            : $imageHeight;
+
+        if ($originalSize <= $size) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Create different size images
      *
      * @param int $size
      * @throws Exception
      */
-    private function createDifferentSizeImage(int $size): void {
-        // TODO first check for original file size. Don't create if original is smaller
+    private function createDifferentSizeImage(int $size): void
+    {
+        // Stop if original photo is smaller than new size
+        if ($this->checkIfOriginalPhotoIsSmaller($size)) {
+            return;
+        }
+
         try {
             $thumbnail = Image::make($this->file->getRealpath());
             $thumbnail->resize($size, $size, function ($constraint) {
@@ -90,7 +117,7 @@ class PhotoService
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $thumbnail->encode());
         } catch (\Exception $e) {
-            throw new Exception('Δεν μπορεί να δημιουργηθεί αρχείο άλλου μεγέυθους -> ' .  $e);
+            throw new Exception('Δεν μπορεί να δημιουργηθεί αρχείο άλλου μεγέθους -> ' .  $e);
         }
     }
 
