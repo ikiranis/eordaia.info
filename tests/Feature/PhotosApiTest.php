@@ -37,7 +37,8 @@ class PhotosApiTest extends TestCase
     public function testPostPhoto() : void
     {
         $request = [
-            'file' => UploadedFile::fake()->image('image.jpg', 500,500), // Create fake image file
+            'file' => UploadedFile::fake()
+                ->image('image.jpg', 600,600), // Create fake image file
             'description' => $this->faker->text(rand(50, 200)),
             'referral' => 'https://apps4net.eu',
         ];
