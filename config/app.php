@@ -228,4 +228,7 @@ return [
 
     ],
 
+    'SMALL_IMAGE' => 150,
+    'MEDIUM_IMAGE' => 500
+
 ];

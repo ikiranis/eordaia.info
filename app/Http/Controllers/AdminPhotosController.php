@@ -64,7 +64,7 @@ class AdminPhotosController extends Controller
         $validatedData = $request->validated();
 
         if($request->file) {
-            $photoService = New PhotoService($request->file, [150, 350]);
+            $photoService = New PhotoService($request->file, [config('app.SMALL_IMAGE'), config('app.MEDIUM_IMAGE')]);
 
             // Save file
             try {
@@ -135,7 +135,7 @@ class AdminPhotosController extends Controller
         $input = $request->all();
 
         if($request->file) {
-            $photoService = New PhotoService($request->file, [150, 350]);
+            $photoService = New PhotoService($request->file, [config('app.SMALL_IMAGE'), config('app.MEDIUM_IMAGE')]);
 
             // Save file
             try {
@@ -172,8 +172,8 @@ class AdminPhotosController extends Controller
         $photo = Photo::whereId($id)->first();
 
         $filePaths[0] = '/' . $photo->path . '/' . $photo->filename;
-        $filePaths[1] = '/' . $photo->path . '/150x_' . $photo->filename;
-        $filePaths[2] = '/' . $photo->path . '/350x_' . $photo->filename;
+        $filePaths[1] = '/' . $photo->path . '/' . config('app.SMALL_IMAGE') . 'x_' . $photo->filename;
+        $filePaths[2] = '/' . $photo->path . '/' . config('app.MEDIUM_IMAGE') . 'x_' . $photo->filename;
 
         // Delete physical files
         foreach ($filePaths as $filePath) {

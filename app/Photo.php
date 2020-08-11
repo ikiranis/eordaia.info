@@ -42,7 +42,7 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getPhotoUrlAttribute() : ?string
+    public function getPhotoUrlAttribute() : string
     {
         return ($this->filename)
             ? $this->getFilePath() . $this->filename
@@ -54,10 +54,10 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getMediumPhotoUrlAttribute() : ?string
+    public function getMediumPhotoUrlAttribute() : string
     {
         return ($this->filename)
-            ? $this->getFilePath() . '350x_' . $this->filename
+            ? $this->getFilePath() . config('app.MEDIUM_IMAGE') . 'x_' . $this->filename
             : '';
     }
 
@@ -66,10 +66,10 @@ class Photo extends Model
      *
      * @return string
      */
-    public function getSmallPhotoUrlAttribute() : ?string
+    public function getSmallPhotoUrlAttribute() : string
     {
         return ($this->filename)
-            ? $this->getFilePath() . '150x_' . $this->filename
+            ? $this->getFilePath() . config('app.SMALL_IMAGE') . 'x_' . $this->filename
             : '';
     }
 }
