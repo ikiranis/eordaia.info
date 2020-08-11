@@ -38,7 +38,7 @@ class CoverPhoto extends Component
         return <<<'blade'
         @if ($photo)
             <div class="col">
-                <img src="{{ $photo->photoUrl }}"
+                <img src="{{ $photoUrl }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
                  @if ($singlePost && (isset($photo->description) || $photo->referral))
                     <div class="photoLabel row mx-3 px-3 mb-1">
@@ -66,6 +66,8 @@ blade;
      */
     public function photoUrl() : ?string
     {
-        return ($this->smallPhoto) ? $this->photo->smallPhotoUrl : $this->photo->mediumPhotoUrl;
+        return ($this->smallPhoto)
+            ? $this->photo->mediumPhotoUrl
+            : $this->photo->photoUrl;
     }
 }

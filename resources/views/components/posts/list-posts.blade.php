@@ -7,7 +7,7 @@
                 <x-posts.CoverPhoto
                     :photo="$post->photos()->first()"
                     :postId="$post->id"
-                    :smallPhoto="false"
+                    :smallPhoto="true"
                     :singlePost="false"
                 />
             </div>
