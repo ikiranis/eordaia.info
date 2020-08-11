@@ -2,21 +2,21 @@
 
 namespace App\View\Components\Posts;
 
-use App\Post;
+use App\Photo;
 use Illuminate\View\Component;
 
 class ImageModal extends Component
 {
-    public Post $post;
+    public Photo $photo;
 
     /**
      * Create a new component instance.
      *
-     * @param $post
+     * @param $photo
      */
-    public function __construct($post)
+    public function __construct(Photo $photo)
     {
-        $this->post = $post;
+        $this->photo = $photo;
     }
 
     /**
@@ -27,8 +27,8 @@ class ImageModal extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="modal fade" id="imageModal{{ $post->id }}" tabindex="-1" role="dialog"
-                 aria-labelledby="imageModal{{ $post->id }}" aria-hidden="true">
+            <div class="modal fade" id="imageModal{{ $photo->id }}" tabindex="-1" role="dialog"
+                 aria-labelledby="imageModal{{ $photo->id }}" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -37,11 +37,19 @@ class ImageModal extends Component
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        
                         <div class="modal-body">
-            
-                            <img src="{{ $post->photos()->first()->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
+                            <img src="{{ $photo->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
                                  width="100%">
-            
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <div class="photoLabel row mx-auto mx-3 px-3 ">
+                                <div class="mx-auto row text-center">
+                                    <span class="description px-2 col-md-auto col-12">{{ $photo->description ?? '' }}</span>
+                                    <span class="col-md-auto col-12"> <a href="{{ $photo->referral ?? '#' }}">{{ parse_url($photo->referral)['host'] ?? '' }}</a></span>
+                                </div>
+                            </div>
                         </div>
             
                     </div>

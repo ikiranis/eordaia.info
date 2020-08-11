@@ -1,4 +1,4 @@
-<x-posts.imageModal :post="$post" />
+<x-posts.imageModal :photo="$post->photos()->first()" />
 
 <article>
 
@@ -9,7 +9,6 @@
     <div class="row">
         <x-posts.CoverPhoto
             :photo="$post->photos()->first()"
-            :postId="$post->id"
             :smallPhoto="false"
             :singlePost="true"
         />

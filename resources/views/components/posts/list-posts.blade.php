@@ -1,12 +1,11 @@
 @foreach($posts as $post)
-    <x-posts.imageModal :post="$post" xmlns="http://www.w3.org/1999/html"/>
+    <x-posts.imageModal :photo="$post->photos()->first()" />
 
     <article class="list-post-container mt-3 mb-5">
 
             <div class="row mb-2">
                 <x-posts.CoverPhoto
                     :photo="$post->photos()->first() ?? null"
-                    :postId="$post->id"
                     :smallPhoto="true"
                     :singlePost="false"
                 />

@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 class CoverPhoto extends Component
 {
     public ?Photo $photo;
-    public string $postId;
     public bool $smallPhoto;
     public bool $singlePost;
 
@@ -16,14 +15,12 @@ class CoverPhoto extends Component
      * Create a new component instance.
      *
      * @param Photo|null $photo
-     * @param string $postId
      * @param bool $smallPhoto
      * @param bool $singlePost
      */
-    public function __construct(?Photo $photo, string $postId, bool $smallPhoto, bool $singlePost)
+    public function __construct(?Photo $photo, bool $smallPhoto, bool $singlePost)
     {
         $this->photo = $photo;
-        $this->postId = $postId;
         $this->smallPhoto = $smallPhoto;
         $this->singlePost = $singlePost;
     }
@@ -38,7 +35,7 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <img src="{{ $photoUrl }}"
-                     class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
+                     class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $photo->id }}">
                  @if ($singlePost && (isset($photo->description) || $photo->referral))
                     <div class="photoLabel row mx-3 px-3 mb-1">
                         <div class="mx-auto row text-center">
