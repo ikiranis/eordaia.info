@@ -5,7 +5,7 @@
 
             <div class="row mb-2">
                 <x-posts.CoverPhoto
-                    :photo="$post->photos()->first()"
+                    :photo="$post->photos()->first() ?? null"
                     :postId="$post->id"
                     :smallPhoto="true"
                     :singlePost="false"

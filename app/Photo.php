@@ -58,7 +58,7 @@ class Photo extends Model
     {
         return ($this->filename)
             ? $this->getFilePath() . '350x_' . $this->filename
-            : null;
+            : '';
     }
 
     /**
@@ -70,6 +70,6 @@ class Photo extends Model
     {
         return ($this->filename)
             ? $this->getFilePath() . '150x_' . $this->filename
-            : null;
+            : '';
     }
 }

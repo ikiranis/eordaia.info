@@ -36,7 +36,6 @@ class CoverPhoto extends Component
     public function render()
     {
         return <<<'blade'
-        @if ($photo)
             <div class="col">
                 <img src="{{ $photoUrl }}"
                      class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
@@ -49,14 +48,7 @@ class CoverPhoto extends Component
                     </div>
                 @endif
             </div>
-            
-        @else
-            <div class="col">
-                <img src="{{ 'http://via.placeholder.com/350x170' }}"
-                     class="card-img btn" data-toggle="modal" data-target="#imageModal{{ $postId }}">
-            </div>
-        @endif
-blade;
+        blade;
     }
 
     /**
@@ -64,10 +56,14 @@ blade;
      *
      * @return string
      */
-    public function photoUrl() : ?string
+    public function photoUrl() : string
     {
-        return ($this->smallPhoto)
-            ? $this->photo->mediumPhotoUrl
-            : $this->photo->photoUrl;
+        if($this->photo) {
+            return ($this->smallPhoto)
+                ? $this->photo->mediumPhotoUrl
+                : $this->photo->photoUrl;
+        }
+
+        return 'http://via.placeholder.com/350x170';
     }
 }
