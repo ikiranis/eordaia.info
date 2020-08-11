@@ -16,7 +16,9 @@ class Photo extends Model
         'path',
         'filename',
         'description',
-        'referral'
+        'referral',
+        'medium',
+        'small'
     ];
 
     /**
@@ -56,9 +58,13 @@ class Photo extends Model
      */
     public function getMediumPhotoUrlAttribute() : string
     {
-        return ($this->filename)
-            ? $this->getFilePath() . config('app.MEDIUM_IMAGE') . 'x_' . $this->filename
-            : '';
+        if($this->filename) {
+            return ($this->medium)
+                ? $this->getFilePath() . $this->medium . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
+        }
+
+        return '';
     }
 
     /**
@@ -68,8 +74,12 @@ class Photo extends Model
      */
     public function getSmallPhotoUrlAttribute() : string
     {
-        return ($this->filename)
-            ? $this->getFilePath() . config('app.SMALL_IMAGE') . 'x_' . $this->filename
-            : '';
+        if($this->filename) {
+            return ($this->small)
+                ? $this->getFilePath() . $this->small . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
+        }
+
+        return '';
     }
 }

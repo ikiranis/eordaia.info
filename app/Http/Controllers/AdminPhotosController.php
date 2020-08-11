@@ -68,7 +68,7 @@ class AdminPhotosController extends Controller
 
             // Save file
             try {
-                $photoService->save();
+                $sizesCreated = $photoService->save();
             } catch(\Exception $exception) {
                 $this->returnError($request->is('api*'), $exception->getMessage());
             }
@@ -76,13 +76,16 @@ class AdminPhotosController extends Controller
 
         // Save in database
         try {
+            logger($sizesCreated[1]);
             $photo = Photo::create(
                 [
                     'path' => isset($photoService) ? $photoService->getPath() : null,
                     'filename' => isset($photoService) ? $photoService->getFileName() : null,
                     'url' => $request->url ?? null,
                     'description' => $request->description,
-                    'referral' => $request->referral
+                    'referral' => $request->referral,
+                    'small' => $sizesCreated[0],
+                    'medium' => $sizesCreated[1]
                 ]
             );
         } catch (\Exception $exception) {

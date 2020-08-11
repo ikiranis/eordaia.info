@@ -28,6 +28,7 @@ class PhotoService
     protected string $path;
     protected string $storageDisk = 'public';
     protected array $sizes;
+    protected array $sizesCreated = [];
 
     /**
      * PhotoService constructor.
@@ -48,14 +49,17 @@ class PhotoService
      * Save file. Main method
      *
      * @throws Exception
+     * @return array
      */
-    public function save(): void
+    public function save(): array
     {
         $this->saveOriginalFile();
 
         foreach ($this->sizes as $size) {
             $this->createDifferentSizeImage($size);
         }
+
+        return $this->sizesCreated;
     }
 
     /**
@@ -105,6 +109,7 @@ class PhotoService
     {
         // Stop if original photo is smaller than new size
         if ($this->checkIfOriginalPhotoIsSmaller($size)) {
+            array_push($this->sizesCreated, null);
             return;
         }
 
@@ -116,6 +121,8 @@ class PhotoService
 
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $thumbnail->encode());
+
+            array_push($this->sizesCreated, $size);
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να δημιουργηθεί αρχείο άλλου μεγέθους -> ' .  $e);
         }
