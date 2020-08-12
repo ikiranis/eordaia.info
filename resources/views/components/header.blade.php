@@ -15,21 +15,16 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('contact') }}">Επικοινωνία</a>
             </li>
-{{--            <li class="nav-item my-auto text-center">--}}
-{{--                <a href="{{ secure_url('/feed') }}" class="mx-1">--}}
-{{--                    <img src="/graphics/RSS.png" width="25" title="RSS News Feed">--}}
-{{--                </a>--}}
-
-{{--                <a href="https://twitter.com/eordaia_info" class="mx-1">--}}
-{{--                    <img src="/graphics/twitter-logo.png" width="25" title="Twitter Page">--}}
-{{--                </a>--}}
-
-{{--                <a href="https://facebook.com/eordaiainfo-120099448002990/" class="mx-1">--}}
-{{--                    <img src="/graphics/facebook-logo.png" width="25" title="Facebook Page">--}}
-{{--                </a>--}}
-{{--            </li>--}}
-
         </ul>
+
+        <div>
+            {{--                <a href="{{ secure_url('/feed') }}" class="mx-1">--}}
+            {{--                    <img src="/graphics/RSS.png" width="25" title="RSS News Feed">--}}
+            {{--                </a>--}}
+            <a href="https://twitter.com/eordaia_info" class="mx-1"><img src="/graphics/twitter-logo.png" width="25" title="Twitter Page"></a>
+
+            <a href="https://www.facebook.com/eordaia.info" class="mx-1"><img src="/graphics/facebook-logo.png" width="25" title="Facebook Page"></a>
+        </div>
     </div>
 
 </nav>
