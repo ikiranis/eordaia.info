@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg container">
 
-    <a class="navbar-brand" href="{{ route('home') }}"><span class="mdi mdi-home-outline" />Eordaia.info</a>
+    <a class="navbar-brand" href="{{ route('home') }}"><img src="/graphics/logo.png" width="200" title="Eordaia.info"></a>
 
     <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
