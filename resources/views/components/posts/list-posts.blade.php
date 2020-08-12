@@ -1,5 +1,5 @@
 @foreach($posts as $post)
-    <x-posts.imageModal :photo="$post->photos()->first()" />
+{{--    <x-posts.imageModal :photo="$post->photos()->first()" />--}}
 
     <article class="list-post-container mt-3 mb-5">
 

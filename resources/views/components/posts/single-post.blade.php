@@ -1,4 +1,4 @@
-<x-posts.imageModal :photo="$post->photos()->first()" />
+{{--<x-posts.imageModal :photo="$post->photos()->first()" />--}}
 
 <article>
 
