@@ -1,5 +1,11 @@
 <template>
     <div>
+        <b-modal ref="photoModal" size="md" centered hide-footer title="Επιλογή φωτογραφίας">
+
+            Choose a photo
+
+        </b-modal>
+
         <div class="col-lg col-12 row fixed-bottom mb-5">
             <loading class="mx-auto" :loading="loading"/>
         </div>
@@ -66,6 +72,13 @@
             <button class="btn btn-success mx-auto"
                     type="button"
                     @click="addPhoto">Προσθήκη φωτογραφίας
+            </button>
+        </div>
+
+        <div class="row col-12 mt-3">
+            <button class="btn btn-success mx-auto"
+                    type="button"
+                    @click="choosePhoto">Επιλογή φωτογραφίας
             </button>
         </div>
 
@@ -191,8 +204,11 @@ export default {
 
                     this.loading = false
                 })
-        }
+        },
 
+        choosePhoto() {
+            this.$refs.photoModal.show()
+        }
     }
 }
 </script>
