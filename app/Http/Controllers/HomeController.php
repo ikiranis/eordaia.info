@@ -26,8 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('photos')
-            ->where('approved', true)
+        $posts = Post::whereApproved( true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
@@ -42,9 +41,8 @@ class HomeController extends Controller
      */
     public function post($slug)
     {
-        $post = Post::with(['links', 'tags', 'photos', 'categories', 'videos'])
-            ->where('slug', $slug)
-            ->where('approved', true)
+        $post = Post::whereSlug($slug)
+            ->whereApproved(true)
             ->firstOrFail();
 
         return view('public.post', compact('post'));

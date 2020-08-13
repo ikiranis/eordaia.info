@@ -34,7 +34,7 @@
 
         {!! $post->markdownBody !!}
 
-        @if(count($post->videos)>0)
+        @if(count($post->videos) > 0)
             <x-Youtube :url="$post->videos->first()->url" />
         @endif
 
