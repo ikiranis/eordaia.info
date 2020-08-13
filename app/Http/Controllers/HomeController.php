@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
+use Debugbar;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -41,7 +42,9 @@ class HomeController extends Controller
      */
     public function post($slug)
     {
-        $post = Post::whereSlug($slug)->firstOrFail();
+        $post = Post::whereSlug($slug)
+            ->whereApproved(1)
+            ->firstOrFail();
 
         return view('public.post', compact('post'));
     }
@@ -81,6 +84,7 @@ class HomeController extends Controller
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
         $posts = $tag->posts()
+            ->where('approved', 1)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
@@ -98,6 +102,7 @@ class HomeController extends Controller
         $category = Category::whereSlug($slug)->firstOrFail();
 
         $posts = $category->posts()
+            ->where('approved', 1)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
