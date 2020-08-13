@@ -8,7 +8,7 @@
 
     <div class="row">
         <x-posts.CoverPhoto
-            :photo="$post->photos()->first()"
+            :photo="$post->photos->first()"
             :smallPhoto="false"
             :singlePost="true"
         />
