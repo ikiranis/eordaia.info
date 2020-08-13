@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
+use Debugbar;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -104,6 +105,7 @@ class HomeController extends Controller
             ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
+
 
         return view('public.categoryPosts', compact(['category', 'posts']));
     }
