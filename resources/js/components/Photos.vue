@@ -1,8 +1,13 @@
 <template>
     <div>
         <b-modal ref="photoModal" size="md" centered hide-footer title="Επιλογή φωτογραφίας">
+            <div v-for="(photo, index) in photosList" class="mb-3">
+                <img :src="photo.smallPhotoUrl">
 
-            Choose a photo
+                <button class="btn btn-success col-6 my-2 mx-auto" type="button"
+                        @click="chooseThePhoto(photo)">Επιλογή
+                </button>
+            </div>
 
         </b-modal>
 
@@ -55,28 +60,28 @@
             </div>
 
             <div class="row">
-                <button class="btn btn-success col-6 my-2 mx-auto" type="button"
+                <button class="btn btn-success col my-2 mx-auto" type="button"
                         @click="uploadPhoto(index)">Upload
                 </button>
-            </div>
 
-            <div class="row">
-                <button class="btn btn-danger col-6 my-2 mx-auto" type="button"
+                <button class="btn btn-danger col my-2 mx-auto" type="button"
                         @click="deletePhoto(index, photo.id)">Delete
+                </button>
+
+                <button class="btn btn-warning col my-2 mx-auto" type="button"
+                        @click="removePhoto(index)">Remove
                 </button>
             </div>
 
         </div>
 
         <div class="row col-12">
-            <button class="btn btn-success mx-auto"
+            <button class="btn btn-success mx-auto col-5"
                     type="button"
                     @click="addPhoto">Προσθήκη φωτογραφίας
             </button>
-        </div>
 
-        <div class="row col-12 mt-3">
-            <button class="btn btn-success mx-auto"
+            <button class="btn btn-warning mx-auto col-5"
                     type="button"
                     @click="choosePhoto">Επιλογή φωτογραφίας
             </button>
@@ -111,7 +116,9 @@ export default {
                 description: '',
                 preview: null,
                 photoUrl: ''
-            }
+            },
+
+            photosList: []
         }
     },
 
@@ -208,6 +215,36 @@ export default {
 
         choosePhoto() {
             this.$refs.photoModal.show()
+            this.getPhotos()
+        },
+
+        getPhotos() {
+            this.loading = true
+
+            axios.get('/api/photos')
+                .then(response => {
+                    this.photosList = response.data;
+
+                    this.loading = false
+                })
+                .catch(error => {
+                    this.response.message = 'Δεν βρέθηκαν φωτογραφίες'
+                    this.response.status = false
+                    this.response.errors = error.response.data.errors
+
+                    this.loading = false
+                })
+        },
+
+        chooseThePhoto(photo) {
+            this.$refs.photoModal.hide()
+
+            this.photos.push(photo)
+
+        },
+
+        removePhoto(index) {
+            this.photos.splice(index)
         }
     }
 }

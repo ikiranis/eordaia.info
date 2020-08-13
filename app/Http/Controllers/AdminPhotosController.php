@@ -213,4 +213,17 @@ class AdminPhotosController extends Controller
 
         return redirect(route('photos.index'));
     }
+
+    /**
+     * Get the list pf photos for API call
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function listPhotos()
+    {
+        $photos = Photo::orderBy('created_at', 'desc')
+            ->get();
+
+        return PhotoResource::collection($photos);
+    }
 }

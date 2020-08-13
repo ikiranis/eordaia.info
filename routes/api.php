@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('category', 'AdminCategoriesController@store');
     Route::post('photo', 'AdminPhotosController@store');
     Route::delete('photo/{id}', 'AdminPhotosController@destroy');
+    Route::get('photos', 'AdminPhotosController@listPhotos');
     Route::post('link', 'AdminLinksController@store');
     Route::post('video', 'AdminVideosController@store');
 });

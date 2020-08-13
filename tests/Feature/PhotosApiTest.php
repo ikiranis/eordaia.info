@@ -69,4 +69,28 @@ class PhotosApiTest extends TestCase
         Storage::disk('public')
             ->assertExists($response->original->path . '/' . config('app.MEDIUM_IMAGE') . 'x_' . $response->original->filename);
     }
+
+    /**
+     * Test the list of photos
+     */
+    public function testGetListPhotos() : void
+    {
+        $response = $this->actingAs(static::$user, 'api')
+            ->get('/api/photos');
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            '*' => [
+                'id',
+                'path',
+                'filename',
+                'description',
+                'referral',
+                'photoUrl',
+                'smallPhotoUrl',
+                'mediumPhotoUrl'
+            ]
+        ]);
+    }
 }
