@@ -34,7 +34,7 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                <img src="{{ $photoUrl }}" class="card-img">
+                <img src="{{ $photoUrl }}" class="card-img mb-1">
                  @if ($singlePost && (isset($photo->description) || $photo->referral))
                     <div class="photoLabel row mx-3 px-3 mb-1">
                         <div class="mx-auto row text-center">
