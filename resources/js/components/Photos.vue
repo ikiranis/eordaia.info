@@ -244,6 +244,7 @@ export default {
         },
 
         removePhoto(index) {
+            // TODO σβήνει και όλες τις υπόλοιπες... μάλλον δεν βάζει σωστά τα index
             this.photos.splice(index)
         }
     }

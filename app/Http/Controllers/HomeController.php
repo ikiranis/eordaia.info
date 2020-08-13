@@ -29,6 +29,7 @@ class HomeController extends Controller
     {
         $posts = Post::whereApproved( true)
             ->orderBy('updated_at', 'desc')
+            ->with('photos')
             ->simplePaginate(5);
 
         return view('public.home', compact(['posts']));
@@ -44,6 +45,7 @@ class HomeController extends Controller
     {
         $post = Post::whereSlug($slug)
             ->whereApproved(true)
+            ->with(['links', 'tags', 'photos', 'categories', 'videos'])
             ->firstOrFail();
 
         return view('public.post', compact('post'));
@@ -83,7 +85,7 @@ class HomeController extends Controller
     {
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
-        $posts = $tag->posts
+        $posts = $tag->posts()->with('photos')
             ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
@@ -101,11 +103,10 @@ class HomeController extends Controller
     {
         $category = Category::whereSlug($slug)->firstOrFail();
 
-        $posts = $category->posts
+        $posts = $category->posts()->with('photos')
             ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
-
 
         return view('public.categoryPosts', compact(['category', 'posts']));
     }

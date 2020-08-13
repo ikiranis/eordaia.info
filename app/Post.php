@@ -15,7 +15,7 @@ class Post extends Model
 
     public $incrementing = false;
 
-    protected $with = ['links', 'tags', 'photos', 'categories', 'videos'];
+//    protected $with = ['links', 'tags', 'photos', 'categories', 'videos'];
 
     // The attributes that are mass assignable
     protected $fillable = [
