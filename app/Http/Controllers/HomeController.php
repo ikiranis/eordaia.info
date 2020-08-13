@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
-use Debugbar;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereApproved(true)
+        $posts = Post::with('photos')
+            ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
@@ -42,8 +42,9 @@ class HomeController extends Controller
      */
     public function post($slug)
     {
-        $post = Post::whereSlug($slug)
-            ->whereApproved(1)
+        $post = Post::with(['links', 'tags', 'photos', 'categories', 'videos'])
+            ->where('slug', $slug)
+            ->where('approved', true)
             ->firstOrFail();
 
         return view('public.post', compact('post'));
@@ -59,7 +60,7 @@ class HomeController extends Controller
     {
         $search = $request->search;
 
-        $posts = Post::whereApproved(1)
+        $posts = Post::whereApproved(true)
             ->where(function($query) use ($search) {
                 $query->where('body', 'LIKE', "%$search%")
                     ->orWhere('title', 'LIKE', "%$search%");
@@ -83,8 +84,8 @@ class HomeController extends Controller
     {
         $tag = Tag::whereSlug($slug)->firstOrFail();
 
-        $posts = $tag->posts()
-            ->where('approved', 1)
+        $posts = $tag->posts
+            ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
@@ -101,8 +102,8 @@ class HomeController extends Controller
     {
         $category = Category::whereSlug($slug)->firstOrFail();
 
-        $posts = $category->posts()
-            ->where('approved', 1)
+        $posts = $category->posts
+            ->where('approved', true)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 

@@ -47,6 +47,6 @@ blade;
      */
     public function categories()
     {
-        return $this->post->categories()->get();
+        return $this->post->categories;
     }
 }

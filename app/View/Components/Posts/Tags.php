@@ -51,6 +51,6 @@ blade;
      */
     public function tags()
     {
-        return $this->post->tags()->get();
+        return $this->post->tags;
     }
 }

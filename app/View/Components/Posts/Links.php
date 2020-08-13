@@ -49,6 +49,6 @@ blade;
      */
     public function links()
     {
-        return $this->post->links()->get();
+        return $this->post->links;
     }
 }
