@@ -43,10 +43,10 @@ class HomeController extends Controller
      */
     public function post($slug)
     {
-        $post = Post::with(['links', 'tags', 'photos', 'categories', 'videos'])
-            ->where('slug', $slug)
-            ->where('approved', true)
-            ->firstOrFail();
+        $post = Post::whereSlug($slug)
+            ->whereApproved(true)
+            ->with(['links', 'tags', 'photos', 'categories', 'videos'])
+            ->first();
 
         return view('public.post', compact('post'));
     }
