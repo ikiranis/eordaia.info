@@ -87,7 +87,7 @@ class HomeController extends Controller
 
         $posts = $tag->posts()->with('photos')
             ->where('approved', true)
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->simplePaginate(5);
 
         return view('public.tagPosts', compact(['tag', 'posts']));
@@ -105,7 +105,7 @@ class HomeController extends Controller
 
         $posts = $category->posts()->with('photos')
             ->where('approved', true)
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->simplePaginate(5);
 
         return view('public.categoryPosts', compact(['category', 'posts']));
