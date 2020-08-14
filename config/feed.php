@@ -16,7 +16,7 @@ return [
             /*
              * The feed will be available on this url.
              */
-            'url' => '/feed',
+            'url' => secure_url('/feed'),
 
             'title' => 'eordaia.info',
             'description' => 'Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα',

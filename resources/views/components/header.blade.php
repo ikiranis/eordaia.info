@@ -18,9 +18,7 @@
         </ul>
 
         <div>
-            {{--                <a href="{{ secure_url('/feed') }}" class="mx-1">--}}
-            {{--                    <img src="/graphics/RSS.png" width="25" title="RSS News Feed">--}}
-            {{--                </a>--}}
+            <a href="{{ secure_url('/feed') }}" class="mx-1"><img src="/graphics/RSS.png" width="25" title="RSS News Feed"></a>
             <a href="https://twitter.com/eordaia_info" class="mx-1"><img src="/graphics/twitter-logo.png" width="25" title="Twitter Page"></a>
 
             <a href="https://www.facebook.com/eordaia.info" class="mx-1"><img src="/graphics/facebook-logo.png" width="25" title="Facebook Page"></a>
