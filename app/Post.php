@@ -15,7 +15,10 @@ class Post extends Model
 
     public $incrementing = false;
 
-//    protected $with = ['links', 'tags', 'photos', 'categories', 'videos'];
+    // Need to add this, for eager loading to work
+    // With this, the uuid used as string in queries. Otherwise, the uuid converted to number and queries
+    // doesn't work for some uuid's
+    protected $keyType = 'string';
 
     // The attributes that are mass assignable
     protected $fillable = [
