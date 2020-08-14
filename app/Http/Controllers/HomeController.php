@@ -46,7 +46,7 @@ class HomeController extends Controller
         $post = Post::whereSlug($slug)
             ->whereApproved(true)
             ->with(['links', 'tags', 'photos', 'categories', 'videos'])
-            ->first();
+            ->firstOrFail();
 
         return view('public.post', compact('post'));
     }
