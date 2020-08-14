@@ -86,7 +86,7 @@ class Post extends Model implements Feedable
      */
     public function rssBody()
     {
-        return "<div> <img src='{$this->photos->first()->fullFeedImage}' align='center'></div>
+        return "<div> <img src='{$this->photos->first()->fullFeedImage}'></div>
                 <div><p>{$this->description}</p><p>[..]</p></div>";
     }
 
