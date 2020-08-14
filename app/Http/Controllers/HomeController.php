@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::whereApproved( true)
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->with('photos')
             ->simplePaginate(5);
 
