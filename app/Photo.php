@@ -82,4 +82,14 @@ class Photo extends Model
 
         return '';
     }
+
+    /**
+     * Get image for feed
+     *
+     * @return string
+     */
+    public function getFullFeedImageAttribute() : string
+    {
+        return url($this->mediumPhotoUrl);
+    }
 }

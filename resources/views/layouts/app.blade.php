@@ -16,7 +16,7 @@
 <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
-{{--    @include('feed::links')--}}
+    @include('feed::links')
 
     <x-google-analytics />
 

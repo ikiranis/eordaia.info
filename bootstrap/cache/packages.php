@@ -95,6 +95,13 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'spatie/laravel-feed' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\Feed\\FeedServiceProvider',
+    ),
+  ),
   'webpatser/laravel-uuid' => 
   array (
     'providers' => 

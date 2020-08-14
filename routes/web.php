@@ -16,6 +16,9 @@ if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
 
+// For RSS feed
+Route::feeds();
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');

@@ -7,8 +7,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
 use Str;
+use Spatie\Feed\FeedItem;
+use Spatie\Feed\Feedable;
 
-class Post extends Model
+class Post extends Model implements Feedable
 {
     use Sluggable;
     use Uuids;
@@ -61,7 +63,7 @@ class Post extends Model
             ->summary($this->rssBody())
             ->updated($this->created_at)
             ->link($this->rssLink())
-            ->author('WMSports');
+            ->author('eordaia.info');
     }
 
     /**
@@ -71,7 +73,10 @@ class Post extends Model
      */
     public static function getFeedItems()
     {
-        return self::whereApproved(1)->orderBy('created_at', 'desc')->limit(15)->get();
+        return self::whereApproved(1)
+            ->orderBy('created_at', 'desc')
+            ->limit(15)
+            ->get();
     }
 
     /**
@@ -81,9 +86,8 @@ class Post extends Model
      */
     public function rssBody()
     {
-        return "<p><strong>{$this->description}</strong></p>
-            <img src='{$this->photo->full_path_name}' width='350' align='left'>
-            <div>{$this->body}</div>";
+        return "<div> <img src='{$this->photos->first()->fullFeedImage}' width='500' align='left'></div>
+                <div><p>{$this->description}</p><p>[..]</p></div>";
     }
 
     /**
