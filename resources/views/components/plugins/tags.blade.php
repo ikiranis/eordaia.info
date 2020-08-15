@@ -7,7 +7,7 @@
         @foreach ($tags as $tag)
             <span class="mr-1">
                 <a href="{{ route('tag', '') . '/' . $tag->slug }}">
-                    {{ $tag->name }}
+                    <span class="tag-size-{{ $tag->size }}">{{ $tag->name }}</span>
                 </a>
             </span>
         @endforeach

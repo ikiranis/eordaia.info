@@ -125,7 +125,33 @@ article {
     }
 
     .tags {
-        font-size: 0.7rem;
+        .tag-size-0 {
+            font-size: 0.6rem;
+        }
+
+        .tag-size-1 {
+            font-size: 0.7rem;
+        }
+
+        .tag-size-2 {
+            font-size: 0.8rem;
+        }
+
+        .tag-size-3 {
+            font-size: 0.9rem;
+        }
+
+        .tag-size-4 {
+            font-size: 1rem;
+        }
+
+        .tag-size-5 {
+            font-size: 1.1rem;
+        }
+
+        .tag-size-5 {
+            font-size: 0.9rem;
+        }
     }
 }
 

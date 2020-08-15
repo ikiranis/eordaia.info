@@ -16,6 +16,8 @@ class Tag extends Model
     // The attributes that are mass assignable
     protected $fillable = ['id', 'slug', 'name'];
 
+    protected $keyType = 'string';
+
     /**
      * Return the sluggable configuration array for this model.
      * @source https://github.com/cviebrock/eloquent-sluggable
