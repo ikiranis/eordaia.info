@@ -25,11 +25,11 @@ class Tags extends Component
      */
     private function getSize(int $count) : int
     {
-        if ($count > 0 && $count < 10) return 0;
-        if ($count >= 10 && $count < 20) return 1;
-        if ($count >= 20 && $count < 30) return 2;
-        if ($count >= 30 && $count < 40) return 3;
-        if ($count >= 40) return 4;
+        if ($count > 0 && $count < 5) return 0;
+        if ($count >= 5 && $count < 10) return 1;
+        if ($count >= 10 && $count < 15) return 2;
+        if ($count >= 15 && $count < 20) return 3;
+        if ($count >= 20) return 4;
     }
 
     /**
