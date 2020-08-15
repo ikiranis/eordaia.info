@@ -20,7 +20,7 @@ yarn-error.log
 /public/fonts/
 /public/js/
 /public/mix-manifest.json
-/public/sitemap.xml
+/public/sitemaps/
 composer.lock
 package-lock.json
 /storage/debugbar
