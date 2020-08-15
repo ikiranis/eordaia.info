@@ -81,6 +81,13 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
+  'laravelium/sitemap' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravelium\\Sitemap\\SitemapServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 

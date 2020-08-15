@@ -33,14 +33,15 @@
     29 => 'Intervention\\Image\\ImageServiceProvider',
     30 => 'Laravel\\Tinker\\TinkerServiceProvider',
     31 => 'Laravel\\Ui\\UiServiceProvider',
-    32 => 'Carbon\\Laravel\\ServiceProvider',
-    33 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    34 => 'Spatie\\Feed\\FeedServiceProvider',
-    35 => 'Webpatser\\Uuid\\UuidServiceProvider',
-    36 => 'App\\Providers\\AppServiceProvider',
-    37 => 'App\\Providers\\AuthServiceProvider',
-    38 => 'App\\Providers\\EventServiceProvider',
-    39 => 'App\\Providers\\RouteServiceProvider',
+    32 => 'Laravelium\\Sitemap\\SitemapServiceProvider',
+    33 => 'Carbon\\Laravel\\ServiceProvider',
+    34 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    35 => 'Spatie\\Feed\\FeedServiceProvider',
+    36 => 'Webpatser\\Uuid\\UuidServiceProvider',
+    37 => 'App\\Providers\\AppServiceProvider',
+    38 => 'App\\Providers\\AuthServiceProvider',
+    39 => 'App\\Providers\\EventServiceProvider',
+    40 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -180,6 +181,8 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'sitemap' => 'Laravelium\\Sitemap\\SitemapServiceProvider',
+    'Laravelium\\Sitemap\\Sitemap' => 'Laravelium\\Sitemap\\SitemapServiceProvider',
   ),
   'when' => 
   array (
@@ -220,6 +223,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Laravelium\\Sitemap\\SitemapServiceProvider' => 
     array (
     ),
   ),
