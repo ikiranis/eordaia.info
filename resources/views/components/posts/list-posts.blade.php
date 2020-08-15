@@ -8,6 +8,7 @@
                     :photo="$post->photos->first() ?? null"
                     :smallPhoto="true"
                     :singlePost="false"
+                    :title="$post->title"
                 />
             </div>
 

@@ -11,6 +11,7 @@
             :photo="$post->photos->first()"
             :smallPhoto="false"
             :singlePost="true"
+            :title="$post->title"
         />
     </div>
 

@@ -10,6 +10,7 @@ class CoverPhoto extends Component
     public ?Photo $photo;
     public bool $smallPhoto;
     public bool $singlePost;
+    public ?string $title;
 
     /**
      * Create a new component instance.
@@ -17,12 +18,14 @@ class CoverPhoto extends Component
      * @param Photo|null $photo
      * @param bool $smallPhoto
      * @param bool $singlePost
+     * @param string|null $title
      */
-    public function __construct(?Photo $photo, bool $smallPhoto, bool $singlePost)
+    public function __construct(?Photo $photo, bool $smallPhoto, bool $singlePost, ?string $title)
     {
         $this->photo = $photo;
         $this->smallPhoto = $smallPhoto;
         $this->singlePost = $singlePost;
+        $this->title = $title;
     }
 
     /**
@@ -34,7 +37,7 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                <img src="{{ $photoUrl }}" class="card-img mb-1">
+                <img src="{{ $photoUrl }}" class="card-img mb-1" title="{{ $photo->description ?? $title }}">
                  @if ($singlePost && (isset($photo->description) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
                         <div class="mx-auto row text-center">
