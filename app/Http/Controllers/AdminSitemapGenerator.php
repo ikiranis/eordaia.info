@@ -28,7 +28,7 @@ class AdminSitemapGenerator extends Controller
         }
 
         // generate your sitemap (format, filename)
-        $sitemap->store('xml', 'sitemap');
+        $sitemap->store('xml', 'sitemaps/sitemap');
         // this will generate file mysitemap.xml to your public folder
     }
 }
