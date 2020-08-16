@@ -58,7 +58,6 @@ class Related extends Component
         foreach ($tags as $tag) {
             $posts = $posts
                 ->concat($tag->posts
-                    ->unique()
                     ->whereNotIn('id', $this->post->id)
                     ->sortByDesc('updated_at')
                     ->take(3));
@@ -68,13 +67,12 @@ class Related extends Component
             foreach ($categories as $category) {
                 $posts = $posts
                     ->concat($category->posts
-                        ->unique()
                         ->whereNotIn('id', $this->post->id)
                         ->sortByDesc('updated_at')
                         ->take(3));
             }
         }
 
-        return $posts;
+        return $posts->unique();
     }
 }
