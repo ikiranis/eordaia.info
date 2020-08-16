@@ -72,7 +72,7 @@ class HomeController extends Controller
         // Append search text for next pages
         $posts->appends(['search' => $search]);
 
-        return view('public.search', compact(['search', 'posts']));
+        return view('public.home', compact(['search', 'posts']));
     }
 
     /**

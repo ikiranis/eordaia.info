@@ -10,11 +10,15 @@
 
 @section('content')
 
-{{--    <x-posts.search />--}}
-
 {{--    @include('includes.posts.guest-post-message')--}}
 
     <div class="container">
+
+        @if (isset($search))
+            <div class="ml-4 row listLabel px-3">
+                <span class="text-dark my-auto">{{ $search }}</span>
+            </div>
+        @endif
 
         <div class="row">
 
@@ -25,8 +29,17 @@
 
                     <x-posts.paging :posts="$posts" />
 {{--                    @include('includes.ads.homepage-google-ad')--}}
-
+                @else
+                    <div class="text-center mt-5 mx-3">
+                        <div>
+                            <span class="alert-icon mdi text-light-secondary mdi-alert-decagram-outline" />
+                        </div>
+                        <div>
+                            <span class="mx-auto text-secondary">Δεν βρέθηκαν δημοσιεύσεις</span>
+                        </div>
+                    </div>
                 @endif
+
             </div>
 
             <div class="col-lg-4 col-12">

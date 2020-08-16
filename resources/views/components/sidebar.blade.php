@@ -1,4 +1,6 @@
 <aside class="px-3 my-3">
+    <x-posts.search />
+
     <x-plugins.categories />
     <x-plugins.tags />
     <x-plugins.utility />
