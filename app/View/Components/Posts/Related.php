@@ -56,7 +56,7 @@ class Related extends Component
         $posts = collect();
 
         foreach ($tags as $tag) {
-            $posts = $posts
+            $posts = $posts->unique()
                 ->concat($tag->posts
                     ->whereNotIn('id', $this->post->id)
                     ->sortByDesc('updated_at')
@@ -65,7 +65,7 @@ class Related extends Component
 
         if($posts->count() == 0) {
             foreach ($categories as $category) {
-                $posts = $posts
+                $posts = $posts->unique()
                     ->concat($category->posts
                         ->whereNotIn('id', $this->post->id)
                         ->sortByDesc('updated_at')
@@ -73,6 +73,6 @@ class Related extends Component
             }
         }
 
-        return $posts->unique();
+        return $posts;
     }
 }
