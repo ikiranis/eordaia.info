@@ -29,11 +29,11 @@ class Related extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="mt-3 px-3 col-12 col-lg-8">
-                <div class="mb-2">Δείτε επίσης:</div>
+            <hr>
+            <div class="mt-3 px-3 ">
                 @foreach ($relatedPosts as $post)
-                    <div class="row mb-2">
-                        <div><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
+                    <div class="row mb-2 col-12">
+                        <div class="my-auto"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
                         <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
                     </div>
                 @endforeach
