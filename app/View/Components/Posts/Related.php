@@ -29,14 +29,17 @@ class Related extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="mt-3 px-3 ">
-                @foreach ($relatedPosts as $post)
-                    <div class="row mb-2 col-12">
-                        <div class="my-auto"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
-                        <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
-                    </div>
-                @endforeach
-            </div>
+            @if ($relatedPosts->count() > 0)
+                <hr>
+                <div class="mt-3 px-3 ">
+                    @foreach ($relatedPosts as $post)
+                        <div class="row mb-2 col-12">
+                            <div class="my-auto"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
+                            <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         blade;
     }
 
