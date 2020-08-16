@@ -73,7 +73,7 @@ class Related extends Component
             }
         }
 
-        $posts = $posts->unique()->sortByDesc('updated_at');
+        $posts = $posts->unique('id')->sortByDesc('updated_at');
 
         return $posts;
     }
