@@ -16,7 +16,7 @@
 
                 <div class="card-body text-center">
 
-                    <img src="/images/site/404.jpg" class="card-img">
+                    <img src="/graphics/404.jpg" class="card-img">
 
                     <h5>Έχεις γράψει λάθος την διεύθυνση ή δεν υπάρχει πλέον η σελίδα</h5>
 
