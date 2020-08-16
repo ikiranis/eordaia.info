@@ -35,7 +35,7 @@ class Related extends Component
                     @foreach ($relatedPosts as $post)
                         <div class="row mb-2 col-12">
                             <div class="my-auto"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
-                            <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
+                            <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a> {{ $post->updated_at->format('d/m/Y') }}</div>
                         </div>
                     @endforeach
                 </div>
@@ -51,21 +51,28 @@ class Related extends Component
     public function relatedPosts()
     {
         $tags = $this->post->tags;
-        $posts = collect();
+        $categories = $this->post->categories;
 
-        if ($tags->count() == 1) {
-            return $tags[0]->posts
-                ->whereNotIn('id', $this->post->id)
-                ->sortByDesc('updated_at')
-                ->take(3);
-        }
+        $posts = collect();
 
         foreach ($tags as $tag) {
             $posts = $posts
-                    ->concat($tag->posts
+                ->concat($tag->posts
+                    ->unique()
+                    ->whereNotIn('id', $this->post->id)
+                    ->sortByDesc('updated_at')
+                    ->take(3));
+        }
+
+        if($posts->count() == 0) {
+            foreach ($categories as $category) {
+                $posts = $posts
+                    ->concat($category->posts
+                        ->unique()
                         ->whereNotIn('id', $this->post->id)
                         ->sortByDesc('updated_at')
                         ->take(3));
+            }
         }
 
         return $posts;
