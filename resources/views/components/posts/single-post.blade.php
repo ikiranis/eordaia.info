@@ -44,6 +44,7 @@
     </div>
 
     @if ($post->tags->count() > 0)
+        <hr>
         <x-posts.related :post="$post" />
     @endif
 
