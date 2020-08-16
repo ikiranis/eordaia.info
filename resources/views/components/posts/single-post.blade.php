@@ -43,6 +43,10 @@
 
     </div>
 
+    @if ($post->tags->count() > 0)
+        <x-posts.related :post="$post" />
+    @endif
+
 {{--    <x-error :errors="$errors" />--}}
 
 </article>

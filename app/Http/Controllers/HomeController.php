@@ -48,8 +48,6 @@ class HomeController extends Controller
             ->with(['links', 'tags', 'photos', 'categories', 'videos'])
             ->firstOrFail();
 
-        debugbar::info($post);
-
         return view('public.post', compact('post'));
     }
 
