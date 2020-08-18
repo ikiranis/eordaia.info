@@ -130,10 +130,6 @@ export default {
         }
     },
 
-    created() {
-        // console.log(this.photos)
-    },
-
     methods: {
         addPhoto() {
             this.photos.push(this.emptyPhoto)
