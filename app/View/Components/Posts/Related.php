@@ -31,11 +31,14 @@ class Related extends Component
         return <<<'blade'
             @if ($relatedPosts->count() > 0)
                 <hr>
-                <div class="mt-3 px-3 ">
+                <div class="mt-3 px-3">
                     @foreach ($relatedPosts as $post)
-                        <div class="row mb-2 col-12">
-                            <div class="my-auto"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
-                            <div class="col my-auto"><a href="{{ url($post->slug) }}">{{ $post->title }}</a> {{ $post->updated_at->format('d/m/Y') }}</div>
+                        <div class="row mb-3 col-12">
+                            <div class="my-auto col-12 col-md-auto px-3"><img src="{{ $post->photos->first()->smallPhotoUrl }}"></div>
+                            <div class="col my-auto col-12 col-md-auto">
+                                <div><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
+                                <div>{{ $post->updated_at->format('d/m/Y') }}</div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
