@@ -28,14 +28,12 @@ class Categories extends Component
     {
         return <<<'blade'
             @if(!$categories->isEmpty())
-                <div class="row">
                     @foreach($categories as $category)
                         <a href="{{ route('category', '') . '/' . $category->slug }}"
-                            class="text-dark my-auto px-3">
+                            class="my-auto px-3">
                             {{ $category->name }}
                         </a>
                     @endforeach
-                </div>
             @endif
 blade;
     }

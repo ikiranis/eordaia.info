@@ -12,9 +12,9 @@
 
     <section class="container">
 
-        <div class="ml-4 row listLabel px-3">
+        <div class="listLabel mb-2 text-center text-md-left">
             <a href="{{ route('category', '') . '/' . $category->slug }}"
-               class="text-dark my-auto">
+               class="my-auto">
                 {{ $category->name }}
             </a>
         </div>

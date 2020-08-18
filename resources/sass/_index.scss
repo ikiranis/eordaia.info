@@ -152,9 +152,23 @@ article {
 }
 
 .listLabel {
-    height: 2rem;
+    color: theme-color("secondary");
+    padding: 0.5rem 0 0.5rem 0;
     font-weight: bold;
-    background-image: linear-gradient(to right, theme-color("light-secondary"), $body-bg);
+    margin: 1rem 0 1rem 0;
+    border-top: 1px solid theme-color("light-secondary");
+    border-bottom: 1px solid theme-color("light-secondary");
+
+    a {
+        color: theme-color("secondary");
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+
 }
 
 .photoLabel {

@@ -15,8 +15,8 @@
     <div class="container">
 
         @if (isset($search))
-            <div class="ml-4 row listLabel px-3">
-                <span class="text-dark my-auto">{{ $search }}</span>
+            <div class="listLabel mb-2 text-center text-md-left">
+                <span class="my-auto">{{ $search }}</span>
             </div>
         @endif
 
