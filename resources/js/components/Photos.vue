@@ -64,9 +64,9 @@
                         @click="uploadPhoto(index)">Upload
                 </button>
 
-                <button class="btn btn-danger col my-2 mx-auto" type="button"
-                        @click="deletePhoto(index, photo.id)">Delete
-                </button>
+<!--                <button class="btn btn-danger col my-2 mx-auto" type="button"-->
+<!--                        @click="deletePhoto(index, photo.id)">Delete-->
+<!--                </button>-->
 
                 <button class="btn btn-warning col my-2 mx-auto" type="button"
                         @click="removePhoto(index)">Remove
@@ -200,7 +200,7 @@ export default {
                     this.response.message = "Η φωτογραφία διαγράφηκε..."
                     this.response.status = true
 
-                    this.photos.splice(index)
+                    this.photos.splice(index, 1)
 
                     this.loading = false
                 })
@@ -244,8 +244,7 @@ export default {
         },
 
         removePhoto(index) {
-            // TODO σβήνει και όλες τις υπόλοιπες... μάλλον δεν βάζει σωστά τα index
-            this.photos.splice(index)
+            this.photos.splice(index, 1)
         }
     }
 }
