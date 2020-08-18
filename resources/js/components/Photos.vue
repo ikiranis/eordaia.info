@@ -15,62 +15,61 @@
             <loading class="mx-auto" :loading="loading"/>
         </div>
 
-        <div v-for="(photo, index) in photos" class="my-3 px-1 py-1 border">
-            <div class="row">
-                <div class="form-group my-3 col-lg-6 col-12 mx-auto">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input"
-                               name="uploadFile" id="uploadFile"
-                               accept='image/*'
-                               @change="handleFile($event, index)">
-                        <label class="custom-file-label"
-                               for="uploadFile">Φωτογραφία</label>
+        <div v-for="(photo, index) in photos" class="my-3 px-3 py-1 border row" :class="photo.photoUploaded ? 'bg-light-success' : ''">
+            <div v-if="photo.preview || photo.smallPhotoUrl" class="my-auto col-12 col-lg-auto">
+                <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="150" height="auto" />
 
-                        <form-error v-if="response.errors.file"
-                                    :error="response.errors.file[0]"/>
+                <img v-else :src="photo.smallPhotoUrl" class="mx-auto" width="150" height="auto" />
+            </div>
+
+            <div class="col-12 col-lg my-auto">
+                <div v-if="!photo.photoUploaded" class="row">
+                    <div class="form-group my-3 col-lg-6 col-12 mx-auto">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input"
+                                   name="uploadFile" id="uploadFile"
+                                   accept='image/*'
+                                   @change="handleFile($event, index)">
+                            <label class="custom-file-label"
+                                   for="uploadFile">Φωτογραφία</label>
+
+                            <form-error v-if="response.errors.file"
+                                        :error="response.errors.file[0]"/>
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
+                <div class="row">
+                    <label class="sr-only"
+                           for="photoReferral">Πηγή</label>
+                    <input id="photoReferral" name="referral" class="my-2 col-12 mx-auto"
+                              v-model="photo.referral" placeholder="Πηγή">
+                    <form-error v-if="response.errors.referral"
+                                :error="response.errors.referral[0]"
+                                class="mx-auto col-12"/>
+                </div>
 
-            <div class="row">
-                <label class="sr-only"
-                       for="photoReferral">Πηγή</label>
-                <input id="photoReferral" name="referral" class="my-2 col-lg-8 col-12 mx-auto"
-                          v-model="photo.referral" placeholder="Πηγή">
-                <form-error v-if="response.errors.referral"
-                            :error="response.errors.referral[0]"
-                            class="mx-auto col-lg-8 col-12"/>
-            </div>
+                <div class="row">
+                    <label class="sr-only"
+                           for="photoDescription">Περιγραφή</label>
+                    <textarea id="photoDescription" name="description" class="my-2 col-12 mx-auto"
+                              v-model="photo.description" placeholder="Περιγραφή"/>
+                    <form-error v-if="response.errors.description"
+                                :error="response.errors.description[0]"
+                                class="mx-auto col-12"/>
+                </div>
 
-            <div class="row">
-                <label class="sr-only"
-                       for="photoDescription">Περιγραφή</label>
-                <textarea id="photoDescription" name="description" class="my-2 col-lg-8 col-12 mx-auto"
-                          v-model="photo.description" placeholder="Περιγραφή"/>
-                <form-error v-if="response.errors.description"
-                            :error="response.errors.description[0]"
-                            class="mx-auto col-lg-8 col-12"/>
-            </div>
+                <div class="row">
+                    <button v-if="!photo.photoUploaded"
+                            class="btn btn-success col-12 col-lg-5 my-2 mx-auto" type="button"
+                            @click="uploadPhoto(index)">Upload
+                    </button>
 
-            <div v-if="photo.preview || photo.photoUrl" class="row col-12">
-                <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="350"/>
-
-                <img v-else :src="photo.photoUrl" class="mx-auto" width="350"/>
-            </div>
-
-            <div class="row">
-                <button class="btn btn-success col my-2 mx-auto" type="button"
-                        @click="uploadPhoto(index)">Upload
-                </button>
-
-<!--                <button class="btn btn-danger col my-2 mx-auto" type="button"-->
-<!--                        @click="deletePhoto(index, photo.id)">Delete-->
-<!--                </button>-->
-
-                <button class="btn btn-warning col my-2 mx-auto" type="button"
-                        @click="removePhoto(index)">Remove
-                </button>
+                    <button class="btn btn-danger col-12 col-lg-5 my-2 mx-auto" type="button"
+                            @click="removePhoto(index)">Remove
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -115,7 +114,9 @@ export default {
                 referral: '',
                 description: '',
                 preview: null,
-                photoUrl: ''
+                photoUrl: '',
+                smallPhotoUrl: '',
+                photoUploaded: false
             },
 
             photosList: []
@@ -150,7 +151,9 @@ export default {
                 Object.assign(this.photos[index], {
                     file: file,
                     preview: preview,
-                    photoUrl: null
+                    photoUrl: null,
+                    smallPhotoUrl: null,
+                    photoUploaded: false
                 })
             }, false)
 
@@ -175,7 +178,8 @@ export default {
             })
                 .then(response => {
                     Object.assign(this.photos[index], {
-                        id: response.data.id
+                        id: response.data.id,
+                        photoUploaded: true
                     })
 
                     this.response.message = "Η φωτογραφία ανέβηκε..."
@@ -239,6 +243,7 @@ export default {
         chooseThePhoto(photo) {
             this.$refs.photoModal.hide()
 
+            photo.photoUploaded = true
             this.photos.push(photo)
 
         },
