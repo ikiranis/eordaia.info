@@ -69,6 +69,10 @@
                     <button class="btn btn-danger col-12 col-lg-5 my-2 mx-auto" type="button"
                             @click="removePhoto(index)">Remove
                     </button>
+
+<!--                    <button class="btn btn-warning col-12 col-lg-5 my-2 mx-auto" type="button"-->
+<!--                            @click="chooseCover(index)">Cover-->
+<!--                    </button>-->
                 </div>
             </div>
 
@@ -87,6 +91,7 @@
         </div>
 
         <input type="hidden" v-for="photo in photos" name="photos[]" :value="photo.id">
+        <input type="hidden" name="coverImageId" :value="coverImageId">
 
         <div class="row fixed-bottom mb-2">
             <display-error class="mx-auto"
@@ -119,7 +124,9 @@ export default {
                 photoUploaded: false
             },
 
-            photosList: []
+            photosList: [],
+
+            coverImageId: null
         }
     },
 
@@ -246,6 +253,10 @@ export default {
 
         removePhoto(index) {
             this.photos.splice(index, 1)
+        },
+
+        chooseCover(index) {
+            this.coverImageId = this.photos[index].id
         }
     }
 }
