@@ -23,6 +23,7 @@ class PhotoResource extends JsonResource
             'photoUrl' => $this->photoUrl,
             'smallPhotoUrl' => $this->smallPhotoUrl,
             'mediumPhotoUrl' => $this->mediumPhotoUrl,
+            'photoUploaded' => true
         ];
     }
 }
