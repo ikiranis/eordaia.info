@@ -41,7 +41,7 @@
 
                                 <videos :videos="videos"></videos>
 
-                                <photos :photos="photos"></photos>
+                                <photos :photos="photos" :image_id="''"></photos>
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">
