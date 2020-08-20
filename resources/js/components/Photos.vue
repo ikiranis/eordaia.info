@@ -19,7 +19,7 @@
              class="my-3 px-3 py-1 border row"
              :class="photo.photoUploaded ? 'bg-light-success' : ''">
             <div v-if="photo.preview || photo.smallPhotoUrl" class="my-auto col-12 col-lg-auto">
-                <div :class="photo.id === coverImageId ? 'image-selected' : ''">
+                <div :class="(photo.id === coverImageId || photo.id === image_id ) ? 'image-selected' : ''">
                     <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="150" height="auto" />
 
                     <img v-else :src="photo.smallPhotoUrl" class="mx-auto" width="150" height="auto" />
@@ -96,7 +96,7 @@
         </div>
 
         <input type="hidden" v-for="photo in photos" name="photos[]" :value="photo.id">
-        <input type="hidden" name="coverImageId" :value="coverImageId">
+        <input type="hidden" name="image_id" :value="image_id">
 
         <div class="row fixed-bottom mb-2">
             <display-error class="mx-auto"
@@ -129,9 +129,7 @@ export default {
                 photoUploaded: false
             },
 
-            photosList: [],
-
-            coverImageId: null
+            photosList: []
         }
     },
 
@@ -139,6 +137,11 @@ export default {
         photos: {
             required: true,
             type: Array
+        },
+
+        image_id: {
+            required: true,
+            type: String
         }
     },
 
@@ -261,7 +264,7 @@ export default {
         },
 
         chooseCover(index) {
-            this.coverImageId = this.photos[index].id
+            this.image_id = this.photos[index].id
         }
     }
 }

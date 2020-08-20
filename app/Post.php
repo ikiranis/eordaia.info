@@ -29,7 +29,8 @@ class Post extends Model implements Feedable
         'title',
         'body',
         'approved',
-        'author'
+        'author',
+        'image_id'
     ];
 
     /**

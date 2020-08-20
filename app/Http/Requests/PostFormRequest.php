@@ -34,7 +34,8 @@ class PostFormRequest extends FormRequest
             'title' => 'required|max:255',
             'body' => 'required',
             'reference' => 'nullable|url|max:800',
-            'approved' => 'nullable'
+            'approved' => 'nullable',
+            'image_id' => 'nullable'
         ];
     }
 

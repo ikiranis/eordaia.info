@@ -42,7 +42,7 @@
 
                                 <videos :videos="videos"></videos>
 
-                                <photos :photos="photos"></photos>
+                                <photos :photos="photos" :image_id="image_id"></photos>
                             </div>
 
                             <div class="input-group mb-3 no-gutters my-2">
@@ -96,7 +96,9 @@
 
 				videos: {!!
                     json_encode($videos);
-                !!}
+                !!},
+
+                image_id: {!! json_encode($post->image_id) !!}
 			}
 		})
     </script>
