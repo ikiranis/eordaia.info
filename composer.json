@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelium/sitemap": "^7.0",
+        "league/commonmark": "^1.5",
         "spatie/laravel-feed": "^2.7",
         "webpatser/laravel-uuid": "^3.0"
     },

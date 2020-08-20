@@ -6,6 +6,9 @@ use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
+use League\CommonMark\Extension\Table\TableExtension;
 use Str;
 use Spatie\Feed\FeedItem;
 use Spatie\Feed\Feedable;
@@ -149,7 +152,14 @@ class Post extends Model implements Feedable
      * @return mixed
      */
     public function getMarkdownBodyAttribute() {
-        return Markdown::convertToHtml($this->body);
+        // Obtain a pre-configured Environment with all the CommonMark parsers/renderers ready-to-go
+        $environment = Environment::createCommonMarkEnvironment();
+        // Add this extension
+        $environment->addExtension(new TableExtension());
+        // Instantiate the converter engine and start converting some Markdown!
+        $converter = new CommonMarkConverter([], $environment);
+
+        return $converter->convertToHtml($this->body);
     }
 
     /**
