@@ -39,9 +39,9 @@
             <x-Youtube :url="$post->videos->first()->url" />
         @endif
 
-{{--        <x-posts.photos :post="$post" />--}}
-
         <x-posts.links :post="$post" />
+
+        <x-posts.photos :post="$post" />
 
     </div>
 

@@ -28,8 +28,8 @@ class Photos extends Component
     public function render()
     {
         return <<<'blade'
-            @if ($photos)
-                <div class="row">
+            @if ($photos->count() > 0)
+                <div class="row mt-3">
                 @foreach ($photos as $photo)
                     <div class="col-lg-6 col-12 mb-3">
                         <img src="{{ $getUrl($photo) }}" class="card-img mb-1" title="{{ $photo->description ?? $title }}">
@@ -53,7 +53,10 @@ class Photos extends Component
      */
     public function photos()
     {
-        return $this->post->photos ?? null;
+        return $this->post
+                ->photos
+                ->whereNotIn('id', $this->post->cover->id)
+            ?? null;
     }
 
     /**
@@ -62,13 +65,16 @@ class Photos extends Component
      */
     public function getUrl(Photo $photo) : String {
         if($photo) {
-            return ($photo->smallPhoto)
-                ? $photo->mediumPhotoUrl
-                : $photo->photoUrl;
+            return $photo->mediumPhotoUrl ?? $photo->smallPhotoUrl;
         }
     }
 
-    public function title()
+    /**
+     * Get post title
+     *
+     * @return String
+     */
+    public function title() : String
     {
         return $this->post->title;
     }
