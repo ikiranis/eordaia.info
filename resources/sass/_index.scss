@@ -97,6 +97,12 @@ article {
         small {
             font-size: 0.7rem;
         }
+
+        table {
+            th {
+                padding: 0 1rem 0 1rem;
+            }
+        }
     }
 }
 
@@ -199,5 +205,7 @@ article {
 //        background-image: linear-gradient(to bottom, theme-color("very-light-secondary"), $body-bg);
 //    }
 //}
+
+
 
 
