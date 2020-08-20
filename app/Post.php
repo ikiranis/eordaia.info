@@ -4,6 +4,7 @@ namespace App;
 
 use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Debugbar;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
@@ -169,5 +170,25 @@ class Post extends Model implements Feedable
      */
     public function getDescriptionAttribute() {
         return Str::words(strip_tags(Markdown::convertToHtml($this->body)), 50, '');
+    }
+
+    /**
+     * Get the cover image for post
+     *
+     * @return mixed|null
+     */
+    public function getCoverAttribute()
+    {
+        if ($this->image_id) {
+            return $this->photos()
+                ->where('id', $this->image_id)
+                ->first();
+        }
+
+        if ($photo = $this->photos->first()) {
+            return $photo;
+        }
+
+        return null;
     }
 }
