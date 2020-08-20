@@ -15,11 +15,15 @@
             <loading class="mx-auto" :loading="loading"/>
         </div>
 
-        <div v-for="(photo, index) in photos" class="my-3 px-3 py-1 border row" :class="photo.photoUploaded ? 'bg-light-success' : ''">
+        <div v-for="(photo, index) in photos"
+             class="my-3 px-3 py-1 border row"
+             :class="photo.photoUploaded ? 'bg-light-success' : ''">
             <div v-if="photo.preview || photo.smallPhotoUrl" class="my-auto col-12 col-lg-auto">
-                <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="150" height="auto" />
+                <div :class="photo.id === coverImageId ? 'image-selected' : ''">
+                    <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="150" height="auto" />
 
-                <img v-else :src="photo.smallPhotoUrl" class="mx-auto" width="150" height="auto" />
+                    <img v-else :src="photo.smallPhotoUrl" class="mx-auto" width="150" height="auto" />
+                </div>
             </div>
 
             <div class="col-12 col-lg my-auto">
@@ -70,9 +74,10 @@
                             @click="removePhoto(index)">Remove
                     </button>
 
-<!--                    <button class="btn btn-warning col-12 col-lg-5 my-2 mx-auto" type="button"-->
-<!--                            @click="chooseCover(index)">Cover-->
-<!--                    </button>-->
+                    <button v-if="photo.photoUploaded"
+                            class="btn btn-warning col-12 col-lg-5 my-2 mx-auto" type="button"
+                            @click="chooseCover(index)">Cover
+                    </button>
                 </div>
             </div>
 
