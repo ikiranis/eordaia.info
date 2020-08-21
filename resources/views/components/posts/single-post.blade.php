@@ -34,7 +34,7 @@
         {!! $post->markdownBody !!}
 
         @if($post->videos->isNotEmpty())
-            <x-Youtube :url="$post->videos->first()->url" />
+            <x-posts.videos :post="$post" />
         @endif
 
         <x-posts.links :post="$post" />

@@ -27,11 +27,11 @@ class Youtube extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="row my-3">
-                <iframe width="560" height="315"  class="mx-auto"
-                    src="{{ 'https://www.youtube.com/embed/' . $videoID }}" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            <div class="my-3">
+                <iframe width="100%" height="315"
+                    src="{{ 'https://www.youtube.com/embed/' . $videoID }}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
 blade;
