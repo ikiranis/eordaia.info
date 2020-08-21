@@ -21,10 +21,9 @@
 
 		<div class="my-2 row">
 			<div v-for="(category, index) in categories" class="mx-2">
-				<input type="checkbox" id="categories" v-model="category.checked"
-					   @click="checkCategory">
-
-				<label for="categories" class="my-1">{{ category.name }}</label>
+                <label :for="'category' + category.id" class="my-1">{{ category.name }}</label>
+                <input type="checkbox" :id="'category' + category.id" v-model="category.checked"
+                       @click="checkCategory">
 			</div>
 		</div>
 

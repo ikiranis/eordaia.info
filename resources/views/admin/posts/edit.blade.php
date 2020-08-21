@@ -98,7 +98,7 @@
                     json_encode($videos);
                 !!},
 
-                image_id: {!! json_encode($post->image_id) !!}
+                image_id: {!! json_encode($post->image_id ?? '') !!}
 			}
 		})
     </script>
