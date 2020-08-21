@@ -55,7 +55,7 @@ class Photos extends Component
     {
         return $this->post
                 ->photos
-                ->whereNotIn('id', $this->post->cover->id)
+                ->whereNotIn('id', $this->post->cover->id ?? null)
             ?? null;
     }
 
