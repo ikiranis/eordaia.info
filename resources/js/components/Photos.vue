@@ -146,7 +146,7 @@ export default {
         addPhoto() {
             // Have to push this.emptyPhoto like this. Otherwise this.emptyPhoto copied by reference and
             // the object properties will change when this.photos[] change
-            this.photos.push(Vue.util.extend({}, this.emptyPhoto))
+            this.photos.push(Object.assign({}, this.emptyPhoto))
         },
 
         handleFile(event, index) {
