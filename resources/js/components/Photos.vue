@@ -20,7 +20,7 @@
              :class="photo.photoUploaded ? 'bg-light-success' : ''">
             <div v-if="photo.preview || photo.smallPhotoUrl" class="my-auto col-12 col-lg-auto">
                 <div class="btn-sm"
-                     :class="(photo.id === coverImageId || photo.id === image_id ) ? 'image-selected' : ''"
+                     :class="(photo.id === image_id ) ? 'image-selected' : ''"
                      @click="chooseCover(index)">
                     <img v-if="photo.preview" :src="photo.preview.src" class="mx-auto" width="150" height="auto" />
 
@@ -144,7 +144,9 @@ export default {
 
     methods: {
         addPhoto() {
-            this.photos.push(this.emptyPhoto)
+            // Have to push this.emptyPhoto like this. Otherwise this.emptyPhoto copied by reference and
+            // the object properties will change when this.photos[] change
+            this.photos.push(Vue.util.extend({}, this.emptyPhoto))
         },
 
         handleFile(event, index) {
