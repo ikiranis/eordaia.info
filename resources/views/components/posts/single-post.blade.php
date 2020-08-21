@@ -2,9 +2,7 @@
 
 <article>
 
-    <div class="listLabel mb-2 text-center text-md-left">
-        <x-posts.categories class="mx-3" :post="$post" />
-    </div>
+    <x-posts.categories class="mx-3" :post="$post" />
 
     <div class="row">
         <x-posts.CoverPhoto
