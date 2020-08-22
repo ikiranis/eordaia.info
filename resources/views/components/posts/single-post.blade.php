@@ -33,11 +33,9 @@
 
         {!! $post->markdownBody !!}
 
-        @if($post->videos->isNotEmpty())
-            <x-posts.videos :post="$post" />
-        @endif
-
         <x-posts.links :post="$post" />
+
+        <x-posts.videos :post="$post" />
 
         <x-posts.photos :post="$post" />
 
