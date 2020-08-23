@@ -45,9 +45,9 @@ article {
             text-decoration: underline;
         }
 
-        h2, h3 {
-            page-break-after: avoid;
-        }
+        //h2, h3 {
+        //    page-break-after: avoid;
+        //}
 
         pre, code {
             font-family: Menlo, Monaco, "Courier New", monospace;
@@ -62,6 +62,11 @@ article {
         p {
             font-size: 1rem;
             margin-bottom: 1.3rem;
+        }
+
+        h1, .h1, h2, .h2, h3, .h3 {
+            margin-bottom: 1rem;
+            font-weight: bold;
         }
 
         h1, .h1 {
