@@ -68,7 +68,7 @@
         computed: {
             filteredTags() {
                 return this.allTags.filter((tag) => {
-                    return tag.includes(this.tag)
+                    return tag.toUpperCase().includes(this.tag.toUpperCase())
                 })
             }
         },
