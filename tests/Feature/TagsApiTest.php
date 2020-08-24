@@ -50,4 +50,22 @@ class TagsApiTest extends TestCase
             'name'
         ]);
     }
+
+    /**
+     * Test tags list api
+     */
+    public function testListTags() : void
+    {
+        $response = $this->actingAs(static::$user, 'api')
+            ->get('/api/tags');
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+            '*' => [
+                'id',
+                'name'
+            ]
+        ]);
+    }
 }

@@ -12,11 +12,13 @@ class AdminTagsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-       //
+        $tags = Tag::all();
+
+        return TagResource::collection($tags);
     }
 
     /**
