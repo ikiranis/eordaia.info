@@ -71,10 +71,10 @@
                                 class="mx-auto col-12"/>
                 </div>
 
-                <div>
+                <div v-if="!photo.photoUploaded">
                     <label for="viewable">Εμφάνιση περιγραφής</label>
 
-                    <input type="checkbox" id="viewable" name="viewable">
+                    <input type="checkbox" id="viewable" name="viewable" v-model="photo.viewable" :checked="photo.viewable ? 'checked' : ''">
                 </div>
 
                 <div class="row">
@@ -134,7 +134,8 @@ export default {
                 preview: null,
                 photoUrl: '',
                 smallPhotoUrl: '',
-                photoUploaded: false
+                photoUploaded: false,
+                viewable: false
             },
 
             photosList: []
@@ -189,6 +190,7 @@ export default {
             formData.append('url', this.photos[index].url)
             formData.append('description', this.photos[index].description)
             formData.append('referral', this.photos[index].referral)
+            formData.append('viewable', this.photos[index].viewable)
 
             this.loading = true
 
