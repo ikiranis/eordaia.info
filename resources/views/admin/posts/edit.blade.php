@@ -14,7 +14,7 @@
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('posts.update', $post->id) }}"
-                              enctype="multipart/form-data">
+                              enctype="multipart/form-data" autocomplete="off">
                             <input name="_method" type="hidden" value="PUT">
                             @csrf
 
