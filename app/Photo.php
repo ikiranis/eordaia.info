@@ -18,7 +18,8 @@ class Photo extends Model
         'description',
         'referral',
         'medium',
-        'small'
+        'small',
+        'viewable'
     ];
 
     /**
@@ -91,5 +92,15 @@ class Photo extends Model
     public function getFullFeedImageAttribute(): string
     {
         return url($this->mediumPhotoUrl);
+    }
+
+    /**
+     * Get label for photo, if viewable is true
+     *
+     * @return string|null
+     */
+    public function getLabelAttribute(): ?string
+    {
+        return $this->viewable ? $this->description : null;
     }
 }
