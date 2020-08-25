@@ -13,7 +13,7 @@
                     <div class="card-header">Εισαγωγή δημοσίευσης</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" autocomplete="off">
                             @csrf
 
                             <input type="hidden" id="user_id" name="user_id" value="{{$user_id}}">

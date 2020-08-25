@@ -59,6 +59,8 @@ class AdminPostsController extends Controller
 
         $input = $request->all();
 
+        dd($request->tags);
+
         $post = Post::create($input);
 
         $post->tags()->attach($request->tags); // Insert tags relation with pivot table
