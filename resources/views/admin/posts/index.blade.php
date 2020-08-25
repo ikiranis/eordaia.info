@@ -34,9 +34,13 @@
                             <input name="_method" type="hidden" value="DELETE">
                             @csrf
 
-                            <button type="submit" class="btn btn-danger">
-                                Διαγραφή
-                            </button>
+                            <div class="app">
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Είσαι σίγουρος για την διαγραφή;')">
+                                    Διαγραφή
+                                </button>
+                            </div>
+
                         </form>
                     </td>
                 </tr>
@@ -55,4 +59,50 @@
     @else
         <h1>Δεν υπάρχουν δημοσιεύσεις</h1>
     @endif
+@endsection
+
+@section('scripts')
+
+    <script>
+		new Vue({
+			el: '#app',
+			data: {
+				matches: matches.data,
+				isSaved: {}
+			},
+			created: function () { // Set first values to this.isSaved array
+				for (let key in this.matches) {
+					Vue.set(this.isSaved, key, true);
+				}
+			},
+			methods: {
+				postData(key) {
+					let myData = {
+						id: this.matches[key].id,
+						first_team_score: this.matches[key].first_team_score,
+						first_team_score_1: this.matches[key].first_team_score_1,
+						first_team_score_2: this.matches[key].first_team_score_2,
+						first_team_score_3: this.matches[key].first_team_score_3,
+						first_team_score_4: this.matches[key].first_team_score_4,
+						first_team_score_5: this.matches[key].first_team_score_5,
+						second_team_score: this.matches[key].second_team_score,
+						second_team_score_1: this.matches[key].second_team_score_1,
+						second_team_score_2: this.matches[key].second_team_score_2,
+						second_team_score_3: this.matches[key].second_team_score_3,
+						second_team_score_4: this.matches[key].second_team_score_4,
+						second_team_score_5: this.matches[key].second_team_score_5
+					};
+					axios.patch('/api/match', myData)
+						.then(response => {
+							Vue.set(this.isSaved, key, true);
+						})
+						.catch(e => console.log(e));
+				},
+				changingScore(key) {
+					Vue.set(this.isSaved, key, false);
+				}
+			}
+		});
+    </script>
+
 @endsection

@@ -33,7 +33,8 @@
                             <input name="_method" type="hidden" value="DELETE">
                             @csrf
 
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Είσαι σίγουρος για την διαγραφή;')">
                                 Διαγραφή
                             </button>
                         </form>
