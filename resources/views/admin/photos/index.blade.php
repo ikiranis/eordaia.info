@@ -15,7 +15,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">id</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Filename</th>
             </tr>
             </thead>
@@ -23,7 +23,7 @@
 
             @foreach($photos as $photo)
                 <tr>
-                    <td><a href="{{route('photos.edit', $photo->id)}}">{{$photo->id}}</a></td>
+                    <td><a href="{{route('photos.edit', $photo->id)}}"><img src="{{ $photo->smallPhotoUrl }}"></a></td>
                     <td>{{$photo->filename}}</td>
                     <td>
                         <form method="POST" action="{{route('photos.destroy', $photo->id)}}">
