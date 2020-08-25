@@ -1,12 +1,17 @@
 <template>
     <div>
         <b-modal ref="photoModal" size="md" centered hide-footer title="Επιλογή φωτογραφίας">
-            <div v-for="(photo, index) in photosList" class="mb-3">
-                <img :src="photo.smallPhotoUrl">
+            <div v-for="(photo, index) in photosList" class="row mb-3">
+                <div class="col-4">
+                    <img :src="photo.smallPhotoUrl">
+                </div>
 
-                <button class="btn btn-success col-6 my-2 mx-auto" type="button"
-                        @click="chooseThePhoto(photo)">Επιλογή
-                </button>
+                <div class="col-8 my-auto">
+                    <div>{{ photo.description }}</div>
+                    <button class="btn btn-success col-6 my-2 mx-auto" type="button"
+                            @click="chooseThePhoto(photo)">Επιλογή
+                    </button>
+                </div>
             </div>
 
         </b-modal>
