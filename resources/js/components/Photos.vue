@@ -1,13 +1,16 @@
 <template>
     <div>
-        <b-modal ref="photoModal" size="md" centered hide-footer title="Επιλογή φωτογραφίας">
+        <b-modal ref="photoModal" size="md" centered scrollable hide-footer title="Επιλογή φωτογραφίας">
 
-            <div class="row mb-3">
-                <label class="sr-only"
-                       for="search">Search</label>
-                <input id="search" name="search" class="my-2 col-lg-6 col-12 mx-auto"
-                       v-model="search" placeholder="Αναζήτηση">
-            </div>
+
+            <template v-slot:modal-header="{ close }">
+                    <label class="sr-only"
+                           for="search">Search</label>
+                    <input id="search" name="search" class="my-2 col-lg-6 col-12 mx-auto"
+                           v-model="search" placeholder="Αναζήτηση">
+            </template>
+
+
 
             <div v-for="(photo, index) in filteredPhotos" class="row mb-3">
                 <div class="col-4">
