@@ -1,7 +1,15 @@
 <template>
     <div>
         <b-modal ref="photoModal" size="md" centered hide-footer title="Επιλογή φωτογραφίας">
-            <div v-for="(photo, index) in photosList" class="row mb-3">
+
+            <div class="row mb-3">
+                <label class="sr-only"
+                       for="search">Search</label>
+                <input id="search" name="search" class="my-2 col-lg-6 col-12 mx-auto"
+                       v-model="search" placeholder="Αναζήτηση">
+            </div>
+
+            <div v-for="(photo, index) in filteredPhotos" class="row mb-3">
                 <div class="col-4">
                     <img :src="photo.smallPhotoUrl">
                 </div>
@@ -138,7 +146,9 @@ export default {
                 viewable: false
             },
 
-            photosList: []
+            photosList: [],
+
+            search: ''
         }
     },
 
@@ -151,6 +161,20 @@ export default {
         image_id: {
             required: true,
             type: String
+        }
+    },
+
+    computed: {
+        filteredPhotos() {
+            if (this.search.length > 0) {
+                return this.photosList.filter((photo) => {
+                    if (photo.description) {
+                        return photo.description.toUpperCase().includes(this.search.toUpperCase())
+                    }
+                })
+            }
+
+            return this.photosList
         }
     },
 
