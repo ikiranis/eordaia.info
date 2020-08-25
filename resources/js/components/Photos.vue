@@ -190,7 +190,7 @@ export default {
             formData.append('url', this.photos[index].url)
             formData.append('description', this.photos[index].description)
             formData.append('referral', this.photos[index].referral)
-            formData.append('viewable', this.photos[index].viewable)
+            formData.append('viewable', this.photos[index].viewable ? '1' : '0')
 
             this.loading = true
 
