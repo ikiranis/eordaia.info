@@ -85,7 +85,8 @@ class AdminPhotosController extends Controller
                     'description' => $request->description,
                     'referral' => $request->referral,
                     'small' => $sizesCreated[0],
-                    'medium' => $sizesCreated[1]
+                    'medium' => $sizesCreated[1],
+                    'viewable' => $request->viewable ?? false
                 ]
             );
         } catch (\Exception $exception) {
@@ -149,9 +150,11 @@ class AdminPhotosController extends Controller
 
             $input = [
                 'path' => isset($photoService) ? $photoService->getPath() : null,
-                'filename' => isset($photoService) ? $photoService->getFileName() : null,
+                'filename' => isset($photoService) ? $photoService->getFileName() : null
             ];
         }
+
+        $input['viewable'] = isset($request->viewable);
 
         $photo = Photo::findOrFail($id);
 

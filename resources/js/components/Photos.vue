@@ -71,6 +71,12 @@
                                 class="mx-auto col-12"/>
                 </div>
 
+                <div>
+                    <label for="viewable">Εμφάνιση περιγραφής</label>
+
+                    <input type="checkbox" id="viewable" name="viewable">
+                </div>
+
                 <div class="row">
                     <button v-if="!photo.photoUploaded"
                             class="btn btn-success col-12 col-lg-5 my-2 mx-auto" type="button"

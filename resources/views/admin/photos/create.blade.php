@@ -40,6 +40,14 @@
                                           placeholder="Περιγραφή" >{{ old('description') }}</textarea>
                             </div>
 
+                            <div class="row">
+                                <div class="mx-auto">
+                                    <label for="viewable">Εμφάνιση περιγραφής</label>
+
+                                    <input type="checkbox" id="viewable" name="viewable">
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <button type="submit" class="btn btn-primary col-md-6 col-12 ml-auto mr-auto">
                                     Εισαγωγή
