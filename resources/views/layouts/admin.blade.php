@@ -114,12 +114,12 @@
                         </a>
                     </li>
 
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="{{ route('sitemap') }}">--}}
-{{--                            <span class="mdi mdi-calendar-multiple"></span>--}}
-{{--                            Sitemap--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('sitemap') }}">
+                            <span class="mdi mdi-calendar-multiple"></span>
+                            <span>Sitemap</span>
+                        </a>
+                    </li>
                 </ul>
 
             </div>

@@ -9,6 +9,11 @@ use URL;
 
 class AdminSitemapGenerator extends Controller
 {
+    public function index()
+    {
+        return view('admin.sitemap.sitemap');
+    }
+
     public function run()
     {
         // create new sitemap object
@@ -30,5 +35,7 @@ class AdminSitemapGenerator extends Controller
         // generate your sitemap (format, filename)
         $sitemap->store('xml', 'sitemaps/sitemap');
         // this will generate file mysitemap.xml to your public folder
+
+        return view('admin.sitemap.created');
     }
 }

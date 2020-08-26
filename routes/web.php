@@ -38,7 +38,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('admin/photos', 'AdminPhotosController');
     Route::resource('admin/videos', 'AdminVideosController');
 
-    Route::get('/admin/sitemap', 'AdminSitemapGenerator@run')->name('sitemap');
+    Route::get('admin/sitemap', 'AdminSitemapGenerator@index')->name('sitemap');
+    Route::get('admin/createSitemap', 'AdminSitemapGenerator@run')->name('createSitemap');
 });
 
 // Static pages
