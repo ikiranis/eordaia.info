@@ -58,7 +58,8 @@ class PhotosApiTest extends TestCase
             'smallPhotoUrl',
             'mediumPhotoUrl',
             'photoUploaded',
-            'viewable'
+            'viewable',
+            'largePhotoUrl'
         ]);
 
         // Assert the file was stored...
@@ -93,7 +94,8 @@ class PhotosApiTest extends TestCase
                 'smallPhotoUrl',
                 'mediumPhotoUrl',
                 'photoUploaded',
-                'viewable'
+                'viewable',
+                'largePhotoUrl'
             ]
         ]);
     }

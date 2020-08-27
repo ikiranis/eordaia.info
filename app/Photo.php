@@ -86,6 +86,22 @@ class Photo extends Model
     }
 
     /**
+     * Get large image full path name
+     *
+     * @return string
+     */
+    public function getLargePhotoUrlAttribute(): string
+    {
+        if ($this->filename) {
+            return ($this->large)
+                ? $this->getFilePath() . $this->large . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
+        }
+
+        return '';
+    }
+
+    /**
      * Get image for feed
      *
      * @return string
