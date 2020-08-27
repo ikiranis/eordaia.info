@@ -19,7 +19,8 @@ class Photo extends Model
         'referral',
         'medium',
         'small',
-        'viewable'
+        'viewable',
+        'large'
     ];
 
     /**

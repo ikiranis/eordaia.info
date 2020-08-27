@@ -14,7 +14,7 @@ class AddLargeToPhotos extends Migration
     public function up()
     {
         Schema::table('photos', function (Blueprint $table) {
-            $table->integer('large')->default(1000)->nullable();
+            $table->integer('large')->default(null)->nullable();
         });
     }
 
