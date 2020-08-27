@@ -42,7 +42,7 @@ class PhotoService
         $this->sizes = $sizes;
 
         $this->fileName = time() . '.' . $this->file->extension();
-        $this->path = Carbon::now()->month;
+        $this->path = Carbon::now()->year . '/' . Carbon::now()->month;
     }
 
     /**
