@@ -37,8 +37,8 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                <img srcset="{{ $photo->smallPhotoUrl }} 300w,
-                             {{ $photo->mediumPhotoUrl }} 900w,
+                <img srcset="{{ $photo->smallPhotoUrl }} 400w,
+                             {{ $photo->mediumPhotoUrl }} 1000w,
                              {{ $photo->photoUrl }} 1500w"
                     sizes="(min-width: 1200px) 50vw,
                             100vw"
