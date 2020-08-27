@@ -37,10 +37,12 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                <img srcset="{{ $photo->smallPhotoUrl }} 400w,
-                             {{ $photo->mediumPhotoUrl }} 1000w,
+                <img srcset="{{ $photo->smallPhotoUrl }} 150w,
+                             {{ $photo->mediumPhotoUrl }} 500w,
+                             {{ $photo->largePhotoUrl }} 1000w,
                              {{ $photo->photoUrl }} 1500w"
-                    sizes="(min-width: 1200px) 50vw,
+                    src="{{ $photo->photoUrl }}"
+                    sizes="(min-width: 800px) 500w,
                             100vw"
                     class="card-img mb-1" title="{{ $photo->label ?? $title }}">
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
