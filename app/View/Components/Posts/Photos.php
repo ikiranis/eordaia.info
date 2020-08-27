@@ -32,7 +32,14 @@ class Photos extends Component
                 <div class="row mt-3">
                 @foreach ($photos as $photo)
                     <div class="col-lg-6 col-12 mb-3">
-                        <img src="{{ $getUrl($photo) }}" class="card-img mb-1" title="{{ $photo->label ?? $title }}">
+                        <img srcset="{{ $photo->smallPhotoUrl }} 150w,
+                                     {{ $photo->mediumPhotoUrl }} 500w,
+                                     {{ $photo->largePhotoUrl }} 1500w"
+                            src="{{ $photo->mediumPhotoUrl }}"
+                            sizes="(min-width: 940px) 33vw,
+                                    100vw"
+                            class="card-img mb-1" title="{{ $photo->label ?? $title }}">
+
                          @if ( isset($photo->label) || isset($photo->referral) )
                             <div class="photoLabel row mx-3 px-3 mb-1">
                                 <div class="mx-auto row text-center">
