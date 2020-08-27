@@ -31,8 +31,6 @@ class Photos extends Component
             @if ($photos->count() > 0)
                 <div class="row mt-3">
                 @foreach ($photos as $photo)
-                    <x-posts.imageModal :photo="$photo" />
-
                     <div class="col-lg-6 col-12 mb-3">
                         <img srcset="{{ $photo->smallPhotoUrl }} 150w,
                                      {{ $photo->mediumPhotoUrl }} 500w,
@@ -40,8 +38,7 @@ class Photos extends Component
                             src="{{ $photo->mediumPhotoUrl }}"
                             sizes="(min-width: 940px) 33vw,
                                     100vw"
-                            class="card-img mb-1 btn" title="{{ $photo->label ?? $title }}"
-                            data-toggle="modal" data-target="#imageModal{{ $photo->id }}">
+                            class="card-img mb-1 btn" title="{{ $photo->label ?? $title }}">
 
                          @if ( isset($photo->label) || isset($photo->referral) )
                             <div class="photoLabel row mx-3 px-3 mb-1">
