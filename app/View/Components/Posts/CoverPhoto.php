@@ -45,6 +45,7 @@ class CoverPhoto extends Component
                     sizes="(min-width: 940px) 66vw,
                             100vw"
                     class="card-img mb-1" title="{{ $photo->label ?? $title }}">
+
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
                         <div class="mx-auto row text-center">

@@ -37,12 +37,16 @@ class ImageModal extends Component
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        
+
                         <div class="modal-body">
-                            <img src="{{ $photo->photoUrl ?? 'http://via.placeholder.com/350x150' }}"
-                                 width="100%">
+                            <img srcset="{{ $photo->smallPhotoUrl }} 150w,
+                                         {{ $photo->mediumPhotoUrl }} 500w,
+                                         {{ $photo->largePhotoUrl }} 1000w,
+                                         {{ $photo->photoUrl }} 1500w"
+                                src="{{ $photo->mediumPhotoUrl }}"
+                                class="card-img mb-1">
                         </div>
-                        
+
                         <div class="modal-footer">
                             <div class="photoLabel row mx-auto mx-3 px-3 ">
                                 <div class="mx-auto row text-center">
@@ -51,7 +55,7 @@ class ImageModal extends Component
                                 </div>
                             </div>
                         </div>
-            
+
                     </div>
                 </div>
             </div>
