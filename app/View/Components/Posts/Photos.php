@@ -38,7 +38,7 @@ class Photos extends Component
                             src="{{ $photo->mediumPhotoUrl }}"
                             sizes="(min-width: 940px) 33vw,
                                     100vw"
-                            class="card-img mb-1 btn" title="{{ $photo->label ?? $title }}">
+                            class="card-img mb-1" title="{{ $photo->label ?? $title }}">
 
                          @if ( isset($photo->label) || isset($photo->referral) )
                             <div class="photoLabel row mx-3 px-3 mb-1">
