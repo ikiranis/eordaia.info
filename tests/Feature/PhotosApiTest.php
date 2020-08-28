@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Photo;
 use App\User;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
@@ -97,6 +98,33 @@ class PhotosApiTest extends TestCase
                 'viewable',
                 'largePhotoUrl'
             ]
+        ]);
+    }
+
+    /**
+     * Test get photo Api
+     */
+    public function testGetPhoto() : void
+    {
+        $photo = Photo::first();
+
+        $response = $this->actingAs(static::$user, 'api')
+            ->get('/api/photo/' . $photo->id);
+
+        $response->assertStatus(200);
+
+        $response->assertJsonStructure([
+                'id',
+                'path',
+                'filename',
+                'description',
+                'referral',
+                'photoUrl',
+                'smallPhotoUrl',
+                'mediumPhotoUrl',
+                'photoUploaded',
+                'viewable',
+                'largePhotoUrl'
         ]);
     }
 }

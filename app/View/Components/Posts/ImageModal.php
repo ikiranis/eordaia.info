@@ -39,12 +39,7 @@ class ImageModal extends Component
                         </div>
 
                         <div class="modal-body">
-                            <img srcset="{{ $photo->smallPhotoUrl }} 150w,
-                                         {{ $photo->mediumPhotoUrl }} 500w,
-                                         {{ $photo->largePhotoUrl }} 1000w,
-                                         {{ $photo->photoUrl }} 1500w"
-                                src="{{ $photo->mediumPhotoUrl }}"
-                                class="card-img mb-1">
+                            <display-image :id="{{ json_encode($photo->id) }}" ></display-image>
                         </div>
 
                         <div class="modal-footer">

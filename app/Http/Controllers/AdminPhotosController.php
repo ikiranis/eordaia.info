@@ -239,4 +239,17 @@ class AdminPhotosController extends Controller
 
         return PhotoResource::collection($photos);
     }
+
+    /**
+     * Get a photo
+     *
+     * @param $id
+     * @return PhotoResource
+     */
+    public function getPhoto($id)
+    {
+        $photo = Photo::whereId($id)->first();
+
+        return new PhotoResource($photo);
+    }
 }

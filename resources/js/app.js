@@ -23,6 +23,7 @@ Vue.component('videos', require('./components/Videos.vue').default)
 Vue.component('loading', require('./components/basic/Loading.vue').default)
 Vue.component('displayError', require('./components/basic/DisplayError.vue').default)
 Vue.component('formError', require('./components/basic/FormError.vue').default)
+Vue.component('displayImage', require('./components/Image.vue').default)
 
 /**
  * The following block of code may be used to automatically register your
@@ -43,3 +44,6 @@ Vue.component('formError', require('./components/basic/FormError.vue').default)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const app = new Vue({
+    el: '#app'
+});

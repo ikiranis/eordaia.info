@@ -28,3 +28,5 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('link', 'AdminLinksController@store');
     Route::post('video', 'AdminVideosController@store');
 });
+
+Route::get('photo/{id}', 'AdminPhotosController@getPhoto');
