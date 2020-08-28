@@ -71,7 +71,6 @@
             },
 
             showModal() {
-                console.log('hey')
                 this.photo = this.thumb
 
                 this.srcset = [

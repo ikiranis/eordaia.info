@@ -49,7 +49,7 @@ class Photo extends Model
     public function getPhotoUrlAttribute(): string
     {
         return ($this->filename)
-            ? $this->getFilePath() . $this->filename
+            ? url($this->getFilePath() . $this->filename)
             : '';
     }
 
@@ -62,8 +62,8 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->medium)
-                ? $this->getFilePath() . $this->medium . 'x_' . $this->filename
-                : $this->getFilePath() . $this->filename;
+                ? url($this->getFilePath() . $this->medium . 'x_' . $this->filename)
+                : url($this->getFilePath() . $this->filename);
         }
 
         return '';
@@ -78,8 +78,8 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->small)
-                ? $this->getFilePath() . $this->small . 'x_' . $this->filename
-                : $this->getFilePath() . $this->filename;
+                ? url($this->getFilePath() . $this->small . 'x_' . $this->filename)
+                : url($this->getFilePath() . $this->filename);
         }
 
         return '';
@@ -94,8 +94,8 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->large)
-                ? $this->getFilePath() . $this->large . 'x_' . $this->filename
-                : $this->getFilePath() . $this->filename;
+                ? url($this->getFilePath() . $this->large . 'x_' . $this->filename)
+                : url($this->getFilePath() . $this->filename);
         }
 
         return '';
