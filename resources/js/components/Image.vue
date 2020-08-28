@@ -1,13 +1,30 @@
 <template>
     <div>
-        <img :srcset="photo.smallPhotoUrl + ' 150w,'
-             + photo.mediumPhotoUrl + ' 500w,'
-             + photo.largePhotoUrl + ' 1000w,'
-             + photo.photoUrl + ' 1500w'"
-             :src="photo.mediumPhotoUrl"
-             class="card-img mb-1">
+        <b-modal ref="photoModal" hide-footer size="lg" centered>
 
-        {{ modalClasses }}
+            <b-img-lazy v-if="photo"
+                        :srcset="srcset"
+                        :blank-src="photo.smallPhotoUrl"
+                        :src="photo.mediumPhotoUrl"
+                        sizes="(min-width: 940px) 66vw,
+                                    100vw"
+                        width="100%" height="auto"
+                        class="card-img mb-1"
+                        :alt="photo.label"></b-img-lazy>
+
+        </b-modal>
+
+        <div  v-if="thumb" @click="showModal">
+            <b-img-lazy :srcset="thumbSrcSet"
+                        :blank-src="thumb.smallPhotoUrl"
+                        :src="thumb.mediumPhotoUrl"
+                        sizes="(min-width: 940px) 66vw,
+                                    100vw"
+                        width="100%" height="auto"
+                        class="card-img mb-1 btn"
+                        :alt="thumb.label"></b-img-lazy>
+        </div>
+
     </div>
 </template>
 
@@ -15,7 +32,9 @@
     export default {
         data() {
             return {
-                photo: {}
+                thumb: {},
+                photo: null,
+                srcset: []
             }
         },
 
@@ -27,43 +46,43 @@
         },
 
         computed: {
-            modalClasses() {
-                return document.querySelector('#imageModal' + this.id).classList
+            thumbSrcSet() {
+                return [
+                    this.thumb.smallPhotoUrl + ' 150w',
+                    this.thumb.mediumPhotoUrl + ' 1000w',
+                    this.thumb.largePhotoUrl + ' 1500w'
+                ]
             }
         },
 
-        watch: {
-            // modalClasses() {
-            //     // if (this.modalClasses.contains('show')) {
-            //         console.log('hello')
-            //     // }
-            // }
+        mounted() {
+            this.getPhoto()
         },
-
-        created() {
-            this.updateMessage()
-        },
-
 
         methods: {
-            updateMessage() {
-                setInterval(() => {
-                        console.log(document.querySelector('#imageModal' + this.id).classList)
-                }, 3000)
-
-            },
-
             getPhoto() {
                 axios.get('/api/photo/' + this.id)
                     .then(response => {
-                        this.photo = response.data;
-
-                        console.log(this.photo)
+                        this.thumb = response.data
                     })
                     .catch(error => {
                         console.log(error.response.data)
                     })
             },
+
+            showModal() {
+                console.log('hey')
+                this.photo = this.thumb
+
+                this.srcset = [
+                    this.photo.smallPhotoUrl + ' 150w',
+                    this.photo.mediumPhotoUrl + ' 1000w',
+                    this.photo.largePhotoUrl + ' 1500w',
+                    this.photo.photoUrl + ' 2000w'
+                ]
+
+                this.$refs.photoModal.show()
+            }
         }
 
     }
