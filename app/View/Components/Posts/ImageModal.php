@@ -39,7 +39,7 @@ class ImageModal extends Component
                         </div>
 
                         <div class="modal-body">
-                            <display-image :id="{{ json_encode($photo->id) }}" ></display-image>
+                            <display-image :id="{{ json_encode($photo->id) }}"></display-image>
                         </div>
 
                         <div class="modal-footer">

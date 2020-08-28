@@ -6,6 +6,8 @@
              + photo.photoUrl + ' 1500w'"
              :src="photo.mediumPhotoUrl"
              class="card-img mb-1">
+
+        {{ modalClasses }}
     </div>
 </template>
 
@@ -24,11 +26,33 @@
             }
         },
 
-        created() {
-            this.getPhoto()
+        computed: {
+            modalClasses() {
+                return document.querySelector('#imageModal' + this.id).classList
+            }
         },
 
+        watch: {
+            // modalClasses() {
+            //     // if (this.modalClasses.contains('show')) {
+            //         console.log('hello')
+            //     // }
+            // }
+        },
+
+        created() {
+            this.updateMessage()
+        },
+
+
         methods: {
+            updateMessage() {
+                setInterval(() => {
+                        console.log(document.querySelector('#imageModal' + this.id).classList)
+                }, 3000)
+
+            },
+
             getPhoto() {
                 axios.get('/api/photo/' + this.id)
                     .then(response => {
