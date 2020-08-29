@@ -2,29 +2,23 @@
     <div>
         <b-modal ref="photoModal" hide-footer size="xl" centered>
 
-            <b-img-lazy v-if="photo"
+            <img v-if="photo"
                         :srcset="srcset"
-                        :blank-src="photo.smallPhotoUrl"
                         :src="photo.mediumPhotoUrl"
                         sizes="(min-width: 940px) 66vw,
                                     100vw"
-                        width="100%"
-                        blank-width="100%"
                         class="card-img mb-1"
-                        :alt="photo.label"></b-img-lazy>
+                        :alt="photo.label">
 
         </b-modal>
 
         <div v-if="thumb" @click="showModal">
-            <b-img-lazy :srcset="thumbSrcSet"
-                        :blank-src="thumb.smallPhotoUrl"
-                        :src="thumb.mediumPhotoUrl"
-                        sizes="(min-width: 940px) 66vw,
-                                    100vw"
-                        width="100%"
-                        blank-width="100%"
-                        class="card-img mb-1 btn"
-                        :alt="thumb.label"></b-img-lazy>
+            <img :srcset="thumbSrcSet"
+                :src="thumb.mediumPhotoUrl"
+                sizes="(min-width: 940px) 66vw,
+                            100vw"
+                class="card-img mb-1 btn"
+                :alt="thumb.label">
         </div>
 
     </div>

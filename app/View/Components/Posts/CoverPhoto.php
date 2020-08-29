@@ -38,9 +38,7 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <div>
-                     <b-img-lazy blank-src="{{ $photo->smallPhotoUrl }}"
-                         offset="0"
-                         srcset="{{ $photo->smallPhotoUrl }} 150w,
+                     <img srcset="{{ $photo->smallPhotoUrl }} 150w,
                                  {{ $photo->mediumPhotoUrl }} 1000w,
                                  {{ $photo->largePhotoUrl }} 1500w,
                                  {{ $photo->photoUrl }} 2000w"
