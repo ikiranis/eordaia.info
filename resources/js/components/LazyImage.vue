@@ -1,13 +1,13 @@
 <template>
     <div>
-        <img :src="imageDisplayed" class="card-img mb-1">
+        <img :src="imageDisplayed" class="card-img mb-1" :alt="photo.label">
 
-        <img
+        <img v-if="photo"
                     :srcset="srcset"
                     :src="photo.mediumPhotoUrl"
                     sizes="(min-width: 940px) 66vw,
                                     100vw"
-                    :id="id"
+                    :id="'id-' + photo.id"
                     class="card-img mb-1 coverImage"
                     :alt="photo.label" @load="imageUploaded">
     </div>
@@ -32,16 +32,17 @@
             }
         },
 
-        mounted() {
+        created() {
             this.getPhoto()
         },
 
         methods: {
             getPhoto() {
-                console.log(this.id)
                 axios.get('/api/photo/' + this.id)
                     .then(response => {
                         this.photo = response.data
+
+                        this.imageDisplayed = this.photo.smallPhotoUrl
 
                         this.srcset = [
                             this.photo.smallPhotoUrl + ' 150w',
@@ -49,8 +50,6 @@
                             this.photo.largePhotoUrl + ' 1500w',
                             this.photo.photoUrl + ' 2000w'
                         ]
-
-                        this.imageDisplayed = this.photo.smallPhotoUrl
                     })
                     .catch(error => {
                         console.log(error.response.data)
@@ -58,7 +57,7 @@
             },
 
             imageUploaded() {
-                let imgElement = document.querySelector('#' + this.id)
+                let imgElement = document.querySelector('#id-' + this.photo.id)
 
                 this.displayTheImage = true
                 this.imageDisplayed =  imgElement.currentSrc
