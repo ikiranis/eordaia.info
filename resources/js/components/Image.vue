@@ -11,7 +11,6 @@
                         width="100%"
                         blank-width="100%"
                         class="card-img mb-1"
-                        rel="preload"
                         :alt="photo.label"></b-img-lazy>
 
         </b-modal>
@@ -25,7 +24,6 @@
                         width="100%"
                         blank-width="100%"
                         class="card-img mb-1 btn"
-                        rel="preload"
                         :alt="thumb.label"></b-img-lazy>
         </div>
 
