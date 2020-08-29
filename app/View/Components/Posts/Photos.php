@@ -32,16 +32,9 @@ class Photos extends Component
                 <div class="row mt-3">
                 @foreach ($photos as $photo)
                     <div class="col-lg-6 col-12 mb-3">
-                        <display-image :id="{{ json_encode($photo->id) }}"></display-image>
+                        <display-image :id="{{ json_encode($photo->id) }}" 
+                            :referral="{{ json_encode(parse_url($photo->referral)['host'] ?? '') }}"></display-image>
 
-                         @if ( isset($photo->label) || isset($photo->referral) )
-                            <div class="photoLabel row mx-3 px-3 mb-1">
-                                <div class="mx-auto row text-center">
-                                    <span class="description px-2 col-md-auto col-12">{{ $photo->label ?? '' }}</span>
-                                    <span class="col-md-auto col-12"> <a href="{{ $photo->referral ?? '#' }}">{{ parse_url($photo->referral)['host'] ?? '' }}</a></span>
-                                </div>
-                            </div>
-                        @endif
                     </div>
                 @endforeach
                 </div>
