@@ -7,13 +7,13 @@
 
     <x-favicon />
 
+    <x-google-analytics />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('siteTitle')</title>
 
     @yield('shareMetaTags')
-
-    <x-google-analytics />
 
 <!-- Styles -->
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
