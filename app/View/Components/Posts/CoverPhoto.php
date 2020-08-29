@@ -47,7 +47,7 @@ class CoverPhoto extends Component
                              blank="true" blankColor="#bbb"
                              width="100%" height="auto"
                              class="card-img mb-1"
-                             fluid="true"
+                             block="true"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
