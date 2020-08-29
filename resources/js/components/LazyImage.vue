@@ -2,11 +2,12 @@
     <div>
         <img :src="imageDisplayed" class="card-img mb-1">
 
-        <img v-if="displayTheImage"
+        <img
                     :srcset="srcset"
                     :src="photo.mediumPhotoUrl"
                     sizes="(min-width: 940px) 66vw,
                                     100vw"
+                    :id="id"
                     class="card-img mb-1 coverImage"
                     :alt="photo.label" @load="imageUploaded">
     </div>
@@ -31,12 +32,13 @@
             }
         },
 
-        created() {
+        mounted() {
             this.getPhoto()
         },
 
         methods: {
             getPhoto() {
+                console.log(this.id)
                 axios.get('/api/photo/' + this.id)
                     .then(response => {
                         this.photo = response.data
@@ -56,12 +58,18 @@
             },
 
             imageUploaded() {
-                let imgElement = document.querySelector('.coverImage')
+                let imgElement = document.querySelector('#' + this.id)
 
                 this.displayTheImage = true
-                this.imageDisplayed =  imgElement.src
+                this.imageDisplayed =  imgElement.currentSrc
             }
         }
 
     }
 </script>
+
+<style scoped>
+    .coverImage {
+        display: none;
+    }
+</style>
