@@ -45,7 +45,7 @@ class CoverPhoto extends Component
                              src="{{ $photo->mediumPhotoUrl }}"
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
-                             blank=true blankColor="#bbb",
+                             blank=true blankColor="#bbb"
                              width="100%" height="auto"
                              blank-width="100%" blank-height="100%"
                              class="card-img mb-1"
