@@ -36,7 +36,8 @@ class Related extends Component
                         <div class="row mb-3 col-12">
                             <div class="my-auto col-12 col-md-auto px-3 text-center text-md-left">
                                 <b-img-lazy src="{{ $post->cover->smallPhotoUrl }}"
-                                    blank="true" blank-color="#bbb" offset="0"/>
+                                    blank="true" blank-color="#bbb" offset="0"
+                                    width="150" height="100"></b-img-lazy>
                             </div>
                             <div class="col my-auto col-12 col-md">
                                 <div><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
