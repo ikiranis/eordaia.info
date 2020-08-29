@@ -30,20 +30,23 @@ class PhotoService
     protected string $storageDisk = 'public';
     protected array $sizes;
     protected array $sizesCreated = [];
+    protected string $fileFormat = 'jpg';
 
     /**
      * PhotoService constructor.
      *
      * @param object $file
      * @param array $sizes
+     * @param string $fileFormat
      */
-    public function __construct(object $file, array $sizes)
+    public function __construct(object $file, array $sizes, string $fileFormat)
     {
         $this->file = $file;
         $this->sizes = $sizes;
+        $this->fileFormat = $fileFormat;
 
 //        $this->fileName = time() . '.' . $this->file->extension();
-        $this->fileName = time() . '.webp' . $this->file->extension();
+        $this->fileName = time() . '.' .$this->fileFormat;
         $this->path = Carbon::now()->year . '/' . Carbon::now()->month;
     }
 
@@ -71,10 +74,11 @@ class PhotoService
      */
     private function saveOriginalFile()
     {
-        // TODO save to webp
+        $image = Image::make($this->file->getRealpath());
+
         try {
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $this->fileName,  File::get($this->file));
+                ->put( $this->path . '/' . $this->fileName,  $image->encode($this->fileFormat, 70));
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να αποθηκευτεί το αρχείο -> ' .  $e);
         }
@@ -123,7 +127,7 @@ class PhotoService
             });;
 
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode('webp', 70));
+                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode($this->fileFormat, 70));
 
             array_push($this->sizesCreated, $size);
         } catch (\Exception $e) {

@@ -11,6 +11,8 @@ use Storage;
 
 class AdminPhotosController extends Controller
 {
+    private String $fileFormat = 'jpg';
+
     /**
      * Return error, based on request kind (api or web)
      *
@@ -65,9 +67,12 @@ class AdminPhotosController extends Controller
 
         if($request->file) {
             $photoService = New PhotoService($request->file,
-                    [config('app.SMALL_IMAGE'),
-                    config('app.MEDIUM_IMAGE'),
-                    config('app.LARGE_IMAGE')]);
+                    [
+                        config('app.SMALL_IMAGE'),
+                        config('app.MEDIUM_IMAGE'),
+                        config('app.LARGE_IMAGE')
+                    ],
+                    $this->fileFormat);
 
             // Save file
             try {
@@ -79,7 +84,6 @@ class AdminPhotosController extends Controller
 
         // Save in database
         try {
-            logger($sizesCreated[1]);
             $photo = Photo::create(
                 [
                     'path' => isset($photoService) ? $photoService->getPath() : null,
@@ -144,22 +148,27 @@ class AdminPhotosController extends Controller
 
         if($request->file) {
             $photoService = New PhotoService($request->file,
-                    [config('app.SMALL_IMAGE'),
-                    config('app.MEDIUM_IMAGE'),
-                    config('app.LARGE_IMAGE')]);
-
-            // TODO check if needed to save the different sizes
+                    [
+                        config('app.SMALL_IMAGE'),
+                        config('app.MEDIUM_IMAGE'),
+                        config('app.LARGE_IMAGE')
+                    ],
+                    $this->fileFormat);
 
             // Save file
             try {
-                $photoService->save();
+                $sizesCreated = $photoService->save();
             } catch(\Exception $exception) {
                 $this->returnError($request->is('api*'), $exception->getMessage());
             }
 
             $input = [
                 'path' => isset($photoService) ? $photoService->getPath() : null,
-                'filename' => isset($photoService) ? $photoService->getFileName() : null
+                'filename' => isset($photoService) ? $photoService->getFileName() : null,
+                'small' => $sizesCreated[0],
+                'medium' => $sizesCreated[1],
+                'large' => $sizesCreated[2],
+                'viewable' => $request->viewable ?? false
             ];
         }
 
