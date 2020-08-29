@@ -38,16 +38,16 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                          <b-img-lazy srcset="{{ $photo->smallPhotoUrl }} 150w,
-                             {{ $photo->mediumPhotoUrl }} 1000w,
-                             {{ $photo->largePhotoUrl }} 1500w,
-                             {{ $photo->photoUrl }} 2000w"
+                             {{ $photo->mediumPhotoUrl }} 500w,
+                             {{ $photo->largePhotoUrl }} 1000w,
+                             {{ $photo->photoUrl }} 1500w"
                              blank-src="{{ $photo->smallPhotoUrl }}"
                              src="{{ $photo->mediumPhotoUrl }}"
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              class="card-img mb-1"
                              blank-width="auto"
-                             alt="{{ $photo->label ?? $title }}"></b-img-lazy>
+                             alt="{{ $photo->label ?? $title }}" />
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
