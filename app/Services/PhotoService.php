@@ -16,6 +16,7 @@
 namespace App\Services;
 
 use Carbon\Carbon;
+use Debugbar;
 use Exception;
 use Image;
 use Storage;
@@ -41,7 +42,8 @@ class PhotoService
         $this->file = $file;
         $this->sizes = $sizes;
 
-        $this->fileName = time() . '.' . $this->file->extension();
+//        $this->fileName = time() . '.' . $this->file->extension();
+        $this->fileName = time() . '.webp' . $this->file->extension();
         $this->path = Carbon::now()->year . '/' . Carbon::now()->month;
     }
 
@@ -69,6 +71,7 @@ class PhotoService
      */
     private function saveOriginalFile()
     {
+        // TODO save to webp
         try {
             Storage::disk($this->storageDisk)
                 ->put( $this->path . '/' . $this->fileName,  File::get($this->file));
@@ -114,13 +117,13 @@ class PhotoService
         }
 
         try {
-            $thumbnail = Image::make($this->file->getRealpath());
-            $thumbnail->resize($size, $size, function ($constraint) {
+            $image = Image::make($this->file->getRealpath());
+            $image->resize($size, $size, function ($constraint) {
                 $constraint->aspectRatio();
             });;
 
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $thumbnail->encode());
+                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode('webp', 70));
 
             array_push($this->sizesCreated, $size);
         } catch (\Exception $e) {
