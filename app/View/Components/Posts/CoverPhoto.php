@@ -41,13 +41,12 @@ class CoverPhoto extends Component
                              {{ $photo->mediumPhotoUrl }} 1000w,
                              {{ $photo->largePhotoUrl }} 1500w,
                              {{ $photo->photoUrl }} 2000w"
+                             blank-src="{{ $photo->smallPhotoUrl }}"
                              src="{{ $photo->mediumPhotoUrl }}"
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              blank="true" blankColor="#bbb"
-                             width="100%" height="auto"
                              class="card-img mb-1"
-                             block="true"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
