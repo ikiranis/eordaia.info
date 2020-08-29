@@ -34,7 +34,10 @@ class Related extends Component
                 <div class="mt-3 px-3">
                     @foreach ($relatedPosts as $post)
                         <div class="row mb-3 col-12">
-                            <div class="my-auto col-12 col-md-auto px-3 text-center text-md-left"><img src="{{ $post->cover->smallPhotoUrl }}"></div>
+                            <div class="my-auto col-12 col-md-auto px-3 text-center text-md-left">
+                                <b-img-lazy src="{{ $post->cover->smallPhotoUrl }}"
+                                    blank="true" blank-color="#bbb" offset="0"/>
+                            </div>
                             <div class="col my-auto col-12 col-md">
                                 <div><a href="{{ url($post->slug) }}">{{ $post->title }}</a></div>
                                 <div>{{ $post->updated_at->format('d/m/Y') }}</div>
