@@ -15,14 +15,6 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 // App Components
-Vue.component('tags', require('./components/Tags.vue').default)
-Vue.component('categories', require('./components/Categories.vue').default)
-Vue.component('photos', require('./components/Photos.vue').default)
-Vue.component('links', require('./components/Links.vue').default)
-Vue.component('videos', require('./components/Videos.vue').default)
-Vue.component('loading', require('./components/basic/Loading.vue').default)
-Vue.component('displayError', require('./components/basic/DisplayError.vue').default)
-Vue.component('formError', require('./components/basic/FormError.vue').default)
 Vue.component('displayImage', require('./components/Image.vue').default)
 Vue.component('lazyImage', require('./components/LazyImage.vue').default)
 
@@ -45,6 +37,6 @@ Vue.component('lazyImage', require('./components/LazyImage.vue').default)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// const app = new Vue({
-//     el: '#app'
-// });
+const app = new Vue({
+    el: '#app'
+});
