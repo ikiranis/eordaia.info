@@ -2,7 +2,7 @@
     <div>
         <img :src="imageDisplayed" class="card-img mb-1">
 
-        <img v-if="photo"
+        <img v-if="displayTheImage"
                     :srcset="srcset"
                     :src="photo.mediumPhotoUrl"
                     sizes="(min-width: 940px) 66vw,
@@ -19,7 +19,8 @@
             return {
                 photo: null,
                 srcset: [],
-                imageDisplayed: ''
+                imageDisplayed: '',
+                displayTheImage: false
             }
         },
 
@@ -55,10 +56,9 @@
             },
 
             imageUploaded() {
-                console.log('IMAGE UPLOADED')
-
                 let imgElement = document.querySelector('.coverImage')
 
+                this.displayTheImage = true
                 this.imageDisplayed =  imgElement.src
             }
         }
