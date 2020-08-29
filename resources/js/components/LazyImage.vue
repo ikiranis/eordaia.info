@@ -1,15 +1,14 @@
 <template>
     <div>
-        <b-img-lazy v-if="photo"
+        <img :src="imageDisplayed" class="card-img mb-1">
+
+        <img v-if="photo"
                     :srcset="srcset"
-                    :blank-src="photo.smallPhotoUrl"
                     :src="photo.mediumPhotoUrl"
                     sizes="(min-width: 940px) 66vw,
                                     100vw"
-                    width="100%"
-                    class="card-img mb-1"
-                    rel="preload"
-                    :alt="photo.label"></b-img-lazy>
+                    class="card-img mb-1 coverImage"
+                    :alt="photo.label" @load="imageUploaded">
     </div>
 
 </template>
@@ -19,7 +18,8 @@
         data() {
             return {
                 photo: null,
-                srcset: []
+                srcset: [],
+                imageDisplayed: ''
             }
         },
 
@@ -30,7 +30,7 @@
             }
         },
 
-        mounted() {
+        created() {
             this.getPhoto()
         },
 
@@ -46,10 +46,20 @@
                             this.photo.largePhotoUrl + ' 1500w',
                             this.photo.photoUrl + ' 2000w'
                         ]
+
+                        this.imageDisplayed = this.photo.smallPhotoUrl
                     })
                     .catch(error => {
                         console.log(error.response.data)
                     })
+            },
+
+            imageUploaded() {
+                console.log('IMAGE UPLOADED')
+
+                let imgElement = document.querySelector('.coverImage')
+
+                this.imageDisplayed =  imgElement.src
             }
         }
 
