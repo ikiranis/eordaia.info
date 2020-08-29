@@ -46,6 +46,7 @@ class CoverPhoto extends Component
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              class="card-img mb-1"
+                             blank-width="100%"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
