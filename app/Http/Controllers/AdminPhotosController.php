@@ -198,7 +198,7 @@ class AdminPhotosController extends Controller
         $filePaths[0] = '/' . $photo->path . '/' . $photo->filename;
         $filePaths[1] = '/' . $photo->path . '/' . config('app.SMALL_IMAGE') . 'x_' . $photo->filename;
         $filePaths[2] = '/' . $photo->path . '/' . config('app.MEDIUM_IMAGE') . 'x_' . $photo->filename;
-        $filePaths[2] = '/' . $photo->path . '/' . config('app.LARGE_IMAGE') . 'x_' . $photo->filename;
+        $filePaths[3] = '/' . $photo->path . '/' . config('app.LARGE_IMAGE') . 'x_' . $photo->filename;
 
         // Delete physical files
         foreach ($filePaths as $filePath) {
