@@ -41,12 +41,12 @@ class CoverPhoto extends Component
                              {{ $photo->mediumPhotoUrl }} 1000w,
                              {{ $photo->largePhotoUrl }} 1500w,
                              {{ $photo->photoUrl }} 2000w"
-                             blank-src="https://eordaia.info/graphics/logo.png"
+                             blank-src="{{ $photo->smallPhotoUrl }}"
                              src="{{ $photo->mediumPhotoUrl }}"
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              class="card-img mb-1"
-                             blank-width="100%"
+                             blank-width="auto"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
