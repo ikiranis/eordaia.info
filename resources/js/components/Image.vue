@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-modal ref="photoModal" hide-footer size="xl" centered>
+        <b-modal ref="photoModal" hide-footer size="lg" centered>
 
             <img v-if="photo"
                         :srcset="srcset"
