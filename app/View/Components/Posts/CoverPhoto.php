@@ -39,7 +39,6 @@ class CoverPhoto extends Component
             <div class="col">
                 <div>
                      <b-img-lazy blank-src="{{ $photo->smallPhotoUrl }}"
-                         blank="true" blank-color="#bbb"
                          offset="0"
                          srcset="{{ $photo->smallPhotoUrl }} 150w,
                                  {{ $photo->mediumPhotoUrl }} 1000w,
