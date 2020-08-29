@@ -5,14 +5,14 @@
  */
 
 require('./bootstrap')
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { BootstrapVue } from 'bootstrap-vue'
 
 window.Vue = require('vue')
 
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin)
+// Vue.use(IconsPlugin)
 
 // App Components
 Vue.component('displayImage', require('./components/Image.vue').default)
