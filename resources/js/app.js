@@ -24,6 +24,7 @@ Vue.component('loading', require('./components/basic/Loading.vue').default)
 Vue.component('displayError', require('./components/basic/DisplayError.vue').default)
 Vue.component('formError', require('./components/basic/FormError.vue').default)
 Vue.component('displayImage', require('./components/Image.vue').default)
+Vue.component('lazyImage', require('./components/LazyImage.vue').default)
 
 /**
  * The following block of code may be used to automatically register your
