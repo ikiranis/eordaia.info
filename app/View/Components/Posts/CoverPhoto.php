@@ -41,13 +41,11 @@ class CoverPhoto extends Component
                              {{ $photo->mediumPhotoUrl }} 1000w,
                              {{ $photo->largePhotoUrl }} 1500w,
                              {{ $photo->photoUrl }} 2000w"
-                             blank-src="{{ $photo->smallPhotoUrl }}"
                              src="{{ $photo->mediumPhotoUrl }}"
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              blank="true" blankColor="#bbb"
                              width="100%" height="auto"
-                             blank-width="100%" blank-height="auto"
                              class="card-img mb-1"
                              fluid="true"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
