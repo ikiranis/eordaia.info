@@ -14,7 +14,7 @@
 
         </b-modal>
 
-        <div  v-if="thumb" @click="showModal">
+        <div v-if="thumb" @click="showModal">
             <b-img-lazy :srcset="thumbSrcSet"
                         :blank-src="thumb.smallPhotoUrl"
                         :src="thumb.mediumPhotoUrl"
