@@ -7,6 +7,8 @@
 
     <x-favicon />
 
+    <x-google-analytics />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('siteTitle')</title>
@@ -17,9 +19,6 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
     @include('feed::links')
-
-    <x-google-analytics />
-
 
 </head>
 <body>
@@ -35,8 +34,11 @@
 {{--Footer--}}
 <x-footer />
 
+
 <!-- Scripts -->
 <x-runScripts />
+
+
 
 @yield('scripts')
 
