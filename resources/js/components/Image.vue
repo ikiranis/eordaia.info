@@ -28,7 +28,7 @@
     export default {
         data() {
             return {
-                thumb: {},
+                thumb: null,
                 photo: null,
                 srcset: []
             }
