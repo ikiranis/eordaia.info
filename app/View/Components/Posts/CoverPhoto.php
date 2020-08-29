@@ -45,7 +45,7 @@ class CoverPhoto extends Component
                              sizes="(min-width: 940px) 66vw,
                                     100vw"
                              width="100%" height="auto"
-                             blank-width="100%" blank-height="100%"
+                             blank-width="100%" blank-height="auto"
                              class="card-img mb-1"
                              alt="{{ $photo->label ?? $title }}"></b-img-lazy>
 
