@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="imageDisplayed" class="card-img mb-1"
+        <img :src="imageDisplayed" width="100%" height="auto"
              :title="photo.title" :alt="photo.title">
 
         <img :srcset="photo.srcset"
