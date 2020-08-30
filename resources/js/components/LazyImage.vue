@@ -1,6 +1,7 @@
 <template>
     <div>
-        <img :src="imageDisplayed" class="card-img mb-1" :alt="photo.label">
+        <img :src="imageDisplayed" class="card-img mb-1"
+             :title="label" >
 
         <img v-if="photo"
                     :srcset="srcset"
@@ -8,8 +9,8 @@
                     sizes="(min-width: 940px) 66vw,
                                     100vw"
                     :id="'id-' + photo.id"
-                    class="card-img mb-1 coverImage"
-                    :alt="photo.label" @load="imageUploaded">
+                    class="coverImage"
+                    @load="imageUploaded">
     </div>
 
 </template>
@@ -20,8 +21,7 @@
             return {
                 photo: null,
                 srcset: [],
-                imageDisplayed: '',
-                displayTheImage: false
+                imageDisplayed: ''
             }
         },
 
@@ -29,6 +29,21 @@
             id: {
                 required: true,
                 type: String
+            },
+
+            title: {
+                required: true,
+                type: String
+            }
+        },
+
+        computed: {
+            label() {
+                if (this.photo) {
+                    return this.photo.label ? this.photo.label : this.title
+                }
+
+                return ''
             }
         },
 

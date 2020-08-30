@@ -38,7 +38,7 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <div>
-                    <lazy-image :id="{{ json_encode($photo->id) }}"></lazy-image>
+                    <lazy-image :id="{{ json_encode($photo->id) }}" :title="{{ json_encode($title) }}"></lazy-image>
                 </div>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
