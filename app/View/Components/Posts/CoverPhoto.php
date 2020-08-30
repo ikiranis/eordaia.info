@@ -83,7 +83,13 @@ class CoverPhoto extends Component
             'small' => $this->photo->smallPhotoUrl,
             'medium' => $this->photo->mediumPhotoUrl,
             'large' => $this->photo->largePhotoUrl,
-            'original' => $this->photo->photoUrl
+            'original' => $this->photo->photoUrl,
+            'srcset' => [
+                $this->photo->smallPhotoUrl . ' 150w',
+                $this->photo->mediumPhotoUrl . ' 1000w',
+                $this->photo->largePhotoUrl . ' 1500w',
+                $this->photo->photoUrl . ' 2000w'
+            ]
         ]);
     }
 }

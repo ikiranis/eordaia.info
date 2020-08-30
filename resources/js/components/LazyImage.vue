@@ -3,7 +3,7 @@
         <img :src="imageDisplayed" class="card-img mb-1"
              :title="title">
 
-        <img :srcset="srcset"
+        <img :srcset="photo.srcset"
             :src="photo.medium"
             sizes="(min-width: 940px) 66vw,
                             100vw"
@@ -31,17 +31,6 @@
             title: {
                 required: true,
                 type: String
-            }
-        },
-
-        computed: {
-            srcset() {
-                return [
-                    this.photo.small + ' 150w',
-                    this.photo.medium + ' 1000w',
-                    this.photo.large + ' 1500w',
-                    this.photo.original + ' 2000w'
-                ]
             }
         },
 
