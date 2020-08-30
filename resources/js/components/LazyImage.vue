@@ -5,13 +5,10 @@
 
         <img :srcset="photo.srcset"
             :src="photo.fallback"
-            sizes="(min-width: 940px) 66vw,
-                            100vw"
-            :id="'id-' + photo.id"
-            class="coverImage"
+            :sizes="photo.sizes"
+            ref="image" class="preloadedImage"
             @load="imageUploaded">
     </div>
-
 </template>
 
 <script>
@@ -35,10 +32,7 @@
 
         methods: {
             imageUploaded() {
-                let imgElement = document.querySelector('#id-' + this.photo.id)
-
-                this.displayTheImage = true
-                this.imageDisplayed =  imgElement.currentSrc
+                this.imageDisplayed =  this.$refs.image.currentSrc
             }
         }
 
@@ -46,7 +40,7 @@
 </script>
 
 <style scoped>
-    .coverImage {
+    .preloadedImage {
         display: none;
     }
 </style>

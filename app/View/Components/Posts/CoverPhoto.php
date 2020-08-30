@@ -87,7 +87,8 @@ class CoverPhoto extends Component
                 $this->photo->mediumPhotoUrl . ' 1000w',
                 $this->photo->largePhotoUrl . ' 1500w',
                 $this->photo->photoUrl . ' 2000w'
-            ]
+            ],
+            'sizes' => '(min-width: 940px) 66vw, 100vw'
         ]);
     }
 }
