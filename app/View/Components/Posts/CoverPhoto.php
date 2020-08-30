@@ -40,8 +40,7 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <div>
-                    <lazy-image :photo="{{ json_encode($photoDetails->all()) }}" 
-                        :title="{{ json_encode($photo->label ?? $title) }}"></lazy-image>
+                    <lazy-image :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
                 </div>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
@@ -84,6 +83,7 @@ class CoverPhoto extends Component
             'medium' => $this->photo->mediumPhotoUrl,
             'large' => $this->photo->largePhotoUrl,
             'original' => $this->photo->photoUrl,
+            'title' => $photo->label ?? $this->title,
             'srcset' => [
                 $this->photo->smallPhotoUrl . ' 150w',
                 $this->photo->mediumPhotoUrl . ' 1000w',

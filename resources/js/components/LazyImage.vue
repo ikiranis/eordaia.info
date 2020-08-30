@@ -1,7 +1,7 @@
 <template>
     <div>
         <img :src="imageDisplayed" class="card-img mb-1"
-             :title="title">
+             :title="photo.title">
 
         <img :srcset="photo.srcset"
             :src="photo.medium"
@@ -26,11 +26,6 @@
             photo: {
                 required: true,
                 type: Object
-            },
-
-            title: {
-                required: true,
-                type: String
             }
         },
 
