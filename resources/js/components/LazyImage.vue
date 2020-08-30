@@ -1,16 +1,15 @@
 <template>
     <div>
         <img :src="imageDisplayed" class="card-img mb-1"
-             :title="label">
+             :title="title">
 
-        <img v-if="photo"
-                    :srcset="srcset"
-                    :src="photo.mediumPhotoUrl"
-                    sizes="(min-width: 940px) 66vw,
-                                    100vw"
-                    :id="'id-' + photo.id"
-                    class="coverImage"
-                    @load="imageUploaded">
+        <img :srcset="srcset"
+            :src="photo.medium"
+            sizes="(min-width: 940px) 66vw,
+                            100vw"
+            :id="'id-' + photo.id"
+            class="coverImage"
+            @load="imageUploaded">
     </div>
 
 </template>
@@ -19,16 +18,14 @@
     export default {
         data() {
             return {
-                photo: null,
-                srcset: [],
                 imageDisplayed: ''
             }
         },
 
         props: {
-            id: {
+            photo: {
                 required: true,
-                type: String
+                type: Object
             },
 
             title: {
@@ -38,39 +35,21 @@
         },
 
         computed: {
-            label() {
-                if (this.photo) {
-                    return this.photo.label ? this.photo.label : this.title
-                }
-
-                return ''
+            srcset() {
+                return [
+                    this.photo.small + ' 150w',
+                    this.photo.medium + ' 1000w',
+                    this.photo.large + ' 1500w',
+                    this.photo.original + ' 2000w'
+                ]
             }
         },
 
-        mounted() {
-            this.getPhoto()
+        created() {
+            this.imageDisplayed = this.photo.small
         },
 
         methods: {
-            getPhoto() {
-                axios.get('/api/photo/' + this.id)
-                    .then(response => {
-                        this.photo = response.data
-
-                        this.imageDisplayed = this.photo.smallPhotoUrl
-
-                        this.srcset = [
-                            this.photo.smallPhotoUrl + ' 150w',
-                            this.photo.mediumPhotoUrl + ' 1000w',
-                            this.photo.largePhotoUrl + ' 1500w',
-                            this.photo.photoUrl + ' 2000w'
-                        ]
-                    })
-                    .catch(error => {
-                        console.log(error.response.data)
-                    })
-            },
-
             imageUploaded() {
                 let imgElement = document.querySelector('#id-' + this.photo.id)
 

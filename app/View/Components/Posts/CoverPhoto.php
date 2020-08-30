@@ -3,7 +3,9 @@
 namespace App\View\Components\Posts;
 
 use App\Photo;
+use Debugbar;
 use Illuminate\View\Component;
+use phpDocumentor\Reflection\Types\Collection;
 
 class CoverPhoto extends Component
 {
@@ -38,7 +40,8 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <div>
-                    <lazy-image :id="{{ json_encode($photo->id) }}" :title="{{ json_encode($title) }}"></lazy-image>
+                    <lazy-image :photo="{{ json_encode($photoDetails->all()) }}" 
+                        :title="{{ json_encode($photo->label ?? $title) }}"></lazy-image>
                 </div>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
@@ -67,5 +70,20 @@ class CoverPhoto extends Component
         }
 
         return 'http://via.placeholder.com/350x170';
+    }
+
+    /**
+     * Get the photo urls
+     *
+     */
+    public function photoDetails() : \Illuminate\Support\Collection
+    {
+        return collect([
+            'id' => $this->photo->id,
+            'small' => $this->photo->smallPhotoUrl,
+            'medium' => $this->photo->mediumPhotoUrl,
+            'large' => $this->photo->largePhotoUrl,
+            'original' => $this->photo->photoUrl
+        ]);
     }
 }
