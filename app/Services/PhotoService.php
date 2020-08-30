@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use Debugbar;
 use Exception;
 use Image;
+use phpDocumentor\Reflection\Types\Integer;
 use Storage;
 use Illuminate\Support\Facades\File;
 
@@ -31,6 +32,7 @@ class PhotoService
     protected array $sizes;
     protected array $sizesCreated = [];
     protected string $fileFormat = 'jpg';
+    protected int $quality = 70;
 
     /**
      * PhotoService constructor.
@@ -78,7 +80,7 @@ class PhotoService
 
         try {
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $this->fileName,  $image->encode($this->fileFormat, 70));
+                ->put( $this->path . '/' . $this->fileName,  $image->encode($this->fileFormat, $this->quality));
         } catch (\Exception $e) {
             throw new Exception('Δεν μπορεί να αποθηκευτεί το αρχείο -> ' .  $e);
         }
@@ -127,7 +129,7 @@ class PhotoService
             });;
 
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode($this->fileFormat, 70));
+                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode($this->fileFormat, $this->quality));
 
             array_push($this->sizesCreated, $size);
         } catch (\Exception $e) {
