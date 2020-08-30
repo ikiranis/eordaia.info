@@ -4,7 +4,7 @@
              :title="photo.title">
 
         <img :srcset="photo.srcset"
-            :src="photo.medium"
+            :src="photo.fallback"
             sizes="(min-width: 940px) 66vw,
                             100vw"
             :id="'id-' + photo.id"
@@ -30,7 +30,7 @@
         },
 
         created() {
-            this.imageDisplayed = this.photo.small
+            this.imageDisplayed = this.photo.preload
         },
 
         methods: {
