@@ -1,7 +1,7 @@
 <template>
     <div>
         <img :src="imageDisplayed" class="card-img mb-1"
-             :title="label" >
+             :id="'im-' + id" :title="label">
 
         <img v-if="photo"
                     :srcset="srcset"
@@ -47,7 +47,7 @@
             }
         },
 
-        created() {
+        mounted() {
             this.getPhoto()
         },
 
