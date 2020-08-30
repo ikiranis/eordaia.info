@@ -1,7 +1,7 @@
 <template>
     <div>
         <img :src="imageDisplayed" class="card-img mb-1"
-             :title="photo.title">
+             :title="photo.title" :alt="photo.title">
 
         <img :srcset="photo.srcset"
             :src="photo.fallback"
