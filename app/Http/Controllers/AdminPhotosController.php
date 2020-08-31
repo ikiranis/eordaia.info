@@ -70,7 +70,8 @@ class AdminPhotosController extends Controller
                     [
                         config('app.SMALL_IMAGE'),
                         config('app.MEDIUM_IMAGE'),
-                        config('app.LARGE_IMAGE')
+                        config('app.LARGE_IMAGE'),
+                        config('app.PRELOAD_IMAGE')
                     ],
                     $this->fileFormat);
 
@@ -94,6 +95,7 @@ class AdminPhotosController extends Controller
                     'small' => $sizesCreated[0],
                     'medium' => $sizesCreated[1],
                     'large' => $sizesCreated[2],
+                    'preload' => $sizesCreated[3],
                     'viewable' => $request->viewable ?? false
                 ]
             );
@@ -151,7 +153,8 @@ class AdminPhotosController extends Controller
                     [
                         config('app.SMALL_IMAGE'),
                         config('app.MEDIUM_IMAGE'),
-                        config('app.LARGE_IMAGE')
+                        config('app.LARGE_IMAGE'),
+                        config('app.PRELOAD_IMAGE')
                     ],
                     $this->fileFormat);
 
@@ -168,6 +171,7 @@ class AdminPhotosController extends Controller
                 'small' => $sizesCreated[0],
                 'medium' => $sizesCreated[1],
                 'large' => $sizesCreated[2],
+                'preload' => $sizesCreated[3],
                 'viewable' => $request->viewable ?? false
             ];
         }
@@ -199,6 +203,7 @@ class AdminPhotosController extends Controller
         $filePaths[1] = '/' . $photo->path . '/' . config('app.SMALL_IMAGE') . 'x_' . $photo->filename;
         $filePaths[2] = '/' . $photo->path . '/' . config('app.MEDIUM_IMAGE') . 'x_' . $photo->filename;
         $filePaths[3] = '/' . $photo->path . '/' . config('app.LARGE_IMAGE') . 'x_' . $photo->filename;
+        $filePaths[4] = '/' . $photo->path . '/' . config('app.PRELOAD_IMAGE') . 'x_' . $photo->filename;
 
         // Delete physical files
         foreach ($filePaths as $filePath) {

@@ -20,7 +20,9 @@ class Photo extends Model
         'medium',
         'small',
         'viewable',
-        'large'
+        'large',
+        'preload',
+        'ratio'
     ];
 
     /**
@@ -49,7 +51,7 @@ class Photo extends Model
     public function getPhotoUrlAttribute(): string
     {
         return ($this->filename)
-            ? url($this->getFilePath() . $this->filename)
+            ? $this->getFilePath() . $this->filename
             : '';
     }
 
@@ -62,8 +64,24 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->medium)
-                ? url($this->getFilePath() . $this->medium . 'x_' . $this->filename)
-                : url($this->getFilePath() . $this->filename);
+                ? $this->getFilePath() . $this->medium . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
+        }
+
+        return '';
+    }
+
+    /**
+     * Get preload image full path name
+     *
+     * @return string
+     */
+    public function getPreloadUrlAttribute(): string
+    {
+        if ($this->filename) {
+            return ($this->preload)
+                ? $this->getFilePath() . $this->preload . 'x_' . $this->filename
+                : $this->smallPhotoUrl;
         }
 
         return '';
@@ -78,8 +96,8 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->small)
-                ? url($this->getFilePath() . $this->small . 'x_' . $this->filename)
-                : url($this->getFilePath() . $this->filename);
+                ? $this->getFilePath() . $this->small . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
         }
 
         return '';
@@ -94,8 +112,8 @@ class Photo extends Model
     {
         if ($this->filename) {
             return ($this->large)
-                ? url($this->getFilePath() . $this->large . 'x_' . $this->filename)
-                : url($this->getFilePath() . $this->filename);
+                ? $this->getFilePath() . $this->large . 'x_' . $this->filename
+                : $this->getFilePath() . $this->filename;
         }
 
         return '';

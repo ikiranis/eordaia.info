@@ -39,7 +39,7 @@ class PhotosApiTest extends TestCase
     {
         $request = [
             'file' => UploadedFile::fake()
-                ->image('image.jpg', 600,600), // Create fake image file
+                ->image('image.jpg', 2000,2000), // Create fake image file
             'description' => $this->faker->text(rand(50, 200)),
             'referral' => 'https://apps4net.eu',
         ];
@@ -61,7 +61,9 @@ class PhotosApiTest extends TestCase
             'photoUploaded',
             'viewable',
             'largePhotoUrl',
-            'label'
+            'label',
+            'preloadUrl',
+            'ratio'
         ]);
 
         // Assert the file was stored...
@@ -73,6 +75,12 @@ class PhotosApiTest extends TestCase
 
         Storage::disk('public')
             ->assertExists($response->original->path . '/' . config('app.MEDIUM_IMAGE') . 'x_' . $response->original->filename);
+
+        Storage::disk('public')
+            ->assertExists($response->original->path . '/' . config('app.LARGE_IMAGE') . 'x_' . $response->original->filename);
+
+        Storage::disk('public')
+            ->assertExists($response->original->path . '/' . config('app.PRELOAD_IMAGE') . 'x_' . $response->original->filename);
     }
 
     /**
@@ -98,7 +106,9 @@ class PhotosApiTest extends TestCase
                 'photoUploaded',
                 'viewable',
                 'largePhotoUrl',
-                'label'
+                'label',
+                'preloadUrl',
+                'ratio'
             ]
         ]);
     }
@@ -126,7 +136,9 @@ class PhotosApiTest extends TestCase
                 'mediumPhotoUrl',
                 'photoUploaded',
                 'viewable',
-                'largePhotoUrl'
+                'largePhotoUrl',
+                'preloadUrl',
+                'ratio'
         ]);
     }
 }
