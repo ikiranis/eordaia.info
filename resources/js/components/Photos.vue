@@ -238,11 +238,11 @@ export default {
                     this.loading = false
                 })
                 .catch(error => {
+                    this.loading = false
+
                     this.response.message = 'Υπάρχει πρόβλημα με τα δεδομένα που έδωσες'
                     this.response.status = false
                     this.response.errors = error.response.data.errors
-
-                    this.loading = false
                 })
         },
 

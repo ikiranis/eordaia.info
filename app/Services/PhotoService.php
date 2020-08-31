@@ -128,8 +128,13 @@ class PhotoService
                 $constraint->aspectRatio();
             });;
 
+            $quality = ($size == config('app.PRELOAD_IMAGE'))
+                            ? 10
+                            : $this->quality;
+
             Storage::disk($this->storageDisk)
-                ->put( $this->path . '/' . $size . 'x_' . $this->fileName, $image->encode($this->fileFormat, $this->quality));
+                ->put( $this->path . '/' . $size . 'x_' . $this->fileName,
+                            $image->encode($this->fileFormat, $quality));
 
             array_push($this->sizesCreated, $size);
         } catch (\Exception $e) {
