@@ -77,7 +77,7 @@ class CoverPhoto extends Component
     {
         return collect([
             'id' => $this->photo->id,
-            'preload' => $this->photo->smallPhotoUrl,
+            'preload' => $this->photo->preloadUrl ?? $this->photo->smallPhotoUrl,
             'fallback' => $this->photo->mediumPhotoUrl,
             'title' => $photo->label ?? $this->title,
             'srcset' => [
