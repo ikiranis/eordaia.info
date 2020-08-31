@@ -34,7 +34,6 @@ class Photos extends Component
                     <div class="col-lg-6 col-12 mb-3">
                         <display-image :id="{{ json_encode($photo->id) }}" 
                             :referral="{{ json_encode(parse_url($photo->referral)['host'] ?? '') }}"></display-image>
-
                     </div>
                 @endforeach
                 </div>

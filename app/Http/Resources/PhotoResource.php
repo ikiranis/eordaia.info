@@ -25,7 +25,8 @@ class PhotoResource extends JsonResource
             'mediumPhotoUrl' => $this->mediumPhotoUrl,
             'photoUploaded' => true,
             'viewable' => $this->viewable,
-            'largePhotoUrl' => $this->largePhotoUrl
+            'largePhotoUrl' => $this->largePhotoUrl,
+            'label' => $this->label
         ];
     }
 }
