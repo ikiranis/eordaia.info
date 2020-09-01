@@ -228,7 +228,7 @@ return [
 
     ],
 
-    'PRELOAD_IMAGE' => 30,
+    'PRELOAD_IMAGE' => 50,
     'SMALL_IMAGE' => 150,
     'MEDIUM_IMAGE' => 500,
     'LARGE_IMAGE' => 1000

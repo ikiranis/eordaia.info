@@ -34,6 +34,7 @@ class PhotoService
     protected string $fileFormat = 'jpg';
     protected int $quality = 70;
     protected float $ratio;
+    protected int $preloadImageQuality = 40;
 
     /**
      * PhotoService constructor.
@@ -136,7 +137,7 @@ class PhotoService
             });;
 
             $quality = ($size == config('app.PRELOAD_IMAGE'))
-                            ? 10
+                            ? $this->preloadImageQuality
                             : $this->quality;
 
             Storage::disk($this->storageDisk)
