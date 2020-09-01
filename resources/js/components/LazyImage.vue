@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="imageDisplayed" width="100%" height="100%"
+        <img class="coverImage" :src="imageDisplayed" width="100%" height="100%"
              :title="photo.title" :alt="photo.title">
 
         <img :srcset="photo.srcset"
@@ -55,5 +55,9 @@
 <style scoped>
     .preloadedImage {
         display: none;
+    }
+
+    .coverImage {
+        position: absolute;
     }
 </style>
