@@ -39,7 +39,10 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                 <lazy-image class="mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
+                <div class="imageContainer"
+                        style='width: 100%; min-height: {{ $photo->ratio ? (int)(100 / $photo->ratio)+7 : 0}}vh;'>
+                        <lazy-image class="mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
+                </div>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
