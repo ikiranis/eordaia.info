@@ -33,6 +33,7 @@ class PhotoService
     protected array $sizesCreated = [];
     protected string $fileFormat = 'jpg';
     protected int $quality = 70;
+    protected float $ratio;
 
     /**
      * PhotoService constructor.
@@ -68,7 +69,7 @@ class PhotoService
 
         return [
             'sizesCreated' => $this->sizesCreated,
-            'ratio' => 1.2
+            'ratio' => $this->ratio
         ];
     }
 
@@ -99,6 +100,9 @@ class PhotoService
     {
         $imageWidth = getimagesize($this->file)[0];
         $imageHeight = getimagesize($this->file)[1];
+
+        // BTW get ratio
+        $this->ratio = $imageWidth / $imageHeight;
 
         $originalSize  = ($imageWidth >= $imageHeight)
                             ? $imageWidth
