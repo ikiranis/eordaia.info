@@ -40,7 +40,7 @@ class CoverPhoto extends Component
         return <<<'blade'
             <div class="col">
                 <div class="imageContainer"
-                        style='width: 100%; padding-bottom: {{ $photo->ratio ? (100 / $photo->ratio) : '50' }}%;'>
+                     style='width: 100%; padding-bottom: {{ $photo->ratio ? (100 / $photo->ratio) : '50' }}%;'>
                         <lazy-image class="mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
                 </div>
 
