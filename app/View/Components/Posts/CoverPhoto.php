@@ -39,7 +39,7 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-                 <lazy-image class="card-img mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
+                 <lazy-image class="mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
@@ -80,6 +80,7 @@ class CoverPhoto extends Component
             'preload' => $this->photo->preloadUrl ?? $this->photo->smallPhotoUrl,
             'fallback' => $this->photo->mediumPhotoUrl,
             'title' => $photo->label ?? $this->title,
+            'ratio' => $this->photo->ratio,
             'srcset' => [
                 $this->photo->smallPhotoUrl . ' 150w',
                 $this->photo->mediumPhotoUrl . ' 1000w',
