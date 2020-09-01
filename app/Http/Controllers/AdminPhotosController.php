@@ -77,7 +77,7 @@ class AdminPhotosController extends Controller
 
             // Save file
             try {
-                $sizesCreated = $photoService->save();
+                $photoData = $photoService->save();
             } catch(\Exception $exception) {
                 $this->returnError($request->is('api*'), $exception->getMessage());
             }
@@ -92,11 +92,12 @@ class AdminPhotosController extends Controller
                     'url' => $request->url ?? null,
                     'description' => $request->description,
                     'referral' => $request->referral,
-                    'small' => $sizesCreated[0],
-                    'medium' => $sizesCreated[1],
-                    'large' => $sizesCreated[2],
-                    'preload' => $sizesCreated[3],
-                    'viewable' => $request->viewable ?? false
+                    'small' => $photoData['sizesCreated'][0],
+                    'medium' => $photoData['sizesCreated'][1],
+                    'large' => $photoData['sizesCreated'][2],
+                    'preload' => $photoData['sizesCreated'][3],
+                    'viewable' => $request->viewable ?? false,
+                    'ratio' => $photoData['ratio']
                 ]
             );
         } catch (\Exception $exception) {
@@ -160,7 +161,7 @@ class AdminPhotosController extends Controller
 
             // Save file
             try {
-                $sizesCreated = $photoService->save();
+                $photoData = $photoService->save();
             } catch(\Exception $exception) {
                 $this->returnError($request->is('api*'), $exception->getMessage());
             }
@@ -168,11 +169,12 @@ class AdminPhotosController extends Controller
             $input = [
                 'path' => isset($photoService) ? $photoService->getPath() : null,
                 'filename' => isset($photoService) ? $photoService->getFileName() : null,
-                'small' => $sizesCreated[0],
-                'medium' => $sizesCreated[1],
-                'large' => $sizesCreated[2],
-                'preload' => $sizesCreated[3],
-                'viewable' => $request->viewable ?? false
+                'small' => $photoData['sizesCreated'][0],
+                'medium' => $photoData['sizesCreated'][1],
+                'large' => $photoData['sizesCreated'][2],
+                'preload' => $photoData['sizesCreated'][3],
+                'viewable' => $request->viewable ?? false,
+                'ratio' => $photoData['ratio']
             ];
         }
 

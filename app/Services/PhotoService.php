@@ -55,10 +55,10 @@ class PhotoService
     /**
      * Save file. Main method
      *
+     * @return array|\Illuminate\Support\Collection
      * @throws Exception
-     * @return array
      */
-    public function save(): array
+    public function save()
     {
         $this->saveOriginalFile();
 
@@ -66,7 +66,10 @@ class PhotoService
             $this->createDifferentSizeImage($size);
         }
 
-        return $this->sizesCreated;
+        return [
+            'sizesCreated' => $this->sizesCreated,
+            'ratio' => 1.2
+        ];
     }
 
     /**
