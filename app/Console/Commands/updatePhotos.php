@@ -10,7 +10,7 @@ class updatePhotos extends Command
 {
     protected $signature = 'update:photos';
 
-    protected $description = 'Update photos table';
+    protected $description = 'Update photos table with image ratio';
 
     protected $process;
 
