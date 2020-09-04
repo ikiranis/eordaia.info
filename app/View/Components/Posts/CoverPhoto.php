@@ -97,6 +97,6 @@ class CoverPhoto extends Component
 
     public function width()
     {
-        return (100 / $this->photo->ratio) . '%' ;
+        return $this->photo->ratio ? (100 / $this->photo->ratio) . '%' : '';
     }
 }
