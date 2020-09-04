@@ -58,6 +58,6 @@
     }
 
     .coverImage {
-        /*position: absolute;*/
+        position: absolute;
     }
 </style>

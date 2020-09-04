@@ -39,10 +39,11 @@ class CoverPhoto extends Component
     {
         return <<<'blade'
             <div class="col">
-            
-                 
-                        <lazy-image class="card-img mb-1" :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
-             
+
+                <div class="imageContainer mb-1"
+                     style='width: 100%; padding-bottom: {{ $width }};'>
+                        <lazy-image :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
+                </div>
 
                  @if ($singlePost && (isset($photo->label) || isset($photo->referral)))
                     <div class="photoLabel row mx-3 px-3 mb-1">
@@ -92,5 +93,10 @@ class CoverPhoto extends Component
             ],
             'sizes' => '(min-width: 940px) 66vw, 100vw'
         ]);
+    }
+
+    public function width()
+    {
+        return (100 / $this->photo->ratio) . '%' ;
     }
 }
