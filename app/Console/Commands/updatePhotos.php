@@ -34,7 +34,7 @@ class updatePhotos extends Command
         $photos = Photo::whereRatio(null)->get();
 
         foreach ($photos as $photo) {
-            $filePath = '/' . $photo->path . '/' . $photo->filename;
+            $filePath = $photo->path . '/' . $photo->filename;
 
             $file = Storage::disk('public')->path($filePath);
 
