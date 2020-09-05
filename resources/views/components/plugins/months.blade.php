@@ -1,6 +1,6 @@
 <x-plugin>
     <x-slot name="label">
-        <span>Μήνες</span>
+        <span>Ημερολόγιο</span>
     </x-slot>
 
     <div class="months">
