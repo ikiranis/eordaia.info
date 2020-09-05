@@ -121,8 +121,8 @@ class HomeController extends Controller
     {
 
         $posts = Post::whereApproved(true)
-            ->whereMonth('created_at', $month)
-            ->whereYear('created_at', $year)
+            ->whereMonth('updated_at', $month)
+            ->whereYear('updated_at', $year)
             ->orderBy('updated_at', 'desc')
             ->simplePaginate(5);
 
