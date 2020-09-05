@@ -3,7 +3,6 @@
 namespace App\View\Components\Plugins;
 
 use App\Post;
-use Carbon\Carbon;
 use DB;
 use Illuminate\View\Component;
 
