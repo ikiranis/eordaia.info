@@ -40,7 +40,7 @@ class Months extends Component
      */
     public function render()
     {
-        $months = Post::select(DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+        $months = Post::select(DB::raw('YEAR(updated_at) year, MONTH(updated_at) month'))
             ->groupBy('year', 'month')
             ->orderBy('year', 'desc')
             ->orderBy('month', 'desc')
