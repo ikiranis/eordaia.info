@@ -3,11 +3,10 @@
 
     <x-plugins.categories />
     <x-plugins.tags />
+    <x-plugins.months />
     <x-plugins.utility />
     <x-plugins.affiliate />
     <x-plugins.covid />
-    <x-plugins.months />
-
 
 
 {{--    <a href="{{  route("writePost") }}">--}}
