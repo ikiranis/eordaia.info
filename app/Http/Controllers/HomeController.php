@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
-use Debugbar;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -109,5 +108,24 @@ class HomeController extends Controller
             ->simplePaginate(5);
 
         return view('public.categoryPosts', compact(['category', 'posts']));
+    }
+
+    /**
+     * Month posts
+     *
+     * @param $month
+     * @param $year
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function month($year, $month)
+    {
+
+        $posts = Post::whereApproved(true)
+            ->whereMonth('created_at', $month)
+            ->whereYear('created_at', $year)
+            ->orderBy('updated_at', 'desc')
+            ->simplePaginate(5);
+
+        return view('public.home', compact(['posts']));
     }
 }

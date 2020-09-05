@@ -2,10 +2,28 @@
 
 namespace App\View\Components\Plugins;
 
+use App\Post;
+use Carbon\Carbon;
+use DB;
 use Illuminate\View\Component;
 
 class Months extends Component
 {
+    private $monthNames = [
+        'Ιανουάριος',
+        'Φεβρουάριος',
+        'Μάρτιος',
+        'Απρίλιος',
+        'Μάιος',
+        'Ιούνιος',
+        'Ιούλιος',
+        'Αύγουστος',
+        'Σεπτέμβριος',
+        'Οκτώβριος',
+        'Νοέμβριος',
+        'Δεκέμβριος'
+    ];
+
     /**
      * Create a new component instance.
      *
@@ -23,7 +41,14 @@ class Months extends Component
      */
     public function render()
     {
+        $months = Post::select(DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
 
-        return view('components.plugins.months');
+        $names = $this->monthNames;
+
+        return view('components.plugins.months', compact(['months', 'names']));
     }
 }

@@ -56,3 +56,4 @@ Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/{slug}', 'HomeController@post')->name('post');
 Route::get('/tag/{slug}', 'HomeController@tag')->name('tag');
 Route::get('/category/{slug}', 'HomeController@category')->name('category');
+Route::get('/month/{year}/{month}', 'HomeController@month')->name('month');

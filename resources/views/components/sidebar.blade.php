@@ -6,6 +6,8 @@
     <x-plugins.utility />
     <x-plugins.affiliate />
     <x-plugins.covid />
+    <x-plugins.months />
+
 
 
 {{--    <a href="{{  route("writePost") }}">--}}
