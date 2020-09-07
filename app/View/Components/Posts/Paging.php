@@ -26,8 +26,8 @@ class Paging extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="row col-lg-6 col-12 ml-auto mr-auto">
-                <div class="pagination ml-auto mr-auto">
+            <div class="row">
+                <div class="col-lg-4 col-12 mx-auto">
                     {{ $posts->onEachSide(2)->links() }}
                 </div>
             </div>
