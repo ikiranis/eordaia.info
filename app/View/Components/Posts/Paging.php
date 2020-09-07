@@ -27,8 +27,8 @@ class Paging extends Component
     {
         return <<<'blade'
             <div class="row col-12">
-                <div class="pagination col-lg-4 col-12 mx-auto">
-                    {{ $posts->onEachSide(2)->links() }}
+                <div class="pagination col-md-4 col-12 mx-auto">
+                    {{ $posts->links() }}
                 </div>
             </div>
 blade;
