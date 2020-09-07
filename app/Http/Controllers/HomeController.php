@@ -29,7 +29,7 @@ class HomeController extends Controller
         $posts = Post::whereApproved( true)
             ->orderBy('created_at', 'desc')
             ->with('photos')
-            ->simplePaginate(5);
+            ->paginate(config('app.POSTS_PER_PAGE'));
 
         return view('public.home', compact(['posts']));
     }
@@ -66,7 +66,7 @@ class HomeController extends Controller
                     ->orWhere('title', 'LIKE', "%$search%");
             })
             ->orderBy('updated_at', 'desc')
-            ->simplePaginate(5);
+            ->paginate(config('app.POSTS_PER_PAGE'));
 
         // Append search text for next pages
         $posts->appends(['search' => $search]);
@@ -87,7 +87,7 @@ class HomeController extends Controller
         $posts = $tag->posts()->with('photos')
             ->where('approved', true)
             ->orderBy('created_at', 'desc')
-            ->simplePaginate(5);
+            ->paginate(config('app.POSTS_PER_PAGE'));
 
         return view('public.tagPosts', compact(['tag', 'posts']));
     }
@@ -105,7 +105,7 @@ class HomeController extends Controller
         $posts = $category->posts()->with('photos')
             ->where('approved', true)
             ->orderBy('created_at', 'desc')
-            ->simplePaginate(5);
+            ->paginate(config('app.POSTS_PER_PAGE'));
 
         return view('public.categoryPosts', compact(['category', 'posts']));
     }
@@ -124,7 +124,7 @@ class HomeController extends Controller
             ->whereMonth('updated_at', $month)
             ->whereYear('updated_at', $year)
             ->orderBy('updated_at', 'desc')
-            ->simplePaginate(5);
+            ->paginate(config('app.POSTS_PER_PAGE'));
 
         return view('public.home', compact(['posts']));
     }

@@ -2,12 +2,12 @@
 
 namespace App\View\Components\Posts;
 
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
 class Paging extends Component
 {
-    public Paginator $posts;
+    public LengthAwarePaginator $posts;
 
     /**
      * Create a new component instance.

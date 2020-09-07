@@ -228,6 +228,8 @@ return [
 
     ],
 
+    'POSTS_PER_PAGE' => 10,
+
     'PRELOAD_IMAGE' => 50,
     'SMALL_IMAGE' => 150,
     'MEDIUM_IMAGE' => 500,
