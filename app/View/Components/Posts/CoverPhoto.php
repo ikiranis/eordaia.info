@@ -38,10 +38,10 @@ class CoverPhoto extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="col">
+            <div class="col-xl-8 col-lg-9 col-md-11 col-12 mx-auto">
 
                 <div class="imageContainer mb-1"
-                     style='width: 100%; padding-bottom: {{ $width }};'>
+                     style='width: 100%; padding-bottom: {{ $height }};'>
                         <lazy-image :photo="{{ json_encode($photoDetails->all()) }}"></lazy-image>
                 </div>
 
@@ -95,7 +95,12 @@ class CoverPhoto extends Component
         ]);
     }
 
-    public function width()
+    /**
+     * Get the height for photo container
+     *
+     * @return string
+     */
+    public function height() : string
     {
         return $this->photo->ratio ? (100 / $this->photo->ratio) . '%' : '';
     }
