@@ -28,6 +28,7 @@
                     <x-posts.ListPosts :posts="$posts" />
 
                     <x-posts.paging :posts="$posts" />
+
 {{--                    @include('includes.ads.homepage-google-ad')--}}
                 @else
                     <div class="text-center mt-5 mx-3">
@@ -45,6 +46,7 @@
             <div class="col-lg-4 col-12">
                 <x-sidebar />
             </div>
+
 
 
         </div>
