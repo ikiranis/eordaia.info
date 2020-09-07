@@ -17,11 +17,11 @@
             </li>
         </ul>
 
-        <div>
-            <a href="{{ secure_url('/feed') }}" class="mx-1"><img src="/graphics/RSS.png" width="25" title="RSS News Feed"></a>
-            <a href="https://twitter.com/eordaia_info" class="mx-1"><img src="/graphics/twitter-logo.png" width="25" title="Twitter Page"></a>
+        <div class="social-icon">
+            <a href="{{ secure_url('/feed') }}" ><span class="mdi mdi-rss-box" title="RSS feed"/></a>
+            <a href="https://twitter.com/eordaia_info" ><span class="mdi mdi-twitter" title="Twitter page"/></a>
 
-            <a href="https://www.facebook.com/eordaia.info" class="mx-1"><img src="/graphics/facebook-logo.png" width="25" title="Facebook Page"></a>
+            <a href="https://www.facebook.com/eordaia.info" ><span class="mdi mdi-facebook" title="Facebook page"/></a>
         </div>
     </div>
 

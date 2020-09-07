@@ -215,6 +215,23 @@ article {
     position: relative;
 }
 
+.social-icon {
+    font-size: 1.7rem;
+
+    .mdi-rss-box {
+        color: #fea05b;
+    }
+
+    .mdi-facebook {
+        color: #0B85EE;
+    }
+
+    .mdi-twitter {
+        color: #1CA0F2;
+    }
+}
+
+
 //aside {
 //
 //    &::before {
