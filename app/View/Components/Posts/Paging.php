@@ -2,12 +2,11 @@
 
 namespace App\View\Components\Posts;
 
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
 class Paging extends Component
 {
-    public LengthAwarePaginator $posts;
+    public $posts;
 
     /**
      * Create a new component instance.
@@ -29,7 +28,7 @@ class Paging extends Component
         return <<<'blade'
             <div class="row col-lg-6 col-12 ml-auto mr-auto">
                 <div class="pagination ml-auto mr-auto">
-                    {{ $posts->onEachSide(5)->links() }}
+                    {{ $posts->onEachSide(3)->links() }}
                 </div>
             </div>
 blade;
