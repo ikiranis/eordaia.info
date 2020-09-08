@@ -2,12 +2,12 @@
     <div class="card">
         <div class="card-body row align-middle">
 
-            <div class="col-12 col-md text-md-center font-weight-bold">Υπό κατασκευή</div>
+            <div class="col-12 col-md text-md-center font-weight-bold my-auto">Υπό κατασκευή</div>
 
             <div class="col-12 col-md text-md-right my-auto">
-                <span><a href="https://apps4net.eu"><img
-                                src="{{url('/graphics/apps4net_logo.jpg')}}"></a>
-                </span>
+                    <a href="https://apps4net.eu">
+                        <img class="apps4net-logo" src="{{url('/graphics/apps4net_logo.svg')}}">
+                    </a>
             </div>
 
         </div>
