@@ -7,76 +7,62 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="250"
-   height="250"
-   viewBox="0 0 66.145832 66.145835"
-   version="1.1"
-   id="svg304"
+   sodipodi:docname="apps4net_ad_landscape.svg"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="apps4net_ad.svg">
+   id="svg1792"
+   version="1.1"
+   viewBox="0 0 192.61666 23.812501"
+   height="90"
+   width="728">
   <defs
-     id="defs298">
+     id="defs1786">
     <rect
-       x="7.9752744"
-       y="1.9748475"
-       width="50.496805"
-       height="10.711103"
-       id="rect404" />
-    <rect
-       x="66.299027"
-       y="14.33871"
-       width="79.951124"
+       id="rect392"
        height="14.346459"
-       id="rect392" />
+       width="79.951126"
+       y="14.33871"
+       x="66.299026" />
     <rect
-       x="2.2617667"
-       y="0.90817869"
-       width="62.540616"
-       height="52.096384"
-       id="rect324" />
-    <filter
-       id="filter301"
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Opacity">
-      <feColorMatrix
-         id="feColorMatrix297"
-         result="colormatrix"
-         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1.2 -1 " />
-      <feComposite
-         id="feComposite299"
-         result="composite"
-         k2="1"
-         operator="arithmetic"
-         in2="colormatrix" />
-    </filter>
+       id="rect1733"
+       height="14.346459"
+       width="79.951126"
+       y="14.33871"
+       x="66.299026" />
+    <rect
+       id="rect404"
+       height="9.8577232"
+       width="116.70182"
+       y="1.9748476"
+       x="7.9752746" />
+    <rect
+       id="rect1736"
+       height="10.711103"
+       width="50.496803"
+       y="1.9748476"
+       x="7.9752746" />
   </defs>
   <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="205.70179"
-     inkscape:cy="118.55676"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     inkscape:document-rotation="0"
-     showgrid="false"
-     units="px"
-     showguides="true"
-     inkscape:window-width="2560"
-     inkscape:window-height="1018"
-     inkscape:window-x="0"
+     inkscape:window-maximized="1"
      inkscape:window-y="34"
-     inkscape:window-maximized="1">
-    <inkscape:grid
-       type="xygrid"
-       id="grid340" />
-  </sodipodi:namedview>
+     inkscape:window-x="0"
+     inkscape:window-height="1018"
+     inkscape:window-width="2560"
+     units="px"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="mm"
+     inkscape:cy="271.03267"
+     inkscape:cx="590.43937"
+     inkscape:zoom="0.98994949"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
   <metadata
-     id="metadata301">
+     id="metadata1789">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -88,220 +74,192 @@
     </rdf:RDF>
   </metadata>
   <g
-     style="display:inline"
-     inkscape:label="Layer 1"
+     id="layer1"
      inkscape:groupmode="layer"
-     id="layer1">
+     inkscape:label="Layer 1">
     <g
-       style="fill:#2c8dc0;fill-opacity:1"
-       inkscape:export-ydpi="99.537895"
-       inkscape:export-xdpi="99.537895"
+       id="g388"
+       transform="matrix(0.94462807,0,0,0.94462807,32.121247,-0.68074901)"
        inkscape:export-filename="/home/rocean/Downloads/ad.png"
-       transform="matrix(0.976025,0,0,0.976025,1.3851438,0.73525479)"
-       id="g388">
+       inkscape:export-xdpi="99.537895"
+       inkscape:export-ydpi="99.537895"
+       style="display:inline;fill:#2c8dc0;fill-opacity:1">
       <g
-         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect324);fill:#2c8dc0;fill-opacity:1;stroke:none"
-         id="text322"
+         aria-label="Ανάπτυξη"
          transform="matrix(1.2646228,0,0,1.2646228,-8.85484,-1.2208346)"
-         aria-label="Ανάπτυξη">
+         id="text322"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect324);fill:#2c8dc0;fill-opacity:1;stroke:none">
         <text
-           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:8.36877px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect392);fill:#2c8dc0;fill-opacity:1;stroke:none;"
            id="text390"
-           style="font-style:normal;font-weight:normal;font-size:8.36877px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect392);fill:#2c8dc0;fill-opacity:1;stroke:none;" />
+           xml:space="preserve" />
         <text
-           xml:space="preserve"
-           id="text402"
+           transform="matrix(1.1335274,0,0,1.1335274,-1.2126889,-1.07242)"
            style="font-style:normal;font-weight:normal;font-size:8.36877px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect404);fill:#2c8dc0;fill-opacity:1;stroke:none;"
-           transform="matrix(1.2851128,0,0,1.2851128,-2.9641097,-2.183958)"><tspan
+           id="text402"
+           xml:space="preserve"><tspan
              x="7.9746094"
              y="9.6096916"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#2c8dc0;fill-opacity:1">Ανάπτυξη</tspan></tspan></text>
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#2c8dc0;fill-opacity:1">Ανάπτυξη </tspan><tspan
+               style="font-weight:bold">Web</tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#2c8dc0;fill-opacity:1"> </tspan><tspan
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#2c8dc0;fill-opacity:1">εφαρμογών</tspan></tspan></text>
       </g>
     </g>
-    <text
-       inkscape:export-ydpi="99.537895"
-       inkscape:export-xdpi="99.537895"
-       inkscape:export-filename="/home/rocean/Downloads/ad.png"
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.27515px;line-height:1.25;font-family:sans-serif;fill:#2c8dc0;fill-opacity:1;stroke:none;stroke-width:0.18188"
-       x="1.5001283"
-       y="22.328688"
-       id="text338"><tspan
-         sodipodi:role="line"
-         id="tspan336"
-         x="1.5001283"
-         y="22.328688"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;fill:#2c8dc0;fill-opacity:1;stroke-width:0.18188"><tspan
-   id="tspan307"
-   style="font-weight:bold;fill:#2c8dc0;fill-opacity:1;stroke-width:0.18188">Web</tspan> εφαρμογών</tspan></text>
     <g
-       style="fill:#2c8dc0;fill-opacity:1"
-       inkscape:export-ydpi="99.537895"
-       inkscape:export-xdpi="99.537895"
-       inkscape:export-filename="/home/rocean/Downloads/ad.png"
-       transform="matrix(0.00720572,0,0,-0.00720572,-0.82243068,63.063437)"
-       fill="#000000"
+       id="g53"
        stroke="none"
-       id="g53">
+       fill="#000000"
+       transform="matrix(0.00805836,0,0,-0.00805836,31.556824,25.71317)"
+       inkscape:export-filename="/home/rocean/Downloads/ad.png"
+       inkscape:export-xdpi="99.537895"
+       inkscape:export-ydpi="99.537895"
+       style="display:inline;fill:#2c8dc0;fill-opacity:1">
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path35"
          d="m 640,1729 c 0,-9 16,-65 35,-125 19,-60 35,-115 35,-121 0,-22 -14,-14 -39,23 -33,47 -81,101 -81,90 0,-5 9,-24 21,-42 11,-19 19,-34 17,-34 -3,0 -35,29 -73,65 -95,90 -100,86 -16,-15 25,-30 60,-71 78,-90 51,-57 76,-91 70,-97 -3,-3 -28,-1 -54,5 -143,31 -174,35 -186,23 -8,-8 -6,-11 10,-11 12,0 25,-4 28,-10 4,-6 -18,-10 -57,-11 -63,-1 -63,-1 -26,-13 50,-15 55,-24 24,-35 -21,-9 -26,-17 -26,-45 0,-19 -6,-37 -12,-39 -10,-4 -10,-6 0,-6 7,-1 12,-14 12,-31 0,-22 -5,-30 -17,-30 -17,-1 -17,-1 -1,-14 16,-11 18,-31 18,-150 0,-128 -1,-136 -19,-136 -13,0 -21,8 -23,23 -3,20 -8,22 -63,22 h -60 l -3,-63 c -3,-56 -1,-64 16,-69 12,-3 22,-16 25,-33 4,-16 14,-30 26,-33 17,-4 21,-13 21,-47 0,-33 4,-43 20,-47 16,-4 20,-14 20,-44 0,-28 5,-41 20,-49 15,-8 20,-21 20,-54 0,-38 3,-45 25,-50 24,-6 25,-10 25,-76 v -70 h 220 220 v 74 c 0,70 1,75 23,78 20,3 22,9 25,76 3,64 5,72 22,72 19,0 20,8 20,170 0,161 -1,170 -19,170 -13,0 -21,8 -23,23 -2,12 -13,26 -25,32 -14,6 -23,18 -23,32 0,19 -5,23 -34,23 -26,0 -35,5 -40,23 -11,38 -20,217 -10,217 5,-1 45,-52 89,-114 79,-112 110,-139 62,-54 -14,24 -37,64 -52,90 l -26,48 35,-15 c 19,-8 39,-15 43,-15 9,0 -28,30 -77,62 -19,13 -35,30 -35,38 0,17 -4,16 160,27 l 120,7 -139,11 -138,10 57,35 c 116,72 140,101 40,50 -32,-16 -60,-28 -63,-26 -2,2 35,50 82,106 47,55 86,103 86,105 0,14 -21,-4 -121,-102 -61,-60 -115,-109 -120,-111 -5,-2 -9,16 -10,40 l -1,43 -12,-34 c -15,-43 -21,-35 -76,104 -51,128 -70,167 -70,144 z M 530,1105 c 5,-219 5,-220 28,-223 21,-3 22,-1 22,86 0,115 3,122 49,122 35,0 37,2 50,45 7,25 17,45 22,45 5,0 9,6 9,13 0,7 10,24 22,37 21,23 22,23 29,2 4,-11 11,-48 15,-81 l 7,-61 H 726 670 V 990 c 0,-82 3,-102 15,-107 24,-9 30,3 35,80 l 5,72 h 35 35 l 3,-95 c 3,-93 11,-114 39,-103 8,3 13,23 13,58 0,29 3,60 6,69 9,23 34,20 34,-4 0,-13 10,-24 25,-30 l 25,-10 V 756 c 0,-163 0,-165 -22,-168 -21,-3 -23,-9 -26,-74 -2,-61 -6,-73 -22,-77 -14,-4 -20,-16 -22,-48 l -3,-44 H 670 495 l -3,41 c -2,31 -8,43 -22,47 -15,4 -20,16 -22,53 -3,44 -6,49 -25,48 -21,-1 -23,4 -23,48 0,41 -3,48 -20,48 -17,0 -20,7 -20,46 0,37 -4,47 -19,51 -11,3 -21,17 -24,33 -4,16 -14,30 -26,33 -14,3 -21,13 -21,29 0,35 11,46 50,49 30,3 35,1 38,-19 2,-12 12,-27 22,-32 15,-8 20,-24 22,-68 3,-49 6,-57 23,-57 20,0 20,8 23,310 2,329 2,328 52,323 l 25,-3 z"
-         id="path35" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path37"
          d="m 5638,1322 c -9,-4 -100,-83 -203,-177 -103,-93 -230,-208 -282,-255 l -94,-84 3,-71 3,-70 55,-7 c 30,-3 156,-6 278,-6 123,-1 226,-2 228,-4 2,-2 5,-41 8,-87 2,-45 6,-84 8,-86 9,-9 149,-10 158,-1 5,5 10,45 10,87 0,43 4,80 8,83 4,2 39,6 77,7 39,1 76,7 83,12 12,10 17,93 6,121 -5,12 -21,16 -63,17 -31,1 -67,4 -81,8 l -25,7 -5,246 c -3,136 -8,250 -13,254 -10,10 -137,15 -159,6 z m -1,-338 c 9,-200 22,-187 -192,-182 -96,2 -177,7 -182,11 -4,5 0,15 10,22 10,7 44,37 76,66 124,116 146,136 205,186 34,29 64,49 69,44 4,-4 10,-70 14,-147 z"
-         id="path37" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path39"
          d="m 1393,1213 c -28,-54 -83,-161 -123,-238 -40,-77 -113,-218 -162,-313 -50,-95 -88,-175 -85,-178 2,-2 40,-7 83,-11 93,-7 90,-8 145,101 l 35,71 h 239 239 l 43,-75 c 23,-41 47,-81 53,-87 16,-19 179,-18 186,1 3,8 -21,66 -54,128 -33,62 -83,158 -112,213 -29,55 -74,141 -100,190 -26,50 -69,130 -95,180 -25,49 -51,95 -57,102 -7,9 -40,13 -98,13 h -87 z m 217,-244 c 39,-76 70,-141 70,-144 0,-3 -67,-5 -150,-5 -83,0 -150,4 -150,9 0,21 143,290 152,285 5,-3 40,-68 78,-145 z"
-         id="path39" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path41"
          d="m 6277,1295 c -10,-26 -8,-789 3,-805 7,-11 28,-15 82,-15 h 73 l 6,50 c 4,28 5,148 3,268 -2,171 0,217 10,217 7,0 39,-24 71,-52 79,-71 430,-392 480,-440 46,-44 64,-51 126,-46 l 44,3 v 415 415 h -80 -80 l -3,-274 -2,-273 -43,38 c -23,20 -74,67 -113,103 -38,36 -95,88 -125,115 -30,27 -94,86 -144,132 -198,180 -173,163 -241,164 -45,0 -63,-4 -67,-15 z"
-         id="path41" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path43"
          d="M 2240,825 V 490 l 26,-10 c 35,-14 121,-12 130,2 4,6 9,61 11,122 2,61 6,117 8,124 3,9 57,12 225,12 253,0 276,5 304,65 15,32 18,57 14,159 -7,204 9,196 -403,196 h -315 z m 551,198 c 7,-7 14,-36 17,-66 7,-86 4,-87 -213,-87 h -184 l -3,33 c -2,17 -1,53 0,79 l 4,47 76,3 c 166,6 292,2 303,-9 z"
-         id="path43" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path45"
          d="M 3170,821 V 481 l 55,-6 c 30,-4 66,-4 80,-1 24,6 25,8 25,99 0,50 3,109 6,130 l 7,37 h 226 c 209,0 228,2 259,20 54,33 65,75 59,215 l -5,119 -36,33 -36,33 h -320 -320 z m 553,200 c 17,-17 15,-130 -3,-141 -9,-6 -94,-9 -200,-7 l -185,2 -3,35 c -2,19 -1,53 3,77 6,42 6,42 53,45 108,7 324,0 335,-11 z"
-         id="path45" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path47"
          d="m 4163,1140 c -40,-24 -53,-67 -53,-183 0,-104 16,-148 62,-177 31,-18 50,-20 259,-20 183,0 229,-3 238,-14 7,-9 11,-38 9,-73 l -3,-58 -214,-3 c -143,-2 -218,1 -227,9 -7,6 -14,23 -16,37 -2,20 -8,26 -23,24 -56,-7 -91,-16 -102,-25 -19,-14 -16,-59 6,-110 31,-71 60,-77 365,-76 286,1 311,5 339,61 41,83 30,283 -18,328 -34,32 -87,39 -306,40 -229,0 -232,1 -227,75 l 3,50 206,3 206,2 6,-30 c 6,-29 8,-30 49,-25 89,13 88,12 88,56 0,22 -7,53 -15,69 -29,57 -48,60 -337,60 -243,0 -265,-2 -295,-20 z"
-         id="path47" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path49"
          d="m 7507,1153 c -11,-10 -8,-646 3,-663 8,-13 59,-15 340,-18 374,-3 347,-10 335,83 l -6,55 h -232 c -128,0 -242,3 -254,6 -21,6 -23,12 -23,74 v 67 l 38,7 c 20,3 85,6 143,6 120,0 120,0 112,73 l -6,47 h -118 c -65,0 -129,4 -144,10 -24,9 -26,13 -23,67 l 3,58 250,5 250,5 3,63 3,62 h -334 c -183,0 -337,-3 -340,-7 z"
-         id="path49" />
+         style="fill:#2c8dc0;fill-opacity:1" />
       <path
-         style="fill:#2c8dc0;fill-opacity:1"
+         id="path51"
          d="m 8320,1106 c 0,-33 5,-58 13,-63 6,-4 73,-10 147,-13 l 135,-5 3,-268 2,-268 26,-9 c 34,-13 121,-13 130,1 3,6 6,105 5,220 -1,115 1,236 5,269 l 7,60 h 137 c 98,0 140,4 148,13 5,6 8,36 5,65 l -6,52 h -378 -379 z"
-         id="path51" />
+         style="fill:#2c8dc0;fill-opacity:1" />
     </g>
     <g
-       inkscape:export-ydpi="99.537895"
-       inkscape:export-xdpi="99.537895"
+       style="display:inline"
+       id="g167"
+       transform="matrix(0.03370033,0,0,0.03370033,8.1483642,0.99808623)"
        inkscape:export-filename="/home/rocean/Downloads/ad.png"
-       transform="matrix(0.05388213,0,0,0.05388213,20.053582,24.573504)"
-       id="g167">
+       inkscape:export-xdpi="99.537895"
+       inkscape:export-ydpi="99.537895">
       <path
-         style="fill:#e7eced"
+         id="path85"
          d="M 441.379,8.828 H 70.621 26.492 C 11.864,8.828 0,20.692 0,35.319 V 344.276 H 70.621 203.035 308.966 441.38 512 V 35.319 C 512,20.692 500.136,8.827 485.508,8.827 h -44.129 z"
-         id="path85" />
+         style="fill:#e7eced" />
       <rect
-         x="35.310001"
-         y="44.138"
-         style="fill:#28384c"
-         width="441.379"
+         id="rect87"
          height="282.483"
-         id="rect87" />
+         width="441.379"
+         style="fill:#28384c"
+         y="44.138"
+         x="35.310001" />
       <polygon
-         style="fill:#e7eced"
-         points="324.917,247.172 361.931,210.079 361.931,79.448 114.759,79.448 114.759,247.172 "
-         id="polygon89" />
+         id="polygon89"
+         points="114.759,247.172 324.917,247.172 361.931,210.079 361.931,79.448 114.759,79.448 "
+         style="fill:#e7eced" />
       <path
-         style="fill:#afb6bb"
+         id="path91"
          d="M 485.508,397.241 H 26.492 C 11.864,397.241 0,385.377 0,370.75 v -44.129 h 512 v 44.129 c 0,14.627 -11.864,26.491 -26.492,26.491 z"
-         id="path91" />
+         style="fill:#afb6bb" />
       <path
-         style="fill:#ffffff"
+         id="path93"
          d="m 282.483,370.759 h -52.966 c -4.873,0 -8.828,-3.955 -8.828,-8.828 0,-4.873 3.955,-8.828 8.828,-8.828 h 52.966 c 4.873,0 8.828,3.955 8.828,8.828 0,4.873 -3.955,8.828 -8.828,8.828 z"
-         id="path93" />
+         style="fill:#ffffff" />
       <path
-         style="fill:#afb6bb"
+         id="path95"
          d="M 370.759,503.172 H 141.241 c -9.754,0 -17.655,-7.901 -17.655,-17.655 v 0 c 0,-9.754 7.901,-17.655 17.655,-17.655 h 229.517 c 9.754,0 17.655,7.901 17.655,17.655 v 0 c 10e-4,9.755 -7.9,17.655 -17.654,17.655 z"
-         id="path95" />
+         style="fill:#afb6bb" />
       <path
-         style="fill:#6c797a"
+         id="path97"
          d="m 300.138,397.241 h -88.276 c 0,39.036 -13.93,70.621 -52.966,70.621 h 194.207 c -39.035,0 -52.965,-31.585 -52.965,-70.621 z"
-         id="path97" />
+         style="fill:#6c797a" />
       <path
-         style="fill:#7383bf"
+         id="path99"
          d="m 406.749,266.346 -26.721,-26.721 c -0.459,-0.459 -0.459,-1.201 0,-1.66 l 17.267,-17.276 -88.276,-26.483 26.483,88.276 16.825,-16.825 c 1.05,-1.05 2.754,-1.05 3.814,0 l 25.644,25.653 z"
-         id="path99" />
+         style="fill:#7383bf" />
       <rect
-         x="114.759"
-         y="79.447998"
-         style="fill:#556080"
-         width="247.172"
+         id="rect101"
          height="44.138"
-         id="rect101" />
+         width="247.172"
+         style="fill:#556080"
+         y="79.447998"
+         x="114.759" />
       <rect
-         x="150.069"
-         y="176.552"
-         style="fill:#dd352e"
-         width="70.621002"
+         id="rect103"
          height="35.310001"
-         id="rect103" />
+         width="70.621002"
+         style="fill:#dd352e"
+         y="176.552"
+         x="150.069" />
       <g
-         id="g105">
-</g>
+         id="g105" />
       <g
-         id="g107">
-</g>
+         id="g107" />
       <g
-         id="g109">
-</g>
+         id="g109" />
       <g
-         id="g111">
-</g>
+         id="g111" />
       <g
-         id="g113">
-</g>
+         id="g113" />
       <g
-         id="g115">
-</g>
+         id="g115" />
       <g
-         id="g117">
-</g>
+         id="g117" />
       <g
-         id="g119">
-</g>
+         id="g119" />
       <g
-         id="g121">
-</g>
+         id="g121" />
       <g
-         id="g123">
-</g>
+         id="g123" />
       <g
-         id="g125">
-</g>
+         id="g125" />
       <g
-         id="g127">
-</g>
+         id="g127" />
       <g
-         id="g129">
-</g>
+         id="g129" />
       <g
-         id="g131">
-</g>
+         id="g131" />
       <g
-         id="g133">
-</g>
+         id="g133" />
     </g>
     <text
-       id="text1626"
-       y="64.778694"
-       x="1.5381534"
-       style="font-style:normal;font-weight:normal;font-size:2.49225px;line-height:1.25;font-family:sans-serif;fill:#2c8dc0;fill-opacity:1;stroke:none;stroke-width:0.0623068"
-       xml:space="preserve"><tspan
-         style="fill:#2c8dc0;fill-opacity:1;stroke-width:0.0623068"
-         y="64.778694"
-         x="1.5381534"
-         id="tspan1624"
-         sodipodi:role="line">Πτολεμαϊδα</tspan></text>
-    <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:4.59206px;line-height:1.25;font-family:sans-serif;display:inline;fill:#2c8dc0;fill-opacity:1;stroke:none;stroke-width:0.114801"
-       x="19.517967"
-       y="64.752365"
-       id="text1626-6"><tspan
+       style="font-style:normal;font-weight:normal;font-size:4.2761px;line-height:1.25;font-family:sans-serif;display:inline;fill:#2c8dc0;fill-opacity:1;stroke:none;stroke-width:0.106903"
+       x="4.4520407"
+       y="22.373714"
+       id="text1626"><tspan
          sodipodi:role="line"
+         id="tspan1624"
+         x="4.4520407"
+         y="22.373714"
+         style="fill:#2c8dc0;fill-opacity:1;stroke-width:0.106903">Πτολεμαϊδα</tspan></text>
+    <text
+       id="text1626-6"
+       y="21.664783"
+       x="117.57895"
+       style="font-style:normal;font-weight:normal;font-size:7.26321px;line-height:1.25;font-family:sans-serif;display:inline;fill:#2c8dc0;fill-opacity:1;stroke:none;stroke-width:0.181581"
+       xml:space="preserve"><tspan
+         style="fill:#2c8dc0;fill-opacity:1;stroke-width:0.181581"
+         y="21.664783"
+         x="117.57895"
          id="tspan1624-3"
-         x="19.517967"
-         y="64.752365"
-         style="fill:#2c8dc0;fill-opacity:1;stroke-width:0.114801">https://apps4net.eu</tspan></text>
+         sodipodi:role="line">https://apps4net.eu</tspan></text>
   </g>
 </svg>

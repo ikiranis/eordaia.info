@@ -41,6 +41,10 @@
 
     </div>
 
+    <div class="text-center">
+        <x-plugins.advertLandscape />
+    </div>
+
     <x-posts.related :post="$post" />
 
 {{--    <x-error :errors="$errors" />--}}
