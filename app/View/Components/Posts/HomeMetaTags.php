@@ -26,26 +26,26 @@ class HomeMetaTags extends Component
         return <<<'blade'
             <meta name="description"
                       content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα"/>
-        
+
             <!-- Schema.org markup for Google+ -->
             <meta itemprop="name" content="{{ config('app.name', 'Laravel') }}">
             <meta itemprop="description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα">
-<!--            <meta itemprop="image" content="{{ secure_url('/images/site/logo.png') }}">-->
-        
+            <meta itemprop="image" content="{{ url('/graphics/logo.svg') }}">
+
             <!-- Twitter Card data -->
             {{--<meta name="twitter:card" content="">--}}
             <meta name="twitter:title" content="{{ config('app.name', 'Laravel') }}">
             <meta name="twitter:description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα">
             <!-- Twitter summary card with large image must be at least 280x150px -->
-<!--            <meta name="twitter:image:src" content="{{ secure_url('/images/site/logo.png') }}">-->
-        
+            <meta name="twitter:image:src" content="{{ url('/graphics/logo.svg') }}">
+
             <!-- Open Graph data -->
             <meta property="og:title" content="{{ config('app.name', 'Laravel') }}"/>
             <meta property="og:type" content="home"/>
-<!--            <meta property="og:image" content="{{ secure_url('/images/site/logo.png') }}"/>-->
-<!--            <meta property="og:image:width" content="282">-->
+            <meta property="og:image" content="{{ url('/graphics/logo.svg') }}"/>
+            <meta property="og:image:width" content="282">
             <meta property="og:description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα"/>
             <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}"/>
