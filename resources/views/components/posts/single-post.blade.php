@@ -41,12 +41,14 @@
 
     </div>
 
-    <div class="text-center mt-3 mb-3">
-        <x-plugins.advertLandscape />
+    <div class="row mt-3">
+        <div class="col-lg-8 col-12 mx-auto">
+            <x-plugins.advertLandscape />
+        </div>
     </div>
 
     <x-posts.related :post="$post" />
 
-{{--    <x-error :errors="$errors" />--}}
+    {{--    <x-error :errors="$errors" />--}}
 
 </article>
