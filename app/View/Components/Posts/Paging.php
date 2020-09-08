@@ -26,7 +26,7 @@ class Paging extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="row col-12">
+            <div class="row text-center">
                 <div class="paginate mx-auto">
                     {{ $posts->onEachSide(2,0)->links() }}
                 </div>
