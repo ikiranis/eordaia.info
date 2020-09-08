@@ -41,7 +41,7 @@
 
     </div>
 
-    <div class="text-center">
+    <div class="text-center mt-3 mb-3">
         <x-plugins.advertLandscape />
     </div>
 
