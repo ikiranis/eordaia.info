@@ -31,7 +31,7 @@ class HomeMetaTags extends Component
             <meta itemprop="name" content="{{ config('app.name', 'Laravel') }}">
             <meta itemprop="description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα">
-            <meta itemprop="image" content="{{ url('/graphics/logo.svg') }}">
+            <meta itemprop="image" content="{{ url('/graphics/logo.png') }}">
 
             <!-- Twitter Card data -->
             {{--<meta name="twitter:card" content="">--}}
@@ -39,12 +39,12 @@ class HomeMetaTags extends Component
             <meta name="twitter:description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα">
             <!-- Twitter summary card with large image must be at least 280x150px -->
-            <meta name="twitter:image:src" content="{{ url('/graphics/logo.svg') }}">
+            <meta name="twitter:image:src" content="{{ url('/graphics/logo.png') }}">
 
             <!-- Open Graph data -->
             <meta property="og:title" content="{{ config('app.name', 'Laravel') }}"/>
             <meta property="og:type" content="home"/>
-            <meta property="og:image" content="{{ url('/graphics/logo.svg') }}"/>
+            <meta property="og:image" content="{{ url('/graphics/logo.png') }}"/>
             <meta property="og:image:width" content="282">
             <meta property="og:description"
                   content="Ειδήσεις, εμπορικός οδηγός, αγγελίες κτλ από την Πτολεμαϊδα"/>
