@@ -228,7 +228,7 @@ return [
 
     ],
 
-    'POSTS_PER_PAGE' => 10,
+    'POSTS_PER_PAGE' => 7,
 
     'PRELOAD_IMAGE' => 50,
     'SMALL_IMAGE' => 150,
