@@ -26,7 +26,7 @@ class Advert extends Component
         return <<<'blade'
             <x-plugin>
                 <a href="https://apps4net.eu">
-                    <img src="{{url('/graphics/apps4net_ad.jpg')}}" title="apps4net.eu">
+                    <img src="{{url('/graphics/apps4net_ad.svg')}}" width="250" title="apps4net.eu">
                 </a>
             </x-plugin>
         blade;
