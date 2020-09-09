@@ -38,7 +38,7 @@ class CoverPhoto extends Component
     public function render()
     {
         return <<<'blade'
-            <div class="col-xl-8 col-lg-9 col-md-11 col-12 mx-auto">
+            <div class="col-xl-8 col-lg-9 col-md-11 col-12 mx-auto mt-2">
 
                 <div class="imageContainer mb-1"
                      style='width: 100%; padding-bottom: {{ $height }};'>
