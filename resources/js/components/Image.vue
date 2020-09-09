@@ -24,8 +24,8 @@
 
             <div v-if="thumb.label !== '' || referral !== ''" class="photoLabel row mx-3 px-3 mb-1">
                 <div class="mx-auto row text-center">
-                    <span class="description px-2 col-md-auto col-12">{{ thumb.label }}</span>
-                    <span class="col-md-auto col-12"> <a :href="thumb.referral">{{ referral }}</a></span>
+                    <span class="description px-2 col-md-auto col-12 mx-md-auto">{{ thumb.label }}</span>
+                    <span class="col-md-auto col-12 mx-md-auto"><a :href="thumb.referral">{{ referral }}</a></span>
                 </div>
             </div>
         </div>
