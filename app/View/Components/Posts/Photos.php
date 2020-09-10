@@ -30,14 +30,14 @@ class Photos extends Component
         return <<<'blade'
             @if ($photos->count() > 0)
                 <div class="row mt-3">
-                @foreach ($photos as $photo)
-                    <div class="col-lg-6 col-12 mb-5" >
-                        <display-image class="imageContainer"
-                            :id="{{ json_encode($photo->id) }}"
-                            style='width: 100%; padding-bottom: {{ $getHeight($photo) }};'
-                            :referral="{{ json_encode(parse_url($photo->referral)['host'] ?? '') }}"></display-image>
-                    </div>
-                @endforeach
+                    @foreach ($photos as $photo)
+                        <div class="col-lg-6 col-12 mb-5" >
+                            <display-image class="imageContainer"
+                                :id="{{ json_encode($photo->id) }}"
+                                style='width: 100%; padding-bottom: {{ $getHeight($photo) }};'
+                                :referral="{{ json_encode(parse_url($photo->referral)['host'] ?? '') }}"></display-image>
+                        </div>
+                    @endforeach
                 </div>
             @endif
         blade;

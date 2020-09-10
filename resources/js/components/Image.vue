@@ -12,12 +12,11 @@
 
         <div v-if="thumb" class="coverImage"  @click="showModal">
             <div>
-                <img :srcset="thumbSrcSet"
+                <b-img-lazy :srcset="thumbSrcSet"
                     :src="thumb.mediumPhotoUrl"
-                     width="100%" height="100%"
-                    class="btn"
+                     class="btn" fluid-grow
                      :blank-src="thumb.preloadUrl ? thumb.preloadUrl : thumb.smallPhotoUrl"
-                    :alt="thumb.label">
+                    :alt="thumb.label" />
             </div>
 
             <div v-if="thumb.label !== '' || referral !== ''" class="photoLabel row mx-3 px-3 mb-1">
@@ -60,9 +59,6 @@
                     this.thumb.mediumPhotoUrl + ' 1000w',
                     this.thumb.largePhotoUrl + ' 1500w'
                 ]
-            },
-            height() {
-                return photo.ratio ? (100 / photo.ratio) + '%' : ''
             }
         },
 
@@ -101,5 +97,7 @@
 <style scoped>
     .coverImage {
         position: absolute;
+        width: 100%;
+        height: 100%;
     }
 </style>
