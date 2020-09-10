@@ -5,7 +5,6 @@
             <img v-if="photo"
                         :srcset="srcset"
                         :src="photo.mediumPhotoUrl"
-                        sizes="(min-width: 940px) 66vw, 100vw"
                         class="card-img mb-1"
                         :alt="photo.label">
 
@@ -15,7 +14,6 @@
             <div>
                 <img :srcset="thumbSrcSet"
                     :src="thumb.mediumPhotoUrl"
-                    sizes="(min-width: 940px) 66vw, 100vw"
                      width="100%" height="100%"
                     class="btn"
                      :blank-src="thumb.preloadUrl ? thumb.preloadUrl : thumb.smallPhotoUrl"

@@ -31,7 +31,7 @@ class Photos extends Component
             @if ($photos->count() > 0)
                 <div class="row mt-3">
                 @foreach ($photos as $photo)
-                    <div class="col-lg-6 col-12 mb-3" >
+                    <div class="col-lg-6 col-12 mb-5" >
                         <display-image class="imageContainer"
                             :id="{{ json_encode($photo->id) }}"
                             style='width: 100%; padding-bottom: {{ $getHeight($photo) }};'
