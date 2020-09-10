@@ -7,28 +7,21 @@
 @section('content')
 
     <div class="container">
+        <article>
 
-        <div class="col-12 my-3">
-            <div class="card">
-                <div class="card-header">
-                    <h1>Επικοινωνία</h1>
-                </div>
+            <div class="post-content px-3">
 
-                <div class="card-body article">
-                    <p>Στείλτε μας οτιδήποτε μπορεί να ενδιαφέρει το <strong>eordaia.info</strong>, για δημοσίευση.</p>
+                <p>Στείλτε μας ανακοινώσεις, δελτία τύπου κτλ για δημοσίευση, στο email</p>
 
-                    <p>e-mail: <strong><a href="mailto:eordaia.info@gmail.com">eordaia.info@gmail.com</a></strong></p>
+                <p>e-mail: <strong><a href="mailto:eordaia.info@gmail.com">eordaia.info@gmail.com</a></strong></p>
 
-                    <p>Twitter account: <strong><a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong></p>
+                <p>Twitter account: <strong><a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong></p>
 
-                    <p>Facebook page: <strong><a href="https://fb.me/eordaia.info">fb.me/eordaia.info</a></strong></p>
-                </div>
+                <p>Facebook page: <strong><a href="https://fb.me/eordaia.info">fb.me/eordaia.info</a></strong></p>
 
             </div>
 
-        </div>
-
+        </article>
     </div>
-
 
 @endsection
