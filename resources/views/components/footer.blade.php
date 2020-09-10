@@ -1,7 +1,7 @@
 <div class="container mb-3">
-    <div class="card">
-        <div class="card-body row align-middle">
+        <hr>
 
+        <div class="row align-middle">
             <div class="col-12 col-md text-md-center font-weight-bold my-auto">Υπό κατασκευή</div>
 
             <div class="col-12 col-md text-md-right my-auto">
@@ -12,5 +12,4 @@
 
         </div>
 
-    </div>
 </div>
