@@ -11,13 +11,40 @@
 
             <div class="post-content px-3">
 
-                <p>Στείλτε μας ανακοινώσεις, δελτία τύπου κτλ για δημοσίευση, στο email</p>
+                <div class="row mb-5">
+                    <img src="/graphics/mail.svg" class="col-lg-4 col-12 mx-auto">
+                </div>
 
-                <p>e-mail: <strong><a href="mailto:eordaia.info@gmail.com">eordaia.info@gmail.com</a></strong></p>
+                <div class="row">
+                    <p class="mx-auto">Στείλτε μας ανακοινώσεις, δελτία τύπου κτλ για δημοσίευση, στο email</p>
+                </div>
 
-                <p>Twitter account: <strong><a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong></p>
+                <table>
+                    <tr>
+                        <td><span class="social-icon mdi mdi-email-outline" title="Email address"/></td>
+                        <td><strong>&nbsp;<a href="mailto:eordaia.info@gmail.com">eordaia.info@gmail.com</a></strong></td>
+                    </tr>
 
-                <p>Facebook page: <strong><a href="https://fb.me/eordaia.info">fb.me/eordaia.info</a></strong></p>
+                    <tr>
+                        <td>
+                            <span class="social-icon mdi mdi-twitter" title="Twitter page"/>
+                        </td>
+                        <td>
+                            <strong>&nbsp;<a href="https://twitter.com/eordaia_info">twitter.com/eordaia_info</a></strong>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <span class="social-icon mdi mdi-facebook" title="Facebook page"/>
+                        </td>
+                        <td>
+                            <strong>&nbsp;<a href="https://fb.me/eordaia.info">fb.me/eordaia.info</a></strong>
+                        </td>
+                    </tr>
+
+                </table>
+
 
             </div>
 
