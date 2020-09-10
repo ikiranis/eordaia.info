@@ -5,20 +5,20 @@
             <img v-if="photo"
                         :srcset="srcset"
                         :src="photo.mediumPhotoUrl"
-                        sizes="(min-width: 940px) 66vw,
-                                    100vw"
+                        sizes="(min-width: 940px) 66vw, 100vw"
                         class="card-img mb-1"
                         :alt="photo.label">
 
         </b-modal>
 
-        <div v-if="thumb" @click="showModal">
+        <div v-if="thumb" class="coverImage"  @click="showModal">
             <div>
                 <img :srcset="thumbSrcSet"
                     :src="thumb.mediumPhotoUrl"
-                    sizes="(min-width: 940px) 66vw,
-                                100vw"
-                    class="card-img mb-1 btn"
+                    sizes="(min-width: 940px) 66vw, 100vw"
+                     width="100%" height="100%"
+                    class="btn"
+                     :blank-src="thumb.preloadUrl ? thumb.preloadUrl : thumb.smallPhotoUrl"
                     :alt="thumb.label">
             </div>
 
@@ -62,6 +62,9 @@
                     this.thumb.mediumPhotoUrl + ' 1000w',
                     this.thumb.largePhotoUrl + ' 1500w'
                 ]
+            },
+            height() {
+                return photo.ratio ? (100 / photo.ratio) + '%' : ''
             }
         },
 
@@ -96,3 +99,9 @@
 
     }
 </script>
+
+<style scoped>
+    .coverImage {
+        position: absolute;
+    }
+</style>

@@ -31,8 +31,10 @@ class Photos extends Component
             @if ($photos->count() > 0)
                 <div class="row mt-3">
                 @foreach ($photos as $photo)
-                    <div class="col-lg-6 col-12 mb-3">
-                        <display-image :id="{{ json_encode($photo->id) }}" 
+                    <div class="col-lg-6 col-12 mb-3" >
+                        <display-image class="imageContainer"
+                            :id="{{ json_encode($photo->id) }}"
+                            style='width: 100%; padding-bottom: {{ $getHeight($photo) }};'
                             :referral="{{ json_encode(parse_url($photo->referral)['host'] ?? '') }}"></display-image>
                     </div>
                 @endforeach
@@ -53,16 +55,6 @@ class Photos extends Component
     }
 
     /**
-     * @param Photo $photo
-     * @return String
-     */
-    public function getUrl(Photo $photo) : String {
-        if($photo) {
-            return $photo->mediumPhotoUrl ?? $photo->smallPhotoUrl;
-        }
-    }
-
-    /**
      * Get post title
      *
      * @return String
@@ -70,5 +62,16 @@ class Photos extends Component
     public function title() : String
     {
         return $this->post->title;
+    }
+
+    /**
+     * Get the height for photo container
+     *
+     * @param Photo $photo
+     * @return string
+     */
+    public function getHeight(Photo $photo) : string
+    {
+        return $photo->ratio ? (100 / $photo->ratio) . '%' : '';
     }
 }
