@@ -12,7 +12,7 @@
             <div class="post-content px-3">
 
                 <div class="row mb-5">
-                    <img src="/graphics/mail.svg" class="col-lg-4 col-12 mx-auto">
+                    <img src="/graphics/mail.svg" alt="Επικοινωνία" class="col-lg-4 col-12 mx-auto">
                 </div>
 
                 <div class="row">

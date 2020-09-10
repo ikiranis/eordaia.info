@@ -11,6 +11,10 @@
 
             <div class="post-content px-3">
 
+                <div class="row mb-5">
+                    <img src="/graphics/about.svg" alt="Σχετικά" class="col-lg-4 col-12 mx-auto">
+                </div>
+
                 <p>Το <strong>eordaia.info</strong> είναι ένα site με πληροφορίες για την Πτολεμαϊδα και την ευρύτερη
                     περιοχή. Στην πλήρη ανάπτυξη του Θα περιλαμβάνει ειδησεογραφία, οδηγό αγοράς, αγγελίες κτλ.</p>
 
