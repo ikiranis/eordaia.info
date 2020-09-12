@@ -19,7 +19,7 @@ if (env('APP_ENV') === 'production') {
 // For RSS feed
 Route::feeds();
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
