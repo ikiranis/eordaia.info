@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminCategoriesController;
+use App\Http\Controllers\AdminLinksController;
+use App\Http\Controllers\AdminPhotosController;
+use App\Http\Controllers\AdminTagsController;
+use App\Http\Controllers\AdminVideosController;
 use Illuminate\Http\Request;
 
 /*
@@ -19,14 +24,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Api with auth
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::post('tag', 'AdminTagsController@store');
-    Route::get('tags', 'AdminTagsController@index');
-    Route::post('category', 'AdminCategoriesController@store');
-    Route::post('photo', 'AdminPhotosController@store');
-    Route::delete('photo/{id}', 'AdminPhotosController@destroy');
-    Route::get('photos', 'AdminPhotosController@listPhotos');
-    Route::post('link', 'AdminLinksController@store');
-    Route::post('video', 'AdminVideosController@store');
+    Route::post('tag', [AdminTagsController::class, 'store']);
+    Route::get('tags', [AdminTagsController::class, 'index']);
+    Route::post('category', [AdminCategoriesController::class, 'store']);
+    Route::post('photo', [AdminPhotosController::class, 'store']);
+    Route::delete('photo/{id}', [AdminPhotosController::class, 'destroy']);
+    Route::get('photos', [AdminPhotosController::class, 'listPhotos']);
+    Route::post('link', [AdminLinksController::class, 'store']);
+    Route::post('video', [AdminVideosController::class, 'store']);
 });
 
-Route::get('photo/{id}', 'AdminPhotosController@getPhoto');
+Route::get('photo/{id}', [AdminPhotosController::class, 'getPhoto']);

@@ -12,6 +12,15 @@
 */
 
 // Force to load pages in https in production mode
+use App\Http\Controllers\AdminCategoriesController;
+use App\Http\Controllers\AdminLinksController;
+use App\Http\Controllers\AdminPhotosController;
+use App\Http\Controllers\AdminPostsController;
+use App\Http\Controllers\AdminSitemapGenerator;
+use App\Http\Controllers\AdminUsersController;
+use App\Http\Controllers\AdminVideosController;
+use App\Http\Controllers\HomeController;
+
 if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
@@ -21,7 +30,7 @@ Route::feeds();
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Admin first page
 Route::get('/admin', function () {
@@ -30,16 +39,16 @@ Route::get('/admin', function () {
 
 // If user is admin
 Route::group(['middleware' => 'admin'], function () {
-    Route::resource('admin/users', 'AdminUsersController');
-    Route::resource('admin/posts', 'AdminPostsController');
+    Route::resource('admin/users', AdminUsersController::class);
+    Route::resource('admin/posts', AdminPostsController::class);
 //    Route::resource('admin/rules', 'AdminRulesController');
-    Route::resource('admin/categories', 'AdminCategoriesController');
-    Route::resource('admin/links', 'AdminLinksController');
-    Route::resource('admin/photos', 'AdminPhotosController');
-    Route::resource('admin/videos', 'AdminVideosController');
+    Route::resource('admin/categories', AdminCategoriesController::class);
+    Route::resource('admin/links', AdminLinksController::class);
+    Route::resource('admin/photos', AdminPhotosController::class);
+    Route::resource('admin/videos', AdminVideosController::class);
 
-    Route::get('admin/sitemap', 'AdminSitemapGenerator@index')->name('sitemap');
-    Route::get('admin/createSitemap', 'AdminSitemapGenerator@run')->name('createSitemap');
+    Route::get('admin/sitemap', [AdminSitemapGenerator::class, 'index'])->name('sitemap');
+    Route::get('admin/createSitemap', [AdminSitemapGenerator::class, 'run'])->name('createSitemap');
 });
 
 // Static pages
@@ -52,8 +61,8 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Public pages
-Route::get('/search', 'HomeController@search')->name('search');
-Route::get('/{slug}', 'HomeController@post')->name('post');
-Route::get('/tag/{slug}', 'HomeController@tag')->name('tag');
-Route::get('/category/{slug}', 'HomeController@category')->name('category');
-Route::get('/month/{year}/{month}', 'HomeController@month')->name('month');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/{slug}', [HomeController::class, 'post'])->name('post');
+Route::get('/tag/{slug}', [HomeController::class, 'tag'])->name('tag');
+Route::get('/category/{slug}', [HomeController::class, 'category'])->name('category');
+Route::get('/month/{year}/{month}', [HomeController::class, 'month'])->name('month');
