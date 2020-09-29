@@ -11,7 +11,6 @@
 |
 */
 
-// Force to load pages in https in production mode
 use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminLinksController;
 use App\Http\Controllers\AdminPhotosController;
@@ -21,6 +20,7 @@ use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminVideosController;
 use App\Http\Controllers\HomeController;
 
+// Force to load pages in https in production mode
 if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
