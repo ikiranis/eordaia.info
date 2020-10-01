@@ -5,4 +5,8 @@
 
     <h3>Sitemap created</h3>
 
+    <p>
+        <a href="http://www.google.com/ping?sitemap=https://eordaia.info/sitemaps/sitemap.xml">Ping Google</a>
+    </p>
+
 @endsection
