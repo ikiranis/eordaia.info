@@ -292,4 +292,36 @@ class AdminRoutesTest extends TestCase
         $response->assertStatus(200)
             ->assertSee('Ενημέρωση Video');
     }
+
+    /**
+     * Test admin sitemap page
+     *
+     * @return void
+     */
+    public function testAdminSitemapPage() : void
+    {
+        $video = Video::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/sitemap');
+
+        $response->assertStatus(200)
+            ->assertSee('Create Sitemap');
+    }
+
+    /**
+     * Test admin sitemap created page
+     *
+     * @return void
+     */
+    public function testAdminSitemapCreatedPage() : void
+    {
+        $video = Video::first();
+
+        $response = $this->actingAs(static::$user, 'web')
+            ->get('/admin/createSitemap');
+
+        $response->assertStatus(200)
+            ->assertSee('Sitemap created');
+    }
 }
