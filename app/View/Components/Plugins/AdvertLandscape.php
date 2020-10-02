@@ -26,7 +26,15 @@ class AdvertLandscape extends Component
         return <<<'blade'
             <x-plugin>
                 <a href="https://apps4net.eu">
-                    <img src="{{url('/graphics/apps4net_ad_landscape.svg')}}" width="100%" title="apps4net.eu">
+                        <picture>
+                              <source srcset="{{ url('/graphics/apps4net_ad_landscape.svg') }}"
+                                      media="( min-width: 941px)" />
+                              <source srcset="{{ url('/graphics/apps4net_ad.svg') }}"
+                                      media="( max-width: 940px) " />
+
+                              <!-- fallback -->
+                              <img src="{{ url('/graphics/apps4net_ad_landscape.svg') }}" alt="apps4net.eu" width="100%" />
+                        </picture>
                 </a>
             </x-plugin>
         blade;
