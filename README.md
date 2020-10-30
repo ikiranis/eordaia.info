@@ -55,3 +55,9 @@ php artisan db:seed --class=StartSeeder
 
 npm run prod
 ```
+
+- If you have a problem with memory limit on ``composer update``, use this
+
+```
+COMPOSER_MEMORY_LIMIT=-1 composer update
+```
