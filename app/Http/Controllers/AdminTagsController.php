@@ -16,7 +16,9 @@ class AdminTagsController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::withCount('posts')
+            ->orderBy('posts_count', 'desc')
+            ->get();
 
         return TagResource::collection($tags);
     }
