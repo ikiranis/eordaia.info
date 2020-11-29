@@ -23,4 +23,12 @@ class Link extends Model
     {
         return $this->belongsToMany('App\Post')->withTimestamps();
     }
+
+    /**
+     * Relation to bizposts
+     */
+    public function bizposts()
+    {
+        return $this->belongsToMany('App\Bizpost')->withTimestamps();
+    }
 }

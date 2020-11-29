@@ -44,6 +44,14 @@ class Photo extends Model
     }
 
     /**
+     * Relation to bizposts
+     */
+    public function bizposts()
+    {
+        return $this->belongsToMany('App\Bizpost')->withTimestamps();
+    }
+
+    /**
      * Get original image full path name
      *
      * @return string

@@ -4,7 +4,6 @@ namespace App;
 
 use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Debugbar;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
@@ -32,9 +31,7 @@ class Post extends Model implements Feedable
         'user_id',
         'title',
         'body',
-        'approved',
-        'author',
-        'image_id'
+        'approved'
     ];
 
     /**
