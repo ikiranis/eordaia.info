@@ -20,6 +20,7 @@ class CreateBizpostsTable extends Migration
             $table->longText('body');
             $table->boolean('activated')->default(false);
             $table->boolean('validated')->default(false);
+            $table->string('valid_code',20);
             $table->tinyInteger('kind');
             $table->uuid('business_id')->nullable();
             $table->date('due_date');

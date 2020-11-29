@@ -16,6 +16,7 @@ class CreateBusinessesTable extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('name');
+            $table->string('slug', 30);
             $table->string('address');
             $table->string('email');
             $table->integer('bizcategory_id');
