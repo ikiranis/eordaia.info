@@ -20,6 +20,7 @@ class CreateBusinessesTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->integer('bizcategory_id');
+            $table->uuid('customer_id');
             $table->uuid('photo_id')->nullable();
             $table->string('valid_code',20);
             $table->timestamps();
