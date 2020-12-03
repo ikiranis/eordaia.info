@@ -5,6 +5,7 @@ namespace App;
 use App\Traits\Uuids;
 use Cviebrock\EloquentSluggable\Sluggable;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
@@ -15,6 +16,7 @@ use Spatie\Feed\Feedable;
 
 class Post extends Model implements Feedable
 {
+    use HasFactory;
     use Sluggable;
     use Uuids;
 

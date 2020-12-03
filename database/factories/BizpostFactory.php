@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Post;
-use DavidBadura\FakerMarkdownGenerator\FakerProvider;
+use App\Bizpost;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use \DavidBadura\FakerMarkdownGenerator\FakerProvider;
 
-class PostFactory extends Factory
+class BizpostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Post::class;
+    protected $model = Bizpost::class;
 
     /**
      * Define the model's default state.
@@ -27,7 +27,11 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(15),
             'body' => $this->faker->markdown(),
-            'approved' => true
+            'activated' => true,
+            'validated' => true,
+            'valid_code' => $this->faker->text(20),
+            'kind' => 0,
+            'due_date' => $this->faker->dateTimeBetween('now', '1 month')->format('Y-m-d'),
         ];
     }
 }

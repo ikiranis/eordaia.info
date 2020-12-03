@@ -1,13 +1,29 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Video;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Video::class, function (Faker $faker) {
-    return [
-        'url' => 'https://www.youtube.com/watch?v=ibgkLzQVgjo',
-        'name' => $this->faker->text(rand(50, 150)),
-    ];
-});
+class VideoFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Video::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'url' => 'https://www.youtube.com/watch?v=ibgkLzQVgjo',
+            'name' => $this->faker->text(rand(50, 150)),
+        ];
+    }
+}
