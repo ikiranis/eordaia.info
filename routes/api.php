@@ -5,6 +5,9 @@ use App\Http\Controllers\AdminLinksController;
 use App\Http\Controllers\AdminPhotosController;
 use App\Http\Controllers\AdminTagsController;
 use App\Http\Controllers\AdminVideosController;
+use App\Http\Controllers\BizpostApiController;
+use App\Http\Controllers\BusinessApiController;
+use App\Http\Controllers\CustomerApiController;
 use Illuminate\Http\Request;
 
 /*
@@ -35,3 +38,19 @@ Route::group(['middleware' => 'auth:api'], function() {
 });
 
 Route::get('photo/{id}', [AdminPhotosController::class, 'getPhoto']);
+
+// Business API routes
+Route::post('business', [BusinessApiController::class, 'store']);
+Route::get('business/{id}', [BusinessApiController::class, 'show']);
+Route::patch('business/{id}', [BusinessApiController::class, 'update']);
+Route::delete('business/{id}', [BusinessApiController::class, 'destroy']);
+
+// Customer API routes
+Route::get('customer/{id}', [CustomerApiController::class, 'show']);
+
+// Bizpost API routes
+Route::get('bizpost/{id}', [BizpostApiController::class, 'show']);
+Route::post('bizpost', [BizpostApiController::class, 'store']);
+Route::patch('bizpost/{id}', [BizpostApiController::class, 'update']);
+Route::delete('bizpost/{id}', [BizpostApiController::class, 'destroy']);
+
