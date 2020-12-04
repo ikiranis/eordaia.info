@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Business;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Str;
 
 class BusinessFactory extends Factory
 {
@@ -25,7 +26,7 @@ class BusinessFactory extends Factory
             'name' => $this->faker->company,
             'address' => $this->faker->address,
             'email' => $this->faker->companyEmail,
-            'valid_code' => $this->faker->text(20)
+            'valid_code' => Str::random(20)
         ];
     }
 }

@@ -36,7 +36,9 @@ class BizopostsApiTest extends TestCase
      */
     public function testPostBizpost()
     {
-//        $bizpost = Bizpost::factory()->create();
+        $bizpost = Bizpost::factory()->make();
+
+        dd($bizpost);
 
         $this->assertTrue(true);
 

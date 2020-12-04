@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Bizpost;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use \DavidBadura\FakerMarkdownGenerator\FakerProvider;
+use Str;
 
 class BizpostFactory extends Factory
 {
@@ -29,7 +30,7 @@ class BizpostFactory extends Factory
             'body' => $this->faker->markdown(),
             'activated' => true,
             'validated' => true,
-            'valid_code' => $this->faker->text(20),
+            'valid_code' => Str::random(20),
             'kind' => 0,
             'due_date' => $this->faker->dateTimeBetween('now', '1 month')->format('Y-m-d'),
         ];
