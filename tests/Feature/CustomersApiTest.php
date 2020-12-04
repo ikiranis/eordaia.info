@@ -2,13 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Bizpost;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class BizopostsApiTest extends TestCase
+class CustomersApiTest extends TestCase
 {
     use WithFaker;
 
@@ -30,25 +29,12 @@ class BizopostsApiTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
-     *
-     * @return void
+     * Test getting a Customer
      */
-    public function testPostBizpost()
+    public function testGetCustomer()
     {
-        $bizpost = Bizpost::factory()->make();
+        $response = $this->get('/api/customer/'. 'id');
 
-        dd($bizpost);
-
-        $this->assertTrue(true);
-
-//        $response = $this->actingAs(static::$user, 'api')
-//            ->post('/api/bizpost', $request);
-//
-//        $response->assertStatus(201)
-//            ->assertJsonStructure([
-//                'id',
-//                'name'
-//            ]);
+        $response->assertStatus(200);
     }
 }
