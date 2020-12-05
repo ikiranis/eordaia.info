@@ -62,7 +62,12 @@ Route::get('/contact', function () {
 
 // Public pages
 Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/bizpost', [HomeController::class, 'bizpost'])->name('bizpost');
+
+// You have to put routes without attributes, before this
+// because /{slug} will confuse the routes
 Route::get('/{slug}', [HomeController::class, 'post'])->name('post');
 Route::get('/tag/{slug}', [HomeController::class, 'tag'])->name('tag');
 Route::get('/category/{slug}', [HomeController::class, 'category'])->name('category');
 Route::get('/month/{year}/{month}', [HomeController::class, 'month'])->name('month');
+

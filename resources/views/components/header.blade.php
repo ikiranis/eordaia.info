@@ -10,6 +10,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav my-auto ml-auto">
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('bizpost') }}">Δημοσίευση</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">Σχετικά</a>
             </li>
             <li class="nav-item">

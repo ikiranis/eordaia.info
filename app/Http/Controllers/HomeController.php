@@ -128,4 +128,14 @@ class HomeController extends Controller
 
         return view('public.home', compact(['posts']));
     }
+
+    /**
+     * Show the bizpost page
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function bizpost()
+    {
+         return view('public.bizpost');
+    }
 }
