@@ -139,6 +139,19 @@ class PublicPageRoutesTest extends TestCase
         $response->assertStatus(200)
             ->assertSee($post->title);
     }
+
+    /**
+     * Test for bizpost page
+     *
+     * @return void
+     */
+    public function testBizpostPage()
+    {
+        $response = $this->get('/bizpost');
+
+        $response->assertStatus(200)
+            ->assertSee('Δημοσίευση');
+    }
 }
 
 
