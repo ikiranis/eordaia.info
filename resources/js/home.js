@@ -17,6 +17,7 @@ Vue.use(BootstrapVue)
 // App Components
 Vue.component('displayImage', require('./components/Image.vue').default)
 Vue.component('lazyImage', require('./components/LazyImage.vue').default)
+Vue.component('bizpost', require('./components/Bizpost.vue').default)
 
 /**
  * The following block of code may be used to automatically register your

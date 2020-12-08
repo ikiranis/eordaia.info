@@ -11,9 +11,7 @@
 @section('content')
 
     <div class="container">
-
-{{--        <x-posts.SinglePost :post="$post" />--}}
-
+        <bizpost></bizpost>
     </div>
 
 @endsection
