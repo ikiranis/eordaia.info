@@ -7,7 +7,9 @@
                    id="email" name="email">
         </div>
 
-        <div class="business">
+        <input class="btn btn-success" @click="checkBusiness" value="Έλεγχος">
+
+        <div v-if="showBusiness" class="business">
             <div class="mb-3">
                 <label for="name">Όνομα επιχείρησης</label>
                 <input type="text" max="255" v-model="business.name"
@@ -23,7 +25,7 @@
             </div>
         </div>
 
-        <div class="post">
+        <div v-if="showBizpost" class="post">
             <div class="mb-3">
                 <label for="title">Τίτλος</label>
                 <input type="text" max="255" v-model="bizpost.title"
@@ -53,8 +55,8 @@
         data() {
             return {
                 business: {
-                    name: 'Επιχείρηση',
-                    address: '2ης μαρτίου 69',
+                    name: '',
+                    address: '',
                     email: 'rocean@error.gr'
                 },
 
@@ -62,7 +64,29 @@
                     title: '',
                     body: '',
                     due_date: ''
-                }
+                },
+
+                showBusiness: false,
+                showBizpost: false
+            }
+        },
+
+        methods: {
+            checkBusiness() {
+                axios.get('api/checkBusiness/' + this.business.email)
+                    .then(response => {
+                        this.showBusiness = true
+
+                        if (response.status === 204) {
+                            console.log('Δεν υπάρχει εγγραφή με αυτό το email ')
+                            return
+                        }
+
+                        this.business = response.data
+                    })
+                    .catch(error => {
+                        console.log(error.response.data.message)
+                    })
             }
         }
     }
