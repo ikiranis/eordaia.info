@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Business;
+use App\Http\Resources\BusinessResource;
 use Illuminate\Http\Request;
 
 class BusinessApiController extends Controller
@@ -17,6 +19,13 @@ class BusinessApiController extends Controller
         return response()->json([
             'message' => 'ok'
         ], 200);
+    }
+
+    public function checkBusiness($email)
+    {
+        $business = Business::whereEmail($email)->firstOrFail();
+
+        return new BusinessResource($business);
     }
 
     /**

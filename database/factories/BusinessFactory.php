@@ -26,7 +26,9 @@ class BusinessFactory extends Factory
             'name' => $this->faker->company,
             'address' => $this->faker->address,
             'email' => $this->faker->companyEmail,
-            'valid_code' => Str::random(20)
+            'valid_code' => Str::random(20),
+            'bizcategory_id' => rand(0,2),
+            'customer_id' => Str::random(20)
         ];
     }
 }

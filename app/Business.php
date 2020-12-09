@@ -3,12 +3,14 @@
 namespace App;
 
 use App\Traits\Uuids;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Business extends Model
 {
     use HasFactory;
+    use Sluggable;
     use Uuids;
 
     public $incrementing = false;
@@ -29,6 +31,21 @@ class Business extends Model
         'photo_id',
         'valid_code'
     ];
+
+    /**
+     * Return the sluggable configuration array for this model.
+     * @source https://github.com/cviebrock/eloquent-sluggable
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source'    => 'name'
+            ]
+        ];
+    }
 
     /**
      * Relation to customers

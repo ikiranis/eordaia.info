@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Business;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -9,9 +10,9 @@ use Tests\TestCase;
 
 class BusinessApiTest extends TestCase
 {
+    use RefreshDatabase;
     use WithFaker;
 
-    protected static $user;
     protected static bool $setUpRun = false;
 
     /**
@@ -22,8 +23,6 @@ class BusinessApiTest extends TestCase
         parent::setUp();
 
         if (!static::$setUpRun) {
-            static::$user = User::first();
-
             static::$setUpRun = true;
         }
     }
@@ -36,6 +35,27 @@ class BusinessApiTest extends TestCase
         $response = $this->get('/api/business/'. 'id');
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * Test if email exists in database
+     */
+    public function testIfEmailExists()
+    {
+        $business = Business::factory()->create();
+
+        $response = $this->get('/api/checkBusiness/'. $business->email);
+
+//        print_r($response->json());
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'id',
+                'name',
+                'slug',
+                'address',
+                'email'
+            ]);
     }
 
     /**
