@@ -21,11 +21,23 @@ class BusinessApiController extends Controller
         ], 200);
     }
 
+    /**
+     * Check if email exist
+     *
+     * @param $email
+     * @return BusinessResource|\Illuminate\Http\JsonResponse
+     */
     public function checkBusiness($email)
     {
-        $business = Business::whereEmail($email)->firstOrFail();
+        try {
+            $business = Business::whereEmail($email)->firstOrFail();
 
-        return new BusinessResource($business);
+            return new BusinessResource($business);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'Δεν υπάρχει εγγραφή με αυτό το email'
+            ], 204);
+        }
     }
 
     /**

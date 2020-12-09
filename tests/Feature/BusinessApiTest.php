@@ -46,8 +46,6 @@ class BusinessApiTest extends TestCase
 
         $response = $this->get('/api/checkBusiness/'. $business->email);
 
-//        print_r($response->json());
-
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'id',
@@ -56,6 +54,18 @@ class BusinessApiTest extends TestCase
                 'address',
                 'email'
             ]);
+    }
+
+    /**
+     * Test if email doesnt exists in database
+     */
+    public function testIfEmailDoesntExists()
+    {
+        $business = Business::factory()->create();
+
+        $response = $this->get('/api/checkBusiness/'. 'test@email.com');
+
+        $response->assertStatus(204);
     }
 
     /**
