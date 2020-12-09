@@ -22,7 +22,7 @@ class BusinessApiController extends Controller
     }
 
     /**
-     * Check if email exist
+     * Check if email exist and return the business
      *
      * @param $email
      * @return BusinessResource|\Illuminate\Http\JsonResponse
