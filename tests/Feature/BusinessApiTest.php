@@ -3,14 +3,11 @@
 namespace Tests\Feature;
 
 use App\Business;
-use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class BusinessApiTest extends TestCase
 {
-    use RefreshDatabase;
     use WithFaker;
 
     protected static bool $setUpRun = false;

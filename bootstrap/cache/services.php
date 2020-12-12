@@ -57,23 +57,22 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Barryvdh\\Debugbar\\ServiceProvider',
-    11 => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
-    12 => 'Cviebrock\\EloquentSluggable\\ServiceProvider',
-    13 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    14 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    15 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    16 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
-    17 => 'Intervention\\Image\\ImageServiceProvider',
-    18 => 'Laravel\\Ui\\UiServiceProvider',
-    19 => 'Carbon\\Laravel\\ServiceProvider',
-    20 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    21 => 'Spatie\\Backup\\BackupServiceProvider',
-    22 => 'Spatie\\Feed\\FeedServiceProvider',
-    23 => 'Webpatser\\Uuid\\UuidServiceProvider',
-    24 => 'App\\Providers\\AppServiceProvider',
-    25 => 'App\\Providers\\AuthServiceProvider',
-    26 => 'App\\Providers\\EventServiceProvider',
-    27 => 'App\\Providers\\RouteServiceProvider',
+    11 => 'Cviebrock\\EloquentSluggable\\ServiceProvider',
+    12 => 'Facade\\Ignition\\IgnitionServiceProvider',
+    13 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    14 => 'Fruitcake\\Cors\\CorsServiceProvider',
+    15 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
+    16 => 'Intervention\\Image\\ImageServiceProvider',
+    17 => 'Laravel\\Ui\\UiServiceProvider',
+    18 => 'Carbon\\Laravel\\ServiceProvider',
+    19 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    20 => 'Spatie\\Backup\\BackupServiceProvider',
+    21 => 'Spatie\\Feed\\FeedServiceProvider',
+    22 => 'Webpatser\\Uuid\\UuidServiceProvider',
+    23 => 'App\\Providers\\AppServiceProvider',
+    24 => 'App\\Providers\\AuthServiceProvider',
+    25 => 'App\\Providers\\EventServiceProvider',
+    26 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (
@@ -190,6 +189,8 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'command.ide-helper.generate' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
+    'command.ide-helper.models' => 'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
     'sitemap' => 'Laravelium\\Sitemap\\SitemapServiceProvider',
     'Laravelium\\Sitemap\\Sitemap' => 'Laravelium\\Sitemap\\SitemapServiceProvider',
@@ -230,6 +231,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => 
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
