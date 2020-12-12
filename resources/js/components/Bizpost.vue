@@ -24,7 +24,8 @@
                        id="address" name="address">
             </div>
 
-            <input type="button" class="btn btn-success" value="Καταχώρηση επιχείρησης"
+            <input v-if="showSaveBusinessButton" type="button" class="btn btn-success"
+                   value="Καταχώρηση επιχείρησης"
                    @click="saveBusiness" :disabled="!canSaveBusiness">
         </div>
 
@@ -70,7 +71,8 @@
                 },
 
                 showBusiness: false,
-                showBizpost: false
+                showBizpost: false,
+                showSaveBusinessButton: true
             }
         },
 
@@ -84,14 +86,15 @@
             checkBusiness() {
                 axios.get('api/checkBusiness/' + this.business.email)
                     .then(response => {
-                        this.showBusiness = true
-
                         if (response.status === 204) {
                             console.log('Δεν υπάρχει εγγραφή με αυτό το email ')
+                            this.showBusiness = true
                             return
                         }
 
                         this.business = response.data
+                        this.showBizpost = true
+                        this.showSaveBusinessButton = false
                     })
                     .catch(error => {
                         console.log(error.response.data.message)
