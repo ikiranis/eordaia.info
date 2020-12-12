@@ -7,7 +7,7 @@
                    id="email" name="email">
         </div>
 
-        <input class="btn btn-success" @click="checkBusiness" value="Έλεγχος">
+        <input type="button" class="btn btn-success" @click="checkBusiness" value="Έλεγχος">
 
         <div v-if="showBusiness" class="business">
             <div class="mb-3">
@@ -23,6 +23,9 @@
                        class="form-control col-6 px-2"
                        id="address" name="address">
             </div>
+
+            <input type="button" class="btn btn-success" value="Καταχώρηση επιχείρησης"
+                   @click="saveBusiness" :disabled="!canSaveBusiness">
         </div>
 
         <div v-if="showBizpost" class="post">
@@ -71,6 +74,12 @@
             }
         },
 
+        computed: {
+            canSaveBusiness() {
+                return this.business.name !== '' && this.business.address !== ''
+            }
+        },
+
         methods: {
             checkBusiness() {
                 axios.get('api/checkBusiness/' + this.business.email)
@@ -87,6 +96,11 @@
                     .catch(error => {
                         console.log(error.response.data.message)
                     })
+            },
+
+            saveBusiness() {
+
+                this.showBizpost = true;
             }
         }
     }
