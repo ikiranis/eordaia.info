@@ -14,6 +14,49 @@ use Str;
 use Spatie\Feed\FeedItem;
 use Spatie\Feed\Feedable;
 
+/**
+ * App\Post
+ *
+ * @property string $id
+ * @property string $slug
+ * @property string|null $user_id
+ * @property string $title
+ * @property string $body
+ * @property int $approved
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $image_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $categories
+ * @property-read int|null $categories_count
+ * @property-read mixed|null $cover
+ * @property-read mixed $description
+ * @property-read mixed $markdown_body
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Link[] $links
+ * @property-read int|null $links_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Photo[] $photos
+ * @property-read int|null $photos_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\User|null $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videos
+ * @property-read int|null $videos_count
+ * @method static \Database\Factories\PostFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereApproved($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @mixin \Eloquent
+ */
 class Post extends Model implements Feedable
 {
     use HasFactory;
