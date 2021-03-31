@@ -41,6 +41,27 @@ class BusinessApiController extends Controller
     }
 
     /**
+     * Check if slug exist
+     *
+     * @param $slug
+     * @return BusinessResource|\Illuminate\Http\JsonResponse
+     */
+    public function checkSlug($slug)
+    {
+        try {
+            $business = Business::whereSlug($slug)->firstOrFail();
+
+            return response()->json([
+                'message' => 'Υπάρχει ήδη το slug αυτό'
+            ], 204);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'Δεν υπάρχει εγγραφή με αυτό το email'
+            ], 204);
+        }
+    }
+
+    /**
      * Post new business
      *
      * @param Request $request

@@ -18,6 +18,13 @@
             </div>
 
             <div class="mb-3">
+                <label for="name">Slug</label>
+                <input type="text" max="255" v-model="business.slug"
+                       class="form-control col-6 px-2"
+                       id="slug" name="slug">
+            </div>
+
+            <div class="mb-3">
                 <label for="address">Διεύθυνση</label>
                 <input type="text" max="255" v-model="business.address"
                        class="form-control col-6 px-2"
@@ -60,6 +67,7 @@
             return {
                 business: {
                     name: '',
+                    slug: '',
                     address: '',
                     email: 'rocean@error.gr'
                 },
