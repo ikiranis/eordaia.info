@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Bizpost;
 use App\Business;
 use App\Http\Resources\BusinessResource;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class BusinessApiController extends Controller
@@ -59,6 +61,15 @@ class BusinessApiController extends Controller
                 'message' => 'Δεν υπάρχει εγγραφή με αυτό το email'
             ], 204);
         }
+    }
+
+    public function getSlug($companyName)
+    {
+        $slug = SlugService::createSlug(Bizpost::class, 'slug', $companyName);
+
+        return response()->json([
+            'slug' => $slug
+        ], 200);
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Bizpost;
 use App\Business;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
@@ -106,5 +108,24 @@ class BusinessApiTest extends TestCase
         $response = $this->delete('/api/business/' . 'id');
 
         $response->assertStatus(200);
+    }
+
+    /**
+     * Test if getSlug works
+     */
+    public function testGetSlug()
+    {
+        $companyName = $this->faker->company;
+        $slug = SlugService::createSlug(Bizpost::class, 'slug', $companyName);
+
+        $response = $this->get('/api/getSlug/' . $companyName);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'slug' => $slug
+            ])
+            ->assertJsonStructure([
+                'slug'
+            ]);
     }
 }

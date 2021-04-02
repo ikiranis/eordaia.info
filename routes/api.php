@@ -43,6 +43,7 @@ Route::get('photo/{id}', [AdminPhotosController::class, 'getPhoto']);
 Route::post('business', [BusinessApiController::class, 'store']);
 Route::get('business/{id}', [BusinessApiController::class, 'show']);
 Route::get('checkBusiness/{email}', [BusinessApiController::class, 'checkBusiness']);
+Route::get('getSlug/{companyName}', [BusinessApiController::class, 'getSlug']);
 Route::patch('business/{id}', [BusinessApiController::class, 'update']);
 Route::delete('business/{id}', [BusinessApiController::class, 'destroy']);
 
