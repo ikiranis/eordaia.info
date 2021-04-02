@@ -14,7 +14,8 @@
                 <label for="name">Όνομα επιχείρησης</label>
                 <input type="text" max="255" v-model="business.name"
                        class="form-control col-6 px-2"
-                       id="name" name="name">
+                       id="name" name="name"
+                       @blur="getSlug">
             </div>
 
             <div class="mb-3">
@@ -112,6 +113,21 @@
             saveBusiness() {
 
                 this.showBizpost = true;
+            },
+
+            /**
+             * Get the slug for business name
+             */
+            getSlug() {
+                axios.get('api/getSlug/' + this.business.name)
+                    .then(response => {
+                        if (response.status === 200) {
+                            this.business.slug = response.data.slug
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error.response.data.message)
+                    })
             }
         }
     }

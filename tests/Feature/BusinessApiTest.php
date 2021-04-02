@@ -115,10 +115,10 @@ class BusinessApiTest extends TestCase
      */
     public function testGetSlug()
     {
-        $companyName = $this->faker->company;
-        $slug = SlugService::createSlug(Bizpost::class, 'slug', $companyName);
+        $businessName = $this->faker->company;
+        $slug = SlugService::createSlug(Bizpost::class, 'slug', $businessName);
 
-        $response = $this->get('/api/getSlug/' . $companyName);
+        $response = $this->get('/api/getSlug/' . $businessName);
 
         $response->assertStatus(200)
             ->assertJson([
