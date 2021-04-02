@@ -63,13 +63,25 @@ class BusinessApiController extends Controller
         }
     }
 
+    /**
+     * Get slug for companyName
+     *
+     * @param $companyName
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getSlug($companyName)
     {
-        $slug = SlugService::createSlug(Bizpost::class, 'slug', $companyName);
+        try {
+            $slug = SlugService::createSlug(Bizpost::class, 'slug', $companyName);
 
-        return response()->json([
-            'slug' => $slug
-        ], 200);
+            return response()->json([
+                'slug' => $slug
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'Πρόβλημα στην δημιουργία του slug'
+            ], 204);
+        }
     }
 
     /**
