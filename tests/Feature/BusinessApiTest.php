@@ -74,20 +74,20 @@ class BusinessApiTest extends TestCase
      */
     public function testPostBusiness()
     {
-//        $bizpost = Bizpost::factory()->make();
+        $business = Business::factory()->make();
 
-        $response = $this->post('/api/business/', []);
+        $response = $this->post('/api/business', $business->toArray());
 
-        $response->assertStatus(200);
+//        dd($response->getOriginalContent());
 
-//        $response = $this->actingAs(static::$user, 'api')
-//            ->post('/api/bizpost', $request);
-//
-//        $response->assertStatus(201)
-//            ->assertJsonStructure([
-//                'id',
-//                'name'
-//            ]);
+        $response->assertStatus(201)
+            ->assertJsonStructure([
+                'id',
+                'name',
+                'slug',
+                'address',
+                'email'
+            ]);
     }
 
     /**

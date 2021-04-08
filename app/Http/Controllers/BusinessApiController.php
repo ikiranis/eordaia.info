@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Bizpost;
 use App\Business;
+use App\Http\Requests\BusinessFormRequest;
 use App\Http\Resources\BusinessResource;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
@@ -85,16 +86,27 @@ class BusinessApiController extends Controller
     }
 
     /**
-     * Post new business
+     * Store new business
      *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param BusinessFormRequest $request
+     * @return BusinessResource|\Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(BusinessFormRequest $request)
     {
-        return response()->json([
-            'message' => 'ok'
-        ], 200);
+        $validatedData = $request->validated();
+
+        $input = $request->all();
+
+
+        try {
+            $business = Business::create($input);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => 'Δεν μπορεί να δημιουργηθεί η εταιρεία'
+            ], 403);
+        }
+
+        return new BusinessResource($business);
     }
 
     /**
