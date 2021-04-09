@@ -8,6 +8,7 @@ use App\Http\Requests\BusinessFormRequest;
 use App\Http\Resources\BusinessResource;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Str;
 
 class BusinessApiController extends Controller
 {
@@ -97,6 +98,10 @@ class BusinessApiController extends Controller
 
         $input = $request->all();
 
+        // Add more fields in request
+        $input['valid_code'] = Str::random(20);
+        $input['bizcategory_id'] = rand(0,2);
+        $input['customer_id'] = Str::random(20);
 
         try {
             $business = Business::create($input);
