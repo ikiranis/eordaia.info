@@ -74,9 +74,10 @@ class BusinessApiTest extends TestCase
      */
     public function testPostBusiness()
     {
-        $business = Business::factory()->make();
+        // Using raw() to get factory data in array
+        $business = Business::factory()->raw();
 
-        $response = $this->post('/api/business', $business->toArray());
+        $response = $this->post('/api/business', $business);
 
 //        dd($response->getOriginalContent());
 
