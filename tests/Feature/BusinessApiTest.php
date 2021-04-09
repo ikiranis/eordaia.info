@@ -77,15 +77,16 @@ class BusinessApiTest extends TestCase
         // Using raw() to get factory data in array
 //        $business = Business::factory()->raw();
 
+        $businessName = $this->faker->company;
+
         $business = [
-            'name' => $this->faker->company,
+            'name' => $businessName,
             'address' => $this->faker->address,
             'email' => $this->faker->companyEmail,
+            'slug' => SlugService::createSlug(Bizpost::class, 'slug', $businessName),
         ];
 
         $response = $this->post('/api/business', $business);
-
-//        dd($response->getOriginalContent());
 
         $response->assertStatus(201)
             ->assertJsonStructure([

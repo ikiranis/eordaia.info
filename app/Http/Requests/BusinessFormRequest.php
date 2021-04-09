@@ -26,7 +26,8 @@ class BusinessFormRequest extends FormRequest
         return [
             'name' => 'required',
             'address' => 'required',
-            'email' => 'required|email:rfc,dns'
+            'email' => 'required|email:rfc,dns',
+            'slug' => 'required|unique:businesses'
         ];
     }
 
@@ -42,6 +43,8 @@ class BusinessFormRequest extends FormRequest
             'address.required'  => 'Η διεύθυνση απαιτείται',
             'email.required'  => 'Το email απαιτείται',
             'email.email'  => 'To email δεν είναι έγκυρο',
+            'slug.required' => 'Το slug απαιτείται',
+            'slug.unique' => 'Το slug υπάρχει ήδη',
         ];
     }
 }
