@@ -1,4 +1,14 @@
+![https://apps4net.eu/assets/static/eordaia_info.21bf951.c35e2b9199554a3b291080ce3e31deb1.jpg]
+
 # Eordaia.info site
+
+Ειδησεογραφικό site για την περιοχή της Εορδαίας. (δεν λειτουργεί πλέον)
+
+https://apps4net.eu/eordaia/
+
+## Install Docker container
+
+https://github.com/ikiranis/apache-mysql-for-laravel
 
 ## Login to container
 
